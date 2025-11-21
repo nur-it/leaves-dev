@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document Archive™ - LEAVES</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -26,47 +27,48 @@
             }
         }
     </script>
-    
+
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         body {
             background-color: #F8F9FA;
         }
+
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
         }
+
         ::-webkit-scrollbar-track {
-            background: #f1f1f1; 
+            background: #f1f1f1;
         }
+
         ::-webkit-scrollbar-thumb {
-            background: #c1c1c1; 
+            background: #c1c1c1;
             border-radius: 3px;
         }
     </style>
 </head>
+
 <body class="text-gray-700 font-sans antialiased">
 
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
         <!-- Top Bar -->
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center gap-2 cursor-pointer">
-                <div class="bg-leaves-green text-white p-1 rounded-md">
-                     <i class="fa-solid fa-leaf text-xl"></i>
-                </div>
-                <span class="font-serif font-bold text-2xl tracking-tight text-gray-800">LEAVES</span>
-                <span class="text-[10px] align-top -mt-2 text-gray-400">®</span>
+                <img src="/public/logo.svg" alt="LEAVES" class="w-full h-auto">
             </div>
-            
+
             <!-- Right Side -->
             <div class="flex items-center gap-4">
                 <button class="relative text-gray-600 hover:text-gray-900">
                     <i class="fa-solid fa-bell text-xl"></i>
-                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                    <span
+                        class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">3</span>
                 </button>
                 <div class="flex items-center gap-2 cursor-pointer">
                     <img src="https://i.pravatar.cc/150?img=68" alt="Profile" class="w-8 h-8 rounded-full object-cover">
@@ -74,39 +76,47 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Navigation -->
         <nav class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center gap-8 text-sm">
-                <a href="index.html" class="flex items-center gap-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-leaves-green transition-colors">
+                <a href="index.html"
+                    class="flex items-center gap-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-leaves-green transition-colors">
                     <i class="fa-solid fa-house text-sm"></i>
                     Dashboard
                 </a>
-                <a href="times-of-my-life.html" class="flex items-center gap-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-leaves-green transition-colors">
+                <a href="times-of-my-life.html"
+                    class="flex items-center gap-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-leaves-green transition-colors">
                     <i class="fa-solid fa-clock-rotate-left text-sm"></i>
                     Times of My Life™
                 </a>
-                <a href="personas.html" class="flex items-center gap-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-leaves-green transition-colors">
+                <a href="personas.html"
+                    class="flex items-center gap-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-leaves-green transition-colors">
                     <i class="fa-solid fa-users text-sm"></i>
                     Forever Voice™
                 </a>
-                <a href="life-map.html" class="flex items-center gap-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-leaves-green transition-colors">
+                <a href="life-map.html"
+                    class="flex items-center gap-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-leaves-green transition-colors">
                     <i class="fa-solid fa-map-location-dot text-sm"></i>
                     Life Map™
                 </a>
-                <a href="life-timeline.html" class="flex items-center gap-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-leaves-green transition-colors">
+                <a href="life-timeline.html"
+                    class="flex items-center gap-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-leaves-green transition-colors">
                     <i class="fa-solid fa-timeline text-sm"></i>
                     Life Timeline™
                 </a>
-                <a href="document-archive.html" class="flex items-center gap-2 py-3 text-leaves-green border-b-2 border-leaves-green font-medium">
+                <a href="document-archive.html"
+                    class="flex items-center gap-2 py-3 text-leaves-green border-b-2 border-leaves-green font-medium">
                     <i class="fa-solid fa-file-lines text-sm"></i>
                     Document Archive™
                 </a>
-                <a href="legacy-letters.html" class="flex items-center gap-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-leaves-green transition-colors">
+                <a href="legacy-letters.html"
+                    class="flex items-center gap-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-leaves-green transition-colors">
                     <i class="fa-solid fa-envelope text-sm"></i>
                     Legacy Letters™
                 </a>
-                <a href="media-library.html" class="flex items-center gap-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-leaves-green transition-colors">
+                <a href="media-library.html"
+                    class="flex items-center gap-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-leaves-green transition-colors">
                     <i class="fa-solid fa-photo-film text-sm"></i>
                     Media Library™
                 </a>
@@ -116,16 +126,17 @@
 
     <!-- Main Content -->
     <main class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        
+
         <!-- Page Header -->
         <div class="flex items-center justify-between mb-4">
             <h1 class="text-2xl font-bold text-gray-900">Document Archive™</h1>
-            <button class="bg-leaves-green hover:bg-leaves-green/90 text-white px-4 py-2 rounded-lg font-medium text-sm flex items-center gap-2 transition-colors">
+            <button
+                class="bg-leaves-green hover:bg-leaves-green/90 text-white px-4 py-2 rounded-lg font-medium text-sm flex items-center gap-2 transition-colors">
                 <i class="fa-solid fa-upload text-sm"></i>
                 Upload document
             </button>
         </div>
-        
+
         <!-- Info Banner -->
         <div class="bg-blue-50 border border-blue-200 rounded-lg p-3.5 mb-6 flex items-start gap-3">
             <div class="bg-blue-500 rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0">
@@ -141,31 +152,35 @@
 
         <!-- Documents List Card -->
         <div class="bg-white rounded-xl border border-gray-100 p-6">
-            
+
             <!-- Header -->
             <div class="flex items-center justify-between mb-6">
                 <h2 class="text-lg font-bold text-gray-900">Documents List</h2>
-                
+
                 <div class="flex items-center gap-3">
                     <!-- Search -->
                     <div class="relative">
-                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-                        <input type="text" placeholder="Search file name, person, event, or document type..." class="pl-10 pr-10 py-2 border border-gray-200 rounded-lg text-sm w-96 focus:outline-none focus:ring-2 focus:ring-leaves-green">
+                        <i
+                            class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                        <input type="text" placeholder="Search file name, person, event, or document type..."
+                            class="pl-10 pr-10 py-2 border border-gray-200 rounded-lg text-sm w-96 focus:outline-none focus:ring-2 focus:ring-leaves-green">
                         <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
                             <i class="fa-solid fa-microphone text-sm"></i>
                         </button>
                     </div>
-                    
+
                     <!-- Filter -->
-                    <select class="border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-leaves-green">
+                    <select
+                        class="border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-leaves-green">
                         <option>Filter by labels: All</option>
                         <option>Marriage Certificate</option>
                         <option>Birth Certificates</option>
                         <option>Medical Report</option>
                     </select>
-                    
+
                     <!-- Add Label -->
-                    <button class="text-leaves-green border border-leaves-green hover:bg-leaves-green hover:text-white px-4 py-2 rounded-lg font-medium text-sm flex items-center gap-2 transition-colors">
+                    <button
+                        class="text-leaves-green border border-leaves-green hover:bg-leaves-green hover:text-white px-4 py-2 rounded-lg font-medium text-sm flex items-center gap-2 transition-colors">
                         <i class="fa-solid fa-plus text-xs"></i>
                         Add Label
                     </button>
@@ -177,35 +192,46 @@
                 <table class="w-full">
                     <thead>
                         <tr class="border-b border-gray-200">
-                            <th class="text-left py-3 px-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                            <th class="text-left py-3 px-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Event</th>
-                            <th class="text-left py-3 px-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Person</th>
-                            <th class="text-left py-3 px-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                            <th class="text-left py-3 px-2 text-xs font-medium text-gray-500 uppercase tracking-wider">Associated with</th>
+                            <th class="text-left py-3 px-2 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Name</th>
+                            <th class="text-left py-3 px-2 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Event</th>
+                            <th class="text-left py-3 px-2 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Person</th>
+                            <th class="text-left py-3 px-2 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Date</th>
+                            <th class="text-left py-3 px-2 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Associated with</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100">
-                        
+
                         <!-- Row 1 -->
                         <tr class="hover:bg-gray-50 cursor-pointer">
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <div
+                                        class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
                                         <span class="text-purple-600 font-bold text-xs">PDF</span>
                                     </div>
                                     <div>
-                                        <div class="font-semibold text-sm text-gray-900">Anderson-Marriage-Certificate</div>
+                                        <div class="font-semibold text-sm text-gray-900">Anderson-Marriage-Certificate
+                                        </div>
                                         <div class="text-xs text-gray-500">Last updated 2 months ago</div>
                                     </div>
                                 </div>
                             </td>
                             <td class="py-4 px-2">
-                                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-md text-xs font-medium border border-green-200">Marriage Certificate</span>
+                                <span
+                                    class="bg-green-100 text-green-700 px-3 py-1 rounded-md text-xs font-medium border border-green-200">Marriage
+                                    Certificate</span>
                             </td>
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-2">
-                                    <img src="https://i.pravatar.cc/150?img=32" alt="Sarah" class="w-6 h-6 rounded-full">
-                                    <img src="https://i.pravatar.cc/150?img=68" alt="Jonathan" class="w-6 h-6 rounded-full -ml-2">
+                                    <img src="https://i.pravatar.cc/150?img=32" alt="Sarah"
+                                        class="w-6 h-6 rounded-full">
+                                    <img src="https://i.pravatar.cc/150?img=68" alt="Jonathan"
+                                        class="w-6 h-6 rounded-full -ml-2">
                                     <span class="text-sm text-gray-700">Sarah & Jonathan</span>
                                 </div>
                             </td>
@@ -215,9 +241,12 @@
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-2">
                                     <div class="flex -space-x-2">
-                                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
-                                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
-                                        <img src="https://images.unsplash.com/photo-1464047736614-af63643285bf?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1464047736614-af63643285bf?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
                                     </div>
                                     <span class="text-xs text-gray-500">+3 stories</span>
                                     <i class="fa-solid fa-chevron-right text-gray-400 text-xs ml-2"></i>
@@ -230,7 +259,8 @@
                         <tr class="hover:bg-gray-50 cursor-pointer">
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <div
+                                        class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
                                         <span class="text-purple-600 font-bold text-xs">PDF</span>
                                     </div>
                                     <div>
@@ -240,11 +270,14 @@
                                 </div>
                             </td>
                             <td class="py-4 px-2">
-                                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-medium border border-blue-200">Birth Certificates</span>
+                                <span
+                                    class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-medium border border-blue-200">Birth
+                                    Certificates</span>
                             </td>
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-2">
-                                    <img src="https://i.pravatar.cc/150?img=53" alt="Lucas" class="w-6 h-6 rounded-full">
+                                    <img src="https://i.pravatar.cc/150?img=53" alt="Lucas"
+                                        class="w-6 h-6 rounded-full">
                                     <span class="text-sm text-gray-700">Lucas Anderson</span>
                                 </div>
                             </td>
@@ -254,9 +287,12 @@
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-2">
                                     <div class="flex -space-x-2">
-                                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
-                                        <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
-                                        <img src="https://images.unsplash.com/photo-1476234251651-f353703a034d?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1476234251651-f353703a034d?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
                                     </div>
                                     <span class="text-xs text-gray-500">+2 stories</span>
                                     <i class="fa-solid fa-chevron-right text-gray-400 text-xs ml-2"></i>
@@ -268,7 +304,8 @@
                         <tr class="hover:bg-gray-50 cursor-pointer">
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <div
+                                        class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
                                         <span class="text-purple-600 font-bold text-xs">PDF</span>
                                     </div>
                                     <div>
@@ -278,7 +315,9 @@
                                 </div>
                             </td>
                             <td class="py-4 px-2">
-                                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-medium border border-blue-200">Birth Certificates</span>
+                                <span
+                                    class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-medium border border-blue-200">Birth
+                                    Certificates</span>
                             </td>
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-2">
@@ -292,9 +331,12 @@
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-2">
                                     <div class="flex -space-x-2">
-                                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
-                                        <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
-                                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
                                     </div>
                                     <span class="text-xs text-gray-500">+3 stories</span>
                                     <i class="fa-solid fa-chevron-right text-gray-400 text-xs ml-2"></i>
@@ -306,7 +348,8 @@
                         <tr class="hover:bg-gray-50 cursor-pointer">
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <div
+                                        class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
                                         <span class="text-purple-600 font-bold text-xs">PDF</span>
                                     </div>
                                     <div>
@@ -316,11 +359,14 @@
                                 </div>
                             </td>
                             <td class="py-4 px-2">
-                                <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-md text-xs font-medium border border-orange-200">Home Deed</span>
+                                <span
+                                    class="bg-orange-100 text-orange-700 px-3 py-1 rounded-md text-xs font-medium border border-orange-200">Home
+                                    Deed</span>
                             </td>
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-2">
-                                    <img src="https://i.pravatar.cc/150?img=68" alt="Robert" class="w-6 h-6 rounded-full">
+                                    <img src="https://i.pravatar.cc/150?img=68" alt="Robert"
+                                        class="w-6 h-6 rounded-full">
                                     <span class="text-sm text-gray-700">Robert Miller</span>
                                 </div>
                             </td>
@@ -330,9 +376,12 @@
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-2">
                                     <div class="flex -space-x-2">
-                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
-                                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
-                                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
                                     </div>
                                     <span class="text-xs text-gray-500">+5 stories</span>
                                     <i class="fa-solid fa-chevron-right text-gray-400 text-xs ml-2"></i>
@@ -344,7 +393,8 @@
                         <tr class="hover:bg-gray-50 cursor-pointer">
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <div
+                                        class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
                                         <span class="text-purple-600 font-bold text-xs">PDF</span>
                                     </div>
                                     <div>
@@ -354,12 +404,16 @@
                                 </div>
                             </td>
                             <td class="py-4 px-2">
-                                <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-md text-xs font-medium border border-purple-200">Home Purchase</span>
+                                <span
+                                    class="bg-purple-100 text-purple-700 px-3 py-1 rounded-md text-xs font-medium border border-purple-200">Home
+                                    Purchase</span>
                             </td>
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-2">
-                                    <img src="https://i.pravatar.cc/150?img=32" alt="Sarah" class="w-6 h-6 rounded-full">
-                                    <img src="https://i.pravatar.cc/150?img=68" alt="Jonathan" class="w-6 h-6 rounded-full -ml-2">
+                                    <img src="https://i.pravatar.cc/150?img=32" alt="Sarah"
+                                        class="w-6 h-6 rounded-full">
+                                    <img src="https://i.pravatar.cc/150?img=68" alt="Jonathan"
+                                        class="w-6 h-6 rounded-full -ml-2">
                                     <span class="text-sm text-gray-700">Sarah & Jonathan</span>
                                 </div>
                             </td>
@@ -369,9 +423,12 @@
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-2">
                                     <div class="flex -space-x-2">
-                                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
-                                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
-                                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
                                     </div>
                                     <span class="text-xs text-gray-500">+3 stories</span>
                                     <i class="fa-solid fa-chevron-right text-gray-400 text-xs ml-2"></i>
@@ -383,7 +440,8 @@
                         <tr class="hover:bg-gray-50 cursor-pointer">
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <div
+                                        class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
                                         <span class="text-purple-600 font-bold text-xs">PDF</span>
                                     </div>
                                     <div>
@@ -393,11 +451,14 @@
                                 </div>
                             </td>
                             <td class="py-4 px-2">
-                                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-medium border border-blue-200">Medical Report</span>
+                                <span
+                                    class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-medium border border-blue-200">Medical
+                                    Report</span>
                             </td>
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-2">
-                                    <img src="https://i.pravatar.cc/150?img=44" alt="Patricia" class="w-6 h-6 rounded-full">
+                                    <img src="https://i.pravatar.cc/150?img=44" alt="Patricia"
+                                        class="w-6 h-6 rounded-full">
                                     <span class="text-sm text-gray-700">Patricia Miller</span>
                                 </div>
                             </td>
@@ -407,9 +468,12 @@
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-2">
                                     <div class="flex -space-x-2">
-                                        <img src="https://i.pravatar.cc/150?img=44" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
-                                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
-                                        <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://i.pravatar.cc/150?img=44" alt=""
+                                            class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
                                     </div>
                                     <span class="text-xs text-gray-500">+2 stories</span>
                                     <i class="fa-solid fa-chevron-right text-gray-400 text-xs ml-2"></i>
@@ -421,7 +485,8 @@
                         <tr class="hover:bg-gray-50 cursor-pointer">
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 bg-pink-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <div
+                                        class="w-10 h-10 bg-pink-100 rounded-lg flex items-center justify-center flex-shrink-0">
                                         <span class="text-pink-600 font-bold text-xs">ZIP</span>
                                     </div>
                                     <div>
@@ -431,14 +496,19 @@
                                 </div>
                             </td>
                             <td class="py-4 px-2">
-                                <span class="bg-cyan-100 text-cyan-700 px-3 py-1 rounded-md text-xs font-medium border border-cyan-200">Travel Passports</span>
+                                <span
+                                    class="bg-cyan-100 text-cyan-700 px-3 py-1 rounded-md text-xs font-medium border border-cyan-200">Travel
+                                    Passports</span>
                             </td>
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-2">
                                     <img src="https://i.pravatar.cc/150?img=32" alt="" class="w-6 h-6 rounded-full">
-                                    <img src="https://i.pravatar.cc/150?img=68" alt="" class="w-6 h-6 rounded-full -ml-2">
-                                    <img src="https://i.pravatar.cc/150?img=9" alt="" class="w-6 h-6 rounded-full -ml-2">
-                                    <img src="https://i.pravatar.cc/150?img=53" alt="" class="w-6 h-6 rounded-full -ml-2">
+                                    <img src="https://i.pravatar.cc/150?img=68" alt=""
+                                        class="w-6 h-6 rounded-full -ml-2">
+                                    <img src="https://i.pravatar.cc/150?img=9" alt=""
+                                        class="w-6 h-6 rounded-full -ml-2">
+                                    <img src="https://i.pravatar.cc/150?img=53" alt=""
+                                        class="w-6 h-6 rounded-full -ml-2">
                                     <span class="text-xs text-gray-700">+2</span>
                                     <span class="text-sm text-gray-700 ml-1">Whole Family</span>
                                 </div>
@@ -449,9 +519,12 @@
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-2">
                                     <div class="flex -space-x-2">
-                                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
-                                        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
-                                        <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
                                     </div>
                                     <span class="text-xs text-gray-500">+3 stories</span>
                                     <i class="fa-solid fa-chevron-right text-gray-400 text-xs ml-2"></i>
@@ -463,21 +536,26 @@
                         <tr class="hover:bg-gray-50 cursor-pointer">
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <div
+                                        class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
                                         <span class="text-purple-600 font-bold text-xs">PDF</span>
                                     </div>
                                     <div>
-                                        <div class="font-semibold text-sm text-gray-900">Sarah-Annual-Checkup-Report-2024</div>
+                                        <div class="font-semibold text-sm text-gray-900">
+                                            Sarah-Annual-Checkup-Report-2024</div>
                                         <div class="text-xs text-gray-500">Last updated 2 months ago</div>
                                     </div>
                                 </div>
                             </td>
                             <td class="py-4 px-2">
-                                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-medium border border-blue-200">Medical Report</span>
+                                <span
+                                    class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-medium border border-blue-200">Medical
+                                    Report</span>
                             </td>
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-2">
-                                    <img src="https://i.pravatar.cc/150?img=32" alt="Sarah" class="w-6 h-6 rounded-full">
+                                    <img src="https://i.pravatar.cc/150?img=32" alt="Sarah"
+                                        class="w-6 h-6 rounded-full">
                                     <span class="text-sm text-gray-700">Sarah Anderson</span>
                                 </div>
                             </td>
@@ -487,9 +565,12 @@
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-2">
                                     <div class="flex -space-x-2">
-                                        <img src="https://i.pravatar.cc/150?img=32" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
-                                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
-                                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://i.pravatar.cc/150?img=32" alt=""
+                                            class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
                                     </div>
                                     <span class="text-xs text-gray-500">+3 stories</span>
                                     <i class="fa-solid fa-chevron-right text-gray-400 text-xs ml-2"></i>
@@ -501,7 +582,8 @@
                         <tr class="hover:bg-gray-50 cursor-pointer">
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <div
+                                        class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
                                         <span class="text-purple-600 font-bold text-xs">PDF</span>
                                     </div>
                                     <div>
@@ -511,7 +593,9 @@
                                 </div>
                             </td>
                             <td class="py-4 px-2">
-                                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-medium border border-blue-200">Medical Report</span>
+                                <span
+                                    class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-medium border border-blue-200">Medical
+                                    Report</span>
                             </td>
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-2">
@@ -525,9 +609,12 @@
                             <td class="py-4 px-2">
                                 <div class="flex items-center gap-2">
                                     <div class="flex -space-x-2">
-                                        <img src="https://i.pravatar.cc/150?img=9" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
-                                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
-                                        <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=100&h=100&fit=crop" alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://i.pravatar.cc/150?img=9" alt=""
+                                            class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
+                                        <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=100&h=100&fit=crop"
+                                            alt="" class="w-10 h-10 rounded-lg border-2 border-white object-cover">
                                     </div>
                                     <span class="text-xs text-gray-500">+3 stories</span>
                                     <i class="fa-solid fa-chevron-right text-gray-400 text-xs ml-2"></i>
@@ -544,17 +631,18 @@
             <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-200">
                 <div class="flex items-center gap-2 text-sm text-gray-600">
                     <span>Items per page:</span>
-                    <select class="border border-gray-200 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-leaves-green">
+                    <select
+                        class="border border-gray-200 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-leaves-green">
                         <option>10</option>
                         <option>25</option>
                         <option>50</option>
                     </select>
                 </div>
-                
+
                 <div class="text-sm text-gray-600">
                     1 – 10 of (50)
                 </div>
-                
+
                 <div class="flex items-center gap-1">
                     <button class="w-8 h-8 flex items-center justify-center rounded hover:bg-gray-100 text-gray-400">
                         <i class="fa-solid fa-angles-left text-xs"></i>
@@ -576,4 +664,5 @@
     </main>
 
 </body>
+
 </html>

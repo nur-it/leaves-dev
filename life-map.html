@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life Map™ - Leaves</title>
-    
+
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Tailwind Config -->
     <script>
         tailwind.config = {
@@ -36,22 +37,27 @@
         body {
             background-color: #F8F9FA;
         }
+
         ::-webkit-scrollbar {
             width: 6px;
         }
+
         ::-webkit-scrollbar-track {
-            background: #f1f1f1; 
+            background: #f1f1f1;
         }
+
         ::-webkit-scrollbar-thumb {
-            background: #c1c1c1; 
+            background: #c1c1c1;
             border-radius: 3px;
         }
+
         .map-container {
             background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwMCIgaGVpZ2h0PSI4MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGZpbHRlciBpZD0iYmx1ciI+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMiIvPjwvZmlsdGVyPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwMCIgaGVpZ2h0PSI4MDAiIGZpbGw9IiNmNWY1ZjUiLz48L3N2Zz4=');
             background-size: cover;
             background-position: center;
             position: relative;
         }
+
         .map-pin {
             position: absolute;
             width: 48px;
@@ -59,38 +65,34 @@
             cursor: pointer;
             transition: transform 0.2s;
         }
+
         .map-pin:hover {
             transform: scale(1.1);
         }
     </style>
 </head>
+
 <body class="text-gray-700 font-sans antialiased">
 
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
         <!-- Top Bar -->
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center gap-2 cursor-pointer">
-                <div class="bg-leaves-green text-white p-1 rounded-md">
-                     <i class="fa-solid fa-leaf text-xl"></i>
-                </div>
-                <span class="font-serif font-bold text-2xl tracking-tight text-gray-800">LEAVES</span>
-                <span class="text-[10px] align-top -mt-2 text-gray-400">®</span>
+                <img src="/public/logo.svg" alt="LEAVES" class="w-full h-auto">
             </div>
 
             <!-- Right Side -->
-            <div class="flex items-center gap-6">
-                <!-- Notification -->
-                <div class="relative cursor-pointer">
-                    <i class="fa-regular fa-bell text-gray-500 text-xl"></i>
-                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full border-2 border-white">1</span>
-                </div>
-                
-                <!-- Profile -->
+            <div class="flex items-center gap-4">
+                <button class="relative text-gray-600 hover:text-gray-900">
+                    <i class="fa-solid fa-bell text-xl"></i>
+                    <span
+                        class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                </button>
                 <div class="flex items-center gap-2 cursor-pointer">
-                    <img src="https://i.pravatar.cc/150?img=32" alt="Profile" class="w-9 h-9 rounded-full object-cover border border-gray-200">
-                    <i class="fa-solid fa-chevron-down text-gray-400 text-xs"></i>
+                    <img src="https://i.pravatar.cc/150?img=32" alt="Profile" class="w-8 h-8 rounded-full object-cover">
+                    <i class="fa-solid fa-chevron-down text-xs text-gray-600"></i>
                 </div>
             </div>
         </div>
@@ -98,12 +100,14 @@
         <!-- Navigation -->
         <div class="border-t border-gray-100">
             <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-                <nav class="flex items-center gap-8 overflow-x-auto no-scrollbar py-3 text-sm font-medium text-gray-500">
+                <nav
+                    class="flex items-center gap-8 overflow-x-auto no-scrollbar py-3 text-sm font-medium text-gray-500">
                     <a href="index.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
                         <i class="fa-solid fa-house"></i>
                         Dashboard
                     </a>
-                    <a href="times-of-my-life.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
+                    <a href="times-of-my-life.html"
+                        class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
                         <i class="fa-solid fa-book-open"></i>
                         Times of My Life®
                     </a>
@@ -111,7 +115,8 @@
                         <i class="fa-solid fa-microphone-lines"></i>
                         Forever Voice™
                     </a>
-                    <a href="life-map.html" class="flex items-center gap-2 text-leaves-green border-b-2 border-leaves-green pb-3 -mb-3 whitespace-nowrap">
+                    <a href="life-map.html"
+                        class="flex items-center gap-2 text-leaves-green border-b-2 border-leaves-green pb-3 -mb-3 whitespace-nowrap">
                         <i class="fa-solid fa-map-location-dot"></i>
                         Life Map™
                     </a>
@@ -119,7 +124,8 @@
                         <i class="fa-solid fa-timeline"></i>
                         Life Timeline™
                     </a>
-                    <a href="document-archive.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
+                    <a href="document-archive.html"
+                        class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
                         <i class="fa-regular fa-folder-open"></i>
                         Document Archive™
                     </a>
@@ -138,7 +144,7 @@
 
     <!-- Main Content -->
     <main class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
+
         <!-- Page Title -->
         <h1 class="text-2xl font-bold text-gray-900 mb-6">Life Map™</h1>
 
@@ -148,7 +154,8 @@
                 <div class="w-5 h-5 bg-[#1976D2] rounded-full flex items-center justify-center flex-shrink-0">
                     <i class="fa-solid fa-circle-info text-white text-xs"></i>
                 </div>
-                <p class="text-[13px] text-gray-700 font-normal">Purpose: Visualize your life's journey across time and places you have been.</p>
+                <p class="text-[13px] text-gray-700 font-normal">Purpose: Visualize your life's journey across time and
+                    places you have been.</p>
             </div>
             <button class="text-gray-400 hover:text-gray-600 ml-4 w-5 h-5 flex items-center justify-center">
                 <i class="fa-solid fa-xmark text-base"></i>
@@ -157,7 +164,8 @@
 
         <div class="flex items-center justify-between mb-5">
             <h2 class="font-semibold text-gray-900 text-base">Map Pins</h2>
-            <button class="text-white bg-leaves-green text-[11px] font-medium flex items-center gap-1 hover:bg-leaves-green/90 px-3 py-1.5 rounded-lg">
+            <button
+                class="text-white bg-leaves-green text-[11px] font-medium flex items-center gap-1 hover:bg-leaves-green/90 px-3 py-1.5 rounded-lg">
                 <i class="fa-solid fa-plus text-[9px]"></i>
                 Add My Life Map
             </button>
@@ -165,18 +173,18 @@
 
         <!-- Map Interface -->
         <div class="grid grid-cols-12 gap-6">
-            
+
             <!-- Left Sidebar - Filters -->
             <div class="col-span-12 lg:col-span-3 space-y-6">
                 <!-- Map Pins Card -->
                 <div class="bg-white rounded-xl border border-gray-100 p-5">
-                                        <!-- Labels Section -->
+                    <!-- Labels Section -->
                     <div class="mb-6">
                         <div class="flex items-center justify-between mb-3">
                             <h3 class="text-[13px] font-semibold text-gray-900">Labels</h3>
                             <button class="text-leaves-green text-[11px] font-medium">Add New</button>
                         </div>
-                        
+
                         <div class="space-y-2.5">
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-2.5">
@@ -185,7 +193,7 @@
                                 </div>
                                 <input type="checkbox" checked class="w-4 h-4 rounded border-gray-300 accent-green-600">
                             </label>
-                            
+
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-2.5">
                                     <i class="fa-solid fa-school text-gray-600 text-[13px]"></i>
@@ -193,7 +201,7 @@
                                 </div>
                                 <input type="checkbox" checked class="w-4 h-4 rounded border-gray-300 accent-green-600">
                             </label>
-                            
+
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-2.5">
                                     <i class="fa-solid fa-briefcase text-gray-600 text-[13px]"></i>
@@ -201,15 +209,16 @@
                                 </div>
                                 <input type="checkbox" checked class="w-4 h-4 rounded border-gray-300 accent-green-600">
                             </label>
-                            
+
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-2.5">
                                     <i class="fa-solid fa-star text-gray-600 text-[13px]"></i>
-                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Special Events</span>
+                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Special
+                                        Events</span>
                                 </div>
                                 <input type="checkbox" checked class="w-4 h-4 rounded border-gray-300 accent-green-600">
                             </label>
-                            
+
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-2.5">
                                     <i class="fa-solid fa-plane text-gray-600 text-[13px]"></i>
@@ -217,7 +226,7 @@
                                 </div>
                                 <input type="checkbox" checked class="w-4 h-4 rounded border-gray-300 accent-green-600">
                             </label>
-                            
+
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-2.5">
                                     <i class="fa-solid fa-heart text-gray-600 text-[13px]"></i>
@@ -225,7 +234,7 @@
                                 </div>
                                 <input type="checkbox" class="w-4 h-4 rounded border-gray-300 accent-green-600">
                             </label>
-                            
+
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-2.5">
                                     <i class="fa-solid fa-cake-candles text-gray-600 text-[13px]"></i>
@@ -233,7 +242,7 @@
                                 </div>
                                 <input type="checkbox" checked class="w-4 h-4 rounded border-gray-300 accent-green-600">
                             </label>
-                            
+
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-2.5">
                                     <i class="fa-solid fa-graduation-cap text-gray-600 text-[13px]"></i>
@@ -241,7 +250,7 @@
                                 </div>
                                 <input type="checkbox" checked class="w-4 h-4 rounded border-gray-300 accent-green-600">
                             </label>
-                            
+
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-2.5">
                                     <i class="fa-solid fa-briefcase text-gray-600 text-[13px]"></i>
@@ -255,60 +264,74 @@
                     <!-- Family Section -->
                     <div>
                         <h3 class="text-[13px] font-semibold text-gray-900 mb-3">Family</h3>
-                        
+
                         <div class="space-y-2.5">
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-2.5">
-                                    <img src="https://i.pravatar.cc/150?img=32" alt="Sarah Anderson" class="w-6 h-6 rounded-full object-cover">
-                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Sarah Anderson</span>
+                                    <img src="https://i.pravatar.cc/150?img=32" alt="Sarah Anderson"
+                                        class="w-6 h-6 rounded-full object-cover">
+                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Sarah
+                                        Anderson</span>
                                 </div>
                                 <input type="checkbox" checked class="w-4 h-4 rounded border-gray-300 accent-pink-500">
                             </label>
-                            
+
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-2.5">
-                                    <img src="https://i.pravatar.cc/150?img=68" alt="Jonathan Anderson" class="w-6 h-6 rounded-full object-cover">
-                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Jonathan Anderson</span>
+                                    <img src="https://i.pravatar.cc/150?img=68" alt="Jonathan Anderson"
+                                        class="w-6 h-6 rounded-full object-cover">
+                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Jonathan
+                                        Anderson</span>
                                 </div>
                                 <input type="checkbox" class="w-4 h-4 rounded border-gray-300 accent-pink-500">
                             </label>
-                            
+
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-2.5">
-                                    <img src="https://i.pravatar.cc/150?img=44" alt="Rachel Miller" class="w-6 h-6 rounded-full object-cover">
-                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Rachel Miller</span>
+                                    <img src="https://i.pravatar.cc/150?img=44" alt="Rachel Miller"
+                                        class="w-6 h-6 rounded-full object-cover">
+                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Rachel
+                                        Miller</span>
                                 </div>
                                 <input type="checkbox" checked class="w-4 h-4 rounded border-gray-300 accent-pink-500">
                             </label>
-                            
+
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-2.5">
-                                    <img src="https://i.pravatar.cc/150?img=11" alt="Robert Miller" class="w-6 h-6 rounded-full object-cover">
-                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Robert Miller</span>
+                                    <img src="https://i.pravatar.cc/150?img=11" alt="Robert Miller"
+                                        class="w-6 h-6 rounded-full object-cover">
+                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Robert
+                                        Miller</span>
                                 </div>
                                 <input type="checkbox" class="w-4 h-4 rounded border-gray-300 accent-pink-500">
                             </label>
-                            
+
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-2.5">
-                                    <img src="https://i.pravatar.cc/150?img=5" alt="Patricia Miller" class="w-6 h-6 rounded-full object-cover">
-                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Patricia Miller</span>
+                                    <img src="https://i.pravatar.cc/150?img=5" alt="Patricia Miller"
+                                        class="w-6 h-6 rounded-full object-cover">
+                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Patricia
+                                        Miller</span>
                                 </div>
                                 <input type="checkbox" class="w-4 h-4 rounded border-gray-300 accent-pink-500">
                             </label>
-                            
+
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-2.5">
-                                    <img src="https://i.pravatar.cc/150?img=15" alt="Jonathan Anderson" class="w-6 h-6 rounded-full object-cover">
-                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Jonathan Anderson</span>
+                                    <img src="https://i.pravatar.cc/150?img=15" alt="Jonathan Anderson"
+                                        class="w-6 h-6 rounded-full object-cover">
+                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Jonathan
+                                        Anderson</span>
                                 </div>
                                 <input type="checkbox" class="w-4 h-4 rounded border-gray-300 accent-pink-500">
                             </label>
-                            
+
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-2.5">
-                                    <img src="https://i.pravatar.cc/150?img=25" alt="Lucas Anderson" class="w-6 h-6 rounded-full object-cover">
-                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Lucas Anderson</span>
+                                    <img src="https://i.pravatar.cc/150?img=25" alt="Lucas Anderson"
+                                        class="w-6 h-6 rounded-full object-cover">
+                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Lucas
+                                        Anderson</span>
                                 </div>
                                 <input type="checkbox" class="w-4 h-4 rounded border-gray-300 accent-pink-500">
                             </label>
@@ -316,7 +339,8 @@
                     </div>
 
                     <!-- Apply Filter Button -->
-                    <button class="w-full mt-6 bg-leaves-green hover:bg-leaves-green/90 text-white py-2.5 rounded-lg font-medium text-sm transition-colors">
+                    <button
+                        class="w-full mt-6 bg-leaves-green hover:bg-leaves-green/90 text-white py-2.5 rounded-lg font-medium text-sm transition-colors">
                         Apply Filter
                     </button>
                 </div>
@@ -327,136 +351,177 @@
                 <div class="bg-white rounded-xl border border-gray-100 overflow-hidden" style="height: 700px;">
                     <div class="map-container w-full h-full relative bg-gray-50">
                         <!-- World Map Background -->
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Equirectangular_projection_SW.jpg" 
-                             alt="World Map" 
-                             class="absolute inset-0 w-full h-full object-cover opacity-20"
-                             style="filter: grayscale(100%);">
-                        
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Equirectangular_projection_SW.jpg"
+                            alt="World Map" class="absolute inset-0 w-full h-full object-cover opacity-20"
+                            style="filter: grayscale(100%);">
+
                         <!-- Map Pins - Positioned to match screenshot exactly -->
-                        
+
                         <!-- Top row - Pink building pin -->
                         <div class="map-pin" style="top: 18%; left: 42%;">
                             <svg viewBox="0 0 48 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z" fill="#EC4899"/>
-                                <circle cx="24" cy="24" r="12" fill="white"/>
-                                <text x="24" y="29" text-anchor="middle" fill="#EC4899" font-size="14" font-family="FontAwesome">&#xf1ad;</text>
+                                <path
+                                    d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z"
+                                    fill="#EC4899" />
+                                <circle cx="24" cy="24" r="12" fill="white" />
+                                <text x="24" y="29" text-anchor="middle" fill="#EC4899" font-size="14"
+                                    font-family="FontAwesome">&#xf1ad;</text>
                             </svg>
                         </div>
-                        
+
                         <!-- Left side - Teal home pin -->
                         <div class="map-pin" style="top: 28%; left: 28%;">
                             <svg viewBox="0 0 48 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z" fill="#14B8A6"/>
-                                <circle cx="24" cy="24" r="12" fill="white"/>
-                                <text x="24" y="29" text-anchor="middle" fill="#14B8A6" font-size="14" font-family="FontAwesome">&#xf015;</text>
+                                <path
+                                    d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z"
+                                    fill="#14B8A6" />
+                                <circle cx="24" cy="24" r="12" fill="white" />
+                                <text x="24" y="29" text-anchor="middle" fill="#14B8A6" font-size="14"
+                                    font-family="FontAwesome">&#xf015;</text>
                             </svg>
                         </div>
-                        
+
                         <!-- Teal graduation cap -->
                         <div class="map-pin" style="top: 26%; left: 45%;">
                             <svg viewBox="0 0 48 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z" fill="#14B8A6"/>
-                                <circle cx="24" cy="24" r="12" fill="white"/>
-                                <text x="24" y="29" text-anchor="middle" fill="#14B8A6" font-size="14" font-family="FontAwesome">&#xf19d;</text>
+                                <path
+                                    d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z"
+                                    fill="#14B8A6" />
+                                <circle cx="24" cy="24" r="12" fill="white" />
+                                <text x="24" y="29" text-anchor="middle" fill="#14B8A6" font-size="14"
+                                    font-family="FontAwesome">&#xf19d;</text>
                             </svg>
                         </div>
-                        
+
                         <!-- Pink heart/ring pin -->
                         <div class="map-pin" style="top: 32%; left: 50%;">
                             <svg viewBox="0 0 48 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z" fill="#EC4899"/>
-                                <circle cx="24" cy="24" r="12" fill="white"/>
-                                <text x="24" y="29" text-anchor="middle" fill="#EC4899" font-size="14" font-family="FontAwesome">&#xf004;</text>
+                                <path
+                                    d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z"
+                                    fill="#EC4899" />
+                                <circle cx="24" cy="24" r="12" fill="white" />
+                                <text x="24" y="29" text-anchor="middle" fill="#EC4899" font-size="14"
+                                    font-family="FontAwesome">&#xf004;</text>
                             </svg>
                         </div>
-                        
+
                         <!-- Teal briefcase -->
                         <div class="map-pin" style="top: 30%; left: 36%;">
                             <svg viewBox="0 0 48 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z" fill="#14B8A6"/>
-                                <circle cx="24" cy="24" r="12" fill="white"/>
-                                <text x="24" y="29" text-anchor="middle" fill="#14B8A6" font-size="14" font-family="FontAwesome">&#xf0b1;</text>
+                                <path
+                                    d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z"
+                                    fill="#14B8A6" />
+                                <circle cx="24" cy="24" r="12" fill="white" />
+                                <text x="24" y="29" text-anchor="middle" fill="#14B8A6" font-size="14"
+                                    font-family="FontAwesome">&#xf0b1;</text>
                             </svg>
                         </div>
-                        
+
                         <!-- Teal building -->
                         <div class="map-pin" style="top: 40%; left: 30%;">
                             <svg viewBox="0 0 48 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z" fill="#14B8A6"/>
-                                <circle cx="24" cy="24" r="12" fill="white"/>
-                                <text x="24" y="29" text-anchor="middle" fill="#14B8A6" font-size="14" font-family="FontAwesome">&#xf1ad;</text>
+                                <path
+                                    d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z"
+                                    fill="#14B8A6" />
+                                <circle cx="24" cy="24" r="12" fill="white" />
+                                <text x="24" y="29" text-anchor="middle" fill="#14B8A6" font-size="14"
+                                    font-family="FontAwesome">&#xf1ad;</text>
                             </svg>
                         </div>
-                        
+
                         <!-- Teal ring/circle -->
                         <div class="map-pin" style="top: 38%; left: 38%;">
                             <svg viewBox="0 0 48 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z" fill="#14B8A6"/>
-                                <circle cx="24" cy="24" r="12" fill="white"/>
-                                <text x="24" y="29" text-anchor="middle" fill="#14B8A6" font-size="14" font-family="FontAwesome">&#xf111;</text>
+                                <path
+                                    d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z"
+                                    fill="#14B8A6" />
+                                <circle cx="24" cy="24" r="12" fill="white" />
+                                <text x="24" y="29" text-anchor="middle" fill="#14B8A6" font-size="14"
+                                    font-family="FontAwesome">&#xf111;</text>
                             </svg>
                         </div>
-                        
+
                         <!-- Pink home -->
                         <div class="map-pin" style="top: 36%; left: 44%;">
                             <svg viewBox="0 0 48 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z" fill="#EC4899"/>
-                                <circle cx="24" cy="24" r="12" fill="white"/>
-                                <text x="24" y="29" text-anchor="middle" fill="#EC4899" font-size="14" font-family="FontAwesome">&#xf015;</text>
+                                <path
+                                    d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z"
+                                    fill="#EC4899" />
+                                <circle cx="24" cy="24" r="12" fill="white" />
+                                <text x="24" y="29" text-anchor="middle" fill="#EC4899" font-size="14"
+                                    font-family="FontAwesome">&#xf015;</text>
                             </svg>
                         </div>
-                        
+
                         <!-- Teal people/users -->
                         <div class="map-pin" style="top: 46%; left: 34%;">
                             <svg viewBox="0 0 48 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z" fill="#14B8A6"/>
-                                <circle cx="24" cy="24" r="12" fill="white"/>
-                                <text x="24" y="29" text-anchor="middle" fill="#14B8A6" font-size="14" font-family="FontAwesome">&#xf0c0;</text>
+                                <path
+                                    d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z"
+                                    fill="#14B8A6" />
+                                <circle cx="24" cy="24" r="12" fill="white" />
+                                <text x="24" y="29" text-anchor="middle" fill="#14B8A6" font-size="14"
+                                    font-family="FontAwesome">&#xf0c0;</text>
                             </svg>
                         </div>
-                        
+
                         <!-- Pink cake/birthday -->
                         <div class="map-pin" style="top: 48%; left: 42%;">
                             <svg viewBox="0 0 48 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z" fill="#EC4899"/>
-                                <circle cx="24" cy="24" r="12" fill="white"/>
-                                <text x="24" y="29" text-anchor="middle" fill="#EC4899" font-size="14" font-family="FontAwesome">&#xf1fd;</text>
+                                <path
+                                    d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z"
+                                    fill="#EC4899" />
+                                <circle cx="24" cy="24" r="12" fill="white" />
+                                <text x="24" y="29" text-anchor="middle" fill="#EC4899" font-size="14"
+                                    font-family="FontAwesome">&#xf1fd;</text>
                             </svg>
                         </div>
-                        
+
                         <!-- Pink ring/engagement -->
                         <div class="map-pin" style="top: 52%; left: 48%;">
                             <svg viewBox="0 0 48 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z" fill="#EC4899"/>
-                                <circle cx="24" cy="24" r="12" fill="white"/>
-                                <text x="24" y="29" text-anchor="middle" fill="#EC4899" font-size="14" font-family="FontAwesome">&#xf1ae;</text>
+                                <path
+                                    d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z"
+                                    fill="#EC4899" />
+                                <circle cx="24" cy="24" r="12" fill="white" />
+                                <text x="24" y="29" text-anchor="middle" fill="#EC4899" font-size="14"
+                                    font-family="FontAwesome">&#xf1ae;</text>
                             </svg>
                         </div>
-                        
+
                         <!-- Teal people -->
                         <div class="map-pin" style="top: 50%; left: 40%;">
                             <svg viewBox="0 0 48 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z" fill="#14B8A6"/>
-                                <circle cx="24" cy="24" r="12" fill="white"/>
-                                <text x="24" y="29" text-anchor="middle" fill="#14B8A6" font-size="14" font-family="FontAwesome">&#xf0c0;</text>
+                                <path
+                                    d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z"
+                                    fill="#14B8A6" />
+                                <circle cx="24" cy="24" r="12" fill="white" />
+                                <text x="24" y="29" text-anchor="middle" fill="#14B8A6" font-size="14"
+                                    font-family="FontAwesome">&#xf0c0;</text>
                             </svg>
                         </div>
-                        
+
                         <!-- Pink people -->
                         <div class="map-pin" style="top: 58%; left: 46%;">
                             <svg viewBox="0 0 48 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z" fill="#EC4899"/>
-                                <circle cx="24" cy="24" r="12" fill="white"/>
-                                <text x="24" y="29" text-anchor="middle" fill="#EC4899" font-size="14" font-family="FontAwesome">&#xf0c0;</text>
+                                <path
+                                    d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z"
+                                    fill="#EC4899" />
+                                <circle cx="24" cy="24" r="12" fill="white" />
+                                <text x="24" y="29" text-anchor="middle" fill="#EC4899" font-size="14"
+                                    font-family="FontAwesome">&#xf0c0;</text>
                             </svg>
                         </div>
-                        
+
                         <!-- Pink location pin -->
                         <div class="map-pin" style="top: 54%; left: 38%;">
                             <svg viewBox="0 0 48 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z" fill="#EC4899"/>
-                                <circle cx="24" cy="24" r="12" fill="white"/>
-                                <text x="24" y="29" text-anchor="middle" fill="#EC4899" font-size="14" font-family="FontAwesome">&#xf3c5;</text>
+                                <path
+                                    d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 24 58 24 58C24 58 48 37.2548 48 24C48 10.7452 37.2548 0 24 0Z"
+                                    fill="#EC4899" />
+                                <circle cx="24" cy="24" r="12" fill="white" />
+                                <text x="24" y="29" text-anchor="middle" fill="#EC4899" font-size="14"
+                                    font-family="FontAwesome">&#xf3c5;</text>
                             </svg>
                         </div>
                     </div>
@@ -468,4 +533,5 @@
     </main>
 
 </body>
+
 </html>
