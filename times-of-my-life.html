@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Times of My Life® - Leaves</title>
-    
+
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Tailwind Config -->
     <script>
         tailwind.config = {
@@ -37,41 +38,50 @@
         body {
             background-color: #F8F9FA;
         }
+
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
-            background: #f1f1f1; 
+            background: #f1f1f1;
         }
+
         ::-webkit-scrollbar-thumb {
-            background: #c1c1c1; 
+            background: #c1c1c1;
             border-radius: 4px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
-            background: #a8a8a8; 
+            background: #a8a8a8;
         }
+
         .story-card {
             position: relative;
             overflow: hidden;
             border-radius: 16px;
             aspect-ratio: 3/4;
         }
+
         .story-card img {
             transition: transform 0.3s ease;
         }
+
         .story-card:hover img {
             transform: scale(1.05);
         }
+
         .story-card-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
             padding: 20px;
         }
     </style>
 </head>
+
 <body class="text-gray-700 font-sans antialiased">
 
     <!-- Header -->
@@ -81,24 +91,22 @@
             <!-- Logo -->
             <div class="flex items-center gap-2 cursor-pointer">
                 <div class="bg-leaves-green text-white p-1 rounded-md">
-                     <i class="fa-solid fa-leaf text-xl"></i>
+                    <i class="fa-solid fa-leaf text-xl"></i>
                 </div>
                 <span class="font-serif font-bold text-2xl tracking-tight text-gray-800">LEAVES</span>
                 <span class="text-[10px] align-top -mt-2 text-gray-400">®</span>
             </div>
 
             <!-- Right Side -->
-            <div class="flex items-center gap-6">
-                <!-- Notification -->
-                <div class="relative cursor-pointer">
-                    <i class="fa-regular fa-bell text-gray-500 text-xl"></i>
-                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full border-2 border-white">1</span>
-                </div>
-                
-                <!-- Profile -->
+            <div class="flex items-center gap-4">
+                <button class="relative text-gray-600 hover:text-gray-900">
+                    <i class="fa-solid fa-bell text-xl"></i>
+                    <span
+                        class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                </button>
                 <div class="flex items-center gap-2 cursor-pointer">
-                    <img src="https://i.pravatar.cc/150?img=32" alt="Profile" class="w-9 h-9 rounded-full object-cover border border-gray-200">
-                    <i class="fa-solid fa-chevron-down text-gray-400 text-xs"></i>
+                    <img src="https://i.pravatar.cc/150?img=32" alt="Profile" class="w-8 h-8 rounded-full object-cover">
+                    <i class="fa-solid fa-chevron-down text-xs text-gray-600"></i>
                 </div>
             </div>
         </div>
@@ -106,12 +114,14 @@
         <!-- Navigation -->
         <div class="border-t border-gray-100">
             <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-                <nav class="flex items-center gap-8 overflow-x-auto no-scrollbar py-3 text-sm font-medium text-gray-500">
+                <nav
+                    class="flex items-center gap-8 overflow-x-auto no-scrollbar py-3 text-sm font-medium text-gray-500">
                     <a href="index.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
                         <i class="fa-solid fa-house"></i>
                         Dashboard
                     </a>
-                    <a href="times-of-my-life.html" class="flex items-center gap-2 text-leaves-green border-b-2 border-leaves-green pb-3 -mb-3 whitespace-nowrap">
+                    <a href="times-of-my-life.html"
+                        class="flex items-center gap-2 text-leaves-green border-b-2 border-leaves-green pb-3 -mb-3 whitespace-nowrap">
                         <i class="fa-solid fa-book-open"></i>
                         Times of My Life®
                     </a>
@@ -127,7 +137,8 @@
                         <i class="fa-solid fa-timeline"></i>
                         Life Timeline™
                     </a>
-                    <a href="document-archive.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
+                    <a href="document-archive.html"
+                        class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
                         <i class="fa-regular fa-folder-open"></i>
                         Document Archive™
                     </a>
@@ -146,11 +157,12 @@
 
     <!-- Main Content -->
     <main class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
+
         <!-- Page Header -->
         <div class="flex items-center justify-between mb-6">
             <h1 class="text-2xl font-bold text-gray-900">Times of My Life®</h1>
-            <button class="bg-leaves-green hover:bg-leaves-green/90 text-white px-5 py-2 rounded-lg font-medium text-sm flex items-center gap-2 transition-colors">
+            <button
+                class="bg-leaves-green hover:bg-leaves-green/90 text-white px-5 py-2 rounded-lg font-medium text-sm flex items-center gap-2 transition-colors">
                 <i class="fa-solid fa-plus"></i>
                 Create story
             </button>
@@ -162,7 +174,8 @@
                 <div class="w-5 h-5 bg-[#1976D2] rounded-full flex items-center justify-center flex-shrink-0">
                     <i class="fa-solid fa-circle-info text-white text-xs"></i>
                 </div>
-                <p class="text-[13px] text-gray-700 font-normal">Capture, narrate, and share your life stories with photos, videos, and AI-guided interviews.</p>
+                <p class="text-[13px] text-gray-700 font-normal">Capture, narrate, and share your life stories with
+                    photos, videos, and AI-guided interviews.</p>
             </div>
             <button class="text-gray-400 hover:text-gray-600 ml-4 w-5 h-5 flex items-center justify-center">
                 <i class="fa-solid fa-xmark text-base"></i>
@@ -176,7 +189,8 @@
                 <!-- Sort by theme -->
                 <div class="flex items-center gap-2 text-sm">
                     <span class="text-gray-500">Sort by theme:</span>
-                    <select class="border border-gray-200 rounded-lg px-3 py-1.5 text-gray-700 font-medium bg-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-leaves-green">
+                    <select
+                        class="border border-gray-200 rounded-lg px-3 py-1.5 text-gray-700 font-medium bg-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-leaves-green">
                         <option>All</option>
                         <option>Family</option>
                         <option>Career</option>
@@ -186,7 +200,8 @@
                 <!-- Sort by life stage -->
                 <div class="flex items-center gap-2 text-sm">
                     <span class="text-gray-500">Sort by life stage:</span>
-                    <select class="border border-gray-200 rounded-lg px-3 py-1.5 text-gray-700 font-medium bg-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-leaves-green">
+                    <select
+                        class="border border-gray-200 rounded-lg px-3 py-1.5 text-gray-700 font-medium bg-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-leaves-green">
                         <option>All</option>
                         <option>Childhood</option>
                         <option>Youth</option>
@@ -198,10 +213,11 @@
 
         <!-- Story Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            
+
             <!-- Story Card 1 -->
             <div class="story-card cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&auto=format&fit=crop&q=80" alt="Startup" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&auto=format&fit=crop&q=80"
+                    alt="Startup" class="w-full h-full object-cover">
                 <div class="story-card-overlay">
                     <h3 class="text-white font-bold text-lg">Startup</h3>
                 </div>
@@ -209,7 +225,8 @@
 
             <!-- Story Card 2 -->
             <div class="story-card cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&auto=format&fit=crop&q=80" alt="Meeting my sweetheart" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&auto=format&fit=crop&q=80"
+                    alt="Meeting my sweetheart" class="w-full h-full object-cover">
                 <div class="story-card-overlay">
                     <h3 class="text-white font-bold text-lg">Meeting my sweetheart</h3>
                 </div>
@@ -217,7 +234,8 @@
 
             <!-- Story Card 3 -->
             <div class="story-card cursor-pointer">
-                <img src="https://picsum.photos/seed/graduation/600/800" alt="Defining" class="w-full h-full object-cover">
+                <img src="https://picsum.photos/seed/graduation/600/800" alt="Defining"
+                    class="w-full h-full object-cover">
                 <div class="story-card-overlay">
                     <h3 class="text-white font-bold text-lg">Defining</h3>
                 </div>
@@ -225,7 +243,8 @@
 
             <!-- Story Card 4 -->
             <div class="story-card cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&auto=format&fit=crop&q=80" alt="My loving friend Rayn" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&auto=format&fit=crop&q=80"
+                    alt="My loving friend Rayn" class="w-full h-full object-cover">
                 <div class="story-card-overlay">
                     <h3 class="text-white font-bold text-lg">My loving friend Rayn</h3>
                 </div>
@@ -233,7 +252,8 @@
 
             <!-- Story Card 5 -->
             <div class="story-card cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80" alt="In memory's of garden" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80"
+                    alt="In memory's of garden" class="w-full h-full object-cover">
                 <div class="story-card-overlay">
                     <h3 class="text-white font-bold text-lg">In memory's of garden</h3>
                 </div>
@@ -241,7 +261,8 @@
 
             <!-- Story Card 6 -->
             <div class="story-card cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80" alt="Defining" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80"
+                    alt="Defining" class="w-full h-full object-cover">
                 <div class="story-card-overlay">
                     <h3 class="text-white font-bold text-lg">Defining</h3>
                 </div>
@@ -249,7 +270,8 @@
 
             <!-- Story Card 7 -->
             <div class="story-card cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=600&auto=format&fit=crop&q=80" alt="Birth of child" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=600&auto=format&fit=crop&q=80"
+                    alt="Birth of child" class="w-full h-full object-cover">
                 <div class="story-card-overlay">
                     <h3 class="text-white font-bold text-lg">Birth of child</h3>
                 </div>
@@ -257,7 +279,8 @@
 
             <!-- Story Card 8 -->
             <div class="story-card cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=600&auto=format&fit=crop&q=80" alt="In memory's of my pet" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=600&auto=format&fit=crop&q=80"
+                    alt="In memory's of my pet" class="w-full h-full object-cover">
                 <div class="story-card-overlay">
                     <h3 class="text-white font-bold text-lg">In memory's of my pet</h3>
                 </div>
@@ -268,4 +291,5 @@
     </main>
 
 </body>
+
 </html>

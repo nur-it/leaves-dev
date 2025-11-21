@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaves - Family Memories</title>
-    
+
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Tailwind Config for Custom Colors/Fonts -->
     <script>
         tailwind.config = {
@@ -41,51 +42,55 @@
 
     <style>
         body {
-            background-color: #F8F9FA; /* Light gray background from design */
+            background-color: #F8F9FA;
+            /* Light gray background from design */
         }
+
         /* Custom Scrollbar for cleaner look */
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
-            background: #f1f1f1; 
+            background: #f1f1f1;
         }
+
         ::-webkit-scrollbar-thumb {
-            background: #c1c1c1; 
+            background: #c1c1c1;
             border-radius: 4px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
-            background: #a8a8a8; 
+            background: #a8a8a8;
         }
     </style>
 </head>
+
 <body class="text-gray-700 font-sans antialiased">
 
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
-        <!-- Top Bar (Logo & Profile) -->
+        <!-- Top Bar -->
         <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center gap-2 cursor-pointer">
                 <div class="bg-leaves-green text-white p-1 rounded-md">
-                     <i class="fa-solid fa-leaf text-xl"></i>
+                    <i class="fa-solid fa-leaf text-xl"></i>
                 </div>
                 <span class="font-serif font-bold text-2xl tracking-tight text-gray-800">LEAVES</span>
                 <span class="text-[10px] align-top -mt-2 text-gray-400">®</span>
             </div>
 
-            <!-- Right Side: Notifications & Profile -->
-            <div class="flex items-center gap-6">
-                <!-- Notification -->
-                <div class="relative cursor-pointer">
-                    <i class="fa-regular fa-bell text-gray-500 text-xl"></i>
-                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full border-2 border-white">1</span>
-                </div>
-                
-                <!-- Profile -->
+            <!-- Right Side -->
+            <div class="flex items-center gap-4">
+                <button class="relative text-gray-600 hover:text-gray-900">
+                    <i class="fa-solid fa-bell text-xl"></i>
+                    <span
+                        class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                </button>
                 <div class="flex items-center gap-2 cursor-pointer">
-                    <img src="https://i.pravatar.cc/150?img=32" alt="Profile" class="w-9 h-9 rounded-full object-cover border border-gray-200">
-                    <i class="fa-solid fa-chevron-down text-gray-400 text-xs"></i>
+                    <img src="https://i.pravatar.cc/150?img=32" alt="Profile" class="w-8 h-8 rounded-full object-cover">
+                    <i class="fa-solid fa-chevron-down text-xs text-gray-600"></i>
                 </div>
             </div>
         </div>
@@ -93,12 +98,15 @@
         <!-- Bottom Bar (Navigation) -->
         <div class="border-t border-gray-100">
             <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-                <nav class="flex items-center gap-8 overflow-x-auto no-scrollbar py-3 text-sm font-medium text-gray-500">
-                    <a href="index.html" class="flex items-center gap-2 text-leaves-green border-b-2 border-leaves-green pb-3 -mb-3 whitespace-nowrap">
+                <nav
+                    class="flex items-center gap-8 overflow-x-auto no-scrollbar py-3 text-sm font-medium text-gray-500">
+                    <a href="index.html"
+                        class="flex items-center gap-2 text-leaves-green border-b-2 border-leaves-green pb-3 -mb-3 whitespace-nowrap">
                         <i class="fa-solid fa-house"></i>
                         Dashboard
                     </a>
-                    <a href="times-of-my-life.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
+                    <a href="times-of-my-life.html"
+                        class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
                         <i class="fa-solid fa-book-open"></i>
                         Times of My Life®
                     </a>
@@ -114,7 +122,8 @@
                         <i class="fa-solid fa-timeline"></i>
                         Life Timeline™
                     </a>
-                    <a href="document-archive.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
+                    <a href="document-archive.html"
+                        class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
                         <i class="fa-regular fa-folder-open"></i>
                         Document Archive™
                     </a>
@@ -133,7 +142,7 @@
 
     <!-- Main Content Container -->
     <main class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
+
         <!-- Welcome Section -->
         <div class="mb-8">
             <h1 class="text-2xl font-bold text-gray-900">Welcome back, Sarah</h1>
@@ -142,22 +151,23 @@
 
         <!-- Grid Layout -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            
+
             <!-- Left Sidebar (3 cols) -->
             <div class="hidden lg:block lg:col-span-3 space-y-6">
-                
+
                 <!-- My Legacy Progress -->
                 <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
                     <h3 class="text-gray-500 font-medium text-sm mb-4">My Legacy Progress</h3>
-                    
+
                     <div class="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center mb-4">
                         <i class="fa-solid fa-clapperboard text-leaves-green text-xl"></i>
                     </div>
-                    
+
                     <h2 class="text-2xl font-bold text-gray-900 mb-1">23 stories</h2>
                     <p class="text-gray-500 text-xs mb-4">Keep going & your story is a gift to your family.</p>
-                    
-                    <button class="w-full py-2 px-4 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+
+                    <button
+                        class="w-full py-2 px-4 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
                         <i class="fa-solid fa-plus text-xs"></i>
                         Add a new story
                     </button>
@@ -166,15 +176,16 @@
                 <!-- Family Connections -->
                 <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
                     <h3 class="text-gray-500 font-medium text-sm mb-4">Family Connections</h3>
-                    
+
                     <div class="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center mb-4">
                         <i class="fa-solid fa-users text-purple-600 text-xl"></i>
                     </div>
-                    
+
                     <h2 class="text-2xl font-bold text-gray-900 mb-1">4 members</h2>
                     <p class="text-gray-500 text-xs mb-4">Parents, kids, and grandkids building together.</p>
-                    
-                    <button class="w-full py-2 px-4 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+
+                    <button
+                        class="w-full py-2 px-4 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
                         <i class="fa-solid fa-user-plus text-xs"></i>
                         Invite a family member
                     </button>
@@ -183,15 +194,16 @@
                 <!-- My Legacy Letters -->
                 <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
                     <h3 class="text-gray-500 font-medium text-sm mb-4">My Legacy Letters</h3>
-                    
+
                     <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-4">
                         <i class="fa-regular fa-envelope text-blue-500 text-xl"></i>
                     </div>
-                    
+
                     <h2 class="text-2xl font-bold text-gray-900 mb-1">6 scheduled letters</h2>
                     <p class="text-gray-500 text-xs mb-4">Saved for future moments.</p>
-                    
-                    <button class="w-full py-2 px-4 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+
+                    <button
+                        class="w-full py-2 px-4 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
                         View letters
                     </button>
                 </div>
@@ -199,29 +211,36 @@
 
             <!-- Main Feed (6 cols) -->
             <div class="lg:col-span-6 space-y-5">
-                
+
                 <!-- Create Post -->
                 <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
                     <div class="flex gap-3 mb-4">
-                        <img src="https://i.pravatar.cc/150?img=32" alt="User" class="w-10 h-10 rounded-full object-cover">
-                        <input type="text" placeholder="What's on your mind?" class="w-full bg-transparent outline-none text-gray-600 placeholder-gray-400 text-sm">
+                        <img src="https://i.pravatar.cc/150?img=32" alt="User"
+                            class="w-10 h-10 rounded-full object-cover">
+                        <input type="text" placeholder="What's on your mind?"
+                            class="w-full bg-transparent outline-none text-gray-600 placeholder-gray-400 text-sm">
                     </div>
                     <div class="flex items-center justify-between border-t border-gray-100 pt-4">
                         <div class="flex items-center gap-3">
-                            <button class="w-9 h-9 bg-green-50 rounded-lg flex items-center justify-center hover:bg-green-100 transition-colors">
+                            <button
+                                class="w-9 h-9 bg-green-50 rounded-lg flex items-center justify-center hover:bg-green-100 transition-colors">
                                 <i class="fa-regular fa-image text-green-600 text-base"></i>
                             </button>
-                            <button class="w-9 h-9 bg-blue-50 rounded-lg flex items-center justify-center hover:bg-blue-100 transition-colors">
+                            <button
+                                class="w-9 h-9 bg-blue-50 rounded-lg flex items-center justify-center hover:bg-blue-100 transition-colors">
                                 <i class="fa-solid fa-user-tag text-blue-600 text-base"></i>
                             </button>
-                            <button class="w-9 h-9 bg-yellow-50 rounded-lg flex items-center justify-center hover:bg-yellow-100 transition-colors">
+                            <button
+                                class="w-9 h-9 bg-yellow-50 rounded-lg flex items-center justify-center hover:bg-yellow-100 transition-colors">
                                 <i class="fa-regular fa-face-smile text-yellow-600 text-base"></i>
                             </button>
-                            <button class="w-9 h-9 bg-red-50 rounded-lg flex items-center justify-center hover:bg-red-100 transition-colors">
+                            <button
+                                class="w-9 h-9 bg-red-50 rounded-lg flex items-center justify-center hover:bg-red-100 transition-colors">
                                 <i class="fa-solid fa-location-dot text-red-600 text-base"></i>
                             </button>
                         </div>
-                        <button class="bg-green-100 text-green-700 px-6 py-2 rounded-lg font-medium text-sm hover:bg-green-200 transition-colors">Post</button>
+                        <button
+                            class="bg-green-100 text-green-700 px-6 py-2 rounded-lg font-medium text-sm hover:bg-green-200 transition-colors">Post</button>
                     </div>
                 </div>
 
@@ -240,7 +259,8 @@
                     <div class="p-5 pb-4">
                         <div class="flex items-start justify-between mb-3">
                             <div class="flex gap-3">
-                                <img src="https://i.pravatar.cc/150?img=11" alt="Jonathan" class="w-10 h-10 rounded-full object-cover">
+                                <img src="https://i.pravatar.cc/150?img=11" alt="Jonathan"
+                                    class="w-10 h-10 rounded-full object-cover">
                                 <div>
                                     <h3 class="font-bold text-gray-900 text-sm">Jonathan Anderson</h3>
                                     <div class="flex items-center gap-1.5 text-xs text-gray-400 mt-0.5">
@@ -255,24 +275,30 @@
                                 <i class="fa-solid fa-ellipsis"></i>
                             </button>
                         </div>
-                        
+
                         <p class="text-[#474D4B] text-base font-medium leading-relaxed">
-                            Had the sweetest morning walk with <a href="#" class="text-blue-500 font-medium hover:underline">@Emma Anderson</a> today. She told me about her new science project and her dreams of becoming a marine biologist.
+                            Had the sweetest morning walk with <a href="#"
+                                class="text-blue-500 font-medium hover:underline">@Emma Anderson</a> today. She told me
+                            about her new science project and her dreams of becoming a marine biologist.
                         </p>
                     </div>
 
                     <div class="px-4">
-                      <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Post Image" class="w-full aspect-[4/3] object-cover rounded-2xl">
+                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                            alt="Post Image" class="w-full aspect-[4/3] object-cover rounded-2xl">
                     </div>
-                    
+
                     <div class="px-4 py-3 flex items-center gap-3">
-                        <button class="w-9 h-9 rounded-full hover:bg-gray-50 flex items-center justify-center text-gray-400 transition-colors">
+                        <button
+                            class="w-9 h-9 rounded-full hover:bg-gray-50 flex items-center justify-center text-gray-400 transition-colors">
                             <i class="fa-regular fa-heart text-lg"></i>
                         </button>
-                        <button class="w-9 h-9 rounded-full hover:bg-gray-50 flex items-center justify-center text-gray-400 transition-colors">
+                        <button
+                            class="w-9 h-9 rounded-full hover:bg-gray-50 flex items-center justify-center text-gray-400 transition-colors">
                             <i class="fa-regular fa-comment text-lg"></i>
                         </button>
-                        <button class="w-9 h-9 rounded-full hover:bg-gray-50 flex items-center justify-center text-gray-400 transition-colors ml-auto">
+                        <button
+                            class="w-9 h-9 rounded-full hover:bg-gray-50 flex items-center justify-center text-gray-400 transition-colors ml-auto">
                             <i class="fa-solid fa-share-nodes text-base"></i>
                         </button>
                     </div>
@@ -283,7 +309,8 @@
                     <div class="p-5 pb-4">
                         <div class="flex items-start justify-between mb-3">
                             <div class="flex gap-3">
-                                <img src="https://i.pravatar.cc/150?img=68" alt="Robert" class="w-10 h-10 rounded-full object-cover">
+                                <img src="https://i.pravatar.cc/150?img=68" alt="Robert"
+                                    class="w-10 h-10 rounded-full object-cover">
                                 <div>
                                     <div class="flex items-center gap-1.5 flex-wrap">
                                         <h3 class="font-bold text-gray-900 text-sm">Robert Miller</h3>
@@ -305,24 +332,29 @@
                                 <i class="fa-solid fa-ellipsis"></i>
                             </button>
                         </div>
-                        
+
                         <p class="text-[#474D4B] text-base font-medium leading-relaxed">
-                            To all the grads today your future is wide open. Keep learning, stay curious, and don't forget to celebrate the small wins along the way.
+                            To all the grads today your future is wide open. Keep learning, stay curious, and don't
+                            forget to celebrate the small wins along the way.
                         </p>
                     </div>
-                    
+
                     <div class="px-4">
-                      <img src="https://picsum.photos/seed/graduation/1000/750" alt="Graduation" class="w-full aspect-[4/3] object-cover rounded-2xl">
+                        <img src="https://picsum.photos/seed/graduation/1000/750" alt="Graduation"
+                            class="w-full aspect-[4/3] object-cover rounded-2xl">
                     </div>
-                    
+
                     <div class="px-4 py-3 flex items-center gap-3">
-                        <button class="w-9 h-9 rounded-full hover:bg-gray-50 flex items-center justify-center text-gray-400 transition-colors">
+                        <button
+                            class="w-9 h-9 rounded-full hover:bg-gray-50 flex items-center justify-center text-gray-400 transition-colors">
                             <i class="fa-regular fa-heart text-lg"></i>
                         </button>
-                        <button class="w-9 h-9 rounded-full hover:bg-gray-50 flex items-center justify-center text-gray-400 transition-colors">
+                        <button
+                            class="w-9 h-9 rounded-full hover:bg-gray-50 flex items-center justify-center text-gray-400 transition-colors">
                             <i class="fa-regular fa-comment text-lg"></i>
                         </button>
-                        <button class="w-9 h-9 rounded-full hover:bg-gray-50 flex items-center justify-center text-gray-400 transition-colors ml-auto">
+                        <button
+                            class="w-9 h-9 rounded-full hover:bg-gray-50 flex items-center justify-center text-gray-400 transition-colors ml-auto">
                             <i class="fa-solid fa-share-nodes text-base"></i>
                         </button>
                     </div>
@@ -332,19 +364,22 @@
 
             <!-- Right Sidebar (3 cols) -->
             <div class="hidden lg:block lg:col-span-3 space-y-6">
-                
+
                 <!-- Pick up where you left off -->
                 <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
                     <h3 class="text-gray-800 font-medium text-sm mb-4">Pick up where you left off</h3>
-                    
+
                     <div class="space-y-4">
                         <!-- Item 1 -->
                         <div class="flex items-center justify-between gap-2">
                             <div>
                                 <h4 class="text-xs font-bold text-gray-900">Record a Childhood Memory</h4>
-                                <p class="text-[10px] text-gray-500 truncate max-w-[120px]">Capture a meaningful moment from your ea...</p>
+                                <p class="text-[10px] text-gray-500 truncate max-w-[120px]">Capture a meaningful moment
+                                    from your ea...</p>
                             </div>
-                            <button class="px-3 py-1 border border-gray-200 rounded text-[10px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Record Story</button>
+                            <button
+                                class="px-3 py-1 border border-gray-200 rounded text-[10px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Record
+                                Story</button>
                         </div>
                         <hr class="border-gray-50">
 
@@ -352,9 +387,12 @@
                         <div class="flex items-center justify-between gap-2">
                             <div>
                                 <h4 class="text-xs font-bold text-gray-900">Add a New Life Milestone</h4>
-                                <p class="text-[10px] text-gray-500 truncate max-w-[120px]">Log a recent achievement or important ev...</p>
+                                <p class="text-[10px] text-gray-500 truncate max-w-[120px]">Log a recent achievement or
+                                    important ev...</p>
                             </div>
-                            <button class="px-3 py-1 border border-gray-200 rounded text-[10px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Add Milestone</button>
+                            <button
+                                class="px-3 py-1 border border-gray-200 rounded text-[10px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Add
+                                Milestone</button>
                         </div>
                         <hr class="border-gray-50">
 
@@ -362,9 +400,12 @@
                         <div class="flex items-center justify-between gap-2">
                             <div>
                                 <h4 class="text-xs font-bold text-gray-900">Create a Legacy Letter</h4>
-                                <p class="text-[10px] text-gray-500 truncate max-w-[120px]">Write a message for a loved one to open later.</p>
+                                <p class="text-[10px] text-gray-500 truncate max-w-[120px]">Write a message for a loved
+                                    one to open later.</p>
                             </div>
-                            <button class="px-3 py-1 border border-gray-200 rounded text-[10px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Write Letter</button>
+                            <button
+                                class="px-3 py-1 border border-gray-200 rounded text-[10px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Write
+                                Letter</button>
                         </div>
                         <hr class="border-gray-50">
 
@@ -372,9 +413,11 @@
                         <div class="flex items-center justify-between gap-2">
                             <div>
                                 <h4 class="text-xs font-bold text-gray-900">Upload Family Photos</h4>
-                                <p class="text-[10px] text-gray-500 truncate max-w-[120px]">Add recent photos to your family library.</p>
+                                <p class="text-[10px] text-gray-500 truncate max-w-[120px]">Add recent photos to your
+                                    family library.</p>
                             </div>
-                            <button class="px-3 py-1 border border-gray-200 rounded text-[10px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Upload</button>
+                            <button
+                                class="px-3 py-1 border border-gray-200 rounded text-[10px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Upload</button>
                         </div>
                         <hr class="border-gray-50">
 
@@ -382,9 +425,12 @@
                         <div class="flex items-center justify-between gap-2">
                             <div>
                                 <h4 class="text-xs font-bold text-gray-900">Update Your Life Timeline</h4>
-                                <p class="text-[10px] text-gray-500 truncate max-w-[120px]">Add a new chapter to your lifetime view.</p>
+                                <p class="text-[10px] text-gray-500 truncate max-w-[120px]">Add a new chapter to your
+                                    lifetime view.</p>
                             </div>
-                            <button class="px-3 py-1 border border-gray-200 rounded text-[10px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Update Timeline</button>
+                            <button
+                                class="px-3 py-1 border border-gray-200 rounded text-[10px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Update
+                                Timeline</button>
                         </div>
                     </div>
                 </div>
@@ -392,34 +438,48 @@
                 <!-- Contacts -->
                 <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
                     <h3 class="text-gray-500 font-medium text-sm mb-4">Contacts</h3>
-                    
+
                     <div class="space-y-4">
-                        <div class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
-                            <img src="https://i.pravatar.cc/150?img=13" alt="Michael" class="w-8 h-8 rounded-full object-cover">
+                        <div
+                            class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
+                            <img src="https://i.pravatar.cc/150?img=13" alt="Michael"
+                                class="w-8 h-8 rounded-full object-cover">
                             <span class="text-xs font-bold text-gray-900">Michael Miller</span>
                         </div>
-                        <div class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
-                            <img src="https://i.pravatar.cc/150?img=68" alt="Robert" class="w-8 h-8 rounded-full object-cover">
+                        <div
+                            class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
+                            <img src="https://i.pravatar.cc/150?img=68" alt="Robert"
+                                class="w-8 h-8 rounded-full object-cover">
                             <span class="text-xs font-bold text-gray-900">Robert Miller</span>
                         </div>
-                        <div class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
-                            <img src="https://i.pravatar.cc/150?img=44" alt="Patricia" class="w-8 h-8 rounded-full object-cover">
+                        <div
+                            class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
+                            <img src="https://i.pravatar.cc/150?img=44" alt="Patricia"
+                                class="w-8 h-8 rounded-full object-cover">
                             <span class="text-xs font-bold text-gray-900">Patricia Miller</span>
                         </div>
-                        <div class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
-                            <img src="https://i.pravatar.cc/150?img=11" alt="Jonathan" class="w-8 h-8 rounded-full object-cover">
+                        <div
+                            class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
+                            <img src="https://i.pravatar.cc/150?img=11" alt="Jonathan"
+                                class="w-8 h-8 rounded-full object-cover">
                             <span class="text-xs font-bold text-gray-900">Jonathan Anderson</span>
                         </div>
-                        <div class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
-                            <img src="https://i.pravatar.cc/150?img=5" alt="Sarah" class="w-8 h-8 rounded-full object-cover">
+                        <div
+                            class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
+                            <img src="https://i.pravatar.cc/150?img=5" alt="Sarah"
+                                class="w-8 h-8 rounded-full object-cover">
                             <span class="text-xs font-bold text-gray-900">Sarah Anderson</span>
                         </div>
-                        <div class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
-                            <img src="https://i.pravatar.cc/150?img=9" alt="Rachel" class="w-8 h-8 rounded-full object-cover">
+                        <div
+                            class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
+                            <img src="https://i.pravatar.cc/150?img=9" alt="Rachel"
+                                class="w-8 h-8 rounded-full object-cover">
                             <span class="text-xs font-bold text-gray-900">Rachel Miller</span>
                         </div>
-                        <div class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
-                            <img src="https://i.pravatar.cc/150?img=53" alt="Lucas" class="w-8 h-8 rounded-full object-cover">
+                        <div
+                            class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
+                            <img src="https://i.pravatar.cc/150?img=53" alt="Lucas"
+                                class="w-8 h-8 rounded-full object-cover">
                             <span class="text-xs font-bold text-gray-900">Lucas Anderson</span>
                         </div>
                     </div>
@@ -431,4 +491,5 @@
     </main>
 
 </body>
+
 </html>
