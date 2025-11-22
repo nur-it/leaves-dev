@@ -62,6 +62,66 @@
             border: 1px solid #E5E7EB;
             border-radius: 18px 18px 18px 4px;
         }
+
+        .persona-item {
+            position: relative;
+            z-index: 1;
+        }
+
+        .persona-item.is-open {
+            z-index: 1001;
+        }
+
+        .persona-menu {
+            z-index: 1000;
+        }
+
+        .tooltip-btn {
+            position: relative;
+        }
+
+        .tooltip-btn::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: 0;
+            top: -8px;
+            transform: translateY(-100%);
+            background: rgba(17, 24, 39, 0.95);
+            color: #fff;
+            font-size: 11px;
+            line-height: 1;
+            padding: 6px 8px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .15s ease;
+            z-index: 20;
+        }
+
+        .tooltip-btn::before {
+            content: "";
+            position: absolute;
+            right: 8px;
+            top: -14px;
+            transform: translateY(-100%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid rgba(17, 24, 39, 0.95);
+            opacity: 0;
+            transition: opacity .15s ease;
+            z-index: 19;
+        }
+
+        .tooltip-btn:hover::after,
+        .tooltip-btn:focus::after,
+        .tooltip-btn:hover::before,
+        .tooltip-btn:focus::before {
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -121,7 +181,7 @@
                     <a href="index.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                             <path
-                                d="M5.50008 17.4167H8.25008V11.9167H13.7501V17.4167H16.5001V9.16667L11.0001 5.04167L5.50008 9.16667V17.4167ZM3.66675 19.25V8.25L11.0001 2.75L18.3334 8.25V19.25H11.9167V13.75H10.0834V19.25H3.66675Z"
+                                d="M3.66699 19.25V8.25L11.0003 2.75L18.3337 8.25V19.25H12.8337V12.8333H9.16699V19.25H3.66699Z"
                                 fill="#798181" />
                         </svg>
                         Dashboard
@@ -145,26 +205,44 @@
                         Forever Voice™
                     </a>
                     <a href="life-map.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
-                        <i class="fa-solid fa-map-location-dot"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#798181">
+                            <path
+                                d="m300-300 280-80 80-280-280 80-80 280Zm180-120q-25 0-42.5-17.5T420-480q0-25 17.5-42.5T480-540q25 0 42.5 17.5T540-480q0 25-17.5 42.5T480-420Zm0 340q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Zm0-320Z" />
+                        </svg>
                         Life Map™
                     </a>
                     <a href="life-timeline.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
-                        <i class="fa-solid fa-timeline"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                            <path
+                                d="M2.75 12.8333H8.25V11H2.75V12.8333ZM5.5 9.16667H11V7.33333H5.5V9.16667ZM8.25 5.5H13.75V3.66667H8.25V5.5ZM1.83333 16.5C1.32917 16.5 0.897569 16.3205 0.538542 15.9615C0.179514 15.6024 0 15.1708 0 14.6667V1.83333C0 1.32917 0.179514 0.897569 0.538542 0.538542C0.897569 0.179514 1.32917 0 1.83333 0H14.6667C15.1708 0 15.6024 0.179514 15.9615 0.538542C16.3205 0.897569 16.5 1.32917 16.5 1.83333V14.6667C16.5 15.1708 16.3205 15.6024 15.9615 15.9615C15.6024 16.3205 15.1708 16.5 14.6667 16.5H1.83333ZM1.83333 14.6667H14.6667V1.83333H1.83333V14.6667Z"
+                                fill="#798181" />
+                        </svg>
                         Life Timeline™
                     </a>
                     <a href="document-archive.html"
                         class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
-                       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
-<path d="M3.66671 18.3334C3.16254 18.3334 2.73094 18.1539 2.37192 17.7949C2.01289 17.4358 1.83337 17.0042 1.83337 16.5001V5.50008C1.83337 4.99591 2.01289 4.56432 2.37192 4.20529C2.73094 3.84626 3.16254 3.66675 3.66671 3.66675H9.16671L11 5.50008H18.3334C18.8375 5.50008 19.2691 5.6796 19.6282 6.03862C19.9872 6.39765 20.1667 6.82925 20.1667 7.33341V16.5001C20.1667 17.0042 19.9872 17.4358 19.6282 17.7949C19.2691 18.1539 18.8375 18.3334 18.3334 18.3334H3.66671ZM3.66671 16.5001H18.3334V7.33341H10.2438L8.41046 5.50008H3.66671V16.5001Z" fill="#798181"/>
-</svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="15" viewBox="0 0 19 15" fill="none">
+                            <path
+                                d="M1.83333 14.6667C1.32917 14.6667 0.897569 14.4872 0.538542 14.1281C0.179514 13.7691 0 13.3375 0 12.8333V1.83333C0 1.32917 0.179514 0.897569 0.538542 0.538542C0.897569 0.179514 1.32917 0 1.83333 0H7.33333L9.16667 1.83333H16.5C17.0042 1.83333 17.4358 2.01285 17.7948 2.37187C18.1538 2.7309 18.3333 3.1625 18.3333 3.66667V12.8333C18.3333 13.3375 18.1538 13.7691 17.7948 14.1281C17.4358 14.4872 17.0042 14.6667 16.5 14.6667H1.83333ZM1.83333 12.8333H16.5V3.66667H8.41042L6.57708 1.83333H1.83333V12.8333Z"
+                                fill="#798181" />
+                        </svg>
                         Document Archive™
                     </a>
                     <a href="legacy-letters.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
-                        <i class="fa-regular fa-envelope"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="15" viewBox="0 0 19 15" fill="none">
+                            <path
+                                d="M1.83333 14.6667C1.32917 14.6667 0.897569 14.4872 0.538542 14.1281C0.179514 13.7691 0 13.3375 0 12.8333V1.83333C0 1.32917 0.179514 0.897569 0.538542 0.538542C0.897569 0.179514 1.32917 0 1.83333 0H16.5C17.0042 0 17.4358 0.179514 17.7948 0.538542C18.1538 0.897569 18.3333 1.32917 18.3333 1.83333V12.8333C18.3333 13.3375 18.1538 13.7691 17.7948 14.1281C17.4358 14.4872 17.0042 14.6667 16.5 14.6667H1.83333ZM9.16667 8.25L1.83333 3.66667V12.8333H16.5V3.66667L9.16667 8.25ZM9.16667 6.41667L16.5 1.83333H1.83333L9.16667 6.41667ZM1.83333 3.66667V1.83333V12.8333V3.66667Z"
+                                fill="#798181" />
+                        </svg>
                         Legacy Letters™
                     </a>
                     <a href="media-library.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
-                        <i class="fa-regular fa-images"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                            <path
+                                d="M6.41667 11H15.5833L12.4208 6.875L10.3125 9.625L8.89167 7.79167L6.41667 11ZM5.5 14.6667C4.99583 14.6667 4.56424 14.4872 4.20521 14.1281C3.84618 13.7691 3.66667 13.3375 3.66667 12.8333V1.83333C3.66667 1.32917 3.84618 0.897569 4.20521 0.538542C4.56424 0.179514 4.99583 0 5.5 0H16.5C17.0042 0 17.4358 0.179514 17.7948 0.538542C18.1538 0.897569 18.3333 1.32917 18.3333 1.83333V12.8333C18.3333 13.3375 18.1538 13.7691 17.7948 14.1281C17.4358 14.4872 17.0042 14.6667 16.5 14.6667H5.5ZM5.5 12.8333H16.5V1.83333H5.5V12.8333ZM1.83333 18.3333C1.32917 18.3333 0.897569 18.1538 0.538542 17.7948C0.179514 17.4358 0 17.0042 0 16.5V3.66667H1.83333V16.5H14.6667V18.3333H1.83333Z"
+                                fill="#798181" />
+                        </svg>
                         Media Library™
                     </a>
                 </nav>
@@ -183,70 +261,93 @@
             <div class="flex items-center gap-3">
                 <div class=" flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-<g filter="url(#filter0_di_1_20898)">
-<rect x="4.5" y="3.5" width="31" height="31" rx="7.5" stroke="#43B8FB" shape-rendering="crispEdges"/>
-<g filter="url(#filter1_dn_1_20898)">
-<rect x="7" y="6" width="26" height="26" rx="6" fill="#9CD4FF"/>
-<rect x="7" y="6" width="26" height="26" rx="6" fill="url(#paint0_linear_1_20898)"/>
-<path d="M19.1665 23.1667H20.8332V18.1667H19.1665V23.1667ZM19.9998 16.5001C20.2359 16.5001 20.4339 16.4202 20.5936 16.2605C20.7533 16.1008 20.8332 15.9029 20.8332 15.6667C20.8332 15.4306 20.7533 15.2327 20.5936 15.073C20.4339 14.9133 20.2359 14.8334 19.9998 14.8334C19.7637 14.8334 19.5658 14.9133 19.4061 15.073C19.2464 15.2327 19.1665 15.4306 19.1665 15.6667C19.1665 15.9029 19.2464 16.1008 19.4061 16.2605C19.5658 16.4202 19.7637 16.5001 19.9998 16.5001ZM19.9998 27.3334C18.8471 27.3334 17.7637 27.1147 16.7498 26.6772C15.7359 26.2397 14.854 25.6459 14.104 24.8959C13.354 24.1459 12.7603 23.264 12.3228 22.2501C11.8853 21.2362 11.6665 20.1529 11.6665 19.0001C11.6665 17.8473 11.8853 16.764 12.3228 15.7501C12.7603 14.7362 13.354 13.8542 14.104 13.1042C14.854 12.3542 15.7359 11.7605 16.7498 11.323C17.7637 10.8855 18.8471 10.6667 19.9998 10.6667C21.1526 10.6667 22.2359 10.8855 23.2498 11.323C24.2637 11.7605 25.1457 12.3542 25.8957 13.1042C26.6457 13.8542 27.2394 14.7362 27.6769 15.7501C28.1144 16.764 28.3332 17.8473 28.3332 19.0001C28.3332 20.1529 28.1144 21.2362 27.6769 22.2501C27.2394 23.264 26.6457 24.1459 25.8957 24.8959C25.1457 25.6459 24.2637 26.2397 23.2498 26.6772C22.2359 27.1147 21.1526 27.3334 19.9998 27.3334Z" fill="#00365F"/>
-</g>
-</g>
-<defs>
-<filter id="filter0_di_1_20898" x="0" y="0" width="40" height="40" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feMorphology radius="1" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_1_20898"/>
-<feOffset dy="1"/>
-<feGaussianBlur stdDeviation="1.5"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.972549 0 0 0 0 0.835294 0 0 0 0 0.607843 0 0 0 0.32 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_20898"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_20898" result="shape"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feMorphology radius="1" operator="erode" in="SourceAlpha" result="effect2_innerShadow_1_20898"/>
-<feOffset dy="2"/>
-<feGaussianBlur stdDeviation="1"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.810791 0 0 0 0 0.93693 0 0 0 0 1 0 0 0 0.32 0"/>
-<feBlend mode="normal" in2="shape" result="effect2_innerShadow_1_20898"/>
-</filter>
-<filter id="filter1_dn_1_20898" x="6.5" y="5.5" width="27" height="27" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_1_20898"/>
-<feOffset/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.572549 0 0 0 0 0.779608 0 0 0 0 0.960784 0 0 0 1 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_20898"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feTurbulence type="fractalNoise" baseFrequency="0.10000000149011612 0.10000000149011612" stitchTiles="stitch" numOctaves="3" result="noise" seed="5967"/>
-<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise"/>
-<feComponentTransfer in="alphaNoise" result="coloredNoise1">
-<feFuncA type="discrete" tableValues="0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
-</feComponentTransfer>
-<feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped"/>
-<feFlood flood-color="rgba(255, 255, 255, 0.05)" result="color1Flood"/>
-<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1"/>
-<feMerge result="effect2_noise_1_20898">
-<feMergeNode in="shape"/>
-<feMergeNode in="color1"/>
-</feMerge>
-<feBlend mode="normal" in="effect2_noise_1_20898" in2="effect1_dropShadow_1_20898" result="effect2_noise_1_20898"/>
-</filter>
-<linearGradient id="paint0_linear_1_20898" x1="20" y1="6" x2="20" y2="32" gradientUnits="userSpaceOnUse">
-<stop stop-color="white" stop-opacity="0.12"/>
-<stop offset="1" stop-color="white" stop-opacity="0"/>
-</linearGradient>
-</defs>
-</svg>
+                        <g filter="url(#filter0_di_1_20898)">
+                            <rect x="4.5" y="3.5" width="31" height="31" rx="7.5" stroke="#43B8FB"
+                                shape-rendering="crispEdges" />
+                            <g filter="url(#filter1_dn_1_20898)">
+                                <rect x="7" y="6" width="26" height="26" rx="6" fill="#9CD4FF" />
+                                <rect x="7" y="6" width="26" height="26" rx="6" fill="url(#paint0_linear_1_20898)" />
+                                <path
+                                    d="M19.1665 23.1667H20.8332V18.1667H19.1665V23.1667ZM19.9998 16.5001C20.2359 16.5001 20.4339 16.4202 20.5936 16.2605C20.7533 16.1008 20.8332 15.9029 20.8332 15.6667C20.8332 15.4306 20.7533 15.2327 20.5936 15.073C20.4339 14.9133 20.2359 14.8334 19.9998 14.8334C19.7637 14.8334 19.5658 14.9133 19.4061 15.073C19.2464 15.2327 19.1665 15.4306 19.1665 15.6667C19.1665 15.9029 19.2464 16.1008 19.4061 16.2605C19.5658 16.4202 19.7637 16.5001 19.9998 16.5001ZM19.9998 27.3334C18.8471 27.3334 17.7637 27.1147 16.7498 26.6772C15.7359 26.2397 14.854 25.6459 14.104 24.8959C13.354 24.1459 12.7603 23.264 12.3228 22.2501C11.8853 21.2362 11.6665 20.1529 11.6665 19.0001C11.6665 17.8473 11.8853 16.764 12.3228 15.7501C12.7603 14.7362 13.354 13.8542 14.104 13.1042C14.854 12.3542 15.7359 11.7605 16.7498 11.323C17.7637 10.8855 18.8471 10.6667 19.9998 10.6667C21.1526 10.6667 22.2359 10.8855 23.2498 11.323C24.2637 11.7605 25.1457 12.3542 25.8957 13.1042C26.6457 13.8542 27.2394 14.7362 27.6769 15.7501C28.1144 16.764 28.3332 17.8473 28.3332 19.0001C28.3332 20.1529 28.1144 21.2362 27.6769 22.2501C27.2394 23.264 26.6457 24.1459 25.8957 24.8959C25.1457 25.6459 24.2637 26.2397 23.2498 26.6772C22.2359 27.1147 21.1526 27.3334 19.9998 27.3334Z"
+                                    fill="#00365F" />
+                            </g>
+                        </g>
+                        <defs>
+                            <filter id="filter0_di_1_20898" x="0" y="0" width="40" height="40"
+                                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                <feColorMatrix in="SourceAlpha" type="matrix"
+                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feMorphology radius="1" operator="dilate" in="SourceAlpha"
+                                    result="effect1_dropShadow_1_20898" />
+                                <feOffset dy="1" />
+                                <feGaussianBlur stdDeviation="1.5" />
+                                <feComposite in2="hardAlpha" operator="out" />
+                                <feColorMatrix type="matrix"
+                                    values="0 0 0 0 0.972549 0 0 0 0 0.835294 0 0 0 0 0.607843 0 0 0 0.32 0" />
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_20898" />
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_20898"
+                                    result="shape" />
+                                <feColorMatrix in="SourceAlpha" type="matrix"
+                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feMorphology radius="1" operator="erode" in="SourceAlpha"
+                                    result="effect2_innerShadow_1_20898" />
+                                <feOffset dy="2" />
+                                <feGaussianBlur stdDeviation="1" />
+                                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                                <feColorMatrix type="matrix"
+                                    values="0 0 0 0 0.810791 0 0 0 0 0.93693 0 0 0 0 1 0 0 0 0.32 0" />
+                                <feBlend mode="normal" in2="shape" result="effect2_innerShadow_1_20898" />
+                            </filter>
+                            <filter id="filter1_dn_1_20898" x="6.5" y="5.5" width="27" height="27"
+                                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                <feColorMatrix in="SourceAlpha" type="matrix"
+                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feMorphology radius="0.5" operator="dilate" in="SourceAlpha"
+                                    result="effect1_dropShadow_1_20898" />
+                                <feOffset />
+                                <feComposite in2="hardAlpha" operator="out" />
+                                <feColorMatrix type="matrix"
+                                    values="0 0 0 0 0.572549 0 0 0 0 0.779608 0 0 0 0 0.960784 0 0 0 1 0" />
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_20898" />
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                                <feTurbulence type="fractalNoise"
+                                    baseFrequency="0.10000000149011612 0.10000000149011612" stitchTiles="stitch"
+                                    numOctaves="3" result="noise" seed="5967" />
+                                <feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+                                <feComponentTransfer in="alphaNoise" result="coloredNoise1">
+                                    <feFuncA type="discrete"
+                                        tableValues="0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 " />
+                                </feComponentTransfer>
+                                <feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" />
+                                <feFlood flood-color="rgba(255, 255, 255, 0.05)" result="color1Flood" />
+                                <feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+                                <feMerge result="effect2_noise_1_20898">
+                                    <feMergeNode in="shape" />
+                                    <feMergeNode in="color1" />
+                                </feMerge>
+                                <feBlend mode="normal" in="effect2_noise_1_20898" in2="effect1_dropShadow_1_20898"
+                                    result="effect2_noise_1_20898" />
+                            </filter>
+                            <linearGradient id="paint0_linear_1_20898" x1="20" y1="6" x2="20" y2="32"
+                                gradientUnits="userSpaceOnUse">
+                                <stop stop-color="white" stop-opacity="0.12" />
+                                <stop offset="1" stop-color="white" stop-opacity="0" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
                 </div>
-                <p class="text-sm text-primary font-medium"><strong class="font-bold text-primary">Purpose:</strong> Create and interact with virtual parent
+                <p class="text-sm text-primary font-medium"><strong class="font-bold text-primary">Purpose:</strong>
+                    Create and interact with virtual parent
                     personas for advice, comfort, and ongoing connection.</p>
             </div>
             <button class="text-gray-400 hover:text-gray-600 mr-4 w-5 h-5 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-<path d="M10.0001 8.93955L13.7126 5.22705L14.7731 6.28755L11.0606 10.0001L14.7731 13.7126L13.7126 14.7731L10.0001 11.0606L6.28755 14.7731L5.22705 13.7126L8.93955 10.0001L5.22705 6.28755L6.28755 5.22705L10.0001 8.93955Z" fill="#00365F"/>
-</svg>
+                    <path
+                        d="M10.0001 8.93955L13.7126 5.22705L14.7731 6.28755L11.0606 10.0001L14.7731 13.7126L13.7126 14.7731L10.0001 11.0606L6.28755 14.7731L5.22705 13.7126L8.93955 10.0001L5.22705 6.28755L6.28755 5.22705L10.0001 8.93955Z"
+                        fill="#00365F" />
+                </svg>
             </button>
         </div>
 
@@ -255,10 +356,13 @@
             <!-- Card 1 -->
             <div class="bg-white rounded-xl shadow-[0_1px_2px_0_#00000042] p-6">
                 <div class="flex flex-col items-start gap-3">
-                    <div class="w-12 h-12 bg-green-50 border border-[#339E221A] rounded-xl flex items-center justify-center">
-                       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-<path d="M2.6665 30.3337V6.33366C2.6665 5.60033 2.92761 4.97255 3.44984 4.45033C3.97206 3.9281 4.59984 3.66699 5.33317 3.66699H26.6665C27.3998 3.66699 28.0276 3.9281 28.5498 4.45033C29.0721 4.97255 29.3332 5.60033 29.3332 6.33366V22.3337C29.3332 23.067 29.0721 23.6948 28.5498 24.217C28.0276 24.7392 27.3998 25.0003 26.6665 25.0003H7.99984L2.6665 30.3337ZM7.99984 19.667H18.6665V17.0003H7.99984V19.667ZM7.99984 15.667H23.9998V13.0003H7.99984V15.667ZM7.99984 11.667H23.9998V9.00033H7.99984V11.667Z" fill="#339E22"/>
-</svg>
+                    <div
+                        class="w-12 h-12 bg-green-50 border border-[#339E221A] rounded-xl flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path
+                                d="M2.6665 30.3337V6.33366C2.6665 5.60033 2.92761 4.97255 3.44984 4.45033C3.97206 3.9281 4.59984 3.66699 5.33317 3.66699H26.6665C27.3998 3.66699 28.0276 3.9281 28.5498 4.45033C29.0721 4.97255 29.3332 5.60033 29.3332 6.33366V22.3337C29.3332 23.067 29.0721 23.6948 28.5498 24.217C28.0276 24.7392 27.3998 25.0003 26.6665 25.0003H7.99984L2.6665 30.3337ZM7.99984 19.667H18.6665V17.0003H7.99984V19.667ZM7.99984 15.667H23.9998V13.0003H7.99984V15.667ZM7.99984 11.667H23.9998V9.00033H7.99984V11.667Z"
+                                fill="#339E22" />
+                        </svg>
                     </div>
                     <div>
                         <h3 class="text-2xl font-medium text-primary mb-1">16</h3>
@@ -270,10 +374,13 @@
             <!-- Card 2 -->
             <div class="bg-white rounded-xl shadow-[0_1px_2px_0_#00000042] p-6">
                 <div class="flex flex-col items-start gap-3">
-                    <div class="w-12 h-12 bg-purple-50 border border-[#7834D31A] rounded-xl flex items-center justify-center">
+                    <div
+                        class="w-12 h-12 bg-purple-50 border border-[#7834D31A] rounded-xl flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-<path d="M26.2333 27.1667L27.1667 26.2333L24.6667 23.7333V20H23.3333V24.2667L26.2333 27.1667ZM24 30.6667C22.1556 30.6667 20.5833 30.0167 19.2833 28.7167C17.9833 27.4167 17.3333 25.8444 17.3333 24C17.3333 22.1556 17.9833 20.5833 19.2833 19.2833C20.5833 17.9833 22.1556 17.3333 24 17.3333C25.8444 17.3333 27.4167 17.9833 28.7167 19.2833C30.0167 20.5833 30.6667 22.1556 30.6667 24C30.6667 25.8444 30.0167 27.4167 28.7167 28.7167C27.4167 30.0167 25.8444 30.6667 24 30.6667ZM9.33333 12H22.6667V9.33333H9.33333V12ZM15.5667 28H6.66667C5.93333 28 5.30556 27.7389 4.78333 27.2167C4.26111 26.6944 4 26.0667 4 25.3333V6.66667C4 5.93333 4.26111 5.30556 4.78333 4.78333C5.30556 4.26111 5.93333 4 6.66667 4H25.3333C26.0667 4 26.6944 4.26111 27.2167 4.78333C27.7389 5.30556 28 5.93333 28 6.66667V15.6C27.3556 15.2889 26.7056 15.0556 26.05 14.9C25.3944 14.7444 24.7111 14.6667 24 14.6667C23.7556 14.6667 23.5278 14.6722 23.3167 14.6833C23.1056 14.6944 22.8889 14.7222 22.6667 14.7667V14.6667H9.33333V17.3333H17.5C17.1 17.7111 16.7389 18.1222 16.4167 18.5667C16.0944 19.0111 15.8111 19.4889 15.5667 20H9.33333V22.6667H14.7667C14.7222 22.8889 14.6944 23.1056 14.6833 23.3167C14.6722 23.5278 14.6667 23.7556 14.6667 24C14.6667 24.7333 14.7333 25.4167 14.8667 26.05C15 26.6833 15.2333 27.3333 15.5667 28Z" fill="#7834D3"/>
-</svg>
+                            <path
+                                d="M26.2333 27.1667L27.1667 26.2333L24.6667 23.7333V20H23.3333V24.2667L26.2333 27.1667ZM24 30.6667C22.1556 30.6667 20.5833 30.0167 19.2833 28.7167C17.9833 27.4167 17.3333 25.8444 17.3333 24C17.3333 22.1556 17.9833 20.5833 19.2833 19.2833C20.5833 17.9833 22.1556 17.3333 24 17.3333C25.8444 17.3333 27.4167 17.9833 28.7167 19.2833C30.0167 20.5833 30.6667 22.1556 30.6667 24C30.6667 25.8444 30.0167 27.4167 28.7167 28.7167C27.4167 30.0167 25.8444 30.6667 24 30.6667ZM9.33333 12H22.6667V9.33333H9.33333V12ZM15.5667 28H6.66667C5.93333 28 5.30556 27.7389 4.78333 27.2167C4.26111 26.6944 4 26.0667 4 25.3333V6.66667C4 5.93333 4.26111 5.30556 4.78333 4.78333C5.30556 4.26111 5.93333 4 6.66667 4H25.3333C26.0667 4 26.6944 4.26111 27.2167 4.78333C27.7389 5.30556 28 5.93333 28 6.66667V15.6C27.3556 15.2889 26.7056 15.0556 26.05 14.9C25.3944 14.7444 24.7111 14.6667 24 14.6667C23.7556 14.6667 23.5278 14.6722 23.3167 14.6833C23.1056 14.6944 22.8889 14.7222 22.6667 14.7667V14.6667H9.33333V17.3333H17.5C17.1 17.7111 16.7389 18.1222 16.4167 18.5667C16.0944 19.0111 15.8111 19.4889 15.5667 20H9.33333V22.6667H14.7667C14.7222 22.8889 14.6944 23.1056 14.6833 23.3167C14.6722 23.5278 14.6667 23.7556 14.6667 24C14.6667 24.7333 14.7333 25.4167 14.8667 26.05C15 26.6833 15.2333 27.3333 15.5667 28Z"
+                                fill="#7834D3" />
+                        </svg>
                     </div>
                     <div>
                         <h3 class="text-2xl font-medium text-primary mb-1">10</h3>
@@ -285,10 +392,13 @@
             <!-- Card 3 -->
             <div class="bg-white rounded-xl shadow-[0_1px_2px_0_#00000042] p-6">
                 <div class="flex flex-col items-start gap-3">
-                    <div class="w-12 h-12 border border-[#0170DF1A] bg-blue-50 rounded-xl flex items-center justify-center">
-                       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-<path d="M9.33333 22.6667H12V16H9.33333V22.6667ZM20 22.6667H22.6667V9.33333H20V22.6667ZM14.6667 22.6667H17.3333V18.6667H14.6667V22.6667ZM14.6667 16H17.3333V13.3333H14.6667V16ZM6.66667 28C5.93333 28 5.30556 27.7389 4.78333 27.2167C4.26111 26.6944 4 26.0667 4 25.3333V6.66667C4 5.93333 4.26111 5.30556 4.78333 4.78333C5.30556 4.26111 5.93333 4 6.66667 4H25.3333C26.0667 4 26.6944 4.26111 27.2167 4.78333C27.7389 5.30556 28 5.93333 28 6.66667V25.3333C28 26.0667 27.7389 26.6944 27.2167 27.2167C26.6944 27.7389 26.0667 28 25.3333 28H6.66667Z" fill="#0170DF"/>
-</svg>
+                    <div
+                        class="w-12 h-12 border border-[#0170DF1A] bg-blue-50 rounded-xl flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path
+                                d="M9.33333 22.6667H12V16H9.33333V22.6667ZM20 22.6667H22.6667V9.33333H20V22.6667ZM14.6667 22.6667H17.3333V18.6667H14.6667V22.6667ZM14.6667 16H17.3333V13.3333H14.6667V16ZM6.66667 28C5.93333 28 5.30556 27.7389 4.78333 27.2167C4.26111 26.6944 4 26.0667 4 25.3333V6.66667C4 5.93333 4.26111 5.30556 4.78333 4.78333C5.30556 4.26111 5.93333 4 6.66667 4H25.3333C26.0667 4 26.6944 4.26111 27.2167 4.78333C27.7389 5.30556 28 5.93333 28 6.66667V25.3333C28 26.0667 27.7389 26.6944 27.2167 27.2167C26.6944 27.7389 26.0667 28 25.3333 28H6.66667Z"
+                                fill="#0170DF" />
+                        </svg>
                     </div>
                     <div>
                         <h3 class="text-2xl font-medium text-primary mb-1">0</h3>
@@ -299,7 +409,7 @@
         </div>
 
         <!-- Chat Interface -->
-        <div class="grid grid-cols-12 h-auto xl:h-[905px]  rounded-l-xl rounded-r-xl">
+        <div class="grid grid-cols-12 h-auto  rounded-l-xl rounded-r-xl">
 
             <!-- Left Sidebar - Personas List -->
             <div class="col-span-12 lg:col-span-3  shadow-[0px_1px_2px_0px_#00000042] bg-white rounded-l-xl ">
@@ -315,35 +425,143 @@
                 <!-- Personas List -->
                 <div class="space-y-1.5 px-4">
                     <div
-                        class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg  border border-[#45A73599] cursor-pointer">
-                        <img src="/public/forever-voice/my-persona.svg" alt="My persona"
+                        class="relative group persona-item flex items-center gap-2.5 px-3 py-2.5 rounded-lg border border-[#45A73599] cursor-pointer active-persona">
+                        <img src="./public/forever-voice/my-persona.svg" alt="My persona"
                             class="w-7 h-7 rounded-full object-cover">
                         <span class="text-[13px] font-medium text-gray-900">My persona</span>
-                          <button class="ml-auto">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-<path d="M3.99984 9.33329C3.63317 9.33329 3.31928 9.20274 3.05817 8.94163C2.79706 8.68052 2.6665 8.36663 2.6665 7.99996C2.6665 7.63329 2.79706 7.3194 3.05817 7.05829C3.31928 6.79718 3.63317 6.66663 3.99984 6.66663C4.3665 6.66663 4.68039 6.79718 4.9415 7.05829C5.20262 7.3194 5.33317 7.63329 5.33317 7.99996C5.33317 8.36663 5.20262 8.68052 4.9415 8.94163C4.68039 9.20274 4.3665 9.33329 3.99984 9.33329ZM7.99984 9.33329C7.63317 9.33329 7.31928 9.20274 7.05817 8.94163C6.79706 8.68052 6.6665 8.36663 6.6665 7.99996C6.6665 7.63329 6.79706 7.3194 7.05817 7.05829C7.31928 6.79718 7.63317 6.66663 7.99984 6.66663C8.3665 6.66663 8.68039 6.79718 8.9415 7.05829C9.20262 7.3194 9.33317 7.63329 9.33317 7.99996C9.33317 8.36663 9.20262 8.68052 8.9415 8.94163C8.68039 9.20274 8.3665 9.33329 7.99984 9.33329ZM11.9998 9.33329C11.6332 9.33329 11.3193 9.20274 11.0582 8.94163C10.7971 8.68052 10.6665 8.36663 10.6665 7.99996C10.6665 7.63329 10.7971 7.3194 11.0582 7.05829C11.3193 6.79718 11.6332 6.66663 11.9998 6.66663C12.3665 6.66663 12.6804 6.79718 12.9415 7.05829C13.2026 7.3194 13.3332 7.63329 13.3332 7.99996C13.3332 8.36663 13.2026 8.68052 12.9415 8.94163C12.6804 9.20274 12.3665 9.33329 11.9998 9.33329Z" fill="#ACB3B0" fill-opacity="0.7"/>
-</svg>
-                          </button>
+                        <button class="ml-auto persona-ellipsis opacity-100"><svg xmlns="http://www.w3.org/2000/svg"
+                                width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path
+                                    d="M3.99984 9.33329C3.63317 9.33329 3.31928 9.20274 3.05817 8.94163C2.79706 8.68052 2.6665 8.36663 2.6665 7.99996C2.6665 7.63329 2.79706 7.3194 3.05817 7.05829C3.31928 6.79718 3.63317 6.66663 3.99984 6.66663C4.3665 6.66663 4.68039 6.79718 4.9415 7.05829C5.20262 7.3194 5.33317 7.63329 5.33317 7.99996C5.33317 8.36663 5.20262 8.68052 4.9415 8.94163C4.68039 9.20274 4.3665 9.33329 3.99984 9.33329ZM7.99984 9.33329C7.63317 9.33329 7.31928 9.20274 7.05817 8.94163C6.79706 8.68052 6.6665 8.36663 6.6665 7.99996C6.6665 7.63329 6.79706 7.3194 7.05817 7.05829C7.31928 6.79718 7.63317 6.66663 7.99984 6.66663C8.3665 6.66663 8.68039 6.79718 8.9415 7.05829C9.20262 7.3194 9.33317 7.63329 9.33317 7.99996C9.33317 8.36663 9.20262 8.68052 8.9415 8.94163C8.68039 9.20274 8.3665 9.33329 7.99984 9.33329ZM11.9998 9.33329C11.6332 9.33329 11.3193 9.20274 11.0582 8.94163C10.7971 8.68052 10.6665 8.36663 10.6665 7.99996C10.6665 7.63329 10.7971 7.3194 11.0582 7.05829C11.3193 6.79718 11.6332 6.66663 11.9998 6.66663C12.3665 6.66663 12.6804 6.79718 12.9415 7.05829C13.2026 7.3194 13.3332 7.63329 13.3332 7.99996C13.3332 8.36663 13.2026 8.68052 12.9415 8.94163C12.6804 9.20274 12.3665 9.33329 11.9998 9.33329Z"
+                                    fill="#ACB3B0" fill-opacity="0.7" />
+                            </svg></button>
+                        <div
+                            class="persona-menu absolute right-2 top-full mt-2 w-48 bg-white rounded-xl border border-gray-200 shadow-lg hidden">
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"><i
+                                    class="fa-solid fa-circle-info text-gray-400"></i><span>About</span></button>
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"><i
+                                    class="fa-solid fa-pen text-gray-400"></i><span>Edit</span></button>
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"><i
+                                    class="fa-solid fa-link text-gray-400"></i><span>Copy Link</span></button>
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-red-600 hover:bg-red-50"><i
+                                    class="fa-solid fa-trash text-red-500"></i><span>Delete</span></button>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg hover:bg-gray-50 cursor-pointer">
-                        <img src="/public/forever-voice/dad-personas.png" alt="Dad persona"
+                    <div
+                        class="relative group persona-item flex items-center gap-2.5 px-3 py-2.5 rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <img src="./public/forever-voice/dad-personas.png" alt="Dad persona"
                             class="w-7 h-7 rounded-full object-cover">
                         <span class="text-sm font-medium text-[#474D4B]">Dad personas</span>
+                        <button class="ml-auto persona-ellipsis opacity-0 group-hover:opacity-100"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                fill="none">
+                                <path
+                                    d="M3.99984 9.33329C3.63317 9.33329 3.31928 9.20274 3.05817 8.94163C2.79706 8.68052 2.6665 8.36663 2.6665 7.99996C2.6665 7.63329 2.79706 7.3194 3.05817 7.05829C3.31928 6.79718 3.63317 6.66663 3.99984 6.66663C4.3665 6.66663 4.68039 6.79718 4.9415 7.05829C5.20262 7.3194 5.33317 7.63329 5.33317 7.99996C5.33317 8.36663 5.20262 8.68052 4.9415 8.94163C4.68039 9.20274 4.3665 9.33329 3.99984 9.33329ZM7.99984 9.33329C7.63317 9.33329 7.31928 9.20274 7.05817 8.94163C6.79706 8.68052 6.6665 8.36663 6.6665 7.99996C6.6665 7.63329 6.79706 7.3194 7.05817 7.05829C7.31928 6.79718 7.63317 6.66663 7.99984 6.66663C8.3665 6.66663 8.68039 6.79718 8.9415 7.05829C9.20262 7.3194 9.33317 7.63329 9.33317 7.99996C9.33317 8.36663 9.20262 8.68052 8.9415 8.94163C8.68039 9.20274 8.3665 9.33329 7.99984 9.33329ZM11.9998 9.33329C11.6332 9.33329 11.3193 9.20274 11.0582 8.94163C10.7971 8.68052 10.6665 8.36663 10.6665 7.99996C10.6665 7.63329 10.7971 7.3194 11.0582 7.05829C11.3193 6.79718 11.6332 6.66663 11.9998 6.66663C12.3665 6.66663 12.6804 6.79718 12.9415 7.05829C13.2026 7.3194 13.3332 7.63329 13.3332 7.99996C13.3332 8.36663 13.2026 8.68052 12.9415 8.94163C12.6804 9.20274 12.3665 9.33329 11.9998 9.33329Z"
+                                    fill="#ACB3B0" fill-opacity="0.7" />
+                            </svg></button>
+                        <div
+                            class="persona-menu absolute right-2 top-full mt-2 w-48 bg-white rounded-xl border border-gray-200 shadow-lg hidden">
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"><i
+                                    class="fa-solid fa-circle-info text-gray-400"></i><span>About</span></button>
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"><i
+                                    class="fa-solid fa-pen text-gray-400"></i><span>Edit</span></button>
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"><i
+                                    class="fa-solid fa-link text-gray-400"></i><span>Copy Link</span></button>
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-red-600 hover:bg-red-50"><i
+                                    class="fa-solid fa-trash text-red-500"></i><span>Delete</span></button>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg hover:bg-gray-50 cursor-pointer">
-                        <img src="/public/forever-voice/mom-personas.png" alt="Mom personas"
+                    <div
+                        class="relative group persona-item flex items-center gap-2.5 px-3 py-2.5 rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <img src="./public/forever-voice/mom-personas.png" alt="Mom personas"
                             class="w-7 h-7 rounded-full object-cover">
                         <span class="text-sm font-medium text-[#474D4B]">Mom personas</span>
+                        <button class="ml-auto persona-ellipsis opacity-0 group-hover:opacity-100"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                fill="none">
+                                <path
+                                    d="M3.99984 9.33329C3.63317 9.33329 3.31928 9.20274 3.05817 8.94163C2.79706 8.68052 2.6665 8.36663 2.6665 7.99996C2.6665 7.63329 2.79706 7.3194 3.05817 7.05829C3.31928 6.79718 3.63317 6.66663 3.99984 6.66663C4.3665 6.66663 4.68039 6.79718 4.9415 7.05829C5.20262 7.3194 5.33317 7.63329 5.33317 7.99996C5.33317 8.36663 5.20262 8.68052 4.9415 8.94163C4.68039 9.20274 4.3665 9.33329 3.99984 9.33329ZM7.99984 9.33329C7.63317 9.33329 7.31928 9.20274 7.05817 8.94163C6.79706 8.68052 6.6665 8.36663 6.6665 7.99996C6.6665 7.63329 6.79706 7.3194 7.05817 7.05829C7.31928 6.79718 7.63317 6.66663 7.99984 6.66663C8.3665 6.66663 8.68039 6.79718 8.9415 7.05829C9.20262 7.3194 9.33317 7.63329 9.33317 7.99996C9.33317 8.36663 9.20262 8.68052 8.9415 8.94163C8.68039 9.20274 8.3665 9.33329 7.99984 9.33329ZM11.9998 9.33329C11.6332 9.33329 11.3193 9.20274 11.0582 8.94163C10.7971 8.68052 10.6665 8.36663 10.6665 7.99996C10.6665 7.63329 10.7971 7.3194 11.0582 7.05829C11.3193 6.79718 11.6332 6.66663 11.9998 6.66663C12.3665 6.66663 12.6804 6.79718 12.9415 7.05829C13.2026 7.3194 13.3332 7.63329 13.3332 7.99996C13.3332 8.36663 13.2026 8.68052 12.9415 8.94163C12.6804 9.20274 12.3665 9.33329 11.9998 9.33329Z"
+                                    fill="#ACB3B0" fill-opacity="0.7" />
+                            </svg></button>
+                        <div
+                            class="persona-menu absolute right-2 top-full mt-2 w-48 bg-white rounded-xl border border-gray-200 shadow-lg hidden">
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"><i
+                                    class="fa-solid fa-circle-info text-gray-400"></i><span>About</span></button>
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"><i
+                                    class="fa-solid fa-pen text-gray-400"></i><span>Edit</span></button>
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"><i
+                                    class="fa-solid fa-link text-gray-400"></i><span>Copy Link</span></button>
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-red-600 hover:bg-red-50"><i
+                                    class="fa-solid fa-trash text-red-500"></i><span>Delete</span></button>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg hover:bg-gray-50 cursor-pointer">
-                        <img src="/public/forever-voice/uncle-persona.png" alt="Uncle Tom's Persona"
+                    <div
+                        class="relative group persona-item flex items-center gap-2.5 px-3 py-2.5 rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <img src="./public/forever-voice/uncle-persona.png" alt="Uncle Tom's Persona"
                             class="w-7 h-7 rounded-full object-cover">
                         <span class="text-sm font-medium text-[#474D4B]">Uncle Tom's Persona</span>
+                        <button class="ml-auto persona-ellipsis opacity-0 group-hover:opacity-100"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                fill="none">
+                                <path
+                                    d="M3.99984 9.33329C3.63317 9.33329 3.31928 9.20274 3.05817 8.94163C2.79706 8.68052 2.6665 8.36663 2.6665 7.99996C2.6665 7.63329 2.79706 7.3194 3.05817 7.05829C3.31928 6.79718 3.63317 6.66663 3.99984 6.66663C4.3665 6.66663 4.68039 6.79718 4.9415 7.05829C5.20262 7.3194 5.33317 7.63329 5.33317 7.99996C5.33317 8.36663 5.20262 8.68052 4.9415 8.94163C4.68039 9.20274 4.3665 9.33329 3.99984 9.33329ZM7.99984 9.33329C7.63317 9.33329 7.31928 9.20274 7.05817 8.94163C6.79706 8.68052 6.6665 8.36663 6.6665 7.99996C6.6665 7.63329 6.79706 7.3194 7.05817 7.05829C7.31928 6.79718 7.63317 6.66663 7.99984 6.66663C8.3665 6.66663 8.68039 6.79718 8.9415 7.05829C9.20262 7.3194 9.33317 7.63329 9.33317 7.99996C9.33317 8.36663 9.20262 8.68052 8.9415 8.94163C8.68039 9.20274 8.3665 9.33329 7.99984 9.33329ZM11.9998 9.33329C11.6332 9.33329 11.3193 9.20274 11.0582 8.94163C10.7971 8.68052 10.6665 8.36663 10.6665 7.99996C10.6665 7.63329 10.7971 7.3194 11.0582 7.05829C11.3193 6.79718 11.6332 6.66663 11.9998 6.66663C12.3665 6.66663 12.6804 6.79718 12.9415 7.05829C13.2026 7.3194 13.3332 7.63329 13.3332 7.99996C13.3332 8.36663 13.2026 8.68052 12.9415 8.94163C12.6804 9.20274 12.3665 9.33329 11.9998 9.33329Z"
+                                    fill="#ACB3B0" fill-opacity="0.7" />
+                            </svg></button>
+                        <div
+                            class="persona-menu absolute right-2 top-full mt-2 w-48 bg-white rounded-xl border border-gray-200 shadow-lg hidden">
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"><i
+                                    class="fa-solid fa-circle-info text-gray-400"></i><span>About</span></button>
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"><i
+                                    class="fa-solid fa-pen text-gray-400"></i><span>Edit</span></button>
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"><i
+                                    class="fa-solid fa-link text-gray-400"></i><span>Copy Link</span></button>
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-red-600 hover:bg-red-50"><i
+                                    class="fa-solid fa-trash text-red-500"></i><span>Delete</span></button>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg hover:bg-gray-50 cursor-pointer">
-                        <img src="/public/forever-voice/sister-persona.png" alt="Sister Chelsea's Persona"
+                    <div
+                        class="relative group persona-item flex items-center gap-2.5 px-3 py-2.5 rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <img src="./public/forever-voice/sister-persona.png" alt="Sister Chelsea's Persona"
                             class="w-7 h-7 rounded-full object-cover">
                         <span class="text-sm font-medium text-[#474D4B]">Sister Chelsea's Persona</span>
+                        <button class="ml-auto persona-ellipsis opacity-0 group-hover:opacity-100"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                fill="none">
+                                <path
+                                    d="M3.99984 9.33329C3.63317 9.33329 3.31928 9.20274 3.05817 8.94163C2.79706 8.68052 2.6665 8.36663 2.6665 7.99996C2.6665 7.63329 2.79706 7.3194 3.05817 7.05829C3.31928 6.79718 3.63317 6.66663 3.99984 6.66663C4.3665 6.66663 4.68039 6.79718 4.9415 7.05829C5.20262 7.3194 5.33317 7.63329 5.33317 7.99996C5.33317 8.36663 5.20262 8.68052 4.9415 8.94163C4.68039 9.20274 4.3665 9.33329 3.99984 9.33329ZM7.99984 9.33329C7.63317 9.33329 7.31928 9.20274 7.05817 8.94163C6.79706 8.68052 6.6665 8.36663 6.6665 7.99996C6.6665 7.63329 6.79706 7.3194 7.05817 7.05829C7.31928 6.79718 7.63317 6.66663 7.99984 6.66663C8.3665 6.66663 8.68039 6.79718 8.9415 7.05829C9.20262 7.3194 9.33317 7.63329 9.33317 7.99996C9.33317 8.36663 9.20262 8.68052 8.9415 8.94163C8.68039 9.20274 8.3665 9.33329 7.99984 9.33329ZM11.9998 9.33329C11.6332 9.33329 11.3193 9.20274 11.0582 8.94163C10.7971 8.68052 10.6665 8.36663 10.6665 7.99996C10.6665 7.63329 10.7971 7.3194 11.0582 7.05829C11.3193 6.79718 11.6332 6.66663 11.9998 6.66663C12.3665 6.66663 12.6804 6.79718 12.9415 7.05829C13.2026 7.3194 13.3332 7.63329 13.3332 7.99996C13.3332 8.36663 13.2026 8.68052 12.9415 8.94163C12.6804 9.20274 12.3665 9.33329 11.9998 9.33329Z"
+                                    fill="#ACB3B0" fill-opacity="0.7" />
+                            </svg></button>
+                        <div
+                            class="persona-menu absolute right-2 top-full mt-2 w-48 bg-white rounded-xl border border-gray-200 shadow-lg hidden">
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"><i
+                                    class="fa-solid fa-circle-info text-gray-400"></i><span>About</span></button>
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"><i
+                                    class="fa-solid fa-pen text-gray-400"></i><span>Edit</span></button>
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"><i
+                                    class="fa-solid fa-link text-gray-400"></i><span>Copy Link</span></button>
+                            <button
+                                class="w-full flex items-center gap-3 px-3 py-2 text-sm text-red-600 hover:bg-red-50"><i
+                                    class="fa-solid fa-trash text-red-500"></i><span>Delete</span></button>
+                        </div>
                     </div>
                 </div>
 
@@ -351,203 +569,287 @@
                 <div class="mt-6 px-4 border-t py-4 border-[#E4E2DF]">
                     <h3 class="font-medium text-primary text-base mb-3">Recent</h3>
                     <div class="space-y-2.5">
-                        <p class="cursor-pointer text-[#474D4B] text-sm hover:text-gray-900 leading-relaxed">Advice about career change</p>
-                        <p class="cursor-pointer text-[#474D4B] text-sm hover:text-gray-900 leading-relaxed">Conversation about childhood
+                        <p class="cursor-pointer text-[#474D4B] text-sm hover:text-gray-900 leading-relaxed">Advice
+                            about career change</p>
+                        <p class="cursor-pointer text-[#474D4B] text-sm hover:text-gray-900 leading-relaxed">
+                            Conversation about childhood
                             memory</p>
                     </div>
                 </div>
             </div>
 
             <!-- Chat Area -->
-            <div class="col-span-12 lg:col-span-9 bg-white shadow-[0px_1px_2px_0px_#00000042] rounded-r-xl  flex flex-col"
-               >
+            <div
+                class="col-span-12 lg:col-span-9 bg-white shadow-[0px_1px_2px_0px_#00000042] rounded-r-xl  flex flex-col">
 
                 <!-- Chat Header -->
                 <div class="bg-[#F4FAF499]  px-6 pt-4 pb-0">
-  <div class="flex items-center px-2 justify-center   max-w-[253px] mx-auto rounded-[6px] gap-1 text-[13px] bg-[#F4FAF499] shadow-[0_0_1px_0_rgba(0,0,0,0.4),0_0_2px_0_rgba(0,0,0,0.04),0_1px_1px_0_rgba(0,0,0,0.06)]">
-    
-    <!-- Active Button -->
-    <button
-      class="font-medium text-primary text-sm bg-white my-1 w-[82px] rounded-[4px]
+                    <div
+                        class="flex items-center px-2 justify-center   max-w-[253px] mx-auto rounded-[6px] gap-1 text-[13px] bg-[#F4FAF499] shadow-[0_0_1px_0_rgba(0,0,0,0.4),0_0_2px_0_rgba(0,0,0,0.04),0_1px_1px_0_rgba(0,0,0,0.06)]">
+
+                        <!-- Active Button -->
+                        <button class="font-medium text-primary text-sm bg-white my-1 w-[82px] rounded-[4px]
              shadow-[0_0_1px_0_rgba(0,0,0,0.16),0_1px_1px_0_rgba(0,0,0,0.06)]
              py-2 transition-all">
-      Chat
-    </button>
+                            Chat
+                        </button>
 
-    <!-- Inactive Buttons -->
-    <button
-      class="text-[#9A9B9A] text-sm hover:text-gray-900 py-2 w-[82px] rounded-[4px]
+                        <!-- Inactive Buttons -->
+                        <button class="text-[#9A9B9A] text-sm hover:text-gray-900 py-2 w-[82px] rounded-[4px]
              hover:bg-gray-50 transition-all">
-      Thoughts
-    </button>
+                            Thoughts
+                        </button>
 
-    <button
-      class="text-[#9A9B9A] text-sm hover:text-gray-900 py-2 w-[82px] rounded-[4px]
+                        <button class="text-[#9A9B9A] text-sm hover:text-gray-900 py-2 w-[82px] rounded-[4px]
              hover:bg-gray-50 transition-all">
-      Wisdom
-    </button>
+                            Wisdom
+                        </button>
 
-  </div>
-</div>
+                    </div>
+                </div>
 
 
                 <!-- Messages Area -->
-               <div class="bg-[#F4FAF499] py-4">
-                 <div class="flex-1 overflow-y-auto  max-w-[855px] mx-auto bg-[#F4FAF499] space-y-4">
+                <div class="bg-[#F4FAF499] py-4">
+                    <div class="flex-1 overflow-y-auto max-h-[600px]  mx-auto bg-[#F4FAF499] space-y-4">
 
-                    <!-- User Message -->
-                    <div class="flex justify-end">
-                        <div class="chat-message-user bg-[#EBFFEB] border border-[#B1E5B1] px-4 py-3 ">
-                            <p class="text-lg text-primary leading-relaxed">I've been feeling unsure about my next
-                                career step. Everything feels blurry right now.</p>
-                        </div>
-                    </div>
+                        <div class="each_chat_group space-y-4 max-w-[855px] mx-auto">
+                            <!-- User Message -->
+                            <div class="flex justify-end">
+                                <div class="chat-message-user bg-[#EBFFEB] border border-[#B1E5B1] px-4 py-3 ">
+                                    <p class="text-lg text-primary leading-relaxed">I've been feeling unsure about my
+                                        next
+                                        career step. Everything feels blurry right now.</p>
+                                </div>
+                            </div>
+                            <!-- Persona Message -->
+                            <div
+                                class="flex gap-3 items-start px-4 py-4 rounded-[12px] border-[#EDFAEE] chat-message-persona ">
+                                <img src="./public/forever-voice/my-persona.svg" alt="Persona"
+                                    class="w-9 h-9 rounded-full object-cover flex-shrink-0 mt-1">
+                                <div class="flex-1">
+                                    <div class="  px-4 py-3  inline-block ">
+                                        <p class="text-lg text-primary leading-relaxed">It's completely normal to feel
+                                            uncertain. Life doesn't always give us clear signals. What matters is paying
+                                            attention to what energizes you and what drains you. Those feelings usually
+                                            point
+                                            you in the right direction.</p>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <!-- Persona Message -->
-                    <div class="flex gap-3 items-start px-4 py-4 rounded-[12px] border-[#EDFAEE] chat-message-persona ">
-                        <img src="/public/forever-voice/my-persona.svg" alt="Persona"
-                            class="w-9 h-9 rounded-full object-cover flex-shrink-0 mt-1">
-                        <div class="flex-1">
-                            <div class="  px-4 py-3  inline-block ">
-                                <p class="text-lg text-primary leading-relaxed">It's completely normal to feel
-                                    uncertain. Life doesn't always give us clear signals. What matters is paying
-                                    attention to what energizes you and what drains you. Those feelings usually point
-                                    you in the right direction.</p>
+                            <div class="flex items-center gap-3 justify-end ">
+                                <button class="text-gray-400 hover:text-gray-600 tooltip-btn"
+                                    data-tooltip="Copy message" aria-label="Copy message" tabindex="0"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none">
+                                        <path
+                                            d="M7.5 15C7.04167 15 6.64931 14.8368 6.32292 14.5104C5.99653 14.184 5.83333 13.7916 5.83333 13.3333V3.33329C5.83333 2.87496 5.99653 2.4826 6.32292 2.15621C6.64931 1.82982 7.04167 1.66663 7.5 1.66663H15C15.4583 1.66663 15.8507 1.82982 16.1771 2.15621C16.5035 2.4826 16.6667 2.87496 16.6667 3.33329V13.3333C16.6667 13.7916 16.5035 14.184 16.1771 14.5104C15.8507 14.8368 15.4583 15 15 15H7.5ZM7.5 13.3333H15V3.33329H7.5V13.3333ZM4.16667 18.3333C3.70833 18.3333 3.31597 18.1701 2.98958 17.8437C2.66319 17.5173 2.5 17.125 2.5 16.6666V4.99996H4.16667V16.6666H13.3333V18.3333H4.16667Z"
+                                            fill="black" fill-opacity="0.12" />
+                                    </svg></button>
+                                <button class="text-gray-400 hover:text-gray-600 tooltip-btn" data-tooltip="Save"
+                                    aria-label="Save" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                        height="20" viewBox="0 0 20 20" fill="none">
+                                        <g clip-path="url(#clip0_1_20921)">
+                                            <path
+                                                d="M15.0001 17.5H5.83342V6.66671L11.6667 0.833374L12.7084 1.87504C12.8056 1.97226 12.8855 2.10421 12.948 2.27087C13.0105 2.43754 13.0417 2.59726 13.0417 2.75004V3.04171L12.1251 6.66671H17.5001C17.9445 6.66671 18.3334 6.83337 18.6667 7.16671C19.0001 7.50004 19.1667 7.88893 19.1667 8.33337V10C19.1667 10.0973 19.1529 10.2014 19.1251 10.3125C19.0973 10.4237 19.0695 10.5278 19.0417 10.625L16.5417 16.5C16.4167 16.7778 16.2084 17.0139 15.9167 17.2084C15.6251 17.4028 15.3195 17.5 15.0001 17.5ZM7.50008 15.8334H15.0001L17.5001 10V8.33337H10.0001L11.1251 3.75004L7.50008 7.37504V15.8334ZM5.83342 6.66671V8.33337H3.33341V15.8334H5.83342V17.5H1.66675V6.66671H5.83342Z"
+                                                fill="black" fill-opacity="0.12" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_1_20921">
+                                                <rect width="20" height="20" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg></button>
+                                <button class="text-gray-400 hover:text-gray-600 tooltip-btn" data-tooltip="Share"
+                                    aria-label="Share" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                        height="20" viewBox="0 0 20 20" fill="none">
+                                        <path
+                                            d="M4.99992 2.5H14.1666V13.3333L8.33325 19.1667L7.29159 18.125C7.19436 18.0278 7.1145 17.8958 7.052 17.7292C6.9895 17.5625 6.95825 17.4028 6.95825 17.25V16.9583L7.87492 13.3333H2.49992C2.05547 13.3333 1.66659 13.1667 1.33325 12.8333C0.999919 12.5 0.833252 12.1111 0.833252 11.6667V10C0.833252 9.90278 0.847141 9.79861 0.874919 9.6875C0.902696 9.57639 0.930474 9.47222 0.958252 9.375L3.45825 3.5C3.58325 3.22222 3.79159 2.98611 4.08325 2.79167C4.37492 2.59722 4.68047 2.5 4.99992 2.5ZM12.4999 4.16667H4.99992L2.49992 10V11.6667H9.99992L8.87492 16.25L12.4999 12.625V4.16667ZM14.1666 13.3333V11.6667H16.6666V4.16667H14.1666V2.5H18.3333V13.3333H14.1666Z"
+                                            fill="black" fill-opacity="0.12" />
+                                    </svg></button>
+                                <button class="text-gray-400 hover:text-gray-600 tooltip-btn" data-tooltip="Translate"
+                                    aria-label="Translate" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg"
+                                        width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path
+                                            d="M6.66675 14.1666H13.3334V12.5H6.66675V14.1666ZM9.12508 11.6666L13.8334 6.95829L12.6459 5.81246L9.12508 9.33329L7.33341 7.54163L6.16675 8.70829L9.12508 11.6666ZM10.0001 18.3333C8.8473 18.3333 7.76397 18.1145 6.75008 17.677C5.73619 17.2395 4.85425 16.6458 4.10425 15.8958C3.35425 15.1458 2.7605 14.2638 2.323 13.25C1.8855 12.2361 1.66675 11.1527 1.66675 9.99996C1.66675 8.84718 1.8855 7.76385 2.323 6.74996C2.7605 5.73607 3.35425 4.85413 4.10425 4.10413C4.85425 3.35413 5.73619 2.76038 6.75008 2.32288C7.76397 1.88538 8.8473 1.66663 10.0001 1.66663C11.1529 1.66663 12.2362 1.88538 13.2501 2.32288C14.264 2.76038 15.1459 3.35413 15.8959 4.10413C16.6459 4.85413 17.2397 5.73607 17.6772 6.74996C18.1147 7.76385 18.3334 8.84718 18.3334 9.99996C18.3334 11.1527 18.1147 12.2361 17.6772 13.25C17.2397 14.2638 16.6459 15.1458 15.8959 15.8958C15.1459 16.6458 14.264 17.2395 13.2501 17.677C12.2362 18.1145 11.1529 18.3333 10.0001 18.3333ZM10.0001 16.6666C11.8612 16.6666 13.4376 16.0208 14.7292 14.7291C16.0209 13.4375 16.6667 11.8611 16.6667 9.99996C16.6667 8.13885 16.0209 6.56246 14.7292 5.27079C13.4376 3.97913 11.8612 3.33329 10.0001 3.33329C8.13897 3.33329 6.56258 3.97913 5.27091 5.27079C3.97925 6.56246 3.33341 8.13885 3.33341 9.99996C3.33341 11.8611 3.97925 13.4375 5.27091 14.7291C6.56258 16.0208 8.13897 16.6666 10.0001 16.6666Z"
+                                            fill="black" fill-opacity="0.12" />
+                                    </svg></button>
+                                <button class="text-gray-400 hover:text-gray-600 tooltip-btn"
+                                    data-tooltip="More options" aria-label="More options" tabindex="0"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none">
+                                        <path
+                                            d="M4.99992 11.6667C4.54159 11.6667 4.14922 11.5035 3.82284 11.1771C3.49645 10.8507 3.33325 10.4584 3.33325 10C3.33325 9.54171 3.49645 9.14935 3.82284 8.82296C4.14922 8.49657 4.54159 8.33337 4.99992 8.33337C5.45825 8.33337 5.85061 8.49657 6.177 8.82296C6.50339 9.14935 6.66658 9.54171 6.66658 10C6.66658 10.4584 6.50339 10.8507 6.177 11.1771C5.85061 11.5035 5.45825 11.6667 4.99992 11.6667ZM9.99992 11.6667C9.54158 11.6667 9.14922 11.5035 8.82283 11.1771C8.49645 10.8507 8.33325 10.4584 8.33325 10C8.33325 9.54171 8.49645 9.14935 8.82283 8.82296C9.14922 8.49657 9.54158 8.33337 9.99992 8.33337C10.4583 8.33337 10.8506 8.49657 11.177 8.82296C11.5034 9.14935 11.6666 9.54171 11.6666 10C11.6666 10.4584 11.5034 10.8507 11.177 11.1771C10.8506 11.5035 10.4583 11.6667 9.99992 11.6667ZM14.9999 11.6667C14.5416 11.6667 14.1492 11.5035 13.8228 11.1771C13.4964 10.8507 13.3333 10.4584 13.3333 10C13.3333 9.54171 13.4964 9.14935 13.8228 8.82296C14.1492 8.49657 14.5416 8.33337 14.9999 8.33337C15.4583 8.33337 15.8506 8.49657 16.177 8.82296C16.5034 9.14935 16.6666 9.54171 16.6666 10C16.6666 10.4584 16.5034 10.8507 16.177 11.1771C15.8506 11.5035 15.4583 11.6667 14.9999 11.6667Z"
+                                            fill="black" fill-opacity="0.12" />
+                                    </svg></button>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="flex items-center gap-3 justify-end ">
-                        <button class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-<path d="M7.5 15C7.04167 15 6.64931 14.8368 6.32292 14.5104C5.99653 14.184 5.83333 13.7916 5.83333 13.3333V3.33329C5.83333 2.87496 5.99653 2.4826 6.32292 2.15621C6.64931 1.82982 7.04167 1.66663 7.5 1.66663H15C15.4583 1.66663 15.8507 1.82982 16.1771 2.15621C16.5035 2.4826 16.6667 2.87496 16.6667 3.33329V13.3333C16.6667 13.7916 16.5035 14.184 16.1771 14.5104C15.8507 14.8368 15.4583 15 15 15H7.5ZM7.5 13.3333H15V3.33329H7.5V13.3333ZM4.16667 18.3333C3.70833 18.3333 3.31597 18.1701 2.98958 17.8437C2.66319 17.5173 2.5 17.125 2.5 16.6666V4.99996H4.16667V16.6666H13.3333V18.3333H4.16667Z" fill="black" fill-opacity="0.12"/>
-</svg></button>
-                        <button class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-<g clip-path="url(#clip0_1_20921)">
-<path d="M15.0001 17.5H5.83342V6.66671L11.6667 0.833374L12.7084 1.87504C12.8056 1.97226 12.8855 2.10421 12.948 2.27087C13.0105 2.43754 13.0417 2.59726 13.0417 2.75004V3.04171L12.1251 6.66671H17.5001C17.9445 6.66671 18.3334 6.83337 18.6667 7.16671C19.0001 7.50004 19.1667 7.88893 19.1667 8.33337V10C19.1667 10.0973 19.1529 10.2014 19.1251 10.3125C19.0973 10.4237 19.0695 10.5278 19.0417 10.625L16.5417 16.5C16.4167 16.7778 16.2084 17.0139 15.9167 17.2084C15.6251 17.4028 15.3195 17.5 15.0001 17.5ZM7.50008 15.8334H15.0001L17.5001 10V8.33337H10.0001L11.1251 3.75004L7.50008 7.37504V15.8334ZM5.83342 6.66671V8.33337H3.33341V15.8334H5.83342V17.5H1.66675V6.66671H5.83342Z" fill="black" fill-opacity="0.12"/>
-</g>
-<defs>
-<clipPath id="clip0_1_20921">
-<rect width="20" height="20" fill="white"/>
-</clipPath>
-</defs>
-</svg></button>
-                        <button class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-<path d="M4.99992 2.5H14.1666V13.3333L8.33325 19.1667L7.29159 18.125C7.19436 18.0278 7.1145 17.8958 7.052 17.7292C6.9895 17.5625 6.95825 17.4028 6.95825 17.25V16.9583L7.87492 13.3333H2.49992C2.05547 13.3333 1.66659 13.1667 1.33325 12.8333C0.999919 12.5 0.833252 12.1111 0.833252 11.6667V10C0.833252 9.90278 0.847141 9.79861 0.874919 9.6875C0.902696 9.57639 0.930474 9.47222 0.958252 9.375L3.45825 3.5C3.58325 3.22222 3.79159 2.98611 4.08325 2.79167C4.37492 2.59722 4.68047 2.5 4.99992 2.5ZM12.4999 4.16667H4.99992L2.49992 10V11.6667H9.99992L8.87492 16.25L12.4999 12.625V4.16667ZM14.1666 13.3333V11.6667H16.6666V4.16667H14.1666V2.5H18.3333V13.3333H14.1666Z" fill="black" fill-opacity="0.12"/>
-</svg></button>
-                        <button class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-<path d="M6.66675 14.1666H13.3334V12.5H6.66675V14.1666ZM9.12508 11.6666L13.8334 6.95829L12.6459 5.81246L9.12508 9.33329L7.33341 7.54163L6.16675 8.70829L9.12508 11.6666ZM10.0001 18.3333C8.8473 18.3333 7.76397 18.1145 6.75008 17.677C5.73619 17.2395 4.85425 16.6458 4.10425 15.8958C3.35425 15.1458 2.7605 14.2638 2.323 13.25C1.8855 12.2361 1.66675 11.1527 1.66675 9.99996C1.66675 8.84718 1.8855 7.76385 2.323 6.74996C2.7605 5.73607 3.35425 4.85413 4.10425 4.10413C4.85425 3.35413 5.73619 2.76038 6.75008 2.32288C7.76397 1.88538 8.8473 1.66663 10.0001 1.66663C11.1529 1.66663 12.2362 1.88538 13.2501 2.32288C14.264 2.76038 15.1459 3.35413 15.8959 4.10413C16.6459 4.85413 17.2397 5.73607 17.6772 6.74996C18.1147 7.76385 18.3334 8.84718 18.3334 9.99996C18.3334 11.1527 18.1147 12.2361 17.6772 13.25C17.2397 14.2638 16.6459 15.1458 15.8959 15.8958C15.1459 16.6458 14.264 17.2395 13.2501 17.677C12.2362 18.1145 11.1529 18.3333 10.0001 18.3333ZM10.0001 16.6666C11.8612 16.6666 13.4376 16.0208 14.7292 14.7291C16.0209 13.4375 16.6667 11.8611 16.6667 9.99996C16.6667 8.13885 16.0209 6.56246 14.7292 5.27079C13.4376 3.97913 11.8612 3.33329 10.0001 3.33329C8.13897 3.33329 6.56258 3.97913 5.27091 5.27079C3.97925 6.56246 3.33341 8.13885 3.33341 9.99996C3.33341 11.8611 3.97925 13.4375 5.27091 14.7291C6.56258 16.0208 8.13897 16.6666 10.0001 16.6666Z" fill="black" fill-opacity="0.12"/>
-</svg></button>
-                        <button class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-<path d="M4.99992 11.6667C4.54159 11.6667 4.14922 11.5035 3.82284 11.1771C3.49645 10.8507 3.33325 10.4584 3.33325 10C3.33325 9.54171 3.49645 9.14935 3.82284 8.82296C4.14922 8.49657 4.54159 8.33337 4.99992 8.33337C5.45825 8.33337 5.85061 8.49657 6.177 8.82296C6.50339 9.14935 6.66658 9.54171 6.66658 10C6.66658 10.4584 6.50339 10.8507 6.177 11.1771C5.85061 11.5035 5.45825 11.6667 4.99992 11.6667ZM9.99992 11.6667C9.54158 11.6667 9.14922 11.5035 8.82283 11.1771C8.49645 10.8507 8.33325 10.4584 8.33325 10C8.33325 9.54171 8.49645 9.14935 8.82283 8.82296C9.14922 8.49657 9.54158 8.33337 9.99992 8.33337C10.4583 8.33337 10.8506 8.49657 11.177 8.82296C11.5034 9.14935 11.6666 9.54171 11.6666 10C11.6666 10.4584 11.5034 10.8507 11.177 11.1771C10.8506 11.5035 10.4583 11.6667 9.99992 11.6667ZM14.9999 11.6667C14.5416 11.6667 14.1492 11.5035 13.8228 11.1771C13.4964 10.8507 13.3333 10.4584 13.3333 10C13.3333 9.54171 13.4964 9.14935 13.8228 8.82296C14.1492 8.49657 14.5416 8.33337 14.9999 8.33337C15.4583 8.33337 15.8506 8.49657 16.177 8.82296C16.5034 9.14935 16.6666 9.54171 16.6666 10C16.6666 10.4584 16.5034 10.8507 16.177 11.1771C15.8506 11.5035 15.4583 11.6667 14.9999 11.6667Z" fill="black" fill-opacity="0.12"/>
-</svg></button>
-                    </div>
-                    <!-- User Message -->
-                    <div class="flex justify-end">
-                        <div class="chat-message-user bg-[#EBFFEB] border border-[#B1E5B1] px-4 py-3 max-w-[65%]">
-                            <p class="text-lg text-primary leading-relaxed">I guess I'm just afraid of making the
-                                wrong choice again.</p>
-                        </div>
-                    </div>
-
-                    <!-- Persona Message -->
-                    <div class="flex gap-3 items-start px-4 py-4 rounded-[12px] border-[#EDFAEE] chat-message-persona ">
-                        <img src="/public/forever-voice/my-persona.svg" alt="Persona"
-                            class="w-9 h-9 rounded-full object-cover flex-shrink-0 mt-1">
-                        <div class="flex-1">
-                            <div class=" px-4 py-3 inline-block ">
-                                <p class="text-lg text-primary leading-relaxed">There's rarely a "wrong" choice —
-                                    only choices that teach you something. Think about it: every step you've taken, even
-                                    the tough ones, shaped who you are today.</p>
+                        <div class="each_chat_group space-y-4 max-w-[855px] mx-auto"> <!-- User Message -->
+                            <div class="flex justify-end">
+                                <div
+                                    class="chat-message-user bg-[#EBFFEB] border border-[#B1E5B1] px-4 py-3 max-w-[65%]">
+                                    <p class="text-lg text-primary leading-relaxed">I guess I'm just afraid of making
+                                        the
+                                        wrong choice again.</p>
+                                </div>
                             </div>
-                            
-                        </div>
-                    </div>
-                     <div class="flex items-center gap-3 justify-end ">
-                        <button class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-<path d="M7.5 15C7.04167 15 6.64931 14.8368 6.32292 14.5104C5.99653 14.184 5.83333 13.7916 5.83333 13.3333V3.33329C5.83333 2.87496 5.99653 2.4826 6.32292 2.15621C6.64931 1.82982 7.04167 1.66663 7.5 1.66663H15C15.4583 1.66663 15.8507 1.82982 16.1771 2.15621C16.5035 2.4826 16.6667 2.87496 16.6667 3.33329V13.3333C16.6667 13.7916 16.5035 14.184 16.1771 14.5104C15.8507 14.8368 15.4583 15 15 15H7.5ZM7.5 13.3333H15V3.33329H7.5V13.3333ZM4.16667 18.3333C3.70833 18.3333 3.31597 18.1701 2.98958 17.8437C2.66319 17.5173 2.5 17.125 2.5 16.6666V4.99996H4.16667V16.6666H13.3333V18.3333H4.16667Z" fill="black" fill-opacity="0.12"/>
-</svg></button>
-                        <button class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-<g clip-path="url(#clip0_1_20921)">
-<path d="M15.0001 17.5H5.83342V6.66671L11.6667 0.833374L12.7084 1.87504C12.8056 1.97226 12.8855 2.10421 12.948 2.27087C13.0105 2.43754 13.0417 2.59726 13.0417 2.75004V3.04171L12.1251 6.66671H17.5001C17.9445 6.66671 18.3334 6.83337 18.6667 7.16671C19.0001 7.50004 19.1667 7.88893 19.1667 8.33337V10C19.1667 10.0973 19.1529 10.2014 19.1251 10.3125C19.0973 10.4237 19.0695 10.5278 19.0417 10.625L16.5417 16.5C16.4167 16.7778 16.2084 17.0139 15.9167 17.2084C15.6251 17.4028 15.3195 17.5 15.0001 17.5ZM7.50008 15.8334H15.0001L17.5001 10V8.33337H10.0001L11.1251 3.75004L7.50008 7.37504V15.8334ZM5.83342 6.66671V8.33337H3.33341V15.8334H5.83342V17.5H1.66675V6.66671H5.83342Z" fill="black" fill-opacity="0.12"/>
-</g>
-<defs>
-<clipPath id="clip0_1_20921">
-<rect width="20" height="20" fill="white"/>
-</clipPath>
-</defs>
-</svg></button>
-                        <button class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-<path d="M4.99992 2.5H14.1666V13.3333L8.33325 19.1667L7.29159 18.125C7.19436 18.0278 7.1145 17.8958 7.052 17.7292C6.9895 17.5625 6.95825 17.4028 6.95825 17.25V16.9583L7.87492 13.3333H2.49992C2.05547 13.3333 1.66659 13.1667 1.33325 12.8333C0.999919 12.5 0.833252 12.1111 0.833252 11.6667V10C0.833252 9.90278 0.847141 9.79861 0.874919 9.6875C0.902696 9.57639 0.930474 9.47222 0.958252 9.375L3.45825 3.5C3.58325 3.22222 3.79159 2.98611 4.08325 2.79167C4.37492 2.59722 4.68047 2.5 4.99992 2.5ZM12.4999 4.16667H4.99992L2.49992 10V11.6667H9.99992L8.87492 16.25L12.4999 12.625V4.16667ZM14.1666 13.3333V11.6667H16.6666V4.16667H14.1666V2.5H18.3333V13.3333H14.1666Z" fill="black" fill-opacity="0.12"/>
-</svg></button>
-                        <button class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-<path d="M6.66675 14.1666H13.3334V12.5H6.66675V14.1666ZM9.12508 11.6666L13.8334 6.95829L12.6459 5.81246L9.12508 9.33329L7.33341 7.54163L6.16675 8.70829L9.12508 11.6666ZM10.0001 18.3333C8.8473 18.3333 7.76397 18.1145 6.75008 17.677C5.73619 17.2395 4.85425 16.6458 4.10425 15.8958C3.35425 15.1458 2.7605 14.2638 2.323 13.25C1.8855 12.2361 1.66675 11.1527 1.66675 9.99996C1.66675 8.84718 1.8855 7.76385 2.323 6.74996C2.7605 5.73607 3.35425 4.85413 4.10425 4.10413C4.85425 3.35413 5.73619 2.76038 6.75008 2.32288C7.76397 1.88538 8.8473 1.66663 10.0001 1.66663C11.1529 1.66663 12.2362 1.88538 13.2501 2.32288C14.264 2.76038 15.1459 3.35413 15.8959 4.10413C16.6459 4.85413 17.2397 5.73607 17.6772 6.74996C18.1147 7.76385 18.3334 8.84718 18.3334 9.99996C18.3334 11.1527 18.1147 12.2361 17.6772 13.25C17.2397 14.2638 16.6459 15.1458 15.8959 15.8958C15.1459 16.6458 14.264 17.2395 13.2501 17.677C12.2362 18.1145 11.1529 18.3333 10.0001 18.3333ZM10.0001 16.6666C11.8612 16.6666 13.4376 16.0208 14.7292 14.7291C16.0209 13.4375 16.6667 11.8611 16.6667 9.99996C16.6667 8.13885 16.0209 6.56246 14.7292 5.27079C13.4376 3.97913 11.8612 3.33329 10.0001 3.33329C8.13897 3.33329 6.56258 3.97913 5.27091 5.27079C3.97925 6.56246 3.33341 8.13885 3.33341 9.99996C3.33341 11.8611 3.97925 13.4375 5.27091 14.7291C6.56258 16.0208 8.13897 16.6666 10.0001 16.6666Z" fill="black" fill-opacity="0.12"/>
-</svg></button>
-                        <button class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-<path d="M4.99992 11.6667C4.54159 11.6667 4.14922 11.5035 3.82284 11.1771C3.49645 10.8507 3.33325 10.4584 3.33325 10C3.33325 9.54171 3.49645 9.14935 3.82284 8.82296C4.14922 8.49657 4.54159 8.33337 4.99992 8.33337C5.45825 8.33337 5.85061 8.49657 6.177 8.82296C6.50339 9.14935 6.66658 9.54171 6.66658 10C6.66658 10.4584 6.50339 10.8507 6.177 11.1771C5.85061 11.5035 5.45825 11.6667 4.99992 11.6667ZM9.99992 11.6667C9.54158 11.6667 9.14922 11.5035 8.82283 11.1771C8.49645 10.8507 8.33325 10.4584 8.33325 10C8.33325 9.54171 8.49645 9.14935 8.82283 8.82296C9.14922 8.49657 9.54158 8.33337 9.99992 8.33337C10.4583 8.33337 10.8506 8.49657 11.177 8.82296C11.5034 9.14935 11.6666 9.54171 11.6666 10C11.6666 10.4584 11.5034 10.8507 11.177 11.1771C10.8506 11.5035 10.4583 11.6667 9.99992 11.6667ZM14.9999 11.6667C14.5416 11.6667 14.1492 11.5035 13.8228 11.1771C13.4964 10.8507 13.3333 10.4584 13.3333 10C13.3333 9.54171 13.4964 9.14935 13.8228 8.82296C14.1492 8.49657 14.5416 8.33337 14.9999 8.33337C15.4583 8.33337 15.8506 8.49657 16.177 8.82296C16.5034 9.14935 16.6666 9.54171 16.6666 10C16.6666 10.4584 16.5034 10.8507 16.177 11.1771C15.8506 11.5035 15.4583 11.6667 14.9999 11.6667Z" fill="black" fill-opacity="0.12"/>
-</svg></button>
-                    </div>
 
-                    <!-- User Message -->
-                    <div class="flex justify-end">
-                        <div class="chat-message-user bg-[#EBFFEB] border border-[#B1E5B1] px-4 py-3 ">
-                            <p class="text-lg text-primary leading-relaxed">That helps... but I also feel pressure
-                                to make the perfect decision. Like time's running out.</p>
-                        </div>
-                    </div>
+                            <!-- Persona Message -->
+                            <div
+                                class="flex gap-3 items-start px-4 py-4 rounded-[12px] border-[#EDFAEE] chat-message-persona ">
+                                <img src="./public/forever-voice/my-persona.svg" alt="Persona"
+                                    class="w-9 h-9 rounded-full object-cover flex-shrink-0 mt-1">
+                                <div class="flex-1">
+                                    <div class=" px-4 py-3 inline-block ">
+                                        <p class="text-lg text-primary leading-relaxed">There's rarely a "wrong" choice
+                                            —
+                                            only choices that teach you something. Think about it: every step you've
+                                            taken,
+                                            even
+                                            the tough ones, shaped who you are today.</p>
+                                    </div>
 
-                    <!-- Persona Message -->
-                    <div class="flex gap-3 items-start px-4 py-4 rounded-[12px] border-[#EDFAEE] chat-message-persona ">
-                        <img src="/public/forever-voice/my-persona.svg" alt="Persona"
-                            class="w-9 h-9 rounded-full object-cover flex-shrink-0 mt-1">
-                        <div class="flex-1">
-                            <div class=" px-4 py-3 inline-block ">
-                                <p class="text-lg text-primary leading-relaxed">Time isn't running out.</p>
+                                </div>
                             </div>
-                            
+                            <div class="flex items-center gap-3 justify-end ">
+                                <button class="text-gray-400 hover:text-gray-600 tooltip-btn"
+                                    data-tooltip="Copy message" aria-label="Copy message" tabindex="0"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none">
+                                        <path
+                                            d="M7.5 15C7.04167 15 6.64931 14.8368 6.32292 14.5104C5.99653 14.184 5.83333 13.7916 5.83333 13.3333V3.33329C5.83333 2.87496 5.99653 2.4826 6.32292 2.15621C6.64931 1.82982 7.04167 1.66663 7.5 1.66663H15C15.4583 1.66663 15.8507 1.82982 16.1771 2.15621C16.5035 2.4826 16.6667 2.87496 16.6667 3.33329V13.3333C16.6667 13.7916 16.5035 14.184 16.1771 14.5104C15.8507 14.8368 15.4583 15 15 15H7.5ZM7.5 13.3333H15V3.33329H7.5V13.3333ZM4.16667 18.3333C3.70833 18.3333 3.31597 18.1701 2.98958 17.8437C2.66319 17.5173 2.5 17.125 2.5 16.6666V4.99996H4.16667V16.6666H13.3333V18.3333H4.16667Z"
+                                            fill="black" fill-opacity="0.12" />
+                                    </svg></button>
+                                <button class="text-gray-400 hover:text-gray-600 tooltip-btn" data-tooltip="Save"
+                                    aria-label="Save" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                        height="20" viewBox="0 0 20 20" fill="none">
+                                        <g clip-path="url(#clip0_1_20921)">
+                                            <path
+                                                d="M15.0001 17.5H5.83342V6.66671L11.6667 0.833374L12.7084 1.87504C12.8056 1.97226 12.8855 2.10421 12.948 2.27087C13.0105 2.43754 13.0417 2.59726 13.0417 2.75004V3.04171L12.1251 6.66671H17.5001C17.9445 6.66671 18.3334 6.83337 18.6667 7.16671C19.0001 7.50004 19.1667 7.88893 19.1667 8.33337V10C19.1667 10.0973 19.1529 10.2014 19.1251 10.3125C19.0973 10.4237 19.0695 10.5278 19.0417 10.625L16.5417 16.5C16.4167 16.7778 16.2084 17.0139 15.9167 17.2084C15.6251 17.4028 15.3195 17.5 15.0001 17.5ZM7.50008 15.8334H15.0001L17.5001 10V8.33337H10.0001L11.1251 3.75004L7.50008 7.37504V15.8334ZM5.83342 6.66671V8.33337H3.33341V15.8334H5.83342V17.5H1.66675V6.66671H5.83342Z"
+                                                fill="black" fill-opacity="0.12" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_1_20921">
+                                                <rect width="20" height="20" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg></button>
+                                <button class="text-gray-400 hover:text-gray-600 tooltip-btn" data-tooltip="Share"
+                                    aria-label="Share" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                        height="20" viewBox="0 0 20 20" fill="none">
+                                        <path
+                                            d="M4.99992 2.5H14.1666V13.3333L8.33325 19.1667L7.29159 18.125C7.19436 18.0278 7.1145 17.8958 7.052 17.7292C6.9895 17.5625 6.95825 17.4028 6.95825 17.25V16.9583L7.87492 13.3333H2.49992C2.05547 13.3333 1.66659 13.1667 1.33325 12.8333C0.999919 12.5 0.833252 12.1111 0.833252 11.6667V10C0.833252 9.90278 0.847141 9.79861 0.874919 9.6875C0.902696 9.57639 0.930474 9.47222 0.958252 9.375L3.45825 3.5C3.58325 3.22222 3.79159 2.98611 4.08325 2.79167C4.37492 2.59722 4.68047 2.5 4.99992 2.5ZM12.4999 4.16667H4.99992L2.49992 10V11.6667H9.99992L8.87492 16.25L12.4999 12.625V4.16667ZM14.1666 13.3333V11.6667H16.6666V4.16667H14.1666V2.5H18.3333V13.3333H14.1666Z"
+                                            fill="black" fill-opacity="0.12" />
+                                    </svg></button>
+                                <button class="text-gray-400 hover:text-gray-600 tooltip-btn" data-tooltip="Translate"
+                                    aria-label="Translate" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg"
+                                        width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path
+                                            d="M6.66675 14.1666H13.3334V12.5H6.66675V14.1666ZM9.12508 11.6666L13.8334 6.95829L12.6459 5.81246L9.12508 9.33329L7.33341 7.54163L6.16675 8.70829L9.12508 11.6666ZM10.0001 18.3333C8.8473 18.3333 7.76397 18.1145 6.75008 17.677C5.73619 17.2395 4.85425 16.6458 4.10425 15.8958C3.35425 15.1458 2.7605 14.2638 2.323 13.25C1.8855 12.2361 1.66675 11.1527 1.66675 9.99996C1.66675 8.84718 1.8855 7.76385 2.323 6.74996C2.7605 5.73607 3.35425 4.85413 4.10425 4.10413C4.85425 3.35413 5.73619 2.76038 6.75008 2.32288C7.76397 1.88538 8.8473 1.66663 10.0001 1.66663C11.1529 1.66663 12.2362 1.88538 13.2501 2.32288C14.264 2.76038 15.1459 3.35413 15.8959 4.10413C16.6459 4.85413 17.2397 5.73607 17.6772 6.74996C18.1147 7.76385 18.3334 8.84718 18.3334 9.99996C18.3334 11.1527 18.1147 12.2361 17.6772 13.25C17.2397 14.2638 16.6459 15.1458 15.8959 15.8958C15.1459 16.6458 14.264 17.2395 13.2501 17.677C12.2362 18.1145 11.1529 18.3333 10.0001 18.3333ZM10.0001 16.6666C11.8612 16.6666 13.4376 16.0208 14.7292 14.7291C16.0209 13.4375 16.6667 11.8611 16.6667 9.99996C16.6667 8.13885 16.0209 6.56246 14.7292 5.27079C13.4376 3.97913 11.8612 3.33329 10.0001 3.33329C8.13897 3.33329 6.56258 3.97913 5.27091 5.27079C3.97925 6.56246 3.33341 8.13885 3.33341 9.99996C3.33341 11.8611 3.97925 13.4375 5.27091 14.7291C6.56258 16.0208 8.13897 16.6666 10.0001 16.6666Z"
+                                            fill="black" fill-opacity="0.12" />
+                                    </svg></button>
+                                <button class="text-gray-400 hover:text-gray-600 tooltip-btn"
+                                    data-tooltip="More options" aria-label="More options" tabindex="0"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none">
+                                        <path
+                                            d="M4.99992 11.6667C4.54159 11.6667 4.14922 11.5035 3.82284 11.1771C3.49645 10.8507 3.33325 10.4584 3.33325 10C3.33325 9.54171 3.49645 9.14935 3.82284 8.82296C4.14922 8.49657 4.54159 8.33337 4.99992 8.33337C5.45825 8.33337 5.85061 8.49657 6.177 8.82296C6.50339 9.14935 6.66658 9.54171 6.66658 10C6.66658 10.4584 6.50339 10.8507 6.177 11.1771C5.85061 11.5035 5.45825 11.6667 4.99992 11.6667ZM9.99992 11.6667C9.54158 11.6667 9.14922 11.5035 8.82283 11.1771C8.49645 10.8507 8.33325 10.4584 8.33325 10C8.33325 9.54171 8.49645 9.14935 8.82283 8.82296C9.14922 8.49657 9.54158 8.33337 9.99992 8.33337C10.4583 8.33337 10.8506 8.49657 11.177 8.82296C11.5034 9.14935 11.6666 9.54171 11.6666 10C11.6666 10.4584 11.5034 10.8507 11.177 11.1771C10.8506 11.5035 10.4583 11.6667 9.99992 11.6667ZM14.9999 11.6667C14.5416 11.6667 14.1492 11.5035 13.8228 11.1771C13.4964 10.8507 13.3333 10.4584 13.3333 10C13.3333 9.54171 13.4964 9.14935 13.8228 8.82296C14.1492 8.49657 14.5416 8.33337 14.9999 8.33337C15.4583 8.33337 15.8506 8.49657 16.177 8.82296C16.5034 9.14935 16.6666 9.54171 16.6666 10C16.6666 10.4584 16.5034 10.8507 16.177 11.1771C15.8506 11.5035 15.4583 11.6667 14.9999 11.6667Z"
+                                            fill="black" fill-opacity="0.12" />
+                                    </svg></button>
+                            </div>
                         </div>
-                    </div>
-                     <div class="flex items-center gap-3 justify-end pb-9 ">
-                        <button class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-<path d="M7.5 15C7.04167 15 6.64931 14.8368 6.32292 14.5104C5.99653 14.184 5.83333 13.7916 5.83333 13.3333V3.33329C5.83333 2.87496 5.99653 2.4826 6.32292 2.15621C6.64931 1.82982 7.04167 1.66663 7.5 1.66663H15C15.4583 1.66663 15.8507 1.82982 16.1771 2.15621C16.5035 2.4826 16.6667 2.87496 16.6667 3.33329V13.3333C16.6667 13.7916 16.5035 14.184 16.1771 14.5104C15.8507 14.8368 15.4583 15 15 15H7.5ZM7.5 13.3333H15V3.33329H7.5V13.3333ZM4.16667 18.3333C3.70833 18.3333 3.31597 18.1701 2.98958 17.8437C2.66319 17.5173 2.5 17.125 2.5 16.6666V4.99996H4.16667V16.6666H13.3333V18.3333H4.16667Z" fill="black" fill-opacity="0.12"/>
-</svg></button>
-                        <button class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-<g clip-path="url(#clip0_1_20921)">
-<path d="M15.0001 17.5H5.83342V6.66671L11.6667 0.833374L12.7084 1.87504C12.8056 1.97226 12.8855 2.10421 12.948 2.27087C13.0105 2.43754 13.0417 2.59726 13.0417 2.75004V3.04171L12.1251 6.66671H17.5001C17.9445 6.66671 18.3334 6.83337 18.6667 7.16671C19.0001 7.50004 19.1667 7.88893 19.1667 8.33337V10C19.1667 10.0973 19.1529 10.2014 19.1251 10.3125C19.0973 10.4237 19.0695 10.5278 19.0417 10.625L16.5417 16.5C16.4167 16.7778 16.2084 17.0139 15.9167 17.2084C15.6251 17.4028 15.3195 17.5 15.0001 17.5ZM7.50008 15.8334H15.0001L17.5001 10V8.33337H10.0001L11.1251 3.75004L7.50008 7.37504V15.8334ZM5.83342 6.66671V8.33337H3.33341V15.8334H5.83342V17.5H1.66675V6.66671H5.83342Z" fill="black" fill-opacity="0.12"/>
-</g>
-<defs>
-<clipPath id="clip0_1_20921">
-<rect width="20" height="20" fill="white"/>
-</clipPath>
-</defs>
-</svg></button>
-                        <button class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-<path d="M4.99992 2.5H14.1666V13.3333L8.33325 19.1667L7.29159 18.125C7.19436 18.0278 7.1145 17.8958 7.052 17.7292C6.9895 17.5625 6.95825 17.4028 6.95825 17.25V16.9583L7.87492 13.3333H2.49992C2.05547 13.3333 1.66659 13.1667 1.33325 12.8333C0.999919 12.5 0.833252 12.1111 0.833252 11.6667V10C0.833252 9.90278 0.847141 9.79861 0.874919 9.6875C0.902696 9.57639 0.930474 9.47222 0.958252 9.375L3.45825 3.5C3.58325 3.22222 3.79159 2.98611 4.08325 2.79167C4.37492 2.59722 4.68047 2.5 4.99992 2.5ZM12.4999 4.16667H4.99992L2.49992 10V11.6667H9.99992L8.87492 16.25L12.4999 12.625V4.16667ZM14.1666 13.3333V11.6667H16.6666V4.16667H14.1666V2.5H18.3333V13.3333H14.1666Z" fill="black" fill-opacity="0.12"/>
-</svg></button>
-                        <button class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-<path d="M6.66675 14.1666H13.3334V12.5H6.66675V14.1666ZM9.12508 11.6666L13.8334 6.95829L12.6459 5.81246L9.12508 9.33329L7.33341 7.54163L6.16675 8.70829L9.12508 11.6666ZM10.0001 18.3333C8.8473 18.3333 7.76397 18.1145 6.75008 17.677C5.73619 17.2395 4.85425 16.6458 4.10425 15.8958C3.35425 15.1458 2.7605 14.2638 2.323 13.25C1.8855 12.2361 1.66675 11.1527 1.66675 9.99996C1.66675 8.84718 1.8855 7.76385 2.323 6.74996C2.7605 5.73607 3.35425 4.85413 4.10425 4.10413C4.85425 3.35413 5.73619 2.76038 6.75008 2.32288C7.76397 1.88538 8.8473 1.66663 10.0001 1.66663C11.1529 1.66663 12.2362 1.88538 13.2501 2.32288C14.264 2.76038 15.1459 3.35413 15.8959 4.10413C16.6459 4.85413 17.2397 5.73607 17.6772 6.74996C18.1147 7.76385 18.3334 8.84718 18.3334 9.99996C18.3334 11.1527 18.1147 12.2361 17.6772 13.25C17.2397 14.2638 16.6459 15.1458 15.8959 15.8958C15.1459 16.6458 14.264 17.2395 13.2501 17.677C12.2362 18.1145 11.1529 18.3333 10.0001 18.3333ZM10.0001 16.6666C11.8612 16.6666 13.4376 16.0208 14.7292 14.7291C16.0209 13.4375 16.6667 11.8611 16.6667 9.99996C16.6667 8.13885 16.0209 6.56246 14.7292 5.27079C13.4376 3.97913 11.8612 3.33329 10.0001 3.33329C8.13897 3.33329 6.56258 3.97913 5.27091 5.27079C3.97925 6.56246 3.33341 8.13885 3.33341 9.99996C3.33341 11.8611 3.97925 13.4375 5.27091 14.7291C6.56258 16.0208 8.13897 16.6666 10.0001 16.6666Z" fill="black" fill-opacity="0.12"/>
-</svg></button>
-                        <button class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-<path d="M4.99992 11.6667C4.54159 11.6667 4.14922 11.5035 3.82284 11.1771C3.49645 10.8507 3.33325 10.4584 3.33325 10C3.33325 9.54171 3.49645 9.14935 3.82284 8.82296C4.14922 8.49657 4.54159 8.33337 4.99992 8.33337C5.45825 8.33337 5.85061 8.49657 6.177 8.82296C6.50339 9.14935 6.66658 9.54171 6.66658 10C6.66658 10.4584 6.50339 10.8507 6.177 11.1771C5.85061 11.5035 5.45825 11.6667 4.99992 11.6667ZM9.99992 11.6667C9.54158 11.6667 9.14922 11.5035 8.82283 11.1771C8.49645 10.8507 8.33325 10.4584 8.33325 10C8.33325 9.54171 8.49645 9.14935 8.82283 8.82296C9.14922 8.49657 9.54158 8.33337 9.99992 8.33337C10.4583 8.33337 10.8506 8.49657 11.177 8.82296C11.5034 9.14935 11.6666 9.54171 11.6666 10C11.6666 10.4584 11.5034 10.8507 11.177 11.1771C10.8506 11.5035 10.4583 11.6667 9.99992 11.6667ZM14.9999 11.6667C14.5416 11.6667 14.1492 11.5035 13.8228 11.1771C13.4964 10.8507 13.3333 10.4584 13.3333 10C13.3333 9.54171 13.4964 9.14935 13.8228 8.82296C14.1492 8.49657 14.5416 8.33337 14.9999 8.33337C15.4583 8.33337 15.8506 8.49657 16.177 8.82296C16.5034 9.14935 16.6666 9.54171 16.6666 10C16.6666 10.4584 16.5034 10.8507 16.177 11.1771C15.8506 11.5035 15.4583 11.6667 14.9999 11.6667Z" fill="black" fill-opacity="0.12"/>
-</svg></button>
-                    </div>
+                        <div class="each_chat_group space-y-4 max-w-[855px] mx-auto"> <!-- User Message -->
+                            <div class="flex justify-end">
+                                <div class="chat-message-user bg-[#EBFFEB] border border-[#B1E5B1] px-4 py-3 ">
+                                    <p class="text-lg text-primary leading-relaxed">That helps... but I also feel
+                                        pressure
+                                        to make the perfect decision. Like time's running out.</p>
+                                </div>
+                            </div>
 
+                            <!-- Persona Message -->
+                            <div
+                                class="flex gap-3 items-start px-4 py-4 rounded-[12px] border-[#EDFAEE] chat-message-persona ">
+                                <img src="./public/forever-voice/my-persona.svg" alt="Persona"
+                                    class="w-9 h-9 rounded-full object-cover flex-shrink-0 mt-1">
+                                <div class="flex-1">
+                                    <div class=" px-4 py-3 inline-block ">
+                                        <p class="text-lg text-primary leading-relaxed">Time isn't running out.</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 justify-end pb-9 ">
+                                <button class="text-gray-400 hover:text-gray-600 tooltip-btn"
+                                    data-tooltip="Copy message" aria-label="Copy message" tabindex="0"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none">
+                                        <path
+                                            d="M7.5 15C7.04167 15 6.64931 14.8368 6.32292 14.5104C5.99653 14.184 5.83333 13.7916 5.83333 13.3333V3.33329C5.83333 2.87496 5.99653 2.4826 6.32292 2.15621C6.64931 1.82982 7.04167 1.66663 7.5 1.66663H15C15.4583 1.66663 15.8507 1.82982 16.1771 2.15621C16.5035 2.4826 16.6667 2.87496 16.6667 3.33329V13.3333C16.6667 13.7916 16.5035 14.184 16.1771 14.5104C15.8507 14.8368 15.4583 15 15 15H7.5ZM7.5 13.3333H15V3.33329H7.5V13.3333ZM4.16667 18.3333C3.70833 18.3333 3.31597 18.1701 2.98958 17.8437C2.66319 17.5173 2.5 17.125 2.5 16.6666V4.99996H4.16667V16.6666H13.3333V18.3333H4.16667Z"
+                                            fill="black" fill-opacity="0.12" />
+                                    </svg></button>
+                                <button class="text-gray-400 hover:text-gray-600 tooltip-btn" data-tooltip="Save"
+                                    aria-label="Save" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                        height="20" viewBox="0 0 20 20" fill="none">
+                                        <g clip-path="url(#clip0_1_20921)">
+                                            <path
+                                                d="M15.0001 17.5H5.83342V6.66671L11.6667 0.833374L12.7084 1.87504C12.8056 1.97226 12.8855 2.10421 12.948 2.27087C13.0105 2.43754 13.0417 2.59726 13.0417 2.75004V3.04171L12.1251 6.66671H17.5001C17.9445 6.66671 18.3334 6.83337 18.6667 7.16671C19.0001 7.50004 19.1667 7.88893 19.1667 8.33337V10C19.1667 10.0973 19.1529 10.2014 19.1251 10.3125C19.0973 10.4237 19.0695 10.5278 19.0417 10.625L16.5417 16.5C16.4167 16.7778 16.2084 17.0139 15.9167 17.2084C15.6251 17.4028 15.3195 17.5 15.0001 17.5ZM7.50008 15.8334H15.0001L17.5001 10V8.33337H10.0001L11.1251 3.75004L7.50008 7.37504V15.8334ZM5.83342 6.66671V8.33337H3.33341V15.8334H5.83342V17.5H1.66675V6.66671H5.83342Z"
+                                                fill="black" fill-opacity="0.12" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_1_20921">
+                                                <rect width="20" height="20" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg></button>
+                                <button class="text-gray-400 hover:text-gray-600 tooltip-btn" data-tooltip="Share"
+                                    aria-label="Share" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                        height="20" viewBox="0 0 20 20" fill="none">
+                                        <path
+                                            d="M4.99992 2.5H14.1666V13.3333L8.33325 19.1667L7.29159 18.125C7.19436 18.0278 7.1145 17.8958 7.052 17.7292C6.9895 17.5625 6.95825 17.4028 6.95825 17.25V16.9583L7.87492 13.3333H2.49992C2.05547 13.3333 1.66659 13.1667 1.33325 12.8333C0.999919 12.5 0.833252 12.1111 0.833252 11.6667V10C0.833252 9.90278 0.847141 9.79861 0.874919 9.6875C0.902696 9.57639 0.930474 9.47222 0.958252 9.375L3.45825 3.5C3.58325 3.22222 3.79159 2.98611 4.08325 2.79167C4.37492 2.59722 4.68047 2.5 4.99992 2.5ZM12.4999 4.16667H4.99992L2.49992 10V11.6667H9.99992L8.87492 16.25L12.4999 12.625V4.16667ZM14.1666 13.3333V11.6667H16.6666V4.16667H14.1666V2.5H18.3333V13.3333H14.1666Z"
+                                            fill="black" fill-opacity="0.12" />
+                                    </svg></button>
+                                <button class="text-gray-400 hover:text-gray-600 tooltip-btn" data-tooltip="Translate"
+                                    aria-label="Translate" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg"
+                                        width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path
+                                            d="M6.66675 14.1666H13.3334V12.5H6.66675V14.1666ZM9.12508 11.6666L13.8334 6.95829L12.6459 5.81246L9.12508 9.33329L7.33341 7.54163L6.16675 8.70829L9.12508 11.6666ZM10.0001 18.3333C8.8473 18.3333 7.76397 18.1145 6.75008 17.677C5.73619 17.2395 4.85425 16.6458 4.10425 15.8958C3.35425 15.1458 2.7605 14.2638 2.323 13.25C1.8855 12.2361 1.66675 11.1527 1.66675 9.99996C1.66675 8.84718 1.8855 7.76385 2.323 6.74996C2.7605 5.73607 3.35425 4.85413 4.10425 4.10413C4.85425 3.35413 5.73619 2.76038 6.75008 2.32288C7.76397 1.88538 8.8473 1.66663 10.0001 1.66663C11.1529 1.66663 12.2362 1.88538 13.2501 2.32288C14.264 2.76038 15.1459 3.35413 15.8959 4.10413C16.6459 4.85413 17.2397 5.73607 17.6772 6.74996C18.1147 7.76385 18.3334 8.84718 18.3334 9.99996C18.3334 11.1527 18.1147 12.2361 17.6772 13.25C17.2397 14.2638 16.6459 15.1458 15.8959 15.8958C15.1459 16.6458 14.264 17.2395 13.2501 17.677C12.2362 18.1145 11.1529 18.3333 10.0001 18.3333ZM10.0001 16.6666C11.8612 16.6666 13.4376 16.0208 14.7292 14.7291C16.0209 13.4375 16.6667 11.8611 16.6667 9.99996C16.6667 8.13885 16.0209 6.56246 14.7292 5.27079C13.4376 3.97913 11.8612 3.33329 10.0001 3.33329C8.13897 3.33329 6.56258 3.97913 5.27091 5.27079C3.97925 6.56246 3.33341 8.13885 3.33341 9.99996C3.33341 11.8611 3.97925 13.4375 5.27091 14.7291C6.56258 16.0208 8.13897 16.6666 10.0001 16.6666Z"
+                                            fill="black" fill-opacity="0.12" />
+                                    </svg></button>
+                                <button class="text-gray-400 hover:text-gray-600 tooltip-btn"
+                                    data-tooltip="More options" aria-label="More options" tabindex="0"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none">
+                                        <path
+                                            d="M4.99992 11.6667C4.54159 11.6667 4.14922 11.5035 3.82284 11.1771C3.49645 10.8507 3.33325 10.4584 3.33325 10C3.33325 9.54171 3.49645 9.14935 3.82284 8.82296C4.14922 8.49657 4.54159 8.33337 4.99992 8.33337C5.45825 8.33337 5.85061 8.49657 6.177 8.82296C6.50339 9.14935 6.66658 9.54171 6.66658 10C6.66658 10.4584 6.50339 10.8507 6.177 11.1771C5.85061 11.5035 5.45825 11.6667 4.99992 11.6667ZM9.99992 11.6667C9.54158 11.6667 9.14922 11.5035 8.82283 11.1771C8.49645 10.8507 8.33325 10.4584 8.33325 10C8.33325 9.54171 8.49645 9.14935 8.82283 8.82296C9.14922 8.49657 9.54158 8.33337 9.99992 8.33337C10.4583 8.33337 10.8506 8.49657 11.177 8.82296C11.5034 9.14935 11.6666 9.54171 11.6666 10C11.6666 10.4584 11.5034 10.8507 11.177 11.1771C10.8506 11.5035 10.4583 11.6667 9.99992 11.6667ZM14.9999 11.6667C14.5416 11.6667 14.1492 11.5035 13.8228 11.1771C13.4964 10.8507 13.3333 10.4584 13.3333 10C13.3333 9.54171 13.4964 9.14935 13.8228 8.82296C14.1492 8.49657 14.5416 8.33337 14.9999 8.33337C15.4583 8.33337 15.8506 8.49657 16.177 8.82296C16.5034 9.14935 16.6666 9.54171 16.6666 10C16.6666 10.4584 16.5034 10.8507 16.177 11.1771C15.8506 11.5035 15.4583 11.6667 14.9999 11.6667Z"
+                                            fill="black" fill-opacity="0.12" />
+                                    </svg></button>
+                            </div>
+                        </div>
+
+
+
+                    </div>
                 </div>
-               </div>
 
                 <!-- Input Area -->
                 <div class="bg-[#F4FAF499]">
                     <div class="border-t  border-gray-100 mx-auto  py-4">
-                    <div class="flex items-center px-20  gap-3">
-                        <input type="text" placeholder="Ask anything"
-                            class="flex-1 bg-gray-50 border border-gray-200  rounded-full px-4 h-[60px] placeholder:text-[#9A9B9A] placeholder:text-lg text-sm focus:outline-none focus:ring-2 focus:ring-leaves-green">
-                        <button
-                            class="w-[60px] h-[60px] bg-[#45A735] hover:bg-leaves-green/90 text-white rounded-full flex items-center justify-center transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
-<path d="M26.8662 4.30676L20.1123 24.7392C19.683 26.0519 18.4805 26.9552 17.102 26.9998H16.938C15.6403 27.0131 14.4571 26.2547 13.9277 25.0677L10.6472 17.716L19.4562 8.88624C19.7842 8.50343 19.7625 7.93105 19.4055 7.5748C19.0497 7.21737 18.478 7.1956 18.0957 7.52408L9.3059 16.3733L1.96351 13.0886C0.718875 12.5368 -0.0602566 11.2748 0.00365468 9.91282C0.0675753 8.55068 0.961275 7.36722 2.25296 6.93492L22.6595 0.172425C23.8438 -0.227296 25.1524 0.0806465 26.0366 0.964602C26.9195 1.84977 27.227 3.16001 26.8278 4.346L26.8662 4.30676Z" fill="white"/>
-</svg>
-                        </button>
+                        <div class="flex items-center px-20  gap-3">
+                            <input type="text" placeholder="Ask anything"
+                                class="flex-1 bg-gray-50 border border-gray-200  rounded-full px-4 h-[60px] placeholder:text-[#9A9B9A] placeholder:text-lg text-sm focus:outline-none focus:ring-2 focus:ring-leaves-green">
+                            <button
+                                class="w-[60px] h-[60px] bg-[#45A735] hover:bg-leaves-green/90 text-white rounded-full flex items-center justify-center transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27"
+                                    fill="none">
+                                    <path
+                                        d="M26.8662 4.30676L20.1123 24.7392C19.683 26.0519 18.4805 26.9552 17.102 26.9998H16.938C15.6403 27.0131 14.4571 26.2547 13.9277 25.0677L10.6472 17.716L19.4562 8.88624C19.7842 8.50343 19.7625 7.93105 19.4055 7.5748C19.0497 7.21737 18.478 7.1956 18.0957 7.52408L9.3059 16.3733L1.96351 13.0886C0.718875 12.5368 -0.0602566 11.2748 0.00365468 9.91282C0.0675753 8.55068 0.961275 7.36722 2.25296 6.93492L22.6595 0.172425C23.8438 -0.227296 25.1524 0.0806465 26.0366 0.964602C26.9195 1.84977 27.227 3.16001 26.8278 4.346L26.8662 4.30676Z"
+                                        fill="white" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-                </div>
                 </div>
 
             </div>
@@ -557,5 +859,38 @@
     </main>
 
 </body>
+
+<script>
+        (function () {
+            const items = Array.from(document.querySelectorAll('.persona-item'));
+            function closeMenus() {
+                document.querySelectorAll('.persona-menu').forEach(m => m.classList.add('hidden'));
+            }
+            items.forEach(item => {
+                const btn = item.querySelector('.persona-ellipsis');
+                const menu = item.querySelector('.persona-menu');
+                if (!btn || !menu) return;
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const isOpen = !menu.classList.contains('hidden');
+                    closeMenus();
+                    if (!isOpen) {
+                        item.classList.add('is-open');
+                        menu.classList.remove('hidden');
+                    }
+                });
+            });
+            document.addEventListener('click', function (e) {
+                if (!e.target.closest('.persona-item')) closeMenus();
+                document.querySelectorAll('.persona-item').forEach(i => i.classList.remove('is-open'));
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeMenus();
+                    document.querySelectorAll('.persona-item').forEach(i => i.classList.remove('is-open'));
+                }
+            });
+        })();
+</script>
 
 </html>
