@@ -6,11 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaves - Family Memories</title>
 
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -20,7 +15,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Aeonik', 'sans-serif'],
                     },
                     colors: {
                         'leaves-green': '#4A7A45',
@@ -45,9 +40,50 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        @font-face {
+            font-family: 'Aeonik';
+            src: url('./public/fonts/aeonik/Aeonik-Thin.otf') format('opentype');
+            font-weight: 200;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Aeonik';
+            src: url('./public/fonts/aeonik/Aeonik-Light.otf') format('opentype');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Aeonik';
+            src: url('./public/fonts/aeonik/Aeonik-Regular.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Aeonik';
+            src: url('./public/fonts/aeonik/Aeonik-Medium.otf') format('opentype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Aeonik';
+            src: url('./public/fonts/aeonik/Aeonik-Bold.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
         body {
             background-color: #F8F9FA;
             /* Light gray background from design */
+            font-family: 'Aeonik', sans-serif;
         }
 
         /* Custom Scrollbar for cleaner look */
@@ -122,9 +158,9 @@
         <div class="border-t-2 border-dotted border-leaves-border">
             <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
                 <nav
-                    class="flex items-center gap-8 text-center overflow-x-auto no-scrollbar py-3 text-sm font-medium text-gray-500">
+                    class="flex items-center gap-8 text-center overflow-x-auto no-scrollbar py-3 text-[15px]  font-light text-gray-500">
                     <a href="index.html"
-                        class="flex items-center w-[144px] justify-center gap-2 text-leaves-dark-green border-b-2 border-leaves-green-500 pb-3 -mb-3 whitespace-nowrap">
+                        class="flex items-center w-[144px] font-medium justify-center gap-2 text-leaves-dark-green border-b-2 border-leaves-green-500 pb-3 -mb-3 whitespace-nowrap">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                             <path
                                 d="M3.66699 19.25V8.25L11.0003 2.75L18.3337 8.25V19.25H12.8337V12.8333H9.16699V19.25H3.66699Z"
@@ -431,7 +467,7 @@
                             </button>
                         </div>
 
-                        <p class="text-[#474D4B] text-base font-medium leading-relaxed">
+                        <p class="text-[#474D4B] text-lg leading-normal">
                             Had the sweetest morning walk with <a href="#"
                                 class="text-blue-500 font-medium hover:underline">@Emma Anderson</a> today. She told me
                             about her new science project and her dreams of becoming a marine biologist.
@@ -510,7 +546,7 @@
                             </button>
                         </div>
 
-                        <p class="text-[#474D4B] text-base font-medium leading-relaxed">
+                        <p class="text-[#474D4B] text-lg leading-normal">
                             To all the grads today your future is wide open. Keep learning, stay curious, and don't
                             forget to celebrate the small wins along the way.
                         </p>
@@ -572,13 +608,14 @@
                             </div>
                             <div class="flex border-b pb-2 px-4 py-2  items-center justify-between gap-2">
                                 <div>
-                                    <h4 class="text-xs font-bold text-gray-900">Record a Childhood Memory</h4>
-                                    <p class="text-[10px] text-gray-500 truncate max-w-[120px]">Capture a meaningful
+                                    <h4 class="text-[15px] font-medium text-gray-900">Record a Childhood Memory</h4>
+                                    <p class="text-[10px] text-gray-500text-xs text-[#474D4B] line-clamp-1">Capture a
+                                        meaningful
                                         moment
                                         from your ea...</p>
                                 </div>
                                 <button
-                                    class="px-3 py-1 border border-gray-200 rounded text-[10px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Record
+                                    class="px-3 py-1 border border-gray-200 rounded text-[13px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Record
                                     Story</button>
                             </div>
                         </div>
@@ -591,13 +628,14 @@
                             </div>
                             <div class="flex border-b pb-2 py-2 px-4 items-center justify-between gap-2">
                                 <div>
-                                    <h4 class="text-xs font-bold text-gray-900">Add a New Life Milestone</h4>
-                                    <p class="text-[10px] text-gray-500 truncate max-w-[120px]">Log a recent achievement
+                                    <h4 class="text-[15px] font-medium text-gray-900">Add a New Life Milestone</h4>
+                                    <p class="text-[10px] text-gray-500text-xs text-[#474D4B] line-clamp-1">Log a recent
+                                        achievement
                                         or
                                         important ev...</p>
                                 </div>
                                 <button
-                                    class="px-3 py-1 border border-gray-200 rounded text-[10px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Add
+                                    class="px-3 py-1 border border-gray-200 rounded text-[13px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Add
                                     Milestone</button>
                             </div>
                         </div>
@@ -610,13 +648,14 @@
                             </div>
                             <div class="flex border-b pb-2 py-2 px-4 items-center justify-between gap-2">
                                 <div>
-                                    <h4 class="text-xs font-bold text-gray-900">Create a Legacy Letter</h4>
-                                    <p class="text-[10px] text-gray-500 truncate max-w-[120px]">Write a message for a
+                                    <h4 class="text-[15px] font-medium text-gray-900">Create a Legacy Letter</h4>
+                                    <p class="text-[10px] text-gray-500text-xs text-[#474D4B] line-clamp-1">Write a
+                                        message for a
                                         loved
                                         one to open later.</p>
                                 </div>
                                 <button
-                                    class="px-3 py-1 border border-gray-200 rounded text-[10px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Write
+                                    class="px-3 py-1 border border-gray-200 rounded text-[13px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Write
                                     Letter</button>
                             </div>
                         </div>
@@ -629,13 +668,14 @@
                             </div>
                             <div class="flex border-b pb-2 py-2 px-4 items-center justify-between gap-2">
                                 <div>
-                                    <h4 class="text-xs font-bold text-gray-900">Upload Family Photos</h4>
-                                    <p class="text-[10px] text-gray-500 truncate max-w-[120px]">Add recent photos to
+                                    <h4 class="text-[15px] font-medium text-gray-900">Upload Family Photos</h4>
+                                    <p class="text-[10px] text-gray-500text-xs text-[#474D4B] line-clamp-1">Add recent
+                                        photos to
                                         your
                                         family library.</p>
                                 </div>
                                 <button
-                                    class="px-3 py-1 border border-gray-200 rounded text-[10px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Upload</button>
+                                    class="px-3 py-1 border border-gray-200 rounded text-[13px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Upload</button>
                             </div>
                         </div>
 
@@ -647,13 +687,14 @@
                             </div>
                             <div class="flex border-b py-2 px-4 items-center pb-4 justify-between gap-2">
                                 <div>
-                                    <h4 class="text-xs font-bold text-gray-900">Update Your Life Timeline</h4>
-                                    <p class="text-[10px] text-gray-500 truncate max-w-[120px]">Add a new chapter to
+                                    <h4 class="text-[15px] font-medium text-gray-900">Update Your Life Timeline</h4>
+                                    <p class="text-[10px] text-gray-500text-xs text-[#474D4B] line-clamp-1">Add a new
+                                        chapter to
                                         your
                                         lifetime view.</p>
                                 </div>
                                 <button
-                                    class="px-3 py-1 border border-gray-200 rounded text-[10px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Update
+                                    class="px-3 py-1 border border-gray-200 rounded text-[13px] font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">Update
                                     Timeline</button>
                             </div>
                         </div>
@@ -669,43 +710,43 @@
                             class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
                             <img src="https://i.pravatar.cc/150?img=13" alt="Michael"
                                 class="w-8 h-8 rounded-full object-cover">
-                            <span class="text-xs font-bold text-gray-900">Michael Miller</span>
+                            <span class="text-[15px] font-medium text-gray-900">Michael Miller</span>
                         </div>
                         <div
                             class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
                             <img src="https://i.pravatar.cc/150?img=68" alt="Robert"
                                 class="w-8 h-8 rounded-full object-cover">
-                            <span class="text-xs font-bold text-gray-900">Robert Miller</span>
+                            <span class="text-[15px] font-medium text-gray-900">Robert Miller</span>
                         </div>
                         <div
                             class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
                             <img src="https://i.pravatar.cc/150?img=44" alt="Patricia"
                                 class="w-8 h-8 rounded-full object-cover">
-                            <span class="text-xs font-bold text-gray-900">Patricia Miller</span>
+                            <span class="text-[15px] font-medium text-gray-900">Patricia Miller</span>
                         </div>
                         <div
                             class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
                             <img src="https://i.pravatar.cc/150?img=11" alt="Jonathan"
                                 class="w-8 h-8 rounded-full object-cover">
-                            <span class="text-xs font-bold text-gray-900">Jonathan Anderson</span>
+                            <span class="text-[15px] font-medium text-gray-900">Jonathan Anderson</span>
                         </div>
                         <div
                             class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
                             <img src="https://i.pravatar.cc/150?img=5" alt="Sarah"
                                 class="w-8 h-8 rounded-full object-cover">
-                            <span class="text-xs font-bold text-gray-900">Sarah Anderson</span>
+                            <span class="text-[15px] font-medium text-gray-900">Sarah Anderson</span>
                         </div>
                         <div
                             class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
                             <img src="https://i.pravatar.cc/150?img=9" alt="Rachel"
                                 class="w-8 h-8 rounded-full object-cover">
-                            <span class="text-xs font-bold text-gray-900">Rachel Miller</span>
+                            <span class="text-[15px] font-medium text-gray-900">Rachel Miller</span>
                         </div>
                         <div
                             class="flex pb-4 items-center gap-3 cursor-pointer hover:bg-gray-50 p-1 rounded transition-colors">
                             <img src="https://i.pravatar.cc/150?img=53" alt="Lucas"
                                 class="w-8 h-8 rounded-full object-cover">
-                            <span class="text-xs font-bold text-gray-900">Lucas Anderson</span>
+                            <span class="text-[15px] font-medium text-gray-900">Lucas Anderson</span>
                         </div>
                     </div>
                 </div>
