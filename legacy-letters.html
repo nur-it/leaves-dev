@@ -183,57 +183,41 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
                 <!-- Card 1 -->
-                <div
-                    class="bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl p-8 cursor-pointer hover:shadow-xl transition-all">
-                    <div class="mb-6">
-                        <span
-                            class="bg-green-100 text-green-700 px-4 py-1.5 rounded-full text-sm font-medium border border-green-200">Wedding</span>
-                    </div>
+                <div class="max-w-sm mx-auto bg-white rounded-xl overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-gray-100">
+  <!-- Badge / Tag -->
+  <div class="px-3 py-1 m-4 inline-block bg-[#E7F5E7] text-[#318F21] text-xs font-medium rounded-md">
+    Wedding
+  </div>
 
-                    <div class="flex justify-center mb-8">
-                        <div class="relative">
-                            <!-- Envelope with 3D effect -->
-                            <div
-                                class="w-48 h-36 bg-gradient-to-br from-pink-400 via-pink-500 to-rose-500 rounded-2xl shadow-2xl flex items-center justify-center relative overflow-hidden">
-                                <!-- Envelope flap lines -->
-                                <div class="absolute inset-0">
-                                    <div
-                                        class="absolute top-0 left-0 w-full h-full border-l-[96px] border-r-[96px] border-t-[72px] border-l-transparent border-r-transparent border-t-pink-300 opacity-40">
-                                    </div>
-                                </div>
-                                <!-- Lock -->
-                                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                                    <div
-                                        class="w-16 h-20 bg-gradient-to-br from-yellow-300 to-yellow-500 rounded-xl shadow-lg flex items-center justify-center relative">
-                                        <!-- Lock shackle -->
-                                        <div
-                                            class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 border-4 border-yellow-400 rounded-t-full">
-                                        </div>
-                                        <!-- Keyhole -->
-                                        <div class="w-3 h-4 bg-red-500 rounded-full relative">
-                                            <div class="absolute top-2 left-1/2 -translate-x-1/2 w-1.5 h-3 bg-red-500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <!-- Image -->
+  <div class="px-6">
+    <img
+      src="./public/mail-lock.png"
+      alt="Card Image"
+      class="w-full h-auto object-cover rounded-lg"
+    />
+  </div>
 
-                    <h3 class="font-bold text-gray-900 mb-3 text-lg">For Emily on Her Wedding Day</h3>
-                    <p class="text-sm text-gray-500 mb-4">Release Date: <span class="text-gray-600">12 December
-                            2026</span></p>
+  <!-- Content -->
+  <div class="px-6 py-4">
+    <h2 class="text-lg font-semibold text-gray-900">For Emily on Her Wedding Day</h2>
+    <p class="text-sm text-gray-500 mt-1">Release Date: <span class="font-medium text-gray-700">12 December 2026</span></p>
 
-                    <div class="flex items-center gap-2 text-sm text-gray-700">
-                        <img src="https://i.pravatar.cc/150?img=32" alt=""
-                            class="w-7 h-7 rounded-full border-2 border-white shadow">
-                        <span class="font-medium">Sarah Anderson</span>
-                        <span class="text-gray-400 mx-1">to</span>
-                        <img src="https://i.pravatar.cc/150?img=9" alt=""
-                            class="w-7 h-7 rounded-full border-2 border-white shadow">
-                        <span class="font-medium">Emma Anderson</span>
-                    </div>
-                </div>
+    <!-- Footer with avatars -->
+    <div class="mt-4 flex items-center space-x-2">
+      <div class="w-6 h-6">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah Anderson" class="rounded-full" />
+      </div>
+      <span class="text-sm font-medium text-gray-900">Sarah Anderson</span>
+      <span class="text-gray-400">&nbsp;to&nbsp;</span>
+      <div class="w-6 h-6">
+        <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Emma Anderson" class="rounded-full" />
+      </div>
+      <span class="text-sm font-medium text-gray-900">Emma Anderson</span>
+    </div>
+  </div>
+</div>
+
 
                 <!-- Card 2 -->
                 <div
