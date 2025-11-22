@@ -6,10 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forever Voice™ - Leaves</title>
 
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,10 +17,13 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Aeonik', 'sans-serif'],
                     },
                     colors: {
                         'leaves-green': '#4A7A45',
+                        'leaves-green-500': '#45A735',
+                        'leaves-dark-green': '#072F14',
+                        'leaves-light-surface': '#EEF0F2',
                         'primary': '#051910',
                     }
                 }
@@ -35,8 +35,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        @font-face {
+            font-family: 'Aeonik';
+            src: url('./public/fonts/aeonik/Aeonik-Thin.otf') format('opentype');
+            font-weight: 200;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Aeonik';
+            src: url('./public/fonts/aeonik/Aeonik-Light.otf') format('opentype');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Aeonik';
+            src: url('./public/fonts/aeonik/Aeonik-Regular.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Aeonik';
+            src: url('./public/fonts/aeonik/Aeonik-Medium.otf') format('opentype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Aeonik';
+            src: url('./public/fonts/aeonik/Aeonik-Bold.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
         body {
             background-color: #F8F9FA;
+            font-family: 'Aeonik', sans-serif;
         }
 
         ::-webkit-scrollbar {
@@ -177,7 +218,7 @@
         <div class="border-t-2 border-dotted border-leaves-border">
             <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
                 <nav
-                    class="flex items-center gap-8 overflow-x-auto no-scrollbar py-3 text-sm font-medium text-gray-500">
+                    class="flex items-center gap-8 text-center overflow-x-auto no-scrollbar py-3 text-[15px]  font-light text-gray-500">
                     <a href="index.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                             <path
@@ -196,7 +237,7 @@
                         Times of My Life®
                     </a>
                     <a href="personas.html"
-                        class="flex items-center gap-2 text-leaves-green border-b-2 border-leaves-green pb-3 -mb-3 whitespace-nowrap">
+                        class="flex items-center gap-2 text-leaves-dark-green border-b-2 border-leaves-green-500 pb-3 px-3 -mb-3 whitespace-nowrap">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                             <path
                                 d="M18.2873 14.6208L16.8665 13.2C17.5387 12.5736 18.0658 11.8326 18.4478 10.9771C18.8297 10.1215 19.0207 9.21248 19.0207 8.24998C19.0207 7.28748 18.8297 6.3861 18.4478 5.54582C18.0658 4.70554 17.5387 3.97221 16.8665 3.34582L18.2873 1.87915C19.1429 2.68887 19.8228 3.64373 20.3269 4.74373C20.8311 5.84373 21.0832 7.01248 21.0832 8.24998C21.0832 9.48748 20.8311 10.6562 20.3269 11.7562C19.8228 12.8562 19.1429 13.8111 18.2873 14.6208ZM15.354 11.6875L13.8873 10.2208C14.1623 9.96109 14.3839 9.667 14.5519 9.33853C14.72 9.01005 14.804 8.64721 14.804 8.24998C14.804 7.85276 14.72 7.48991 14.5519 7.16144C14.3839 6.83297 14.1623 6.53887 13.8873 6.27915L15.354 4.81248C15.8429 5.25554 16.2248 5.77116 16.4998 6.35936C16.7748 6.94755 16.9123 7.57776 16.9123 8.24998C16.9123 8.92221 16.7748 9.55241 16.4998 10.1406C16.2248 10.7288 15.8429 11.2444 15.354 11.6875ZM8.24984 11.9167C7.2415 11.9167 6.37831 11.5576 5.66025 10.8396C4.9422 10.1215 4.58317 9.25832 4.58317 8.24998C4.58317 7.24165 4.9422 6.37846 5.66025 5.6604C6.37831 4.94234 7.2415 4.58332 8.24984 4.58332C9.25817 4.58332 10.1214 4.94234 10.8394 5.6604C11.5575 6.37846 11.9165 7.24165 11.9165 8.24998C11.9165 9.25832 11.5575 10.1215 10.8394 10.8396C10.1214 11.5576 9.25817 11.9167 8.24984 11.9167ZM0.916504 19.25V16.6833C0.916504 16.1792 1.04637 15.7055 1.30609 15.2625C1.56581 14.8194 1.92484 14.4833 2.38317 14.2542C3.16234 13.8569 4.04081 13.5208 5.01859 13.2458C5.99637 12.9708 7.07345 12.8333 8.24984 12.8333C9.42623 12.8333 10.5033 12.9708 11.4811 13.2458C12.4589 13.5208 13.3373 13.8569 14.1165 14.2542C14.5748 14.4833 14.9339 14.8194 15.1936 15.2625C15.4533 15.7055 15.5832 16.1792 15.5832 16.6833V19.25H0.916504Z"
