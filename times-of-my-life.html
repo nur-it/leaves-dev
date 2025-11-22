@@ -6,10 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Times of My Life® - Leaves</title>
 
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,7 +17,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Aeonik', 'sans-serif'],
                     },
                     colors: {
                         'leaves-green': '#4A7A45',
@@ -45,8 +42,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        @font-face {
+            font-family: 'Aeonik';
+            src: url('./public/fonts/aeonik/Aeonik-Thin.otf') format('opentype');
+            font-weight: 200;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Aeonik';
+            src: url('./public/fonts/aeonik/Aeonik-Light.otf') format('opentype');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Aeonik';
+            src: url('./public/fonts/aeonik/Aeonik-Regular.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Aeonik';
+            src: url('./public/fonts/aeonik/Aeonik-Medium.otf') format('opentype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Aeonik';
+            src: url('./public/fonts/aeonik/Aeonik-Bold.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
         body {
             background-color: #F8F9FA;
+            font-family: 'Aeonik', sans-serif;
         }
 
         ::-webkit-scrollbar {
@@ -144,7 +182,7 @@
         <div class="border-t-2 border-dotted border-leaves-border">
             <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
                 <nav
-                    class="flex items-center gap-8 overflow-x-auto no-scrollbar py-3 text-sm font-medium text-gray-500">
+                    class="flex items-center gap-8 text-center overflow-x-auto no-scrollbar py-3 text-[15px]  font-light text-gray-500">
                     <a href="index.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                             <path
@@ -154,7 +192,7 @@
                         Dashboard
                     </a>
                     <a href="times-of-my-life.html"
-                        class="flex items-center gap-2 text-leaves-dark-green border-b-2 border-leaves-green-500 pb-3 -mb-3 whitespace-nowrap">
+                        class="flex items-center gap-2 text-leaves-dark-green border-b-2 border-leaves-green-500 pb-3 px-3 -mb-3 whitespace-nowrap">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                             <path
                                 d="M6.87484 20.1666C5.98873 20.1666 5.23248 19.8534 4.60609 19.227C3.9797 18.6006 3.6665 17.8444 3.6665 16.9583V5.04159C3.6665 4.15547 3.9797 3.39922 4.60609 2.77284C5.23248 2.14645 5.98873 1.83325 6.87484 1.83325H18.3332V15.5833C17.9512 15.5833 17.6266 15.7169 17.3592 15.9843C17.0919 16.2517 16.9582 16.5763 16.9582 16.9583C16.9582 17.3402 17.0919 17.6648 17.3592 17.9322C17.6266 18.1996 17.9512 18.3333 18.3332 18.3333V20.1666H6.87484ZM7.33317 13.7499H9.1665V3.66659H7.33317V13.7499ZM6.87484 18.3333H15.4228C15.3311 18.1194 15.2585 17.9017 15.205 17.6801C15.1516 17.4586 15.1248 17.218 15.1248 16.9583C15.1248 16.7138 15.1478 16.477 15.1936 16.2478C15.2394 16.0187 15.3158 15.7971 15.4228 15.5833H6.87484C6.47761 15.5833 6.14914 15.7169 5.88942 15.9843C5.6297 16.2517 5.49984 16.5763 5.49984 16.9583C5.49984 17.3555 5.6297 17.6839 5.88942 17.9437C6.14914 18.2034 6.47761 18.3333 6.87484 18.3333Z"
