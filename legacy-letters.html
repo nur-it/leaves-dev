@@ -534,39 +534,50 @@
                     </div>
                 </div>
 
-                <div id="letter-modal"
-                    class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/30 p-4">
-                    <div class="bg-white rounded-2xl border border-gray-200 shadow-xl w-[520px]">
-                        <div class="flex items-start justify-between px-4 pt-4">
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-900">In Case You Ever Need Strength</h3>
-                                <div class="mt-2 flex items-center gap-2">
-                                    <img src="https://i.pravatar.cc/150?img=44" alt="Patricia Miller"
-                                        class="w-6 h-6 rounded-full">
-                                    <span class="text-sm text-gray-800">Patricia Miller</span>
-                                    <span class="text-gray-400">to</span>
-                                    <img src="https://i.pravatar.cc/150?img=32" alt="Sarah Anderson"
-                                        class="w-6 h-6 rounded-full">
-                                    <span class="text-sm text-gray-800">Sarah Anderson</span>
-                                </div>
-                                <div class="mt-2 grid grid-cols-[110px_1fr] gap-y-1 gap-x-3 text-sm">
-                                    <div class="text-gray-500">Occasion</div>
-                                    <div class="text-gray-800">Your 30th Birthday</div>
-                                    <div class="text-gray-500">Date Opened</div>
-                                    <div class="text-gray-800">March 5, 2035</div>
-                                </div>
-                            </div>
-                            <button id="letter-modal-close"
-                                class="w-8 h-8 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg flex items-center justify-center">
-                                <i class="fa-solid fa-xmark text-sm"></i>
-                            </button>
-                        </div>
-                        <div class="p-4">
-                            <img src="./public/card-3-details.png" alt="Letter"
-                                class="w-full h-auto rounded-xl border border-gray-200">
-                        </div>
+               <div id="letter-modal"
+     class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-sm p-6">
+    <div class="bg-white rounded-3xl border border-gray-100 shadow-2xl mx-auto w-full max-w-[572px] h-full  overflow-hidden">
+        <!-- Header -->
+        <div class="flex items-start justify-between px-6 pt-6">
+            <div>
+                <h3 class="text-xl font-bold  text-gray-900">In Case You Ever Need Strength</h3>
+                
+                <!-- Participants -->
+                <div class="mt-3 flex items-center gap-2">
+                    <img src="./public/document/patricia.png" alt="Patricia Miller"
+                         class="w-8 h-8 rounded-full border border-gray-200">
+                    <span class="text-sm font-medium text-gray-800">Patricia Miller</span>
+                    <span class="text-gray-400">to</span>
+                    <img src="./public/document/sarah.png" alt="Sarah Anderson"
+                         class="w-8 h-8 rounded-full border border-gray-200">
+                    <span class="text-sm font-medium text-gray-800">Sarah Anderson</span>
+                </div>
+                <!-- Details -->
+                <div class="flex items-center gap-[75px] py-4 ">
+                    <div class="flex gap-1">
+                        <div class="text-[#474D4B] ">Occasion</div>
+                    <div class="text-[#9A9B9A]">Your 30th Birthday</div>
+                    </div>
+                    <div class="flex gap-1">
+                        <div class="text-[#474D4B] ">Date Opened</div>
+                    <div class="text-[#9A9B9A]">March 5, 2035</div>
                     </div>
                 </div>
+            </div>
+            <!-- Close Button -->
+            <button id="letter-modal-close"
+                    class="w-9 h-9 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-base"></i>
+            </button>
+        </div>
+        <!-- Letter Image -->
+        <div class="p-6">
+            <img src="./public/card-3-details.png" alt="Letter"
+                 class="w-full h-auto rounded-2xl border border-gray-200 shadow-inner">
+        </div>
+    </div>
+</div>
+
 
             </div>
 
