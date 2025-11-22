@@ -61,6 +61,31 @@
         .timeline-event:hover {
             transform: scale(1.1);
         }
+
+        .timeline-board {
+            position: relative;
+            height: 520px;
+            border-radius: 14px;
+        }
+
+        .timeline-grid {
+            position: absolute;
+            inset: 0;
+            border: 1px solid #e5e7eb;
+            border-top: none;
+            background-image: linear-gradient(to right, rgba(17, 24, 39, 0.03) 0, rgba(17, 24, 39, 0.03) 50%, rgba(17, 24, 39, 0) 50%, rgba(17, 24, 39, 0) 100%),
+                repeating-linear-gradient(to right, transparent 0, transparent calc(10% - 1px), #e5e7eb calc(10% - 1px), #e5e7eb calc(10% + 1px));
+            background-size: 10% 100%, 100% 100%;
+        }
+
+        .timeline-divider {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            height: 1px;
+            background: #fce7f3;
+        }
     </style>
 </head>
 
@@ -164,11 +189,7 @@
                 <div class="bg-white rounded-xl border border-gray-100 p-5">
                     <div class="flex items-center justify-between mb-5">
                         <h2 class="font-semibold text-gray-900 text-base">Life Events</h2>
-                        <button
-                            class="text-white bg-leaves-green text-[11px] font-medium flex items-center gap-1 hover:bg-leaves-green/90 px-3 py-1.5 rounded-lg">
-                            <i class="fa-solid fa-plus text-[9px]"></i>
-                            Add New Event
-                        </button>
+
                     </div>
 
                     <!-- Labels Section -->
@@ -285,136 +306,195 @@
 
             <!-- Timeline Area -->
             <div class="col-span-12 lg:col-span-9">
-                <div class="bg-white rounded-xl border border-gray-100 p-6">
-
-                    <!-- Timeline Header with Years -->
-                    <div class="relative mb-8">
-                        <div class="flex justify-between items-center text-xs text-gray-500 font-medium mb-2">
-                            <span>1980</span>
-                            <span>1985</span>
-                            <span>1990</span>
-                            <span>1995</span>
-                            <span>2000</span>
-                            <span>2005</span>
-                            <span>2010</span>
-                            <span>2015</span>
-                            <span>2020</span>
-                        </div>
-                        <div class="h-px bg-gray-200"></div>
+                <div id="timeline-panel" class="bg-white rounded-xl border border-gray-100 p-6 relative">
+                    <div
+                        class=" h-9 border bg-white border-[#EBEBEB] rounded-md rounded-b-none flex items-center justify-between px-4 text-xs text-[#ADADAD] font-medium">
+                        <span>1980</span>
+                        <span>1988</span>
+                        <span>1995</span>
+                        <span>2000</span>
+                        <span>2006</span>
+                        <span>2010</span>
+                        <span>2015</span>
+                        <span>2020</span>
                     </div>
 
-                    <!-- Parents Life Events Row -->
-                    <div class="mb-12">
-                        <div class="bg-teal-100 rounded-lg px-3 py-2 mb-4">
-                            <div class="flex items-center justify-center gap-2">
+                    <div class="timeline-board">
+                        <div class="timeline-grid"></div>
+
+
+                        <div class="absolute top-14 left-0 right-0 flex items-center justify-center">
+                            <div
+                                class="flex items-center gap-2 bg-teal-50 border border-teal-200 px-3 py-1.5 rounded-lg">
                                 <div class="w-2 h-2 rounded-full bg-teal-500"></div>
-                                <h3 class="text-sm font-semibold text-gray-900">Parents Life Events</h3>
+                                <span class="text-[13px] font-semibold text-gray-900">Parents Life Events</span>
                             </div>
                         </div>
 
-                        <div class="relative h-40 bg-white rounded-lg p-4 border border-gray-100">
-                            <!-- Teal event icons positioned chronologically -->
-                            <div class="timeline-event" style="left: 5%; top: 50%; transform: translateY(-50%);">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-xl shadow-lg flex items-center justify-center">
-                                    <i class="fa-solid fa-house text-white text-lg"></i>
+
+                        <div class="timeline-divider"></div>
+
+                        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                            <div
+                                class="flex items-center gap-2 bg-pink-50 border border-pink-200 px-3 py-1.5 rounded-lg text-xs">
+                                <div class="w-2 h-2 rounded-full bg-pink-500"></div>
+                                <span class="text-gray-900 font-semibold">Grandparents Life Events</span>
+                            </div>
+                        </div>
+
+                        <div class="absolute left-0 right-0 top-24 bottom-[52%]">
+                            <div class="timeline-event" data-event-id="p1" style="left: 6%; top: 32%;">
+                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-house text-white text-lg"></i>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="timeline-event" style="left: 22%; top: 50%; transform: translateY(-50%);">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-xl shadow-lg flex items-center justify-center">
-                                    <i class="fa-solid fa-school text-white text-lg"></i>
+                            <div class="timeline-event" data-event-id="p2" style="left: 24%; top: 45%;">
+                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-school text-white text-lg"></i>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="timeline-event" style="left: 45%; top: 50%; transform: translateY(-50%);">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-xl shadow-lg flex items-center justify-center">
-                                    <i class="fa-solid fa-ring text-white text-lg"></i>
+                            <div class="timeline-event" data-event-id="p3" style="left: 47%; top: 35%;">
+                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-ring text-white text-lg"></i>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="timeline-event" style="left: 52%; top: 50%; transform: translateY(-50%);">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-xl shadow-lg flex items-center justify-center">
-                                    <i class="fa-solid fa-briefcase text-white text-lg"></i>
+                            <div class="timeline-event" data-event-id="p4" style="left: 55%; top: 46%;">
+                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-briefcase text-white text-lg"></i>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="timeline-event" style="left: 75%; top: 50%; transform: translateY(-50%);">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-xl shadow-lg flex items-center justify-center">
-                                    <i class="fa-solid fa-graduation-cap text-white text-lg"></i>
+                            <div class="timeline-event" data-event-id="p5" style="left: 77%; top: 30%;">
+                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-graduation-cap text-white text-lg"></i>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="timeline-event" style="left: 88%; top: 50%; transform: translateY(-50%);">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-xl shadow-lg flex items-center justify-center">
-                                    <i class="fa-solid fa-plane text-white text-lg"></i>
+                            <div class="timeline-event" data-event-id="p6" style="left: 90%; top: 44%;">
+                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-plane text-white text-lg"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="absolute left-0 right-0 top-[53%] bottom-6">
+                            <div class="timeline-event" data-event-id="g1" style="left: 4%; top: 30%;">
+                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-baby text-white text-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-event" data-event-id="g2" style="left: 20%; top: 48%;">
+                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-heart text-white text-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-event" data-event-id="g3" style="left: 36%; top: 34%;">
+                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-cake-candles text-white text-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-event" data-event-id="g4" style="left: 49%; top: 44%;">
+                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-graduation-cap text-white text-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-event" data-event-id="g5" style="left: 57%; top: 30%;">
+                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-ring text-white text-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-event" data-event-id="g6" style="left: 70%; top: 44%;">
+                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-house text-white text-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-event" data-event-id="g7" style="left: 84%; top: 34%;">
+                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-camera text-white text-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <!-- Grandparents Life Events Row -->
-                    <div>
-                        <div class="bg-pink-100 rounded-lg px-3 py-2 mb-4">
-                            <div class="flex items-center justify-center gap-2">
-                                <div class="w-2 h-2 rounded-full bg-pink-500"></div>
-                                <h3 class="text-sm font-semibold text-gray-900">Grandparents Life Events</h3>
-                            </div>
-                        </div>
 
-                        <div class="relative h-40 bg-white rounded-lg p-4 border border-gray-100">
-                            <!-- Pink event icons positioned chronologically -->
-                            <div class="timeline-event" style="left: 2%; top: 50%; transform: translateY(-50%);">
+
+                    <div id="event-popover"
+                        class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/30 p-4">
+                        <div class="bg-white rounded-2xl border border-gray-200 shadow-xl w-[420px]">
+                            <div class="relative">
+                                <img id="popover-image" src="" alt="" class="w-full h-40 object-cover rounded-t-2xl">
+                                <button id="popover-close"
+                                    class="absolute top-2 right-2 w-8 h-8 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-xmark text-sm"></i>
+                                </button>
                                 <div
-                                    class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
-                                    <i class="fa-solid fa-baby text-white text-lg"></i>
+                                    class="absolute top-2 left-2 bg-gray-900/70 text-white text-[11px] px-2 py-1 rounded-md flex items-center gap-1">
+                                    <i class="fa-brands fa-google text-xs"></i>
+                                    <span>Google Map</span>
                                 </div>
                             </div>
-
-                            <div class="timeline-event" style="left: 18%; top: 50%; transform: translateY(-50%);">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
-                                    <i class="fa-solid fa-heart text-white text-lg"></i>
+                            <div class="p-4">
+                                <div class="mb-2">
+                                    <h3 id="popover-title" class="text-base font-semibold text-gray-900"></h3>
+                                    <p id="popover-desc" class="text-sm text-gray-600 mt-1"></p>
                                 </div>
-                            </div>
-
-                            <div class="timeline-event" style="left: 35%; top: 50%; transform: translateY(-50%);">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
-                                    <i class="fa-solid fa-cake-candles text-white text-lg"></i>
+                                <div class="grid grid-cols-[90px_1fr] gap-y-2 gap-x-3 text-sm">
+                                    <div class="text-gray-500">Purpose</div>
+                                    <div><span id="popover-purpose"
+                                            class="px-2 py-1 rounded-lg border border-purple-200 bg-purple-50 text-purple-600 text-xs"></span>
+                                    </div>
+                                    <div class="text-gray-500">Date</div>
+                                    <div id="popover-date" class="text-gray-800"></div>
+                                    <div class="text-gray-500">Place Name</div>
+                                    <div id="popover-place" class="text-gray-800"></div>
+                                    <div class="text-gray-500">Address</div>
+                                    <div id="popover-address" class="text-gray-800"></div>
                                 </div>
-                            </div>
-
-                            <div class="timeline-event" style="left: 48%; top: 50%; transform: translateY(-50%);">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
-                                    <i class="fa-solid fa-graduation-cap text-white text-lg"></i>
-                                </div>
-                            </div>
-
-                            <div class="timeline-event" style="left: 55%; top: 50%; transform: translateY(-50%);">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
-                                    <i class="fa-solid fa-ring text-white text-lg"></i>
-                                </div>
-                            </div>
-
-                            <div class="timeline-event" style="left: 68%; top: 50%; transform: translateY(-50%);">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
-                                    <i class="fa-solid fa-house text-white text-lg"></i>
-                                </div>
-                            </div>
-
-                            <div class="timeline-event" style="left: 82%; top: 50%; transform: translateY(-50%);">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
-                                    <i class="fa-solid fa-camera text-white text-lg"></i>
+                                <div class="flex items-center justify-between mt-4">
+                                    <button
+                                        class="px-3 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm hover:bg-gray-50">View
+                                        Stories</button>
+                                    <button
+                                        class="px-3 py-2 rounded-lg bg-leaves-green text-white text-sm hover:bg-leaves-green/90">View
+                                        in Timeline</button>
                                 </div>
                             </div>
                         </div>
@@ -425,6 +505,167 @@
         </div>
 
     </main>
+
+</body>
+<script>
+    const eventData = {
+        p1: {
+            title: "First Home",
+            desc: "Moved into the first family home.",
+            purpose: "Home",
+            date: "Sunday, May 3, 1981",
+            place: "Oakwood Residence",
+            address: "Springfield, IL, United States",
+            image: "https://images.unsplash.com/photo-1560185127-4a4b3679fe22?w=800&q=80&auto=format&fit=crop"
+        },
+        p2: {
+            title: "High School",
+            desc: "Graduated from Central High School.",
+            purpose: "Education",
+            date: "Friday, June 12, 1988",
+            place: "Central High School",
+            address: "Madison, WI, United States",
+            image: "https://images.unsplash.com/photo-1513161455079-7dc1de15ef3e?w=800&q=80&auto=format&fit=crop"
+        },
+        p3: {
+            title: "Patricia’s Wedding Ceremony",
+            desc: "A joyful day celebrated with close family and friends.",
+            purpose: "Wedding Celebration",
+            date: "Saturday, August 14, 1988",
+            place: "Eden Royal Convention Hall, Florida",
+            address: "Homestead, FL 33031, United States",
+            image: "https://images.unsplash.com/photo-1524250502-84f6778b82a7?w=1200&q=80&auto=format&fit=crop"
+        },
+        p4: {
+            title: "First Job",
+            desc: "Started career as a junior analyst.",
+            purpose: "Career",
+            date: "Monday, March 4, 1990",
+            place: "Brighton Corp",
+            address: "Chicago, IL, United States",
+            image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80&auto=format&fit=crop"
+        },
+        p5: {
+            title: "Master’s Graduation",
+            desc: "Completed Master’s in Computer Science.",
+            purpose: "Graduation",
+            date: "Tuesday, May 18, 2002",
+            place: "State University",
+            address: "Ann Arbor, MI, United States",
+            image: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=800&q=80&auto=format&fit=crop"
+        },
+        p6: {
+            title: "Trip to Europe",
+            desc: "Visited several countries across Europe.",
+            purpose: "Travel",
+            date: "July, 2005",
+            place: "EU Tour",
+            address: "Multiple cities",
+            image: "https://images.unsplash.com/photo-1473625247510-8ceb1760943f?w=800&q=80&auto=format&fit=crop"
+        },
+        g1: {
+            title: "Birth",
+            desc: "Welcomed into the world.",
+            purpose: "Birth",
+            date: "Wednesday, March 22, 1955",
+            place: "City Hospital",
+            address: "Boston, MA, United States",
+            image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800&q=80&auto=format&fit=crop"
+        },
+        g2: {
+            title: "First Love",
+            desc: "Met at the summer fair.",
+            purpose: "Special Event",
+            date: "Sunday, July 10, 1973",
+            place: "Summer Fair",
+            address: "Providence, RI, United States",
+            image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=80&auto=format&fit=crop"
+        },
+        g3: {
+            title: "Birthday Celebration",
+            desc: "Celebrated with family and friends.",
+            purpose: "Birthday",
+            date: "Thursday, October 9, 1975",
+            place: "Family Home",
+            address: "Nashua, NH, United States",
+            image: "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?w=800&q=80&auto=format&fit=crop"
+        },
+        g4: {
+            title: "College Graduation",
+            desc: "Graduated with honors.",
+            purpose: "Graduation",
+            date: "Sunday, May 22, 1978",
+            place: "Northern College",
+            address: "Portland, ME, United States",
+            image: "https://images.unsplash.com/photo-1484437417325-c4e38d99a041?w=800&q=80&auto=format&fit=crop"
+        },
+        g5: {
+            title: "Wedding Day",
+            desc: "A beautiful ceremony with loved ones.",
+            purpose: "Wedding",
+            date: "Saturday, June 14, 1980",
+            place: "Rose Garden Chapel",
+            address: "Hartford, CT, United States",
+            image: "https://images.unsplash.com/photo-1469371670807-013bfa01b5b9?w=800&q=80&auto=format&fit=crop"
+        },
+        g6: {
+            title: "New Home",
+            desc: "Moved into a new home.",
+            purpose: "Home",
+            date: "Monday, September 3, 1983",
+            place: "Maple Street House",
+            address: "Albany, NY, United States",
+            image: "https://images.unsplash.com/photo-1560448070-43264b5d8436?w=800&q=80&auto=format&fit=crop"
+        },
+        g7: {
+            title: "Family Photo Day",
+            desc: "Captured memories together.",
+            purpose: "Special Event",
+            date: "Sunday, April 6, 1986",
+            place: "City Park",
+            address: "Buffalo, NY, United States",
+            image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80&auto=format&fit=crop"
+        }
+    };
+
+    const popover = document.getElementById('event-popover');
+    const imgEl = document.getElementById('popover-image');
+    const titleEl = document.getElementById('popover-title');
+    const descEl = document.getElementById('popover-desc');
+    const purposeEl = document.getElementById('popover-purpose');
+    const dateEl = document.getElementById('popover-date');
+    const placeEl = document.getElementById('popover-place');
+    const addressEl = document.getElementById('popover-address');
+    const closeBtn = document.getElementById('popover-close');
+
+    function showPopover(data) {
+        imgEl.src = data.image;
+        titleEl.textContent = data.title;
+        descEl.textContent = data.desc;
+        purposeEl.textContent = data.purpose;
+        dateEl.textContent = data.date;
+        placeEl.textContent = data.place;
+        addressEl.textContent = data.address;
+        popover.classList.remove('hidden');
+    }
+
+    function hidePopover() {
+        popover.classList.add('hidden');
+    }
+
+    document.querySelectorAll('.timeline-event').forEach(el => {
+        el.addEventListener('click', e => {
+            const id = el.getAttribute('data-event-id');
+            const data = eventData[id];
+            if (data) showPopover(data);
+        });
+    });
+
+    closeBtn.addEventListener('click', hidePopover);
+    popover.addEventListener('click', e => {
+        if (e.target === popover) hidePopover();
+    });
+</script>
 
 </body>
 
