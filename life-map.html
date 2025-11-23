@@ -248,9 +248,9 @@
     </div>
 
     <!-- Map Interface -->
-    <div class="grid grid-cols-12 gap-6 xl:gap-0">
+    <div class="grid grid-cols-12 gap-6 xl:gap-0 relative">
       <!-- Left Sidebar - Filters -->
-      <div class="col-span-12 lg:col-span-3 space-y-6">
+      <div class="col-span-12 lg:col-span-3 space-y-6 lg:relative z-10">
         <!-- Map Pins Card -->
         <div class="bg-white rounded-b-xl border border-gray-100 p-5">
           <!-- Labels Section -->
@@ -453,7 +453,7 @@
 
       <!-- Map Area -->
       <div class="col-span-12 lg:col-span-9">
-        <div class="bg-white rounded-none rounded-br-xl border border-gray-100 overflow-hidden" style="height: 700px">
+        <div class="bg-white rounded-none rounded-br-xl border border-gray-100 overflow-hidden lg:absolute top-0 left-0 w-full h-full" style="height: 700px">
           <div class="map-container w-full h-full relative bg-gray-50">
             <!-- Map Pins - Positioned to match screenshot exactly -->
 
@@ -639,46 +639,55 @@
               </svg>
             </div>
 
-            <div id="map-popover" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/30 p-4">
-              <div class="bg-white rounded-2xl border border-gray-200 shadow-xl w-[420px]">
+            <div id="map-popover"
+              class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center">
+              <div class="bg-white rounded-2xl shadow-xl max-w-[454px] max-h-[95vh] overflow-y-auto">
                 <div class="relative">
-                  <img id="map-popover-image" src="" alt="" class="w-full h-40 object-cover rounded-t-2xl" />
+                  <img id="map-popover-image" src="" alt="Event" class="w-full h-56 object-cover rounded-t-2xl" />
+                  <div class="absolute left-4 top-4">
+                    <a href="#"
+                      class="px-3 py-1.5 bg-gray-800/85 text-white text-xs rounded-lg flex items-center gap-2 shadow">
+                      <i class="fa-solid fa-map-location-dot"></i>
+                      <span>Google Map</span>
+                      <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
+                    </a>
+                  </div>
                   <button id="map-popover-close"
-                    class="absolute top-2 right-2 w-8 h-8 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg flex items-center justify-center">
-                    <i class="fa-solid fa-xmark text-sm"></i>
+                    class="absolute right-4 top-4 w-8 h-8 rounded-full bg-white/95 text-gray-700 flex items-center justify-center shadow">
+                    <i class="fa-solid fa-xmark"></i>
                   </button>
-                  <div
-                    class="absolute top-2 left-2 bg-gray-900/70 text-white text-[11px] px-2 py-1 rounded-md flex items-center gap-1">
-                    <i class="fa-brands fa-google text-xs"></i>
-                    <span>Google Map</span>
-                  </div>
                 </div>
-                <div class="p-4">
-                  <div class="mb-2">
-                    <h3 id="map-popover-title" class="text-base font-semibold text-gray-900"></h3>
-                    <p id="map-popover-desc" class="text-sm text-gray-600 mt-1"></p>
-                  </div>
-                  <div class="grid grid-cols-[90px_1fr] gap-y-2 gap-x-3 text-sm">
-                    <div class="text-gray-500">Purpose</div>
-                    <div>
+                <div class="p-5">
+                  <h3 id="map-popover-title" class="text-[18px] font-semibold text-gray-900 mb-2"></h3>
+                  <p id="map-popover-desc" class="text-sm text-gray-600"></p>
+                  <div class="mt-5 space-y-3">
+                    <div class="flex items-center gap-3">
+                      <i class="fa-solid fa-bullseye text-[#009794]"></i>
+                      <span class="text-sm text-gray-700">Purpose</span>
                       <span id="map-popover-purpose"
-                        class="px-2 py-1 rounded-lg border border-purple-200 bg-purple-50 text-purple-600 text-xs"></span>
+                        class="ml-auto px-3 py-1 rounded-lg bg-white border border-[#DDDDDD] text-[#670949] text-xs font-medium"></span>
                     </div>
-                    <div class="text-gray-500">Date</div>
-                    <div id="map-popover-date" class="text-gray-800"></div>
-                    <div class="text-gray-500">Place Name</div>
-                    <div id="map-popover-place" class="text-gray-800"></div>
-                    <div class="text-gray-500">Address</div>
-                    <div id="map-popover-address" class="text-gray-800"></div>
+                    <div class="flex items-center gap-3">
+                      <i class="fa-solid fa-building text-gray-500"></i>
+                      <span class="text-sm text-gray-700">Place Name</span>
+                      <span id="map-popover-place" class="ml-auto text-sm text-gray-700"></span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <i class="fa-solid fa-location-dot text-gray-500"></i>
+                      <span class="text-sm text-gray-700">Address</span>
+                      <span id="map-popover-address" class="ml-auto text-sm text-gray-700"></span>
+                    </div>
                   </div>
-                  <div class="flex items-center justify-between mt-4">
+                  <div class="mt-6 flex items-center gap-3">
                     <button id="map-popover-stories"
-                      class="px-3 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm hover:bg-gray-50">
+                      class="flex-1 bg-white border shadow-[0_2px_5px_0_rgba(60,66,87,0.08),0_0_0_1px_rgba(69,167,53,0.16),0_1px_1px_0_rgba(0,0,0,0.12)] border-[#dddddd] text-[#051910] px-4 py-2 rounded-lg text-sm font-medium">
                       View Stories
+                      <i class="fa-solid fa-chevron-right text-[11px]"></i>
                     </button>
                     <button id="map-popover-timeline"
-                      class="px-3 py-2 rounded-lg bg-leaves-green text-white text-sm hover:bg-leaves-green/90">
+                      class="flex-1 bg-white border shadow-[0_2px_5px_0_rgba(60,66,87,0.08),0_0_0_1px_rgba(69,167,53,0.16),0_1px_1px_0_rgba(0,0,0,0.12)] border-[#dddddd] text-[#051910] px-4 py-2 rounded-lg text-sm font-medium">
                       View in Timeline
+                      <i class="fa-solid fa-chevron-right text-[11px]"></i>
                     </button>
                   </div>
                 </div>
@@ -699,18 +708,16 @@
       date: "Sunday, May 3, 1981",
       place: "Oakwood Residence",
       address: "Springfield, IL, United States",
-      image:
-        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200&q=80&auto=format&fit=crop",
+      image: "./public/map-details.png",
     },
     m3: {
       title: "Rachel’s Graduation Ceremony",
-      desc: "Emma's graduation ceremony held at Madison High School.",
+      desc: "Emma's graduation ceremony held at Madison High School. This marks the culmination of her hard work and dedication throughout high school. The day was filled with pride, joy, and celebration.",
       purpose: "Graduation",
       date: "Sunday, May 22, 2016",
       place: "University of Central Florida",
       address: "JQ2X+XX Orlando, Florida, USA",
-      image:
-        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&q=80&auto=format&fit=crop",
+      image: "./public/map-details.png",
     },
     m5: {
       title: "First Job",
@@ -719,8 +726,7 @@
       date: "Monday, March 4, 1990",
       place: "Brighton Corp",
       address: "Chicago, IL, United States",
-      image:
-        "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&q=80&auto=format&fit=crop",
+      image: "./public/map-details.png",
     },
   };
 
@@ -738,20 +744,18 @@
 
   function showMapPopover(data) {
     const d = data || {
-      title: "Life Event",
-      desc: "Details about this place.",
-      purpose: "Event",
-      date: "—",
-      place: "—",
-      address: "—",
-      image:
-        "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=1200&q=80&auto=format&fit=crop",
+      title: "Rachel’s Graduation Ceremony",
+      desc: "Emma's graduation ceremony held at Madison High School. This marks the culmination of her hard work and dedication throughout high school. The day was filled with pride, joy, and celebration.",
+      purpose: "Graduation",
+      date: "Sunday, May 22, 2016",
+      place: "University of Central Florida",
+      address: "JQ2X+XX Orlando, Florida, USA",
+      image: "./public/map-details.png",
     };
-    imgEl.src = d.image;
+    imgEl.src = d.image || "./public/map-details.png";
     titleEl.textContent = d.title;
     descEl.textContent = d.desc;
     purposeEl.textContent = d.purpose;
-    dateEl.textContent = d.date;
     placeEl.textContent = d.place;
     addressEl.textContent = d.address;
     mapPopover.classList.remove("hidden");
