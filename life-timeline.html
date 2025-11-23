@@ -536,6 +536,85 @@
             </div>
         </div>
     </main>
+    <div id="timelineModal"
+        class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-xl max-w-[454px] max-h-[95vh] overflow-y-auto">
+            <div class="relative">
+                <img src="./public/timeline-details.png" alt="Event" class="w-full h-56 object-cover rounded-t-2xl" />
+                <div class="absolute left-4 top-4">
+                    <a href="#"
+                        class="px-3 py-1.5 bg-gray-800/85 text-white text-xs rounded-lg flex items-center gap-2 shadow">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        <span>Google Map</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
+                    </a>
+                </div>
+                <button id="closeTimelineModal"
+                    class="absolute right-4 top-4 w-8 h-8 rounded-full bg-white/95 text-gray-700 flex items-center justify-center shadow">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-5">
+                <h3 class="text-[18px] font-semibold text-gray-900 mb-2">Patricia’s Wedding Ceremony</h3>
+                <p class="text-sm text-gray-600">Patricia’s wedding was held at Eden Royal Convention Hall with close
+                    family and friends.</p>
+                <div class="mt-5 space-y-3">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-bullseye text-[#009794]"></i>
+                        <span class="text-sm text-gray-700">Purpose</span>
+                        <span
+                            class="ml-auto px-3 py-1 rounded-lg bg-white border border-[#DDDDDD] text-[#670949] text-xs font-medium">Wedding
+                            Celebration</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-regular fa-calendar text-gray-500"></i>
+                        <span class="text-sm text-gray-700">Date</span>
+                        <span class="ml-auto text-sm text-gray-700">Saturday, August 14, 1988</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-building text-gray-500"></i>
+                        <span class="text-sm text-gray-700">Place Name</span>
+                        <span class="ml-auto text-sm text-gray-700">Eden Royal Convention Hall, Florida</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-location-dot text-gray-500"></i>
+                        <span class="text-sm text-gray-700">Address</span>
+                        <span class="ml-auto text-sm text-gray-700">Homestead, FL 33031, United States</span>
+                    </div>
+                </div>
+                <div class="mt-6 flex items-center gap-3">
+                    <button
+                        class="flex-1 bg-white border shadow-[0_2px_5px_0_rgba(60,66,87,0.08),0_0_0_1px_rgba(69,167,53,0.16),0_1px_1px_0_rgba(0,0,0,0.12)] border-[#dddddd] text-[#051910] px-4 py-2 rounded-lg text-sm font-medium">View
+                        Stories
+                        <i class="fa-solid fa-chevron-right text-[11px]"></i>
+                    </button>
+
+                    <button
+                        class="flex-1 bg-white border shadow-[0_2px_5px_0_rgba(60,66,87,0.08),0_0_0_1px_rgba(69,167,53,0.16),0_1px_1px_0_rgba(0,0,0,0.12)] border-[#dddddd] text-[#051910] px-4 py-2 rounded-lg text-sm font-medium">View
+                        in Timeline
+
+                        <!-- chevron right icon -->
+                        <i class="fa-solid fa-chevron-right text-[11px]"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const timelineModal = document.getElementById('timelineModal');
+        const closeTimelineModal = document.getElementById('closeTimelineModal');
+        document.querySelectorAll('.timeline-event').forEach(function (el) {
+            el.addEventListener('click', function () {
+                timelineModal.classList.remove('hidden');
+            });
+        });
+        closeTimelineModal.addEventListener('click', function () {
+            timelineModal.classList.add('hidden');
+        });
+        timelineModal.addEventListener('click', function (e) {
+            if (e.target === timelineModal) timelineModal.classList.add('hidden');
+        });
+    </script>
 </body>
 
 </html>
