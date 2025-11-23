@@ -90,8 +90,8 @@
 
       .timeline-event {
         position: absolute;
-        width: 48px;
-        height: 48px;
+        width: 56px;
+        height: 56px;
         cursor: pointer;
         transition: transform 0.2s;
       }
@@ -104,6 +104,9 @@
         position: relative;
         height: 520px;
         border-radius: 14px;
+        @media (max-width: 1024px) {
+          min-height: 700px;
+        }
       }
 
       .timeline-grid {
@@ -126,6 +129,10 @@
             #ffffff 25%
           );
         background-size: 100% 100%, 100% 100%;
+
+        @media (max-width: 1024px) {
+          min-width: 800px;
+        }
       }
     </style>
   </head>
@@ -591,11 +598,13 @@
               <span>2020</span>
             </div>
 
-            <div class="timeline-board h-[calc(100%-32px)]">
-              <div class="timeline-grid"></div>
+            <div
+              class="timeline-board h-[calc(100%-32px)] max-lg:overflow-x-auto"
+            >
+              <div class="timeline-grid max-lg:min-w-[800px]"></div>
 
               <div
-                class="absolute bg-[#F2FCFC99] border border-t-0 border-[#DDDDDD] top-0 left-0 w-full text-center"
+                class="absolute bg-[#F2FCFC99] border border-t-0 border-[#DDDDDD] top-0 left-0 w-full text-center max-lg:min-w-[800px]"
               >
                 <div class="relative z-10 backdrop-blur-sm inline-block">
                   <div
@@ -613,7 +622,7 @@
               </div>
 
               <div
-                class="timeline-divider bg-pink-50 border border-[#DDDDDD] w-full text-center absolute top-1/2 left-0 -translate-y-1/2"
+                class="timeline-divider bg-pink-50 border border-[#DDDDDD] w-full text-center absolute top-1/2 left-0 -translate-y-1/2 max-lg:min-w-[800px]"
               >
                 <div class="relative z-10 backdrop-blur-sm inline-block">
                   <div
@@ -630,7 +639,9 @@
                 </div>
               </div>
 
-              <div class="absolute left-0 right-0 top-24 bottom-[52%]">
+              <div
+                class="absolute left-0 right-0 top-24 bottom-[52%] max-lg:min-w-[800px]"
+              >
                 <div class="timeline-event" style="left: 3.5%; top: 12%">
                   <div
                     class="w-14 h-14 bg-white border border-[#00AAA7]/20 rounded-[14px] flex items-center justify-center"
@@ -907,7 +918,9 @@
                 </div>
               </div>
 
-              <div class="absolute left-0 right-0 top-[53%] bottom-6">
+              <div
+                class="absolute left-0 right-0 top-[53%] bottom-6 max-lg:min-w-[800px]"
+              >
                 <div class="timeline-event" style="left: 3.5%; top: 20%">
                   <div
                     class="w-14 h-14 bg-white border border-[#F22BB4]/20 rounded-[14px] flex items-center justify-center"
