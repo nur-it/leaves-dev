@@ -2,77 +2,74 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Timeline™ - LEAVES</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Life Timeline Feature - LEAVES</title>
 
-
-
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        'leaves-green': '#4CAF50',
-                        'leaves-green-500': '#45A735',
-                        'leaves-dark-green': '#072F14',
-                    },
                     fontFamily: {
-                        sans: ['Aeonik', 'sans-serif'],
-                    }
-                }
-            }
-        }
+                        sans: ["Aeonik", "sans-serif"],
+                    },
+                    colors: {
+                        "leaves-green": "#4A7A45",
+                        "leaves-green-500": "#45A735",
+                        "leaves-dark-green": "#072F14",
+                    },
+                },
+            },
+        };
     </script>
 
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
     <style>
         @font-face {
-            font-family: 'Aeonik';
-            src: url('./public/fonts/aeonik/Aeonik-Thin.otf') format('opentype');
+            font-family: "Aeonik";
+            src: url("./public/fonts/aeonik/Aeonik-Thin.otf") format("opentype");
             font-weight: 200;
             font-style: normal;
             font-display: swap;
         }
 
         @font-face {
-            font-family: 'Aeonik';
-            src: url('./public/fonts/aeonik/Aeonik-Light.otf') format('opentype');
+            font-family: "Aeonik";
+            src: url("./public/fonts/aeonik/Aeonik-Light.otf") format("opentype");
             font-weight: 300;
             font-style: normal;
             font-display: swap;
         }
 
         @font-face {
-            font-family: 'Aeonik';
-            src: url('./public/fonts/aeonik/Aeonik-Regular.otf') format('opentype');
+            font-family: "Aeonik";
+            src: url("./public/fonts/aeonik/Aeonik-Regular.otf") format("opentype");
             font-weight: 400;
             font-style: normal;
             font-display: swap;
         }
 
         @font-face {
-            font-family: 'Aeonik';
-            src: url('./public/fonts/aeonik/Aeonik-Medium.otf') format('opentype');
+            font-family: "Aeonik";
+            src: url("./public/fonts/aeonik/Aeonik-Medium.otf") format("opentype");
             font-weight: 500;
             font-style: normal;
             font-display: swap;
         }
 
         @font-face {
-            font-family: 'Aeonik';
-            src: url('./public/fonts/aeonik/Aeonik-Bold.otf') format('opentype');
+            font-family: "Aeonik";
+            src: url("./public/fonts/aeonik/Aeonik-Bold.otf") format("opentype");
             font-weight: 700;
             font-style: normal;
             font-display: swap;
         }
 
         body {
-            background-color: #F8F9FA;
-            font-family: 'Aeonik', sans-serif;
+            background-color: #f8f9fa;
+            font-family: "Aeonik", sans-serif;
         }
 
         ::-webkit-scrollbar {
@@ -98,7 +95,7 @@
         }
 
         .timeline-event:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .timeline-board {
@@ -112,34 +109,28 @@
             inset: 0;
             border: 1px solid #e5e7eb;
             border-top: none;
-            background-image: linear-gradient(to right, rgba(17, 24, 39, 0.03) 0, rgba(17, 24, 39, 0.03) 50%, rgba(17, 24, 39, 0) 50%, rgba(17, 24, 39, 0) 100%),
-                repeating-linear-gradient(to right, transparent 0, transparent calc(10% - 1px), #e5e7eb calc(10% - 1px), #e5e7eb calc(10% + 1px));
-            background-size: 10% 100%, 100% 100%;
-        }
-
-        .timeline-divider {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 50%;
-            height: 1px;
-            background: #fce7f3;
+            background-image:
+                repeating-linear-gradient(to right,
+                    transparent 0,
+                    transparent calc(12.5% - 1px),
+                    #e5e7eb calc(12.5% - 1px),
+                    #e5e7eb calc(12.5% + 1px)),
+                repeating-linear-gradient(to right,
+                    #F6F6F633 0,
+                    #F6F6F633 12.5%,
+                    #ffffff 12.5%,
+                    #ffffff 25%);
+            background-size: 100% 100%, 100% 100%;
         }
     </style>
 </head>
 
 <body class="text-gray-700 font-sans antialiased">
-
-    <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
-        <!-- Top Bar -->
         <div class="max-w-[1494px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Logo -->
             <div class="flex items-center gap-2 cursor-pointer">
-                <img src="./public/logo.svg" alt="LEAVES" class="w-full h-auto">
+                <img src="./public/logo.svg" alt="LEAVES" class="w-full h-auto" />
             </div>
-
-            <!-- Right Side -->
             <div class="flex items-center gap-4">
                 <button class="relative text-gray-600 hover:text-gray-900">
                     <i class="fa-solid fa-bell text-xl"></i>
@@ -147,17 +138,16 @@
                         class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">3</span>
                 </button>
                 <div class="flex items-center gap-2 cursor-pointer">
-                    <img src="https://i.pravatar.cc/150?img=68" alt="Profile" class="w-8 h-8 rounded-full object-cover">
+                    <img src="https://i.pravatar.cc/150?img=68" alt="Profile"
+                        class="w-8 h-8 rounded-full object-cover" />
                     <i class="fa-solid fa-chevron-down text-xs text-gray-600"></i>
                 </div>
             </div>
         </div>
-
-        <!-- Navigation -->
         <div class="border-t-2 border-dotted border-leaves-border">
             <div class="max-w-[1494px] mx-auto px-4 sm:px-6 lg:px-8">
                 <nav
-                    class="flex items-center gap-8 text-center overflow-x-auto no-scrollbar text-[15px]  font-light text-gray-500">
+                    class="flex items-center gap-8 text-center overflow-x-auto no-scrollbar text-[15px] font-light text-gray-500">
                     <a href="index.html"
                         class="flex items-center gap-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-leaves-green transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
@@ -174,9 +164,10 @@
                                 d="M6.87508 20.1666C5.98897 20.1666 5.23272 19.8534 4.60633 19.227C3.97994 18.6006 3.66675 17.8444 3.66675 16.9583V5.04159C3.66675 4.15547 3.97994 3.39922 4.60633 2.77284C5.23272 2.14645 5.98897 1.83325 6.87508 1.83325H18.3334V15.5833C17.9515 15.5833 17.6268 15.7169 17.3595 15.9843C17.0921 16.2517 16.9584 16.5763 16.9584 16.9583C16.9584 17.3402 17.0921 17.6648 17.3595 17.9322C17.6268 18.1996 17.9515 18.3333 18.3334 18.3333V20.1666H6.87508ZM5.50008 14.0478C5.71397 13.9409 5.9355 13.8645 6.16466 13.8187C6.39383 13.7728 6.63064 13.7499 6.87508 13.7499H7.33341V3.66659H6.87508C6.49314 3.66659 6.16848 3.80027 5.90112 4.06763C5.63376 4.33499 5.50008 4.65964 5.50008 5.04159V14.0478ZM9.16675 13.7499H16.5001V3.66659H9.16675V13.7499ZM6.87508 18.3333H15.423C15.3313 18.1194 15.2588 17.9017 15.2053 17.6801C15.1518 17.4586 15.1251 17.218 15.1251 16.9583C15.1251 16.7138 15.148 16.477 15.1938 16.2478C15.2397 16.0187 15.3161 15.7971 15.423 15.5833H6.87508C6.47786 15.5833 6.14939 15.7169 5.88966 15.9843C5.62994 16.2517 5.50008 16.5763 5.50008 16.9583C5.50008 17.3555 5.62994 17.6839 5.88966 17.9437C6.14939 18.2034 6.47786 18.3333 6.87508 18.3333Z"
                                 fill="#798181" />
                         </svg>
-                        Times of My Life™
+                        Times of My Life®
                     </a>
-                    <a href="personas.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal">
+                    <a href="personas.html"
+                        class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                             <path
                                 d="M18.2873 14.6208L16.8665 13.2C17.5387 12.5736 18.0658 11.8326 18.4478 10.9771C18.8297 10.1215 19.0207 9.21248 19.0207 8.24998C19.0207 7.28748 18.8297 6.3861 18.4478 5.54582C18.0658 4.70554 17.5387 3.97221 16.8665 3.34582L18.2873 1.87915C19.1429 2.68887 19.8228 3.64373 20.3269 4.74373C20.8311 5.84373 21.0832 7.01248 21.0832 8.24998C21.0832 9.48748 20.8311 10.6562 20.3269 11.7562C19.8228 12.8562 19.1429 13.8111 18.2873 14.6208ZM15.354 11.6875L13.8873 10.2208C14.1623 9.96109 14.3839 9.667 14.5519 9.33853C14.72 9.01005 14.804 8.64721 14.804 8.24998C14.804 7.85276 14.72 7.48991 14.5519 7.16144C14.3839 6.83297 14.1623 6.53887 13.8873 6.27915L15.354 4.81248C15.8429 5.25554 16.2248 5.77116 16.4998 6.35936C16.7748 6.94755 16.9123 7.57776 16.9123 8.24998C16.9123 8.92221 16.7748 9.55241 16.4998 10.1406C16.2248 10.7288 15.8429 11.2444 15.354 11.6875ZM8.24984 11.9167C7.2415 11.9167 6.37831 11.5576 5.66025 10.8396C4.9422 10.1215 4.58317 9.25832 4.58317 8.24998C4.58317 7.24165 4.9422 6.37846 5.66025 5.6604C6.37831 4.94234 7.2415 4.58332 8.24984 4.58332C9.25817 4.58332 10.1214 4.94234 10.8394 5.6604C11.5575 6.37846 11.9165 7.24165 11.9165 8.24998C11.9165 9.25832 11.5575 10.1215 10.8394 10.8396C10.1214 11.5576 9.25817 11.9167 8.24984 11.9167ZM0.916504 19.25V16.6833C0.916504 16.1792 1.04637 15.7055 1.30609 15.2625C1.56581 14.8194 1.92484 14.4833 2.38317 14.2542C3.16234 13.8569 4.04081 13.5208 5.01859 13.2458C5.99637 12.9708 7.07345 12.8333 8.24984 12.8333C9.42623 12.8333 10.5033 12.9708 11.4811 13.2458C12.4589 13.5208 13.3373 13.8569 14.1165 14.2542C14.5748 14.4833 14.9339 14.8194 15.1936 15.2625C15.4533 15.7055 15.5832 16.1792 15.5832 16.6833V19.25H0.916504Z"
@@ -184,7 +175,8 @@
                         </svg>
                         Forever Voice™
                     </a>
-                    <a href="life-map.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal">
+                    <a href="life-map.html"
+                        class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                             fill="#798181">
                             <path
@@ -210,7 +202,8 @@
                         </svg>
                         Document Archive™
                     </a>
-                    <a href="legacy-letters.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal">
+                    <a href="legacy-letters.html"
+                        class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal">
                         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="15" viewBox="0 0 19 15" fill="none">
                             <path
                                 d="M1.83333 14.6667C1.32917 14.6667 0.897569 14.4872 0.538542 14.1281C0.179514 13.7691 0 13.3375 0 12.8333V1.83333C0 1.32917 0.179514 0.897569 0.538542 0.538542C0.897569 0.179514 1.32917 0 1.83333 0H16.5C17.0042 0 17.4358 0.179514 17.7948 0.538542C18.1538 0.897569 18.3333 1.32917 18.3333 1.83333V12.8333C18.3333 13.3375 18.1538 13.7691 17.7948 14.1281C17.4358 14.4872 17.0042 14.6667 16.5 14.6667H1.83333ZM9.16667 8.25L1.83333 3.66667V12.8333H16.5V3.66667L9.16667 8.25ZM9.16667 6.41667L16.5 1.83333H1.83333L9.16667 6.41667ZM1.83333 3.66667V1.83333V12.8333V3.66667Z"
@@ -218,7 +211,8 @@
                         </svg>
                         Legacy Letters™
                     </a>
-                    <a href="media-library.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal">
+                    <a href="media-library.html"
+                        class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal">
                         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
                             <path
                                 d="M6.41667 11H15.5833L12.4208 6.875L10.3125 9.625L8.89167 7.79167L6.41667 11ZM5.5 14.6667C4.99583 14.6667 4.56424 14.4872 4.20521 14.1281C3.84618 13.7691 3.66667 13.3375 3.66667 12.8333V1.83333C3.66667 1.32917 3.84618 0.897569 4.20521 0.538542C4.56424 0.179514 4.99583 0 5.5 0H16.5C17.0042 0 17.4358 0.179514 17.7948 0.538542C18.1538 0.897569 18.3333 1.32917 18.3333 1.83333V12.8333C18.3333 13.3375 18.1538 13.7691 17.7948 14.1281C17.4358 14.4872 17.0042 14.6667 16.5 14.6667H5.5ZM5.5 12.8333H16.5V1.83333H5.5V12.8333ZM1.83333 18.3333C1.32917 18.3333 0.897569 18.1538 0.538542 17.7948C0.179514 17.4358 0 17.0042 0 16.5V3.66667H1.83333V16.5H14.6667V18.3333H1.83333Z"
@@ -231,30 +225,21 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="max-w-[1494px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <main class="max-w-[1494px] mx-auto px-4 sm:px-6 lg:px-8 py-8 ">
 
         <!-- Page Title -->
         <h1 class="text-2xl font-bold text-gray-900 mb-4">Life Timeline™</h1>
 
         <!-- Info Banner -->
-        <div class="bg-blue-50 border border-blue-200 rounded-lg p-3.5 mb-6 flex items-start gap-3">
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-3.5 mb-6 flex items-center gap-3">
             <div
-            class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 rounded-md bg-[#9CD4FF] bg-gradient-to-b from-white/[0.12] to-transparent shadow-[0_0_0_0.5px_#92C7F5] p-1 rounded-lg border border-[#43B8FB] shadow-[inset_0_2px_2px_1px_rgba(207,239,255,0.32),0_1px_3px_1px_rgba(248,213,155,0.32)]"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="17"
-              height="17"
-              viewBox="0 0 17 17"
-              fill="none"
-            >
-              <path
-                d="M7.5 12.5H9.16667V7.5H7.5V12.5ZM8.33333 5.83333C8.56944 5.83333 8.76736 5.75347 8.92708 5.59375C9.0868 5.43403 9.16667 5.23611 9.16667 5C9.16667 4.76389 9.0868 4.56597 8.92708 4.40625C8.76736 4.24653 8.56944 4.16667 8.33333 4.16667C8.09722 4.16667 7.8993 4.24653 7.73958 4.40625C7.57986 4.56597 7.5 4.76389 7.5 5C7.5 5.23611 7.57986 5.43403 7.73958 5.59375C7.8993 5.75347 8.09722 5.83333 8.33333 5.83333ZM8.33333 16.6667C7.18055 16.6667 6.09722 16.4479 5.08333 16.0104C4.06944 15.5729 3.1875 14.9792 2.4375 14.2292C1.6875 13.4792 1.09375 12.5972 0.65625 11.5833C0.21875 10.5694 0 9.48611 0 8.33333C0 7.18055 0.21875 6.09722 0.65625 5.08333C1.09375 4.06944 1.6875 3.1875 2.4375 2.4375C3.1875 1.6875 4.06944 1.09375 5.08333 0.65625C6.09722 0.21875 7.18055 0 8.33333 0C9.48611 0 10.5694 0.21875 11.5833 0.65625C12.5972 1.09375 13.4792 1.6875 14.2292 2.4375C14.9792 3.1875 15.5729 4.06944 16.0104 5.08333C16.4479 6.09722 16.6667 7.18055 16.6667 8.33333C16.6667 9.48611 16.4479 10.5694 16.0104 11.5833C15.5729 12.5972 14.9792 13.4792 14.2292 14.2292C13.4792 14.9792 12.5972 15.5729 11.5833 16.0104C10.5694 16.4479 9.48611 16.6667 8.33333 16.6667Z"
-                fill="#00365F"
-              />
-            </svg>
-          </div>
+                class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 rounded-md bg-[#9CD4FF] bg-gradient-to-b from-white/[0.12] to-transparent shadow-[0_0_0_0.5px_#92C7F5] p-1 rounded-lg border border-[#43B8FB] shadow-[inset_0_2px_2px_1px_rgba(207,239,255,0.32),0_1px_3px_1px_rgba(248,213,155,0.32)]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                    <path
+                        d="M7.5 12.5H9.16667V7.5H7.5V12.5ZM8.33333 5.83333C8.56944 5.83333 8.76736 5.75347 8.92708 5.59375C9.0868 5.43403 9.16667 5.23611 9.16667 5C9.16667 4.76389 9.0868 4.56597 8.92708 4.40625C8.76736 4.24653 8.56944 4.16667 8.33333 4.16667C8.09722 4.16667 7.8993 4.24653 7.73958 4.40625C7.57986 4.56597 7.5 4.76389 7.5 5C7.5 5.23611 7.57986 5.43403 7.73958 5.59375C7.8993 5.75347 8.09722 5.83333 8.33333 5.83333ZM8.33333 16.6667C7.18055 16.6667 6.09722 16.4479 5.08333 16.0104C4.06944 15.5729 3.1875 14.9792 2.4375 14.2292C1.6875 13.4792 1.09375 12.5972 0.65625 11.5833C0.21875 10.5694 0 9.48611 0 8.33333C0 7.18055 0.21875 6.09722 0.65625 5.08333C1.09375 4.06944 1.6875 3.1875 2.4375 2.4375C3.1875 1.6875 4.06944 1.09375 5.08333 0.65625C6.09722 0.21875 7.18055 0 8.33333 0C9.48611 0 10.5694 0.21875 11.5833 0.65625C12.5972 1.09375 13.4792 1.6875 14.2292 2.4375C14.9792 3.1875 15.5729 4.06944 16.0104 5.08333C16.4479 6.09722 16.6667 7.18055 16.6667 8.33333C16.6667 9.48611 16.4479 10.5694 16.0104 11.5833C15.5729 12.5972 14.9792 13.4792 14.2292 14.2292C13.4792 14.9792 12.5972 15.5729 11.5833 16.0104C10.5694 16.4479 9.48611 16.6667 8.33333 16.6667Z"
+                        fill="#00365F" />
+                </svg>
+            </div>
             <p class="text-sm text-gray-700 leading-relaxed flex-1">
                 <strong>Purpose:</strong> A chronological visual of one's entire life.
             </p>
@@ -263,144 +248,137 @@
             </button>
         </div>
 
-        <!-- Timeline Interface -->
-        <div class="grid grid-cols-12 gap-6">
+        <div class="flex items-center justify-between bg-white rounded-t-xl p-5">
+            <h1 class="text-2xl font-bold text-gray-900">Life Events</h1>
+            <button
+                class="bg-white border shadow-[0_2px_5px_0_rgba(60,66,87,0.08),0_0_0_1px_rgba(69,167,53,0.16),0_1px_1px_0_rgba(0,0,0,0.12)] border-[#45A735] text-[#45A735] px-5 py-2 rounded-lg font-medium text-sm flex items-center gap-2">
+                <i class="fa-solid fa-plus"></i>
+                Add New Event
+            </button>
+        </div>
 
-            <!-- Left Sidebar - Filters -->
+        <div class="grid grid-cols-12 gap-6 xl:gap-0 h-full xl:min-h-[1072px]">
             <div class="col-span-12 lg:col-span-3 space-y-6">
-                <!-- Life Events Card -->
-                <div class="bg-white rounded-xl border border-gray-100 p-5">
-                    <div class="flex items-center justify-between mb-5">
-                        <h2 class="font-semibold text-gray-900 text-base">Life Events</h2>
-
-                    </div>
-
-                    <!-- Labels Section -->
-                    <div class="mb-6">
-                        <div class="flex items-center justify-between mb-3">
-                            <h3 class="text-[13px] font-semibold text-gray-900">Labels</h3>
-                            <button class="text-leaves-green text-[11px] font-medium">Add New</button>
-                        </div>
-
-                        <div class="space-y-2.5">
-                            <label class="flex items-center justify-between cursor-pointer group">
-                                <div class="flex items-center gap-2.5">
-                                    <i class="fa-solid fa-house text-gray-600 text-[13px]"></i>
-                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Homes</span>
-                                </div>
-                                <input type="checkbox" checked
-                                    class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]">
-                            </label>
-
-                            <label class="flex items-center justify-between cursor-pointer group">
-                                <div class="flex items-center gap-2.5">
-                                    <i class="fa-solid fa-school text-gray-600 text-[13px]"></i>
-                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Schools</span>
-                                </div>
-                                <input type="checkbox" checked
-                                    class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]">
-                            </label>
-
-                            <label class="flex items-center justify-between cursor-pointer group">
-                                <div class="flex items-center gap-2.5">
-                                    <i class="fa-solid fa-briefcase text-gray-600 text-[13px]"></i>
-                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Work Places</span>
-                                </div>
-                                <input type="checkbox" checked
-                                    class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]">
-                            </label>
-
-                            <label class="flex items-center justify-between cursor-pointer group">
-                                <div class="flex items-center gap-2.5">
-                                    <i class="fa-solid fa-star text-gray-600 text-[13px]"></i>
-                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Special
-                                        Events</span>
-                                </div>
-                                <input type="checkbox" checked
-                                    class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]">
-                            </label>
-
-                            <label class="flex items-center justify-between cursor-pointer group">
-                                <div class="flex items-center gap-2.5">
-                                    <i class="fa-solid fa-plane text-gray-600 text-[13px]"></i>
-                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Travels</span>
-                                </div>
-                                <input type="checkbox" checked
-                                    class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]">
-                            </label>
-
-                            <label class="flex items-center justify-between cursor-pointer group">
-                                <div class="flex items-center gap-2.5">
-                                    <i class="fa-solid fa-heart text-gray-600 text-[13px]"></i>
-                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Hangouts</span>
-                                </div>
-                                <input type="checkbox" class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]">
-                            </label>
-
-                            <label class="flex items-center justify-between cursor-pointer group">
-                                <div class="flex items-center gap-2.5">
-                                    <i class="fa-solid fa-cake-candles text-gray-600 text-[13px]"></i>
-                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Births</span>
-                                </div>
-                                <input type="checkbox" checked
-                                    class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]">
-                            </label>
-
-                            <label class="flex items-center justify-between cursor-pointer group">
-                                <div class="flex items-center gap-2.5">
-                                    <i class="fa-solid fa-graduation-cap text-gray-600 text-[13px]"></i>
-                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Graduation</span>
-                                </div>
-                                <input type="checkbox" checked
-                                    class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]">
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Family Section -->
+                <div
+                    class="bg-white rounded-none rounded-bl-xl border border-gray-100 p-5 flex flex-col justify-between h-full">
                     <div>
-                        <h3 class="text-[13px] font-semibold text-gray-900 mb-3">Family</h3>
 
-                        <div class="space-y-2.5">
-                            <label class="flex items-center justify-between cursor-pointer group">
-                                <div class="flex items-center gap-2.5">
-                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Parents</span>
-                                </div>
-                                <input type="checkbox" checked
-                                    class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]">
-                            </label>
 
-                            <label class="flex items-center justify-between cursor-pointer group">
-                                <div class="flex items-center gap-2.5">
-                                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Kids</span>
-                                </div>
-                                <input type="checkbox" class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]">
-                            </label>
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="font-medium text-[#474D4B] text-base">Labels</h3>
+                                <button class="text-[#45A735] text-sm font-medium">Add New</button>
+                            </div>
+                            <div class="space-y-2.5">
+                                <label class="flex items-center justify-between cursor-pointer group">
+                                    <div class="flex items-center gap-2.5">
+                                        <i class="fa-solid fa-house text-gray-600 text-[13px]"></i>
+                                        <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Homes</span>
+                                    </div>
+                                    <input type="checkbox" checked
+                                        class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]" />
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer group">
+                                    <div class="flex items-center gap-2.5">
+                                        <i class="fa-solid fa-school text-gray-600 text-[13px]"></i>
+                                        <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Schools</span>
+                                    </div>
+                                    <input type="checkbox" checked
+                                        class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]" />
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer group">
+                                    <div class="flex items-center gap-2.5">
+                                        <i class="fa-solid fa-briefcase text-gray-600 text-[13px]"></i>
+                                        <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Work
+                                            Places</span>
+                                    </div>
+                                    <input type="checkbox" checked
+                                        class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]" />
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer group">
+                                    <div class="flex items-center gap-2.5">
+                                        <i class="fa-solid fa-star text-gray-600 text-[13px]"></i>
+                                        <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Special
+                                            Events</span>
+                                    </div>
+                                    <input type="checkbox" checked
+                                        class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]" />
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer group">
+                                    <div class="flex items-center gap-2.5">
+                                        <i class="fa-solid fa-plane text-gray-600 text-[13px]"></i>
+                                        <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Travels</span>
+                                    </div>
+                                    <input type="checkbox" checked
+                                        class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]" />
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer group">
+                                    <div class="flex items-center gap-2.5">
+                                        <i class="fa-solid fa-heart text-gray-600 text-[13px]"></i>
+                                        <span
+                                            class="text-[13px] text-gray-700 group-hover:text-gray-900">Hangouts</span>
+                                    </div>
+                                    <input type="checkbox" class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]" />
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer group">
+                                    <div class="flex items-center gap-2.5">
+                                        <i class="fa-solid fa-cake-candles text-gray-600 text-[13px]"></i>
+                                        <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Births</span>
+                                    </div>
+                                    <input type="checkbox" checked
+                                        class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]" />
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer group">
+                                    <div class="flex items-center gap-2.5">
+                                        <i class="fa-solid fa-graduation-cap text-gray-600 text-[13px]"></i>
+                                        <span
+                                            class="text-[13px] text-gray-700 group-hover:text-gray-900">Graduation</span>
+                                    </div>
+                                    <input type="checkbox" checked
+                                        class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]" />
+                                </label>
+                            </div>
+                        </div>
 
-                            <label class="flex items-center justify-between cursor-pointer group">
-                                <div class="flex items-center gap-2.5">
-                                    <span
-                                        class="text-[13px] text-gray-700 group-hover:text-gray-900">Grandparents</span>
-                                </div>
-                                <input type="checkbox" checked
-                                    class="w-4 h-4 rounded border-[#C4C4C7] accent-[#F22BB4]">
-                            </label>
+                        <div>
+                            <h3 class="text-[13px] font-semibold text-gray-900 mb-3">Family</h3>
+                            <div class="space-y-2.5">
+                                <label class="flex items-center justify-between cursor-pointer group">
+                                    <div class="flex items-center gap-2.5">
+                                        <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Parents</span>
+                                    </div>
+                                    <input type="checkbox" checked
+                                        class="w-4 h-4 rounded border-[#C4C4C7] accent-[#009794]" />
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer group">
+                                    <div class="flex items-center gap-2.5">
+                                        <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Kids</span>
+                                    </div>
+                                    <input type="checkbox" class="w-4 h-4 rounded border-[#C4C4C7] accent-[#009794]" />
+                                </label>
+                                <label class="flex items-center justify-between cursor-pointer group">
+                                    <div class="flex items-center gap-2.5">
+                                        <span
+                                            class="text-[13px] text-gray-700 group-hover:text-gray-900">Grandparents</span>
+                                    </div>
+                                    <input type="checkbox" checked
+                                        class="w-4 h-4 rounded border-[#dddddd] accent-[#F22BB4]" />
+                                </label>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Apply Filter Button -->
                     <button
-                        class="w-full mt-6 bg-leaves-green hover:bg-leaves-green/90 text-white py-2.5 rounded-lg font-medium text-sm transition-colors">
-                        Apply Filter
-                    </button>
+                        class="w-full mt-6 bg-[#318F21] hover:bg-leaves-green/90 text-white py-2.5 rounded-lg font-medium text-sm">Apply
+                        Filter</button>
                 </div>
             </div>
 
-            <!-- Timeline Area -->
             <div class="col-span-12 lg:col-span-9">
-                <div id="timeline-panel" class="bg-white rounded-xl border border-gray-100 p-6 relative">
+                <div
+                    class="bg-white rounded-none rounded-br-xl rounded-bl-0 border border-gray-100 p-6 relative h-full">
                     <div
-                        class=" h-9 border bg-white border-[#EBEBEB] rounded-md rounded-b-none flex items-center justify-between px-4 text-xs text-[#ADADAD] font-medium">
+                        class="h-9 border bg-white border-[#dddddd] rounded-md rounded-b-none flex items-center justify-between px-4 text-xs text-[#ADADAD] font-medium">
                         <span>1980</span>
                         <span>1988</span>
                         <span>1995</span>
@@ -411,354 +389,153 @@
                         <span>2020</span>
                     </div>
 
-                    <div class="timeline-board">
+                    <div class="timeline-board h-[calc(100%-32px)]">
                         <div class="timeline-grid"></div>
 
-
-                        <div class="absolute top-14 left-0 right-0 flex items-center justify-center">
-                            <div
-                                class="flex items-center gap-2 bg-teal-50 border border-teal-200 px-3 py-1.5 rounded-lg">
-                                <div class="w-2 h-2 rounded-full bg-teal-500"></div>
-                                <span class="text-[13px] font-semibold text-gray-900">Parents Life Events</span>
+                        <div
+                            class="absolute bg-[#F2FCFC99] border border-t-0 border-[#DDDDDD] top-0 left-0 w-full text-center">
+                            <div class="relative z-10 backdrop-blur-sm inline-block">
+                                <div class="flex items-center gap-2   px-3 py-1.5 rounded-lg text-xs">
+                                    <div class="w-2 h-2 rounded-full bg-teal-600" style="background-color:#009794">
+                                    </div>
+                                    <span class="text-sm font-medium text-[#014F4D]">Parents Life Events</span>
+                                </div>
                             </div>
                         </div>
 
+                        <div
+                            class="timeline-divider bg-pink-50 border border-[#DDDDDD] w-full text-center absolute top-1/2 left-0 -translate-y-1/2">
 
-                        <div class="timeline-divider"></div>
-
-                        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                            <div
-                                class="flex items-center gap-2 bg-pink-50 border border-pink-200 px-3 py-1.5 rounded-lg text-xs">
-                                <div class="w-2 h-2 rounded-full bg-pink-500"></div>
-                                <span class="text-gray-900 font-semibold">Grandparents Life Events</span>
+                            <div class="relative z-10 backdrop-blur-sm inline-block">
+                                <div class="flex items-center gap-2   px-3 py-1.5 rounded-lg text-xs">
+                                    <div class="w-2 h-2 rounded-full" style="background-color:#F22BB4"></div>
+                                    <span class="text-sm font-medium text-[#670949]">Grandparents Life Events</span>
+                                </div>
                             </div>
                         </div>
 
                         <div class="absolute left-0 right-0 top-24 bottom-[52%]">
-                            <div class="timeline-event" data-event-id="p1" style="left: 6%; top: 32%;">
+                            <div class="timeline-event" style="left: 3.5%; top: 12%;">
                                 <div class="bg-white/80 rounded-2xl shadow-md p-1">
                                     <div
-                                        class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-xl shadow-lg flex items-center justify-center">
+                                        class="w-12 h-12 bg-gradient-to-br from-[#009794] to-[#2BBCAF] rounded-xl shadow-lg flex items-center justify-center">
                                         <i class="fa-solid fa-house text-white text-lg"></i>
                                     </div>
                                 </div>
                             </div>
-                            <div class="timeline-event" data-event-id="p2" style="left: 24%; top: 45%;">
+                            <div class="timeline-event" style="left: 3.5%; top: 50%;">
                                 <div class="bg-white/80 rounded-2xl shadow-md p-1">
                                     <div
-                                        class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-xl shadow-lg flex items-center justify-center">
-                                        <i class="fa-solid fa-school text-white text-lg"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="timeline-event" data-event-id="p3" style="left: 47%; top: 35%;">
-                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
-                                    <div
-                                        class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-xl shadow-lg flex items-center justify-center">
-                                        <i class="fa-solid fa-ring text-white text-lg"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="timeline-event" data-event-id="p4" style="left: 55%; top: 46%;">
-                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
-                                    <div
-                                        class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-xl shadow-lg flex items-center justify-center">
+                                        class="w-12 h-12 bg-gradient-to-br from-[#009794] to-[#2BBCAF] rounded-xl shadow-lg flex items-center justify-center">
                                         <i class="fa-solid fa-briefcase text-white text-lg"></i>
                                     </div>
                                 </div>
                             </div>
-                            <div class="timeline-event" data-event-id="p5" style="left: 77%; top: 30%;">
+                            <div class="timeline-event" style="left: 16%; top: 12%;">
                                 <div class="bg-white/80 rounded-2xl shadow-md p-1">
                                     <div
-                                        class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-xl shadow-lg flex items-center justify-center">
-                                        <i class="fa-solid fa-graduation-cap text-white text-lg"></i>
+                                        class="w-12 h-12 bg-gradient-to-br from-[#009794] to-[#2BBCAF] rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-school text-white text-lg"></i>
                                     </div>
                                 </div>
                             </div>
-                            <div class="timeline-event" data-event-id="p6" style="left: 90%; top: 44%;">
+                            <div class="timeline-event" style="left: 41%; top: 12%;">
                                 <div class="bg-white/80 rounded-2xl shadow-md p-1">
                                     <div
-                                        class="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-500 rounded-xl shadow-lg flex items-center justify-center">
-                                        <i class="fa-solid fa-plane text-white text-lg"></i>
+                                        class="w-12 h-12 bg-gradient-to-br from-[#009794] to-[#2BBCAF] rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-location-dot text-white text-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-event" style="left: 41%; top: 50%;">
+                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-[#009794] to-[#2BBCAF] rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-building text-white text-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-event" style="left: 79%; top: 13%;">
+                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-[#009794] to-[#2BBCAF] rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-magnifying-glass text-white text-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-event" style="left: 91.5%; top: 20%;">
+                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-[#009794] to-[#2BBCAF] rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-graduation-cap text-white text-lg"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="absolute left-0 right-0 top-[53%] bottom-6">
-                            <div class="timeline-event" data-event-id="g1" style="left: 4%; top: 30%;">
+                            <div class="timeline-event" style="left: 3.5%; top: 20%;">
                                 <div class="bg-white/80 rounded-2xl shadow-md p-1">
                                     <div
-                                        class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
-                                        <i class="fa-solid fa-baby text-white text-lg"></i>
+                                        class="w-12 h-12 bg-gradient-to-br from-[#F22BB4] to-[#FF78CF] rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-building text-white text-lg"></i>
                                     </div>
                                 </div>
                             </div>
-                            <div class="timeline-event" data-event-id="g2" style="left: 20%; top: 48%;">
+                            <div class="timeline-event" style="left: 28.5%; top: 20%;">
                                 <div class="bg-white/80 rounded-2xl shadow-md p-1">
                                     <div
-                                        class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
-                                        <i class="fa-solid fa-heart text-white text-lg"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="timeline-event" data-event-id="g3" style="left: 36%; top: 34%;">
-                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
-                                    <div
-                                        class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
-                                        <i class="fa-solid fa-cake-candles text-white text-lg"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="timeline-event" data-event-id="g4" style="left: 49%; top: 44%;">
-                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
-                                    <div
-                                        class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
+                                        class="w-12 h-12 bg-gradient-to-br from-[#F22BB4] to-[#FF78CF] rounded-xl shadow-lg flex items-center justify-center">
                                         <i class="fa-solid fa-graduation-cap text-white text-lg"></i>
                                     </div>
                                 </div>
                             </div>
-                            <div class="timeline-event" data-event-id="g5" style="left: 57%; top: 30%;">
+                            <div class="timeline-event" style="left: 54%; top: 20%;">
                                 <div class="bg-white/80 rounded-2xl shadow-md p-1">
                                     <div
-                                        class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
-                                        <i class="fa-solid fa-ring text-white text-lg"></i>
+                                        class="w-12 h-12 bg-gradient-to-br from-[#F22BB4] to-[#FF78CF] rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-image text-white text-lg"></i>
                                     </div>
                                 </div>
                             </div>
-                            <div class="timeline-event" data-event-id="g6" style="left: 70%; top: 44%;">
+                            <div class="timeline-event" style="left: 54%; top: 60%;">
                                 <div class="bg-white/80 rounded-2xl shadow-md p-1">
                                     <div
-                                        class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
+                                        class="w-12 h-12 bg-gradient-to-br from-[#F22BB4] to-[#FF78CF] rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-location-dot text-white text-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-event" style="left: 66%; top: 20%;">
+                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-[#F22BB4] to-[#FF78CF] rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-briefcase text-white text-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-event" style="left: 79%; top: 20%;">
+                                <div class="bg-white/80 rounded-2xl shadow-md p-1">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-[#F22BB4] to-[#FF78CF] rounded-xl shadow-lg flex items-center justify-center">
                                         <i class="fa-solid fa-house text-white text-lg"></i>
                                     </div>
                                 </div>
                             </div>
-                            <div class="timeline-event" data-event-id="g7" style="left: 84%; top: 34%;">
+                            <div class="timeline-event" style="left: 91.5%; top: 20%;">
                                 <div class="bg-white/80 rounded-2xl shadow-md p-1">
                                     <div
-                                        class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl shadow-lg flex items-center justify-center">
-                                        <i class="fa-solid fa-camera text-white text-lg"></i>
+                                        class="w-12 h-12 bg-gradient-to-br from-[#F22BB4] to-[#FF78CF] rounded-xl shadow-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-house text-white text-lg"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
-
-
-                    <div id="event-popover"
-                        class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/30 p-4">
-                        <div class="bg-white rounded-2xl border border-gray-200 shadow-xl w-[420px]">
-                            <div class="relative">
-                                <img id="popover-image" src="" alt="" class="w-full h-40 object-cover rounded-t-2xl">
-                                <button id="popover-close"
-                                    class="absolute top-2 right-2 w-8 h-8 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg flex items-center justify-center">
-                                    <i class="fa-solid fa-xmark text-sm"></i>
-                                </button>
-                                <div
-                                    class="absolute top-2 left-2 bg-gray-900/70 text-white text-[11px] px-2 py-1 rounded-md flex items-center gap-1">
-                                    <i class="fa-brands fa-google text-xs"></i>
-                                    <span>Google Map</span>
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="mb-2">
-                                    <h3 id="popover-title" class="text-base font-semibold text-gray-900"></h3>
-                                    <p id="popover-desc" class="text-sm text-gray-600 mt-1"></p>
-                                </div>
-                                <div class="grid grid-cols-[90px_1fr] gap-y-2 gap-x-3 text-sm">
-                                    <div class="text-gray-500">Purpose</div>
-                                    <div><span id="popover-purpose"
-                                            class="px-2 py-1 rounded-lg border border-purple-200 bg-purple-50 text-purple-600 text-xs"></span>
-                                    </div>
-                                    <div class="text-gray-500">Date</div>
-                                    <div id="popover-date" class="text-gray-800"></div>
-                                    <div class="text-gray-500">Place Name</div>
-                                    <div id="popover-place" class="text-gray-800"></div>
-                                    <div class="text-gray-500">Address</div>
-                                    <div id="popover-address" class="text-gray-800"></div>
-                                </div>
-                                <div class="flex items-center justify-between mt-4">
-                                    <button
-                                        class="px-3 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm hover:bg-gray-50">View
-                                        Stories</button>
-                                    <button
-                                        class="px-3 py-2 rounded-lg bg-leaves-green text-white text-sm hover:bg-leaves-green/90">View
-                                        in Timeline</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
-
     </main>
-
-</body>
-<script>
-    const eventData = {
-        p1: {
-            title: "First Home",
-            desc: "Moved into the first family home.",
-            purpose: "Home",
-            date: "Sunday, May 3, 1981",
-            place: "Oakwood Residence",
-            address: "Springfield, IL, United States",
-            image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800&q=80&auto=format&fit=crop"
-        },  
-        p2: {
-            title: "High School",
-            desc: "Graduated from Central High School.",
-            purpose: "Education",
-            date: "Friday, June 12, 1988",
-            place: "Central High School",
-            address: "Madison, WI, United States",
-            image: "https://images.unsplash.com/photo-1513161455079-7dc1de15ef3e?w=800&q=80&auto=format&fit=crop"
-        },
-        p3: {
-            title: "Patricia’s Wedding Ceremony",
-            desc: "A joyful day celebrated with close family and friends.",
-            purpose: "Wedding Celebration",
-            date: "Saturday, August 14, 1988",
-            place: "Eden Royal Convention Hall, Florida",
-            address: "Homestead, FL 33031, United States",
-            image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80&auto=format&fit=crop"
-        },
-        p4: {
-            title: "First Job",
-            desc: "Started career as a junior analyst.",
-            purpose: "Career",
-            date: "Monday, March 4, 1990",
-            place: "Brighton Corp",
-            address: "Chicago, IL, United States",
-            image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80&auto=format&fit=crop"
-        },
-        p5: {
-            title: "Master’s Graduation",
-            desc: "Completed Master’s in Computer Science.",
-            purpose: "Graduation",
-            date: "Tuesday, May 18, 2002",
-            place: "State University",
-            address: "Ann Arbor, MI, United States",
-            image: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=800&q=80&auto=format&fit=crop"
-        },
-        p6: {
-            title: "Trip to Europe",
-            desc: "Visited several countries across Europe.",
-            purpose: "Travel",
-            date: "July, 2005",
-            place: "EU Tour",
-            address: "Multiple cities",
-            image: "https://images.unsplash.com/photo-1473625247510-8ceb1760943f?w=800&q=80&auto=format&fit=crop"
-        },
-        g1: {
-            title: "Birth",
-            desc: "Welcomed into the world.",
-            purpose: "Birth",
-            date: "Wednesday, March 22, 1955",
-            place: "City Hospital",
-            address: "Boston, MA, United States",
-            image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800&q=80&auto=format&fit=crop"
-        },
-        g2: {
-            title: "First Love",
-            desc: "Met at the summer fair.",
-            purpose: "Special Event",
-            date: "Sunday, July 10, 1973",
-            place: "Summer Fair",
-            address: "Providence, RI, United States",
-            image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=80&auto=format&fit=crop"
-        },
-        g3: {
-            title: "Birthday Celebration",
-            desc: "Celebrated with family and friends.",
-            purpose: "Birthday",
-            date: "Thursday, October 9, 1975",
-            place: "Family Home",
-            address: "Nashua, NH, United States",
-            image: "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?w=800&q=80&auto=format&fit=crop"
-        },
-        g4: {
-            title: "College Graduation",
-            desc: "Graduated with honors.",
-            purpose: "Graduation",
-            date: "Sunday, May 22, 1978",
-            place: "Northern College",
-            address: "Portland, ME, United States",
-            image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80&auto=format&fit=crop"
-        },
-        g5: {
-            title: "Wedding Day",
-            desc: "A beautiful ceremony with loved ones.",
-            purpose: "Wedding",
-            date: "Saturday, June 14, 1980",
-            place: "Rose Garden Chapel",
-            address: "Hartford, CT, United States",
-            image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=800&q=80&auto=format&fit=crop"
-        },
-        g6: {
-            title: "New Home",
-            desc: "Moved into a new home.",
-            purpose: "Home",
-            date: "Monday, September 3, 1983",
-            place: "Maple Street House",
-            address: "Albany, NY, United States",
-            image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800&q=80&auto=format&fit=crop"
-        },
-        g7: {
-            title: "Family Photo Day",
-            desc: "Captured memories together.",
-            purpose: "Special Event",
-            date: "Sunday, April 6, 1986",
-            place: "City Park",
-            address: "Buffalo, NY, United States",
-            image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80&auto=format&fit=crop"
-        }
-    };
-
-    const popover = document.getElementById('event-popover');
-    const imgEl = document.getElementById('popover-image');
-    const titleEl = document.getElementById('popover-title');
-    const descEl = document.getElementById('popover-desc');
-    const purposeEl = document.getElementById('popover-purpose');
-    const dateEl = document.getElementById('popover-date');
-    const placeEl = document.getElementById('popover-place');
-    const addressEl = document.getElementById('popover-address');
-    const closeBtn = document.getElementById('popover-close');
-
-    function showPopover(data) {
-        imgEl.src = data.image;
-        titleEl.textContent = data.title;
-        descEl.textContent = data.desc;
-        purposeEl.textContent = data.purpose;
-        dateEl.textContent = data.date;
-        placeEl.textContent = data.place;
-        addressEl.textContent = data.address;
-        popover.classList.remove('hidden');
-    }
-
-    function hidePopover() {
-        popover.classList.add('hidden');
-    }
-
-    document.querySelectorAll('.timeline-event').forEach(el => {
-        el.addEventListener('click', e => {
-            const id = el.getAttribute('data-event-id');
-            const data = eventData[id];
-            if (data) showPopover(data);
-        });
-    });
-
-    closeBtn.addEventListener('click', hidePopover);
-    popover.addEventListener('click', e => {
-        if (e.target === popover) hidePopover();
-    });
-</script>
-
 </body>
 
 </html>
