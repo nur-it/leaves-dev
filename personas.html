@@ -521,7 +521,7 @@
       <div class="grid grid-cols-12 h-auto rounded-l-xl rounded-r-xl">
         <!-- Left Sidebar - Personas List -->
         <div
-          class="col-span-12 lg:col-span-3 shadow-[0px_1px_2px_0px_#00000042] bg-white rounded-l-xl"
+          class="col-span-12 lg:col-span-3 shadow-[0px_1px_2px_0px_#00000042] bg-white rounded-t-xl lg:rounded-tr-none lg:rounded-l-xl"
         >
           <div
             class="flex items-center px-4 py-4 border-b pb-4 justify-between mb-5"
@@ -839,29 +839,29 @@
 
         <!-- Chat Area -->
         <div
-          class="col-span-12 lg:col-span-9 bg-white shadow-[0px_1px_2px_0px_#00000042] rounded-r-xl flex flex-col"
+          class="col-span-12 lg:col-span-9 bg-white shadow-[0px_1px_2px_0px_#00000042] lg:rounded-r-xl rounded-b-xl lg:rounded-bl-none flex flex-col"
         >
           <!-- Chat Header -->
           <div class="bg-[#F4FAF499] px-6 pt-4 pb-0">
             <div
-              class="flex items-center px-2 justify-center max-w-[253px] mx-auto rounded-[6px] gap-1 text-[13px] bg-[#F4FAF499] shadow-[0_0_1px_0_rgba(0,0,0,0.4),0_0_2px_0_rgba(0,0,0,0.04),0_1px_1px_0_rgba(0,0,0,0.06)]"
+              class="flex items-center px-2 justify-center max-w-[253px] mx-auto rounded-[6px] gap-1 text-[12px] sm:text-[13px] bg-[#F4FAF499] shadow-[0_0_1px_0_rgba(0,0,0,0.4),0_0_2px_0_rgba(0,0,0,0.04),0_1px_1px_0_rgba(0,0,0,0.06)]"
             >
               <!-- Active Button -->
               <button
-                class="font-medium text-primary text-sm bg-white my-1 w-[82px] rounded-[4px] shadow-[0_0_1px_0_rgba(0,0,0,0.16),0_1px_1px_0_rgba(0,0,0,0.06)] py-2 transition-all"
+                class="font-medium text-primary text-xs sm:text-sm bg-white my-1 w-[82px] rounded-[4px] shadow-[0_0_1px_0_rgba(0,0,0,0.16),0_1px_1px_0_rgba(0,0,0,0.06)] py-2 transition-all"
               >
                 Chat
               </button>
 
               <!-- Inactive Buttons -->
               <button
-                class="text-[#9A9B9A] text-sm hover:text-gray-900 py-2 w-[82px] rounded-[4px] hover:bg-gray-50 transition-all"
+                class="text-[#9A9B9A] text-xs sm:text-sm hover:text-gray-900 py-2 w-[82px] rounded-[4px] hover:bg-gray-50 transition-all"
               >
                 Thoughts
               </button>
 
               <button
-                class="text-[#9A9B9A] text-sm hover:text-gray-900 py-2 w-[82px] rounded-[4px] hover:bg-gray-50 transition-all"
+                class="text-[#9A9B9A] text-xs sm:text-sm hover:text-gray-900 py-2 w-[82px] rounded-[4px] hover:bg-gray-50 transition-all"
               >
                 Wisdom
               </button>
@@ -871,7 +871,7 @@
           <!-- Messages Area -->
           <div class="bg-[#F4FAF499] py-4">
             <div
-              class="flex-1 overflow-y-auto max-h-[600px] mx-auto bg-[#F4FAF499] space-y-4"
+              class="flex-1 overflow-y-auto mx-auto bg-[#F4FAF499] space-y-4 px-2 sm:px-4 max-h-[60vh] sm:max-h-[70vh] lg:max-h-[600px]"
             >
               <div class="each_chat_group space-y-4 max-w-[855px] mx-auto">
                 <!-- User Message -->
@@ -879,7 +879,7 @@
                   <div
                     class="chat-message-user bg-[#EBFFEB] border border-[#B1E5B1] px-4 py-3"
                   >
-                    <p class="text-lg text-primary leading-relaxed">
+                    <p class="text-sm sm:text-base md:text-lg text-primary leading-relaxed">
                       I've been feeling unsure about my next career step.
                       Everything feels blurry right now.
                     </p>
@@ -896,7 +896,7 @@
                   />
                   <div class="flex-1">
                     <div class="px-4 py-3 inline-block">
-                      <p class="text-lg text-primary leading-relaxed">
+                      <p class="text-sm sm:text-base md:text-lg text-primary leading-relaxed">
                         It's completely normal to feel uncertain. Life doesn't
                         always give us clear signals. What matters is paying
                         attention to what energizes you and what drains you.
@@ -1022,7 +1022,7 @@
                   <div
                     class="chat-message-user bg-[#EBFFEB] border border-[#B1E5B1] px-4 py-3 max-w-[65%]"
                   >
-                    <p class="text-lg text-primary leading-relaxed">
+                    <p class="text-sm sm:text-base md:text-lg text-primary leading-relaxed">
                       I guess I'm just afraid of making the wrong choice again.
                     </p>
                   </div>
@@ -1039,7 +1039,7 @@
                   />
                   <div class="flex-1">
                     <div class="px-4 py-3 inline-block">
-                      <p class="text-lg text-primary leading-relaxed">
+                      <p class="text-sm sm:text-base md:text-lg text-primary leading-relaxed">
                         There's rarely a "wrong" choice — only choices that
                         teach you something. Think about it: every step you've
                         taken, even the tough ones, shaped who you are today.
@@ -1163,7 +1163,7 @@
                   <div
                     class="chat-message-user bg-[#EBFFEB] border border-[#B1E5B1] px-4 py-3"
                   >
-                    <p class="text-lg text-primary leading-relaxed">
+                    <p class="text-sm sm:text-base md:text-lg text-primary leading-relaxed">
                       That helps... but I also feel pressure to make the perfect
                       decision. Like time's running out.
                     </p>
@@ -1181,7 +1181,7 @@
                   />
                   <div class="flex-1">
                     <div class="px-4 py-3 inline-block">
-                      <p class="text-lg text-primary leading-relaxed">
+                      <p class="text-sm sm:text-base md:text-lg text-primary leading-relaxed">
                         Time isn't running out.
                       </p>
                     </div>
@@ -1303,16 +1303,19 @@
           <!-- Input Area -->
           <div class="bg-[#F4FAF499]">
             <div class="border-t border-gray-100 mx-auto py-4">
-              <div class="flex items-center px-20 gap-3">
+              <div
+                class="flex items-center px-3 sm:px-6 md:px-12 lg:px-20 gap-2 sm:gap-3"
+              >
                 <input
                   type="text"
                   placeholder="Ask anything"
-                  class="flex-1 bg-gray-50 border border-gray-200 rounded-full px-4 h-[60px] placeholder:text-[#9A9B9A] placeholder:text-lg text-sm focus:outline-none focus:ring-2 focus:ring-leaves-green"
+                  class="flex-1 min-w-0 bg-gray-50 border border-gray-200 rounded-full px-3 sm:px-4 h-11 sm:h-12 md:h-14 lg:h-[60px] placeholder:text-[#9A9B9A] placeholder:text-sm sm:placeholder:text-base md:placeholder:text-lg text-sm focus:outline-none focus:ring-2 focus:ring-leaves-green"
                 />
                 <button
-                  class="w-[60px] h-[60px] bg-[#45A735] hover:bg-leaves-green/90 text-white rounded-full flex items-center justify-center transition-colors"
+                  class="w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-[60px] lg:h-[60px] bg-[#45A735] hover:bg-leaves-green/90 text-white rounded-full flex items-center justify-center transition-colors"
                 >
                   <svg
+                    class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7"
                     xmlns="http://www.w3.org/2000/svg"
                     width="27"
                     height="27"
