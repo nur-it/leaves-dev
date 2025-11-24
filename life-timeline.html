@@ -1,1650 +1,1030 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Life Timeline Feature - LEAVES</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ["Aeonik", "sans-serif"],
-            },
-            colors: {
-              "leaves-green": "#4A7A45",
-              "leaves-green-500": "#45A735",
-              "leaves-dark-green": "#072F14",
-            },
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Timeline Feature - LEAVES</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Aeonik", "sans-serif"],
+          },
+          colors: {
+            "leaves-green": "#4A7A45",
+            "leaves-green-500": "#45A735",
+            "leaves-dark-green": "#072F14",
           },
         },
-      };
-    </script>
+      },
+    };
+  </script>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    <style>
-      @font-face {
-        font-family: "Aeonik";
-        src: url("./public/fonts/aeonik/Aeonik-Thin.otf") format("opentype");
-        font-weight: 200;
-        font-style: normal;
-        font-display: swap;
+  <style>
+    @font-face {
+      font-family: "Aeonik";
+      src: url("./public/fonts/aeonik/Aeonik-Thin.otf") format("opentype");
+      font-weight: 200;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Aeonik";
+      src: url("./public/fonts/aeonik/Aeonik-Light.otf") format("opentype");
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Aeonik";
+      src: url("./public/fonts/aeonik/Aeonik-Regular.otf") format("opentype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Aeonik";
+      src: url("./public/fonts/aeonik/Aeonik-Medium.otf") format("opentype");
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Aeonik";
+      src: url("./public/fonts/aeonik/Aeonik-Bold.otf") format("opentype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      font-family: "Aeonik", sans-serif;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 3px;
+    }
+
+    .timeline-event {
+      position: absolute;
+      width: 56px;
+      height: 56px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .timeline-event:hover {
+      transform: scale(1.05);
+    }
+
+    .timeline-board {
+      position: relative;
+      height: 520px;
+      border-radius: 14px;
+
+      @media (max-width: 1024px) {
+        min-height: 700px;
       }
+    }
 
-      @font-face {
-        font-family: "Aeonik";
-        src: url("./public/fonts/aeonik/Aeonik-Light.otf") format("opentype");
-        font-weight: 300;
-        font-style: normal;
-        font-display: swap;
+    .timeline-grid {
+      position: absolute;
+      inset: 0;
+      border: 1px solid #e5e7eb;
+      border-top: none;
+      background-image: repeating-linear-gradient(to right,
+          transparent 0,
+          transparent calc(12.5% - 1px),
+          #e5e7eb calc(12.5% - 1px),
+          #e5e7eb calc(12.5% + 1px)),
+        repeating-linear-gradient(to right,
+          #f6f6f633 0,
+          #f6f6f633 12.5%,
+          #ffffff 12.5%,
+          #ffffff 25%);
+      background-size: 100% 100%, 100% 100%;
+
+      @media (max-width: 1024px) {
+        min-width: 800px;
       }
+    }
+  </style>
+</head>
 
-      @font-face {
-        font-family: "Aeonik";
-        src: url("./public/fonts/aeonik/Aeonik-Regular.otf") format("opentype");
-        font-weight: 400;
-        font-style: normal;
-        font-display: swap;
-      }
-
-      @font-face {
-        font-family: "Aeonik";
-        src: url("./public/fonts/aeonik/Aeonik-Medium.otf") format("opentype");
-        font-weight: 500;
-        font-style: normal;
-        font-display: swap;
-      }
-
-      @font-face {
-        font-family: "Aeonik";
-        src: url("./public/fonts/aeonik/Aeonik-Bold.otf") format("opentype");
-        font-weight: 700;
-        font-style: normal;
-        font-display: swap;
-      }
-
-      body {
-        background-color: #f8f9fa;
-        font-family: "Aeonik", sans-serif;
-      }
-
-      ::-webkit-scrollbar {
-        width: 6px;
-        height: 6px;
-      }
-
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: #c1c1c1;
-        border-radius: 3px;
-      }
-
-      .timeline-event {
-        position: absolute;
-        width: 56px;
-        height: 56px;
-        cursor: pointer;
-        transition: transform 0.2s;
-      }
-
-      .timeline-event:hover {
-        transform: scale(1.05);
-      }
-
-      .timeline-board {
-        position: relative;
-        height: 520px;
-        border-radius: 14px;
-        @media (max-width: 1024px) {
-          min-height: 700px;
-        }
-      }
-
-      .timeline-grid {
-        position: absolute;
-        inset: 0;
-        border: 1px solid #e5e7eb;
-        border-top: none;
-        background-image: repeating-linear-gradient(
-            to right,
-            transparent 0,
-            transparent calc(12.5% - 1px),
-            #e5e7eb calc(12.5% - 1px),
-            #e5e7eb calc(12.5% + 1px)
-          ),
-          repeating-linear-gradient(
-            to right,
-            #f6f6f633 0,
-            #f6f6f633 12.5%,
-            #ffffff 12.5%,
-            #ffffff 25%
-          );
-        background-size: 100% 100%, 100% 100%;
-
-        @media (max-width: 1024px) {
-          min-width: 800px;
-        }
-      }
-    </style>
-  </head>
-
-  <body class="text-gray-700 font-sans antialiased">
-    <header
-      class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200"
-    >
-      <div
-        class="max-w-[1494px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between"
-      >
-        <div class="flex items-center gap-2 cursor-pointer">
-          <img src="./public/logo.svg" alt="LEAVES" class="w-full h-auto" />
-        </div>
-        <div class="flex items-center gap-4">
-          <button
-            class="relative border-r border-leaves-light-surface h-9 text-gray-600 hover:text-gray-900"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="41"
-              height="42"
-              viewBox="0 0 41 42"
-              fill="none"
-            >
-              <g clip-path="url(#clip0_52_1110)">
-                <path
-                  d="M20.0262 32.7869C21.3095 32.7869 22.3595 31.6994 22.3595 30.3702H17.6929C17.6929 31.6994 18.7429 32.7869 20.0262 32.7869ZM27.0262 25.5369V19.4952C27.0262 15.7856 25.1245 12.6802 21.7762 11.8585V11.0369C21.7762 10.0339 20.9945 9.22437 20.0262 9.22437C19.0579 9.22437 18.2762 10.0339 18.2762 11.0369V11.8585C14.9395 12.6802 13.0262 15.7735 13.0262 19.4952V25.5369L10.6929 27.9535V29.1619H29.3595V27.9535L27.0262 25.5369ZM24.6929 26.7452H15.3595V19.4952C15.3595 16.4985 17.1212 14.0577 20.0262 14.0577C22.9312 14.0577 24.6929 16.4985 24.6929 19.4952V26.7452Z"
-                  fill="#9A9B9A"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_52_1110">
-                  <rect
-                    width="28"
-                    height="29"
-                    fill="white"
-                    transform="translate(6.02637 6.20361)"
-                  />
-                </clipPath>
-              </defs>
-            </svg>
-            <span
-              class="absolute top-[5px] right-[5px] bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center"
-              >3</span
-            >
-          </button>
-          <div class="flex items-center gap-2 cursor-pointer">
-            <img
-              src="./public/user-3.png"
-              alt="Profile"
-              class="w-8 h-8 rounded-full object-cover"
-            />
-            <i class="fa-solid fa-chevron-down text-xs text-gray-600"></i>
-          </div>
-        </div>
+<body class="text-gray-700 font-sans antialiased">
+  <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+    <div class="max-w-[1494px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-2 cursor-pointer">
+        <img src="./public/logo.svg" alt="LEAVES" class="w-full h-auto" />
       </div>
-      <div class="border-t-2 border-dotted border-leaves-border">
-        <div class="max-w-[1494px] mx-auto px-4 sm:px-6 lg:px-8">
-          <nav
-            class="flex items-center gap-8 text-center overflow-x-auto no-scrollbar text-[15px] font-light text-gray-500"
-          >
-            <a
-              href="index.html"
-              class="flex items-center gap-2 py-3 text-gray-600 hover:text-gray-900 font-normal transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="15"
-                height="17"
-                viewBox="0 0 15 17"
-                fill="none"
-              >
-                <path
-                  d="M1.83333 14.6667H4.58333V9.16667H10.0833V14.6667H12.8333V6.41667L7.33333 2.29167L1.83333 6.41667V14.6667ZM0 16.5V5.5L7.33333 0L14.6667 5.5V16.5H8.25V11H6.41667V16.5H0Z"
-                  fill="#798181"
-                />
-              </svg>
-              Dashboard
-            </a>
-            <a
-              href="times-of-my-life.html"
-              class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="22"
-                viewBox="0 0 22 22"
-                fill="none"
-              >
-                <path
-                  d="M6.87508 20.1666C5.98897 20.1666 5.23272 19.8534 4.60633 19.227C3.97994 18.6006 3.66675 17.8444 3.66675 16.9583V5.04159C3.66675 4.15547 3.97994 3.39922 4.60633 2.77284C5.23272 2.14645 5.98897 1.83325 6.87508 1.83325H18.3334V15.5833C17.9515 15.5833 17.6268 15.7169 17.3595 15.9843C17.0921 16.2517 16.9584 16.5763 16.9584 16.9583C16.9584 17.3402 17.0921 17.6648 17.3595 17.9322C17.6268 18.1996 17.9515 18.3333 18.3334 18.3333V20.1666H6.87508ZM5.50008 14.0478C5.71397 13.9409 5.9355 13.8645 6.16466 13.8187C6.39383 13.7728 6.63064 13.7499 6.87508 13.7499H7.33341V3.66659H6.87508C6.49314 3.66659 6.16848 3.80027 5.90112 4.06763C5.63376 4.33499 5.50008 4.65964 5.50008 5.04159V14.0478ZM9.16675 13.7499H16.5001V3.66659H9.16675V13.7499ZM6.87508 18.3333H15.423C15.3313 18.1194 15.2588 17.9017 15.2053 17.6801C15.1518 17.4586 15.1251 17.218 15.1251 16.9583C15.1251 16.7138 15.148 16.477 15.1938 16.2478C15.2397 16.0187 15.3161 15.7971 15.423 15.5833H6.87508C6.47786 15.5833 6.14939 15.7169 5.88966 15.9843C5.62994 16.2517 5.50008 16.5763 5.50008 16.9583C5.50008 17.3555 5.62994 17.6839 5.88966 17.9437C6.14939 18.2034 6.47786 18.3333 6.87508 18.3333Z"
-                  fill="#798181"
-                />
-              </svg>
-              Times of My Life®
-            </a>
-            <a
-              href="personas.html"
-              class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="22"
-                viewBox="0 0 22 22"
-                fill="none"
-              >
-                <path
-                  d="M18.2873 14.6208L16.8665 13.2C17.5387 12.5736 18.0658 11.8326 18.4478 10.9771C18.8297 10.1215 19.0207 9.21248 19.0207 8.24998C19.0207 7.28748 18.8297 6.3861 18.4478 5.54582C18.0658 4.70554 17.5387 3.97221 16.8665 3.34582L18.2873 1.87915C19.1429 2.68887 19.8228 3.64373 20.3269 4.74373C20.8311 5.84373 21.0832 7.01248 21.0832 8.24998C21.0832 9.48748 20.8311 10.6562 20.3269 11.7562C19.8228 12.8562 19.1429 13.8111 18.2873 14.6208ZM15.354 11.6875L13.8873 10.2208C14.1623 9.96109 14.3839 9.667 14.5519 9.33853C14.72 9.01005 14.804 8.64721 14.804 8.24998C14.804 7.85276 14.72 7.48991 14.5519 7.16144C14.3839 6.83297 14.1623 6.53887 13.8873 6.27915L15.354 4.81248C15.8429 5.25554 16.2248 5.77116 16.4998 6.35936C16.7748 6.94755 16.9123 7.57776 16.9123 8.24998C16.9123 8.92221 16.7748 9.55241 16.4998 10.1406C16.2248 10.7288 15.8429 11.2444 15.354 11.6875ZM8.24984 11.9167C7.2415 11.9167 6.37831 11.5576 5.66025 10.8396C4.9422 10.1215 4.58317 9.25832 4.58317 8.24998C4.58317 7.24165 4.9422 6.37846 5.66025 5.6604C6.37831 4.94234 7.2415 4.58332 8.24984 4.58332C9.25817 4.58332 10.1214 4.94234 10.8394 5.6604C11.5575 6.37846 11.9165 7.24165 11.9165 8.24998C11.9165 9.25832 11.5575 10.1215 10.8394 10.8396C10.1214 11.5576 9.25817 11.9167 8.24984 11.9167ZM0.916504 19.25V16.6833C0.916504 16.1792 1.04637 15.7055 1.30609 15.2625C1.56581 14.8194 1.92484 14.4833 2.38317 14.2542C3.16234 13.8569 4.04081 13.5208 5.01859 13.2458C5.99637 12.9708 7.07345 12.8333 8.24984 12.8333C9.42623 12.8333 10.5033 12.9708 11.4811 13.2458C12.4589 13.5208 13.3373 13.8569 14.1165 14.2542C14.5748 14.4833 14.9339 14.8194 15.1936 15.2625C15.4533 15.7055 15.5832 16.1792 15.5832 16.6833V19.25H0.916504ZM2.74984 17.4167H13.7498V16.6833C13.7498 16.5153 13.7078 16.3625 13.6238 16.225C13.5398 16.0875 13.429 15.9805 13.2915 15.9042C12.7415 15.6292 12.0349 15.3542 11.1717 15.0792C10.3085 14.8042 9.33456 14.6667 8.24984 14.6667C7.16512 14.6667 6.19116 14.8042 5.32796 15.0792C4.46477 15.3542 3.75817 15.6292 3.20817 15.9042C3.07067 15.9805 2.95991 16.0875 2.87588 16.225C2.79185 16.3625 2.74984 16.5153 2.74984 16.6833V17.4167ZM8.24984 10.0833C8.754 10.0833 9.1856 9.9038 9.54463 9.54478C9.90366 9.18575 10.0832 8.75415 10.0832 8.24998C10.0832 7.74582 9.90366 7.31422 9.54463 6.95519C9.1856 6.59616 8.754 6.41665 8.24984 6.41665C7.74567 6.41665 7.31407 6.59616 6.95505 6.95519C6.59602 7.31422 6.4165 7.74582 6.4165 8.24998C6.4165 8.75415 6.59602 9.18575 6.95505 9.54478C7.31407 9.9038 7.74567 10.0833 8.24984 10.0833Z"
-                  fill="#798181"
-                />
-              </svg>
-              Forever Voice™
-            </a>
-            <a
-              href="life-map.html"
-              class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                fill="#798181"
-              >
-                <path
-                  d="m300-300 280-80 80-280-280 80-80 280Zm180-120q-25 0-42.5-17.5T420-480q0-25 17.5-42.5T480-540q25 0 42.5 17.5T540-480q0 25-17.5 42.5T480-420Zm0 340q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Zm0-320Z"
-                />
-              </svg>
-              Life Map™
-            </a>
-            <a
-              href="life-timeline.html"
-              class="flex items-center gap-2 text-leaves-dark-green border-b-2 border-leaves-green-500 pb-3 px-3 -mb-3 whitespace-nowrap font-medium"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="17"
-                height="17"
-                viewBox="0 0 17 17"
-                fill="none"
-              >
-                <path
-                  d="M2.75 12.8333H8.25V11H2.75V12.8333ZM5.5 9.16667H11V7.33333H5.5V9.16667ZM8.25 5.5H13.75V3.66667H8.25V5.5ZM1.83333 16.5C1.32917 16.5 0.897569 16.3205 0.538542 15.9615C0.179514 15.6024 0 15.1708 0 14.6667V1.83333C0 1.32917 0.179514 0.897569 0.538542 0.538542C0.897569 0.179514 1.32917 0 1.83333 0H14.6667C15.1708 0 15.6024 0.179514 15.9615 0.538542C16.3205 0.897569 16.5 1.32917 16.5 1.83333V14.6667C16.5 15.1708 16.3205 15.6024 15.9615 15.9615C15.6024 16.3205 15.1708 16.5 14.6667 16.5H1.83333Z"
-                  fill="#135529"
-                />
-              </svg>
-              Life Timeline™
-            </a>
-            <a
-              href="document-archive.html"
-              class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="19"
-                height="15"
-                viewBox="0 0 19 15"
-                fill="none"
-              >
-                <path
-                  d="M1.83333 14.6667C1.32917 14.6667 0.897569 14.4872 0.538542 14.1281C0.179514 13.7691 0 13.3375 0 12.8333V1.83333C0 1.32917 0.179514 0.897569 0.538542 0.538542C0.897569 0.179514 1.32917 0 1.83333 0H7.33333L9.16667 1.83333H16.5C17.0042 1.83333 17.4358 2.01285 17.7948 2.37187C18.1538 2.7309 18.3333 3.1625 18.3333 3.66667V12.8333C18.3333 13.3375 18.1538 13.7691 17.7948 14.1281C17.4358 14.4872 17.0042 14.6667 16.5 14.6667H1.83333ZM1.83333 12.8333H16.5V3.66667H8.41042L6.57708 1.83333H1.83333V12.8333Z"
-                  fill="#798181"
-                />
-              </svg>
-              Document Archive™
-            </a>
-            <a
-              href="legacy-letters.html"
-              class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="19"
-                height="15"
-                viewBox="0 0 19 15"
-                fill="none"
-              >
-                <path
-                  d="M1.83333 14.6667C1.32917 14.6667 0.897569 14.4872 0.538542 14.1281C0.179514 13.7691 0 13.3375 0 12.8333V1.83333C0 1.32917 0.179514 0.897569 0.538542 0.538542C0.897569 0.179514 1.32917 0 1.83333 0H16.5C17.0042 0 17.4358 0.179514 17.7948 0.538542C18.1538 0.897569 18.3333 1.32917 18.3333 1.83333V12.8333C18.3333 13.3375 18.1538 13.7691 17.7948 14.1281C17.4358 14.4872 17.0042 14.6667 16.5 14.6667H1.83333ZM9.16667 8.25L1.83333 3.66667V12.8333H16.5V3.66667L9.16667 8.25ZM9.16667 6.41667L16.5 1.83333H1.83333L9.16667 6.41667ZM1.83333 3.66667V1.83333V12.8333V3.66667Z"
-                  fill="#798181"
-                />
-              </svg>
-              Legacy Letters™
-            </a>
-            <a
-              href="media-library.html"
-              class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="19"
-                height="19"
-                viewBox="0 0 19 19"
-                fill="none"
-              >
-                <path
-                  d="M6.41667 11H15.5833L12.4208 6.875L10.3125 9.625L8.89167 7.79167L6.41667 11ZM5.5 14.6667C4.99583 14.6667 4.56424 14.4872 4.20521 14.1281C3.84618 13.7691 3.66667 13.3375 3.66667 12.8333V1.83333C3.66667 1.32917 3.84618 0.897569 4.20521 0.538542C4.56424 0.179514 4.99583 0 5.5 0H16.5C17.0042 0 17.4358 0.179514 17.7948 0.538542C18.1538 0.897569 18.3333 1.32917 18.3333 1.83333V12.8333C18.3333 13.3375 18.1538 13.7691 17.7948 14.1281C17.4358 14.4872 17.0042 14.6667 16.5 14.6667H5.5ZM5.5 12.8333H16.5V1.83333H5.5V12.8333ZM1.83333 18.3333C1.32917 18.3333 0.897569 18.1538 0.538542 17.7948C0.179514 17.4358 0 17.0042 0 16.5V3.66667H1.83333V16.5H14.6667V18.3333H1.83333Z"
-                  fill="#798181"
-                />
-              </svg>
-              Media Library™
-            </a>
-          </nav>
-        </div>
-      </div>
-    </header>
-
-    <main class="max-w-[1494px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <!-- Page Title -->
-      <h1 class="text-2xl font-bold text-gray-900 mb-4">Life Timeline™</h1>
-
-      <!-- Info Banner -->
-      <div
-        class="bg-[#E8F8FE] border border-[#9BD1F8] shadow-[inset_0px_2px_2px_1px_rgba(155,208,248,0.32)] rounded-lg px-2 py-1 mb-6 flex items-center gap-3"
-      >
-        <div class="flex items-center justify-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="40"
-            height="40"
-            viewBox="0 0 40 40"
-            fill="none"
-          >
-            <g filter="url(#filter0_di_1_44397)">
-              <rect
-                x="4.5"
-                y="3.5"
-                width="31"
-                height="31"
-                rx="7.5"
-                stroke="#43B8FB"
-                shape-rendering="crispEdges"
-              />
-              <g filter="url(#filter1_dn_1_44397)">
-                <rect
-                  x="7"
-                  y="6"
-                  width="26"
-                  height="26"
-                  rx="6"
-                  fill="#9CD4FF"
-                />
-                <rect
-                  x="7"
-                  y="6"
-                  width="26"
-                  height="26"
-                  rx="6"
-                  fill="url(#paint0_linear_1_44397)"
-                />
-                <path
-                  d="M19.1665 23.1667H20.8332V18.1667H19.1665V23.1667ZM19.9998 16.5001C20.2359 16.5001 20.4339 16.4202 20.5936 16.2605C20.7533 16.1008 20.8332 15.9029 20.8332 15.6667C20.8332 15.4306 20.7533 15.2327 20.5936 15.073C20.4339 14.9133 20.2359 14.8334 19.9998 14.8334C19.7637 14.8334 19.5658 14.9133 19.4061 15.073C19.2464 15.2327 19.1665 15.4306 19.1665 15.6667C19.1665 15.9029 19.2464 16.1008 19.4061 16.2605C19.5658 16.4202 19.7637 16.5001 19.9998 16.5001ZM19.9998 27.3334C18.8471 27.3334 17.7637 27.1147 16.7498 26.6772C15.7359 26.2397 14.854 25.6459 14.104 24.8959C13.354 24.1459 12.7603 23.264 12.3228 22.2501C11.8853 21.2362 11.6665 20.1529 11.6665 19.0001C11.6665 17.8473 11.8853 16.764 12.3228 15.7501C12.7603 14.7362 13.354 13.8542 14.104 13.1042C14.854 12.3542 15.7359 11.7605 16.7498 11.323C17.7637 10.8855 18.8471 10.6667 19.9998 10.6667C21.1526 10.6667 22.2359 10.8855 23.2498 11.323C24.2637 11.7605 25.1457 12.3542 25.8957 13.1042C26.6457 13.8542 27.2394 14.7362 27.6769 15.7501C28.1144 16.764 28.3332 17.8473 28.3332 19.0001C28.3332 20.1529 28.1144 21.2362 27.6769 22.2501C27.2394 23.264 26.6457 24.1459 25.8957 24.8959C25.1457 25.6459 24.2637 26.2397 23.2498 26.6772C22.2359 27.1147 21.1526 27.3334 19.9998 27.3334Z"
-                  fill="#00365F"
-                />
-              </g>
+      <div class="flex items-center gap-4">
+        <button class="relative border-r border-leaves-light-surface h-9 text-gray-600 hover:text-gray-900">
+          <svg xmlns="http://www.w3.org/2000/svg" width="41" height="42" viewBox="0 0 41 42" fill="none">
+            <g clip-path="url(#clip0_52_1110)">
+              <path
+                d="M20.0262 32.7869C21.3095 32.7869 22.3595 31.6994 22.3595 30.3702H17.6929C17.6929 31.6994 18.7429 32.7869 20.0262 32.7869ZM27.0262 25.5369V19.4952C27.0262 15.7856 25.1245 12.6802 21.7762 11.8585V11.0369C21.7762 10.0339 20.9945 9.22437 20.0262 9.22437C19.0579 9.22437 18.2762 10.0339 18.2762 11.0369V11.8585C14.9395 12.6802 13.0262 15.7735 13.0262 19.4952V25.5369L10.6929 27.9535V29.1619H29.3595V27.9535L27.0262 25.5369ZM24.6929 26.7452H15.3595V19.4952C15.3595 16.4985 17.1212 14.0577 20.0262 14.0577C22.9312 14.0577 24.6929 16.4985 24.6929 19.4952V26.7452Z"
+                fill="#9A9B9A" />
             </g>
             <defs>
-              <filter
-                id="filter0_di_1_44397"
-                x="0"
-                y="0"
-                width="40"
-                height="40"
-                filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
-              >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feColorMatrix
-                  in="SourceAlpha"
-                  type="matrix"
-                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                  result="hardAlpha"
-                />
-                <feMorphology
-                  radius="1"
-                  operator="dilate"
-                  in="SourceAlpha"
-                  result="effect1_dropShadow_1_44397"
-                />
-                <feOffset dy="1" />
-                <feGaussianBlur stdDeviation="1.5" />
-                <feComposite in2="hardAlpha" operator="out" />
-                <feColorMatrix
-                  type="matrix"
-                  values="0 0 0 0 0.972549 0 0 0 0 0.835294 0 0 0 0 0.607843 0 0 0 0.32 0"
-                />
-                <feBlend
-                  mode="normal"
-                  in2="BackgroundImageFix"
-                  result="effect1_dropShadow_1_44397"
-                />
-                <feBlend
-                  mode="normal"
-                  in="SourceGraphic"
-                  in2="effect1_dropShadow_1_44397"
-                  result="shape"
-                />
-                <feColorMatrix
-                  in="SourceAlpha"
-                  type="matrix"
-                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                  result="hardAlpha"
-                />
-                <feMorphology
-                  radius="1"
-                  operator="erode"
-                  in="SourceAlpha"
-                  result="effect2_innerShadow_1_44397"
-                />
-                <feOffset dy="2" />
-                <feGaussianBlur stdDeviation="1" />
-                <feComposite
-                  in2="hardAlpha"
-                  operator="arithmetic"
-                  k2="-1"
-                  k3="1"
-                />
-                <feColorMatrix
-                  type="matrix"
-                  values="0 0 0 0 0.810791 0 0 0 0 0.93693 0 0 0 0 1 0 0 0 0.32 0"
-                />
-                <feBlend
-                  mode="normal"
-                  in2="shape"
-                  result="effect2_innerShadow_1_44397"
-                />
-              </filter>
-              <filter
-                id="filter1_dn_1_44397"
-                x="6.5"
-                y="5.5"
-                width="27"
-                height="27"
-                filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
-              >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feColorMatrix
-                  in="SourceAlpha"
-                  type="matrix"
-                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                  result="hardAlpha"
-                />
-                <feMorphology
-                  radius="0.5"
-                  operator="dilate"
-                  in="SourceAlpha"
-                  result="effect1_dropShadow_1_44397"
-                />
-                <feOffset />
-                <feComposite in2="hardAlpha" operator="out" />
-                <feColorMatrix
-                  type="matrix"
-                  values="0 0 0 0 0.572549 0 0 0 0 0.779608 0 0 0 0 0.960784 0 0 0 1 0"
-                />
-                <feBlend
-                  mode="normal"
-                  in2="BackgroundImageFix"
-                  result="effect1_dropShadow_1_44397"
-                />
-                <feBlend
-                  mode="normal"
-                  in="SourceGraphic"
-                  in2="BackgroundImageFix"
-                  result="shape"
-                />
-                <feTurbulence
-                  type="fractalNoise"
-                  baseFrequency="0.10000000149011612 0.10000000149011612"
-                  stitchTiles="stitch"
-                  numOctaves="3"
-                  result="noise"
-                  seed="5967"
-                />
-                <feColorMatrix
-                  in="noise"
-                  type="luminanceToAlpha"
-                  result="alphaNoise"
-                />
-                <feComponentTransfer in="alphaNoise" result="coloredNoise1">
-                  <feFuncA
-                    type="discrete"
-                    tableValues="0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "
-                  />
-                </feComponentTransfer>
-                <feComposite
-                  operator="in"
-                  in2="shape"
-                  in="coloredNoise1"
-                  result="noise1Clipped"
-                />
-                <feFlood
-                  flood-color="rgba(255, 255, 255, 0.05)"
-                  result="color1Flood"
-                />
-                <feComposite
-                  operator="in"
-                  in2="noise1Clipped"
-                  in="color1Flood"
-                  result="color1"
-                />
-                <feMerge result="effect2_noise_1_44397">
-                  <feMergeNode in="shape" />
-                  <feMergeNode in="color1" />
-                </feMerge>
-                <feBlend
-                  mode="normal"
-                  in="effect2_noise_1_44397"
-                  in2="effect1_dropShadow_1_44397"
-                  result="effect2_noise_1_44397"
-                />
-              </filter>
-              <linearGradient
-                id="paint0_linear_1_44397"
-                x1="20"
-                y1="6"
-                x2="20"
-                y2="32"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stop-color="white" stop-opacity="0.12" />
-                <stop offset="1" stop-color="white" stop-opacity="0" />
-              </linearGradient>
+              <clipPath id="clip0_52_1110">
+                <rect width="28" height="29" fill="white" transform="translate(6.02637 6.20361)" />
+              </clipPath>
             </defs>
           </svg>
-        </div>
-        <p class="text-sm text-primary font-medium flex-1">
-          <strong class="font-bold">Purpose:</strong> A chronological visual of
-          one’s entire life.
-        </p>
-        <button class="text-gray-400 mr-2 hover:text-gray-600">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-          >
-            <path
-              d="M9.99956 8.93955L13.7121 5.22705L14.7726 6.28755L11.0601 10.0001L14.7726 13.7126L13.7121 14.7731L9.99956 11.0606L6.28706 14.7731L5.22656 13.7126L8.93906 10.0001L5.22656 6.28755L6.28706 5.22705L9.99956 8.93955Z"
-              fill="#00365F"
-            />
-          </svg>
+          <span
+            class="absolute top-[5px] right-[5px] bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">3</span>
         </button>
-      </div>
-
-      <div class="flex items-center justify-between bg-white rounded-t-xl p-5">
-        <h1 class="text-2xl font-bold text-gray-900">Life Events</h1>
-        <button
-          class="bg-white border shadow-[0_2px_5px_0_rgba(60,66,87,0.08),0_0_0_1px_rgba(69,167,53,0.16),0_1px_1px_0_rgba(0,0,0,0.12)] border-[#45A735] text-[#45A735] px-5 py-2 rounded-lg font-medium text-sm flex items-center gap-2"
-        >
-          <i class="fa-solid fa-plus"></i>
-          Add New Event
-        </button>
-      </div>
-
-      <div
-        class="grid grid-cols-12 gap-6 xl:gap-0 h-full min-h-[1572px] xl:min-h-[1072px]"
-      >
-        <div class="col-span-12 lg:col-span-3 space-y-6">
-          <div
-            class="bg-white rounded-none rounded-bl-xl border border-gray-100 p-5 flex flex-col justify-between h-full"
-          >
-            <div>
-              <div class="mb-6">
-                <div class="flex items-center justify-between mb-3">
-                  <h3 class="font-medium text-[#474D4B] text-base">Labels</h3>
-                  <button class="text-[#45A735] text-sm font-medium">
-                    Add New
-                  </button>
-                </div>
-
-                <div class="space-y-2.5">
-                  <label
-                    class="flex items-center justify-between cursor-pointer group"
-                  >
-                    <div class="flex items-center gap-2.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="15"
-                        viewBox="0 0 14 15"
-                        fill="none"
-                      >
-                        <path
-                          d="M0 15V5L6.66667 0L13.3333 5V15H8.33333V9.16667H5V15H0Z"
-                          fill="#051910"
-                        />
-                      </svg>
-                      <span
-                        class="text-[13px] text-gray-700 group-hover:text-gray-900"
-                        >Homes</span
-                      >
-                    </div>
-                    <input
-                      type="checkbox"
-                      checked
-                      class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]"
-                    />
-                  </label>
-
-                  <label
-                    class="flex items-center justify-between cursor-pointer group"
-                  >
-                    <div class="flex items-center gap-2.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                      >
-                        <path
-                          d="M3.33337 16.4746V6.1042H6.29634V3.14124H13.7037V9.06716H16.6667V16.4746H10.7408V13.5116H9.2593V16.4746H3.33337ZM4.81486 14.9931H6.29634V13.5116H4.81486V14.9931ZM4.81486 12.0301H6.29634V10.5486H4.81486V12.0301ZM4.81486 9.06716H6.29634V7.58568H4.81486V9.06716ZM7.77782 12.0301H9.2593V10.5486H7.77782V12.0301ZM7.77782 9.06716H9.2593V7.58568H7.77782V9.06716ZM7.77782 6.1042H9.2593V4.62272H7.77782V6.1042ZM10.7408 12.0301H12.2223V10.5486H10.7408V12.0301ZM10.7408 9.06716H12.2223V7.58568H10.7408V9.06716ZM10.7408 6.1042H12.2223V4.62272H10.7408V6.1042ZM13.7037 14.9931H15.1852V13.5116H13.7037V14.9931ZM13.7037 12.0301H15.1852V10.5486H13.7037V12.0301Z"
-                          fill="#051910"
-                        />
-                      </svg>
-                      <span
-                        class="text-[13px] text-gray-700 group-hover:text-gray-900"
-                        >Schools</span
-                      >
-                    </div>
-                    <input
-                      type="checkbox"
-                      checked
-                      class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]"
-                    />
-                  </label>
-
-                  <label
-                    class="flex items-center justify-between cursor-pointer group"
-                  >
-                    <div class="flex items-center gap-2.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                      >
-                        <path
-                          d="M4.28701 16.7842C3.89424 16.7842 3.55801 16.6443 3.27831 16.3646C2.99861 16.0849 2.85876 15.7487 2.85876 15.3559V12.4994H7.85763V13.9277H12.1424V12.4994H17.1412V15.3559C17.1412 15.7487 17.0014 16.0849 16.7217 16.3646C16.442 16.6443 16.1058 16.7842 15.713 16.7842H4.28701ZM9.28588 12.4994V11.0712H10.7141V12.4994H9.28588ZM2.85876 11.0712V7.50057C2.85876 7.1078 2.99861 6.77156 3.27831 6.49186C3.55801 6.21217 3.89424 6.07232 4.28701 6.07232H7.14351V4.64407C7.14351 4.2513 7.28336 3.91507 7.56306 3.63537C7.84276 3.35567 8.17899 3.21582 8.57176 3.21582H11.4283C11.821 3.21582 12.1573 3.35567 12.437 3.63537C12.7167 3.91507 12.8565 4.2513 12.8565 4.64407V6.07232H15.713C16.1058 6.07232 16.442 6.21217 16.7217 6.49186C17.0014 6.77156 17.1412 7.1078 17.1412 7.50057V11.0712H12.1424V9.64294H7.85763V11.0712H2.85876ZM8.57176 6.07232H11.4283V4.64407H8.57176V6.07232Z"
-                          fill="#051910"
-                        />
-                      </svg>
-                      <span
-                        class="text-[13px] text-gray-700 group-hover:text-gray-900"
-                        >Work Places</span
-                      >
-                    </div>
-                    <input
-                      type="checkbox"
-                      checked
-                      class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]"
-                    />
-                  </label>
-
-                  <label
-                    class="flex items-center justify-between cursor-pointer group"
-                  >
-                    <div class="flex items-center gap-2.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                      >
-                        <path
-                          d="M2.5 15.6412V13.0097C2.5 12.6368 2.63352 12.3243 2.90057 12.0722C3.16761 11.82 3.48864 11.6939 3.86364 11.6939H6.09659C6.32386 11.6939 6.53977 11.7487 6.74432 11.8583C6.94886 11.968 7.11364 12.116 7.23864 12.3024C7.56818 12.7301 7.97443 13.0645 8.45739 13.3057C8.94034 13.5469 9.45455 13.6676 10 13.6676C10.5568 13.6676 11.0767 13.5469 11.5597 13.3057C12.0426 13.0645 12.4432 12.7301 12.7614 12.3024C12.9091 12.116 13.0824 11.968 13.2812 11.8583C13.4801 11.7487 13.6875 11.6939 13.9034 11.6939H16.1364C16.5227 11.6939 16.8466 11.82 17.108 12.0722C17.3693 12.3243 17.5 12.6368 17.5 13.0097V15.6412H12.7273V14.1445C12.3295 14.4186 11.9006 14.627 11.4403 14.7695C10.9801 14.9121 10.5 14.9833 10 14.9833C9.51136 14.9833 9.03409 14.9093 8.56818 14.7613C8.10227 14.6133 7.67045 14.4022 7.27273 14.1281V15.6412H2.5ZM4.54545 11.036C3.97727 11.036 3.49432 10.8441 3.09659 10.4603C2.69886 10.0765 2.5 9.61053 2.5 9.06229C2.5 8.50308 2.69886 8.03433 3.09659 7.65604C3.49432 7.27775 3.97727 7.0886 4.54545 7.0886C5.125 7.0886 5.6108 7.27775 6.00284 7.65604C6.39489 8.03433 6.59091 8.50308 6.59091 9.06229C6.59091 9.61053 6.39489 10.0765 6.00284 10.4603C5.6108 10.8441 5.125 11.036 4.54545 11.036ZM15.4545 11.036C14.8864 11.036 14.4034 10.8441 14.0057 10.4603C13.608 10.0765 13.4091 9.61053 13.4091 9.06229C13.4091 8.50308 13.608 8.03433 14.0057 7.65604C14.4034 7.27775 14.8864 7.0886 15.4545 7.0886C16.0341 7.0886 16.5199 7.27775 16.9119 7.65604C17.304 8.03433 17.5 8.50308 17.5 9.06229C17.5 9.61053 17.304 10.0765 16.9119 10.4603C16.5199 10.8441 16.0341 11.036 15.4545 11.036ZM10 9.72018C9.22727 9.04036 8.59659 8.46744 8.10795 8.00143C7.61932 7.53542 7.23864 7.13246 6.96591 6.79255C6.69318 6.45264 6.50568 6.15385 6.40341 5.89617C6.30114 5.63849 6.25 5.37808 6.25 5.11492C6.25 4.56667 6.44886 4.10067 6.84659 3.71689C7.24432 3.33312 7.73295 3.14124 8.3125 3.14124C8.63068 3.14124 8.9375 3.20977 9.23295 3.34683C9.52841 3.48389 9.78409 3.66755 10 3.89781C10.2159 3.66755 10.4716 3.48389 10.767 3.34683C11.0625 3.20977 11.3693 3.14124 11.6875 3.14124C12.267 3.14124 12.7557 3.33312 13.1534 3.71689C13.5511 4.10067 13.75 4.56667 13.75 5.11492C13.75 5.37808 13.6989 5.63849 13.5966 5.89617C13.4943 6.15385 13.3068 6.45264 13.0341 6.79255C12.7614 7.13246 12.3807 7.53542 11.892 8.00143C11.4034 8.46744 10.7727 9.04036 10 9.72018Z"
-                          fill="#051910"
-                        />
-                      </svg>
-                      <span
-                        class="text-[13px] text-gray-700 group-hover:text-gray-900"
-                        >Special Events</span
-                      >
-                    </div>
-                    <input
-                      type="checkbox"
-                      checked
-                      class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]"
-                    />
-                  </label>
-
-                  <label
-                    class="flex items-center justify-between cursor-pointer group"
-                  >
-                    <div class="flex items-center gap-2.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                      >
-                        <path
-                          d="M10.2236 17.308C9.15515 17.308 8.15108 17.1111 7.21138 16.7174C6.27168 16.3236 5.45427 15.7892 4.75915 15.1142C4.06402 14.4392 3.51372 13.6455 3.10823 12.733C2.70274 11.8205 2.5 10.8455 2.5 9.80798C2.5 8.77048 2.70274 7.79548 3.10823 6.88298C3.51372 5.97048 4.06402 5.17673 4.75915 4.50173C5.45427 3.82673 6.27168 3.29236 7.21138 2.89861C8.15108 2.50486 9.15515 2.30798 10.2236 2.30798C12.103 2.30798 13.7475 2.87986 15.157 4.02361C16.5666 5.16736 17.4451 6.60173 17.7927 8.32673H16.2093C15.9648 7.41423 15.5239 6.59861 14.8867 5.87986C14.2495 5.16111 13.4675 4.62048 12.5407 4.25798V4.55798C12.5407 4.97048 12.3894 5.32361 12.0869 5.61736C11.7844 5.91111 11.4207 6.05798 10.9959 6.05798H9.45122V7.55798C9.45122 7.77048 9.3772 7.94861 9.22917 8.09236C9.08113 8.23611 8.8977 8.30798 8.67886 8.30798H7.13415V9.80798H8.67886V12.058H7.9065L4.19919 8.45798C4.16057 8.68298 4.12517 8.90798 4.09299 9.13298C4.06081 9.35798 4.04472 9.58298 4.04472 9.80798C4.04472 11.4455 4.63686 12.8517 5.82114 14.0267C7.00542 15.2017 8.4729 15.7955 10.2236 15.808V17.308ZM17.252 16.933L14.7805 14.533C14.5102 14.683 14.2205 14.808 13.9116 14.908C13.6026 15.008 13.2744 15.058 12.9268 15.058C11.9614 15.058 11.1408 14.7299 10.4649 14.0736C9.78913 13.4174 9.45122 12.6205 9.45122 11.683C9.45122 10.7455 9.78913 9.94861 10.4649 9.29236C11.1408 8.63611 11.9614 8.30798 12.9268 8.30798C13.8923 8.30798 14.7129 8.63611 15.3887 9.29236C16.0645 9.94861 16.4024 10.7455 16.4024 11.683C16.4024 12.0205 16.3509 12.3392 16.248 12.6392C16.145 12.9392 16.0163 13.2205 15.8618 13.483L18.3333 15.883L17.252 16.933ZM12.9268 13.558C13.4675 13.558 13.9245 13.3767 14.2978 13.0142C14.6711 12.6517 14.8577 12.208 14.8577 11.683C14.8577 11.158 14.6711 10.7142 14.2978 10.3517C13.9245 9.98923 13.4675 9.80798 12.9268 9.80798C12.3862 9.80798 11.9292 9.98923 11.5559 10.3517C11.1826 10.7142 10.9959 11.158 10.9959 11.683C10.9959 12.208 11.1826 12.6517 11.5559 13.0142C11.9292 13.3767 12.3862 13.558 12.9268 13.558Z"
-                          fill="#051910"
-                        />
-                      </svg>
-                      <span
-                        class="text-[13px] text-gray-700 group-hover:text-gray-900"
-                        >Travels</span
-                      >
-                    </div>
-                    <input
-                      type="checkbox"
-                      checked
-                      class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]"
-                    />
-                  </label>
-
-                  <label
-                    class="flex items-center justify-between cursor-pointer group"
-                  >
-                    <div class="flex items-center gap-2.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                      >
-                        <path
-                          d="M10.0833 17.5C9.84718 17.5 9.64926 17.4201 9.48954 17.2604C9.32982 17.1007 9.24996 16.9028 9.24996 16.6667C9.24996 16.5694 9.27079 16.4688 9.31246 16.3646C9.35413 16.2604 9.41663 16.1667 9.49996 16.0833L13.3541 12.2292L12.75 11.625L8.91663 15.4792C8.83329 15.5625 8.74301 15.625 8.64579 15.6667C8.54857 15.7083 8.4444 15.7292 8.33329 15.7292C8.09718 15.7292 7.89926 15.6493 7.73954 15.4896C7.57982 15.3299 7.49996 15.1319 7.49996 14.8958C7.49996 14.7569 7.52079 14.6424 7.56246 14.5521C7.60413 14.4618 7.65968 14.3819 7.72913 14.3125L11.5833 10.4583L11 9.875L7.14579 13.7083C7.06246 13.7917 6.97218 13.8542 6.87496 13.8958C6.77774 13.9375 6.66663 13.9583 6.54163 13.9583C6.3194 13.9583 6.12496 13.875 5.95829 13.7083C5.79163 13.5417 5.70829 13.3472 5.70829 13.125C5.70829 13.0139 5.72913 12.9097 5.77079 12.8125C5.81246 12.7153 5.87496 12.625 5.95829 12.5417L9.81246 8.6875L9.20829 8.10417L5.37496 11.9583C5.30551 12.0278 5.22218 12.0833 5.12496 12.125C5.02774 12.1667 4.90968 12.1875 4.77079 12.1875C4.53468 12.1875 4.33676 12.1076 4.17704 11.9479C4.01732 11.7882 3.93746 11.5903 3.93746 11.3542C3.93746 11.2431 3.95829 11.1389 3.99996 11.0417C4.04163 10.9444 4.10413 10.8542 4.18746 10.7708L8.83329 6.125L11.9583 9.27083C12.1111 9.42361 12.2916 9.54514 12.5 9.63542C12.7083 9.72569 12.9166 9.77083 13.125 9.77083C13.5694 9.77083 13.9583 9.61458 14.2916 9.30208C14.625 8.98958 14.7916 8.59028 14.7916 8.10417C14.7916 7.90972 14.7569 7.70833 14.6875 7.5C14.618 7.29167 14.493 7.09722 14.3125 6.91667L10.5833 3.1875C10.8194 2.96528 11.0833 2.79514 11.375 2.67708C11.6666 2.55903 11.9583 2.5 12.25 2.5C12.6111 2.5 12.9444 2.55903 13.25 2.67708C13.5555 2.79514 13.8333 2.97917 14.0833 3.22917L17.6041 6.77083C17.8541 7.02083 18.0382 7.29861 18.1562 7.60417C18.2743 7.90972 18.3333 8.26389 18.3333 8.66667C18.3333 8.94444 18.2708 9.22569 18.1458 9.51042C18.0208 9.79514 17.8402 10.0556 17.6041 10.2917L10.6666 17.25C10.5555 17.3611 10.4583 17.4306 10.375 17.4583C10.2916 17.4861 10.1944 17.5 10.0833 17.5ZM2.93746 10.8333L2.39579 10.2917C2.15968 10.0694 1.97913 9.80556 1.85413 9.5C1.72913 9.19444 1.66663 8.875 1.66663 8.54167C1.66663 8.18056 1.73607 7.84722 1.87496 7.54167C2.01385 7.23611 2.18746 6.97917 2.39579 6.77083L5.91663 3.22917C6.13885 3.00694 6.40274 2.82986 6.70829 2.69792C7.01385 2.56597 7.31246 2.5 7.60413 2.5C7.97913 2.5 8.31246 2.55208 8.60413 2.65625C8.89579 2.76042 9.18051 2.95139 9.45829 3.22917L13.7291 7.5C13.8125 7.58333 13.875 7.67361 13.9166 7.77083C13.9583 7.86806 13.9791 7.97222 13.9791 8.08333C13.9791 8.30556 13.8958 8.5 13.7291 8.66667C13.5625 8.83333 13.368 8.91667 13.1458 8.91667C13.0208 8.91667 12.9166 8.89931 12.8333 8.86458C12.75 8.82986 12.6597 8.76389 12.5625 8.66667L8.81246 4.95833L2.93746 10.8333Z"
-                          fill="#051910"
-                        />
-                      </svg>
-                      <span
-                        class="text-[13px] text-gray-700 group-hover:text-gray-900"
-                        >Hangouts</span
-                      >
-                    </div>
-                    <input
-                      type="checkbox"
-                      class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]"
-                    />
-                  </label>
-
-                  <label
-                    class="flex items-center justify-between cursor-pointer group"
-                  >
-                    <div class="flex items-center gap-2.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                      >
-                        <path
-                          d="M9.8075 17.5C8.54559 17.5 7.51583 17.2906 6.71821 16.8719C5.92059 16.4531 5.52178 15.9125 5.52178 15.25C5.52178 14.95 5.60809 14.6719 5.78071 14.4156C5.95333 14.1594 6.1944 13.9375 6.50392 13.75L7.62892 14.8563C7.52178 14.9063 7.40571 14.9625 7.28071 15.025C7.15571 15.0875 7.0575 15.1625 6.98607 15.25C7.14083 15.45 7.49797 15.625 8.0575 15.775C8.61702 15.925 9.20035 16 9.8075 16C10.4146 16 11.0009 15.925 11.5664 15.775C12.1319 15.625 12.492 15.45 12.6468 15.25C12.5634 15.15 12.4563 15.0688 12.3254 15.0063C12.1944 14.9438 12.0694 14.8875 11.9504 14.8375L13.0575 13.7125C13.3908 13.9125 13.6468 14.1406 13.8254 14.3969C14.0039 14.6531 14.0932 14.9375 14.0932 15.25C14.0932 15.9125 13.6944 16.4531 12.8968 16.8719C12.0992 17.2906 11.0694 17.5 9.8075 17.5ZM9.8075 15.25C8.12892 13.95 6.87595 12.6875 6.04857 11.4625C5.22119 10.2375 4.8075 9.0375 4.8075 7.8625C4.8075 6.975 4.95928 6.19688 5.26285 5.52813C5.56642 4.85938 5.9563 4.3 6.4325 3.85C6.90869 3.4 7.4444 3.0625 8.03964 2.8375C8.63488 2.6125 9.22416 2.5 9.8075 2.5C10.3908 2.5 10.9801 2.6125 11.5754 2.8375C12.1706 3.0625 12.7063 3.4 13.1825 3.85C13.6587 4.3 14.0486 4.85938 14.3521 5.52813C14.6557 6.19688 14.8075 6.975 14.8075 7.8625C14.8075 9.0375 14.3938 10.2375 13.5664 11.4625C12.739 12.6875 11.4861 13.95 9.8075 15.25ZM9.8075 9.25C10.2004 9.25 10.5367 9.10313 10.8164 8.80938C11.0962 8.51562 11.2361 8.1625 11.2361 7.75C11.2361 7.3375 11.0962 6.98438 10.8164 6.69063C10.5367 6.39688 10.2004 6.25 9.8075 6.25C9.41464 6.25 9.07833 6.39688 8.79857 6.69063C8.5188 6.98438 8.37892 7.3375 8.37892 7.75C8.37892 8.1625 8.5188 8.51562 8.79857 8.80938C9.07833 9.10313 9.41464 9.25 9.8075 9.25Z"
-                          fill="#051910"
-                        />
-                      </svg>
-                      <span
-                        class="text-[13px] text-gray-700 group-hover:text-gray-900"
-                        >Births</span
-                      >
-                    </div>
-                    <input
-                      type="checkbox"
-                      checked
-                      class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]"
-                    />
-                  </label>
-
-                  <label
-                    class="flex items-center justify-between cursor-pointer group"
-                  >
-                    <div class="flex items-center gap-2.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                      >
-                        <path
-                          d="M16.6258 13.5116V8.40049L9.80758 12.0301L1.47424 7.58568L9.80758 3.14124L18.1409 7.58568V13.5116H16.6258ZM9.80758 16.4746L4.50455 13.6598V9.95605L9.80758 12.7709L15.1106 9.95605V13.6598L9.80758 16.4746Z"
-                          fill="#051910"
-                        />
-                      </svg>
-                      <span
-                        class="text-[13px] text-gray-700 group-hover:text-gray-900"
-                        >Graduation</span
-                      >
-                    </div>
-                    <input
-                      type="checkbox"
-                      checked
-                      class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]"
-                    />
-                  </label>
-
-                  <label
-                    class="flex items-center justify-between cursor-pointer group"
-                  >
-                    <div class="flex items-center gap-2.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                      >
-                        <path
-                          d="M4.28701 16.7842C3.89424 16.7842 3.55801 16.6443 3.27831 16.3646C2.99861 16.0849 2.85876 15.7487 2.85876 15.3559V12.4994H7.85763V13.9277H12.1424V12.4994H17.1412V15.3559C17.1412 15.7487 17.0014 16.0849 16.7217 16.3646C16.442 16.6443 16.1058 16.7842 15.713 16.7842H4.28701ZM9.28588 12.4994V11.0712H10.7141V12.4994H9.28588ZM2.85876 11.0712V7.50057C2.85876 7.1078 2.99861 6.77156 3.27831 6.49186C3.55801 6.21217 3.89424 6.07232 4.28701 6.07232H7.14351V4.64407C7.14351 4.2513 7.28336 3.91507 7.56306 3.63537C7.84276 3.35567 8.17899 3.21582 8.57176 3.21582H11.4283C11.821 3.21582 12.1573 3.35567 12.437 3.63537C12.7167 3.91507 12.8565 4.2513 12.8565 4.64407V6.07232H15.713C16.1058 6.07232 16.442 6.21217 16.7217 6.49186C17.0014 6.77156 17.1412 7.1078 17.1412 7.50057V11.0712H12.1424V9.64294H7.85763V11.0712H2.85876ZM8.57176 6.07232H11.4283V4.64407H8.57176V6.07232Z"
-                          fill="#051910"
-                        />
-                      </svg>
-                      <span
-                        class="text-[13px] text-gray-700 group-hover:text-gray-900"
-                        >First Job</span
-                      >
-                    </div>
-                    <input
-                      type="checkbox"
-                      checked
-                      class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]"
-                    />
-                  </label>
-                </div>
-              </div>
-
-              <div>
-                <h3 class="text-[13px] font-semibold text-gray-900 mb-3">
-                  Family
-                </h3>
-                <div class="space-y-2.5">
-                  <label
-                    class="flex items-center justify-between cursor-pointer group"
-                  >
-                    <div class="flex items-center gap-2.5">
-                      <span
-                        class="text-[13px] text-gray-700 group-hover:text-gray-900"
-                        >Parents</span
-                      >
-                    </div>
-                    <input
-                      type="checkbox"
-                      checked
-                      class="w-4 h-4 rounded border-[#C4C4C7] accent-[#009794]"
-                    />
-                  </label>
-                  <label
-                    class="flex items-center justify-between cursor-pointer group"
-                  >
-                    <div class="flex items-center gap-2.5">
-                      <span
-                        class="text-[13px] text-gray-700 group-hover:text-gray-900"
-                        >Kids</span
-                      >
-                    </div>
-                    <input
-                      type="checkbox"
-                      class="w-4 h-4 rounded border-[#C4C4C7] accent-[#009794]"
-                    />
-                  </label>
-                  <label
-                    class="flex items-center justify-between cursor-pointer group"
-                  >
-                    <div class="flex items-center gap-2.5">
-                      <span
-                        class="text-[13px] text-gray-700 group-hover:text-gray-900"
-                        >Grandparents</span
-                      >
-                    </div>
-                    <input
-                      type="checkbox"
-                      checked
-                      class="w-4 h-4 rounded border-[#dddddd] accent-[#F22BB4]"
-                    />
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <button
-              class="w-full mt-6 bg-[#318F21] hover:bg-leaves-green/90 text-white py-2.5 rounded-lg font-medium text-sm"
-            >
-              Apply Filter
-            </button>
-          </div>
-        </div>
-
-        <div class="col-span-12 lg:col-span-9">
-          <div
-            class="bg-white rounded-none rounded-br-xl rounded-bl-0 border border-gray-100 p-6 relative h-full"
-          >
-            <div
-              class="h-9 border bg-white border-[#dddddd] rounded-md rounded-b-none flex items-center justify-between px-4 text-xs text-[#ADADAD] font-medium"
-            >
-              <span>1980</span>
-              <span>1988</span>
-              <span>1995</span>
-              <span>2000</span>
-              <span>2006</span>
-              <span>2010</span>
-              <span>2015</span>
-              <span>2020</span>
-            </div>
-
-            <div
-              class="timeline-board h-[calc(100%-32px)] max-lg:overflow-x-auto"
-            >
-              <div class="timeline-grid max-lg:min-w-[800px]"></div>
-
-              <div
-                class="absolute bg-[#F2FCFC99] border border-t-0 border-[#DDDDDD] top-0 left-0 w-full text-center max-lg:min-w-[800px]"
-              >
-                <div class="relative z-10 backdrop-blur-sm inline-block">
-                  <div
-                    class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs"
-                  >
-                    <div
-                      class="w-2 h-2 rounded-full bg-teal-600"
-                      style="background-color: #009794"
-                    ></div>
-                    <span class="text-sm font-medium text-[#014F4D]"
-                      >Parents Life Events</span
-                    >
-                  </div>
-                </div>
-              </div>
-
-              <div
-                class="timeline-divider bg-pink-50 border border-[#DDDDDD] w-full text-center absolute top-1/2 left-0 -translate-y-1/2 max-lg:min-w-[800px]"
-              >
-                <div class="relative z-10 backdrop-blur-sm inline-block">
-                  <div
-                    class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs"
-                  >
-                    <div
-                      class="w-2 h-2 rounded-full"
-                      style="background-color: #f22bb4"
-                    ></div>
-                    <span class="text-sm font-medium text-[#670949]"
-                      >Grandparents Life Events</span
-                    >
-                  </div>
-                </div>
-              </div>
-
-              <div
-                class="absolute left-0 right-0 top-24 bottom-[52%] max-lg:min-w-[800px]"
-              >
-                <div class="timeline-event" style="left: 3.5%; top: 12%">
-                  <div
-                    class="w-14 h-14 bg-white border border-[#00AAA7]/20 rounded-[14px] flex items-center justify-center"
-                    style="
-                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
-                    "
-                  >
-                    <div
-                      class="w-12 h-12 bg-white border border-[#00AAA7]/20 rounded-[11.56px] flex items-center justify-center"
-                    >
-                      <div
-                        class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#00AAA7]/70 shadow-lg flex items-center justify-center bg-[#009794]"
-                        style="
-                          background: linear-gradient(
-                              180deg,
-                              rgba(255, 255, 255, 0.7) 0%,
-                              rgba(255, 255, 255, 0) 100%
-                            ),
-                            #009794;
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="18"
-                          height="20"
-                          viewBox="0 0 18 20"
-                          fill="none"
-                        >
-                          <path
-                            d="M0 20V6.66667L8.75 0L17.5 6.66667V20H10.9375V12.2222H6.5625V20H0Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="timeline-event" style="left: 3.5%; top: 50%">
-                  <div
-                    class="w-14 h-14 bg-white border border-[#00AAA7]/20 rounded-[14px] flex items-center justify-center"
-                    style="
-                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
-                    "
-                  >
-                    <div
-                      class="w-12 h-12 bg-white border border-[#00AAA7]/20 rounded-[11.56px] flex items-center justify-center"
-                    >
-                      <div
-                        class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#00AAA7]/70 shadow-lg flex items-center justify-center bg-[#009794]"
-                        style="
-                          background: linear-gradient(
-                              180deg,
-                              rgba(255, 255, 255, 0.7) 0%,
-                              rgba(255, 255, 255, 0) 100%
-                            ),
-                            #009794;
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="20"
-                          height="19"
-                          viewBox="0 0 20 19"
-                          fill="none"
-                        >
-                          <path
-                            d="M2 19C1.45 19 0.979167 18.8042 0.5875 18.4125C0.195833 18.0208 0 17.55 0 17V13H7V15H13V13H20V17C20 17.55 19.8042 18.0208 19.4125 18.4125C19.0208 18.8042 18.55 19 18 19H2ZM9 13V11H11V13H9ZM0 11V6C0 5.45 0.195833 4.97917 0.5875 4.5875C0.979167 4.19583 1.45 4 2 4H6V2C6 1.45 6.19583 0.979167 6.5875 0.5875C6.97917 0.195833 7.45 0 8 0H12C12.55 0 13.0208 0.195833 13.4125 0.5875C13.8042 0.979167 14 1.45 14 2V4H18C18.55 4 19.0208 4.19583 19.4125 4.5875C19.8042 4.97917 20 5.45 20 6V11H13V9H7V11H0ZM8 4H12V2H8V4Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="timeline-event" style="left: 16%; top: 12%">
-                  <div
-                    class="w-14 h-14 bg-white border border-[#00AAA7]/20 rounded-[14px] flex items-center justify-center"
-                    style="
-                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
-                    "
-                  >
-                    <div
-                      class="w-12 h-12 bg-white border border-[#00AAA7]/20 rounded-[11.56px] flex items-center justify-center"
-                    >
-                      <div
-                        class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#00AAA7]/70 shadow-lg flex items-center justify-center bg-[#009794]"
-                        style="
-                          background: linear-gradient(
-                              180deg,
-                              rgba(255, 255, 255, 0.7) 0%,
-                              rgba(255, 255, 255, 0) 100%
-                            ),
-                            #009794;
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="21"
-                          height="18"
-                          viewBox="0 0 21 18"
-                          fill="none"
-                        >
-                          <path
-                            d="M0 17.5V13.8158C0 13.2939 0.186932 12.8564 0.560795 12.5033C0.934659 12.1502 1.38409 11.9737 1.90909 11.9737H5.03523C5.35341 11.9737 5.65568 12.0504 5.94205 12.2039C6.22841 12.3575 6.45909 12.5647 6.63409 12.8257C7.09545 13.4243 7.6642 13.8925 8.34034 14.2303C9.01648 14.568 9.73636 14.7368 10.5 14.7368C11.2795 14.7368 12.0074 14.568 12.6835 14.2303C13.3597 13.8925 13.9205 13.4243 14.3659 12.8257C14.5727 12.5647 14.8153 12.3575 15.0938 12.2039C15.3722 12.0504 15.6625 11.9737 15.9648 11.9737H19.0909C19.6318 11.9737 20.0852 12.1502 20.4511 12.5033C20.817 12.8564 21 13.2939 21 13.8158V17.5H14.3182V15.4046C13.7614 15.7884 13.1608 16.08 12.5165 16.2796C11.8722 16.4792 11.2 16.5789 10.5 16.5789C9.81591 16.5789 9.14773 16.4753 8.49545 16.2681C7.84318 16.0609 7.23864 15.7654 6.68182 15.3816V17.5H0ZM2.86364 11.0526C2.06818 11.0526 1.39205 10.784 0.835227 10.2467C0.278409 9.70943 0 9.05702 0 8.28947C0 7.50658 0.278409 6.85033 0.835227 6.32072C1.39205 5.79112 2.06818 5.52632 2.86364 5.52632C3.675 5.52632 4.35511 5.79112 4.90398 6.32072C5.45284 6.85033 5.72727 7.50658 5.72727 8.28947C5.72727 9.05702 5.45284 9.70943 4.90398 10.2467C4.35511 10.784 3.675 11.0526 2.86364 11.0526ZM18.1364 11.0526C17.3409 11.0526 16.6648 10.784 16.108 10.2467C15.5511 9.70943 15.2727 9.05702 15.2727 8.28947C15.2727 7.50658 15.5511 6.85033 16.108 6.32072C16.6648 5.79112 17.3409 5.52632 18.1364 5.52632C18.9477 5.52632 19.6278 5.79112 20.1767 6.32072C20.7256 6.85033 21 7.50658 21 8.28947C21 9.05702 20.7256 9.70943 20.1767 10.2467C19.6278 10.784 18.9477 11.0526 18.1364 11.0526ZM10.5 9.21053C9.41818 8.25877 8.53523 7.45669 7.85114 6.80428C7.16705 6.15186 6.63409 5.58772 6.25227 5.11184C5.87045 4.63596 5.60795 4.21765 5.46477 3.85691C5.32159 3.49616 5.25 3.13158 5.25 2.76316C5.25 1.99561 5.52841 1.3432 6.08523 0.805921C6.64205 0.26864 7.32614 0 8.1375 0C8.58295 0 9.0125 0.095943 9.42614 0.287829C9.83977 0.479715 10.1977 0.736842 10.5 1.05921C10.8023 0.736842 11.1602 0.479715 11.5739 0.287829C11.9875 0.095943 12.417 0 12.8625 0C13.6739 0 14.358 0.26864 14.9148 0.805921C15.4716 1.3432 15.75 1.99561 15.75 2.76316C15.75 3.13158 15.6784 3.49616 15.5352 3.85691C15.392 4.21765 15.1295 4.63596 14.7477 5.11184C14.3659 5.58772 13.833 6.15186 13.1489 6.80428C12.4648 7.45669 11.5818 8.25877 10.5 9.21053Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="timeline-event" style="left: 41%; top: 12%">
-                  <div
-                    class="w-14 h-14 bg-white border border-[#00AAA7]/20 rounded-[14px] flex items-center justify-center"
-                    style="
-                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
-                    "
-                  >
-                    <div
-                      class="w-12 h-12 bg-white border border-[#00AAA7]/20 rounded-[11.56px] flex items-center justify-center"
-                    >
-                      <div
-                        class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#00AAA7]/70 shadow-lg flex items-center justify-center bg-[#009794]"
-                        style="
-                          background: linear-gradient(
-                              180deg,
-                              rgba(255, 255, 255, 0.7) 0%,
-                              rgba(255, 255, 255, 0) 100%
-                            ),
-                            #009794;
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="21"
-                          viewBox="0 0 14 21"
-                          fill="none"
-                        >
-                          <path
-                            d="M7 21C5.23333 21 3.79167 20.7069 2.675 20.1206C1.55833 19.5344 1 18.7775 1 17.85C1 17.43 1.12083 17.0406 1.3625 16.6819C1.60417 16.3231 1.94167 16.0125 2.375 15.75L3.95 17.2987C3.8 17.3687 3.6375 17.4475 3.4625 17.535C3.2875 17.6225 3.15 17.7275 3.05 17.85C3.26667 18.13 3.76667 18.375 4.55 18.585C5.33333 18.795 6.15 18.9 7 18.9C7.85 18.9 8.67083 18.795 9.4625 18.585C10.2542 18.375 10.7583 18.13 10.975 17.85C10.8583 17.71 10.7083 17.5962 10.525 17.5087C10.3417 17.4212 10.1667 17.3425 10 17.2725L11.55 15.6975C12.0167 15.9775 12.375 16.2969 12.625 16.6556C12.875 17.0144 13 17.4125 13 17.85C13 18.7775 12.4417 19.5344 11.325 20.1206C10.2083 20.7069 8.76667 21 7 21ZM7 17.85C4.65 16.03 2.89583 14.2625 1.7375 12.5475C0.579167 10.8325 0 9.1525 0 7.5075C0 6.265 0.2125 5.17562 0.6375 4.23937C1.0625 3.30312 1.60833 2.52 2.275 1.89C2.94167 1.26 3.69167 0.7875 4.525 0.4725C5.35833 0.1575 6.18333 0 7 0C7.81667 0 8.64167 0.1575 9.475 0.4725C10.3083 0.7875 11.0583 1.26 11.725 1.89C12.3917 2.52 12.9375 3.30312 13.3625 4.23937C13.7875 5.17562 14 6.265 14 7.5075C14 9.1525 13.4208 10.8325 12.2625 12.5475C11.1042 14.2625 9.35 16.03 7 17.85ZM7 9.45C7.55 9.45 8.02083 9.24437 8.4125 8.83313C8.80417 8.42188 9 7.9275 9 7.35C9 6.7725 8.80417 6.27812 8.4125 5.86687C8.02083 5.45563 7.55 5.25 7 5.25C6.45 5.25 5.97917 5.45563 5.5875 5.86687C5.19583 6.27812 5 6.7725 5 7.35C5 7.9275 5.19583 8.42188 5.5875 8.83313C5.97917 9.24437 6.45 9.45 7 9.45Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="timeline-event" style="left: 41%; top: 50%">
-                  <div
-                    class="w-14 h-14 bg-white border border-[#00AAA7]/20 rounded-[14px] flex items-center justify-center"
-                    style="
-                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
-                    "
-                  >
-                    <div
-                      class="w-12 h-12 bg-white border border-[#00AAA7]/20 rounded-[11.56px] flex items-center justify-center"
-                    >
-                      <div
-                        class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#00AAA7]/70 shadow-lg flex items-center justify-center bg-[#009794]"
-                        style="
-                          background: linear-gradient(
-                              180deg,
-                              rgba(255, 255, 255, 0.7) 0%,
-                              rgba(255, 255, 255, 0) 100%
-                            ),
-                            #009794;
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="19"
-                          height="19"
-                          viewBox="0 0 19 19"
-                          fill="none"
-                        >
-                          <path
-                            d="M0 18.6667V4.14815H4.14815V0H14.5185V8.2963H18.6667V18.6667H10.3704V14.5185H8.2963V18.6667H0ZM2.07407 16.5926H4.14815V14.5185H2.07407V16.5926ZM2.07407 12.4444H4.14815V10.3704H2.07407V12.4444ZM2.07407 8.2963H4.14815V6.22222H2.07407V8.2963ZM6.22222 12.4444H8.2963V10.3704H6.22222V12.4444ZM6.22222 8.2963H8.2963V6.22222H6.22222V8.2963ZM6.22222 4.14815H8.2963V2.07407H6.22222V4.14815ZM10.3704 12.4444H12.4444V10.3704H10.3704V12.4444ZM10.3704 8.2963H12.4444V6.22222H10.3704V8.2963ZM10.3704 4.14815H12.4444V2.07407H10.3704V4.14815ZM14.5185 16.5926H16.5926V14.5185H14.5185V16.5926ZM14.5185 12.4444H16.5926V10.3704H14.5185V12.4444Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="timeline-event" style="left: 79%; top: 13%">
-                  <div
-                    class="w-14 h-14 bg-white border border-[#00AAA7]/20 rounded-[14px] flex items-center justify-center"
-                    style="
-                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
-                    "
-                  >
-                    <div
-                      class="w-12 h-12 bg-white border border-[#00AAA7]/20 rounded-[11.56px] flex items-center justify-center"
-                    >
-                      <div
-                        class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#00AAA7]/70 shadow-lg flex items-center justify-center bg-[#009794]"
-                        style="
-                          background: linear-gradient(
-                              180deg,
-                              rgba(255, 255, 255, 0.7) 0%,
-                              rgba(255, 255, 255, 0) 100%
-                            ),
-                            #009794;
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="23"
-                          height="21"
-                          viewBox="0 0 23 21"
-                          fill="none"
-                        >
-                          <path
-                            d="M10.813 21C9.31721 21 7.91152 20.7244 6.59593 20.1731C5.28035 19.6219 4.13598 18.8737 3.1628 17.9287C2.18963 16.9837 1.41921 15.8725 0.851524 14.595C0.283841 13.3175 0 11.9525 0 10.5C0 9.0475 0.283841 7.6825 0.851524 6.405C1.41921 5.1275 2.18963 4.01625 3.1628 3.07125C4.13598 2.12625 5.28035 1.37812 6.59593 0.826875C7.91152 0.275625 9.31721 0 10.813 0C13.4442 0 15.7464 0.800625 17.7198 2.40188C19.6932 4.00312 20.9232 6.01125 21.4098 8.42625H19.1931C18.8507 7.14875 18.2334 6.00687 17.3414 5.00062C16.4493 3.99437 15.3545 3.2375 14.0569 2.73V3.15C14.0569 3.7275 13.8452 4.22187 13.4216 4.63312C12.9981 5.04437 12.489 5.25 11.8943 5.25H9.73171V7.35C9.73171 7.6475 9.62808 7.89687 9.42083 8.09812C9.21358 8.29937 8.95677 8.4 8.65041 8.4H6.4878V10.5H8.65041V13.65H7.56911L2.37886 8.61C2.3248 8.925 2.27524 9.24 2.23018 9.555C2.18513 9.87 2.1626 10.185 2.1626 10.5C2.1626 12.7925 2.9916 14.7612 4.64959 16.4062C6.30759 18.0512 8.36206 18.8825 10.813 18.9V21ZM20.6528 20.475L17.1927 17.115C16.8142 17.325 16.4087 17.5 15.9762 17.64C15.5437 17.78 15.0841 17.85 14.5976 17.85C13.2459 17.85 12.0971 17.3906 11.1509 16.4719C10.2048 15.5531 9.73171 14.4375 9.73171 13.125C9.73171 11.8125 10.2048 10.6969 11.1509 9.77812C12.0971 8.85938 13.2459 8.4 14.5976 8.4C15.9492 8.4 17.0981 8.85938 18.0442 9.77812C18.9903 10.6969 19.4634 11.8125 19.4634 13.125C19.4634 13.5975 19.3913 14.0437 19.2472 14.4637C19.103 14.8837 18.9228 15.2775 18.7065 15.645L22.1667 19.005L20.6528 20.475ZM14.5976 15.75C15.3545 15.75 15.9942 15.4962 16.5169 14.9887C17.0395 14.4812 17.3008 13.86 17.3008 13.125C17.3008 12.39 17.0395 11.7687 16.5169 11.2612C15.9942 10.7537 15.3545 10.5 14.5976 10.5C13.8406 10.5 13.2009 10.7537 12.6783 11.2612C12.1556 11.7687 11.8943 12.39 11.8943 13.125C11.8943 13.86 12.1556 14.4812 12.6783 14.9887C13.2009 15.4962 13.8406 15.75 14.5976 15.75Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="timeline-event" style="left: 91.5%; top: 20%">
-                  <div
-                    class="w-14 h-14 bg-white border border-[#00AAA7]/20 rounded-[14px] flex items-center justify-center"
-                    style="
-                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
-                    "
-                  >
-                    <div
-                      class="w-12 h-12 bg-white border border-[#00AAA7]/20 rounded-[11.56px] flex items-center justify-center"
-                    >
-                      <div
-                        class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#00AAA7]/70 shadow-lg flex items-center justify-center bg-[#009794]"
-                        style="
-                          background: linear-gradient(
-                              180deg,
-                              rgba(255, 255, 255, 0.7) 0%,
-                              rgba(255, 255, 255, 0) 100%
-                            ),
-                            #009794;
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="19"
-                          viewBox="0 0 24 19"
-                          fill="none"
-                        >
-                          <path
-                            d="M21.2121 14.5185V7.36296L11.6667 12.4444L0 6.22222L11.6667 0L23.3333 6.22222V14.5185H21.2121ZM11.6667 18.6667L4.24242 14.7259V9.54074L11.6667 13.4815L19.0909 9.54074V14.7259L11.6667 18.6667Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                class="absolute left-0 right-0 top-[53%] bottom-6 max-lg:min-w-[800px]"
-              >
-                <div class="timeline-event" style="left: 3.5%; top: 20%">
-                  <div
-                    class="w-14 h-14 bg-white border border-[#F22BB4]/20 rounded-[14px] flex items-center justify-center"
-                    style="
-                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
-                    "
-                  >
-                    <div
-                      class="w-12 h-12 bg-white border border-[#F22BB4]/20 rounded-[11.56px] flex items-center justify-center"
-                    >
-                      <div
-                        class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#F22BB4]/70 shadow-lg flex items-center justify-center"
-                        style="
-                          background: linear-gradient(
-                              180deg,
-                              rgba(255, 255, 255, 0.7) 0%,
-                              rgba(255, 255, 255, 0) 100%
-                            ),
-                            linear-gradient(to bottom right, #f22bb4, #ff78cf);
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="19"
-                          height="19"
-                          viewBox="0 0 19 19"
-                          fill="none"
-                        >
-                          <path
-                            d="M0 18.6667V4.14815H4.14815V0H14.5185V8.2963H18.6667V18.6667H10.3704V14.5185H8.2963V18.6667H0ZM2.07407 16.5926H4.14815V14.5185H2.07407V16.5926ZM2.07407 12.4444H4.14815V10.3704H2.07407V12.4444ZM2.07407 8.2963H4.14815V6.22222H2.07407V8.2963ZM6.22222 12.4444H8.2963V10.3704H6.22222V12.4444ZM6.22222 8.2963H8.2963V6.22222H6.22222V8.2963ZM6.22222 4.14815H8.2963V2.07407H6.22222V4.14815ZM10.3704 12.4444H12.4444V10.3704H10.3704V12.4444ZM10.3704 8.2963H12.4444V6.22222H10.3704V8.2963ZM10.3704 4.14815H12.4444V2.07407H10.3704V4.14815ZM14.5185 16.5926H16.5926V14.5185H14.5185V16.5926ZM14.5185 12.4444H16.5926V10.3704H14.5185V12.4444Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="timeline-event" style="left: 28.5%; top: 20%">
-                  <div
-                    class="w-14 h-14 bg-white border border-[#F22BB4]/20 rounded-[14px] flex items-center justify-center"
-                    style="
-                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
-                    "
-                  >
-                    <div
-                      class="w-12 h-12 bg-white border border-[#F22BB4]/20 rounded-[11.56px] flex items-center justify-center"
-                    >
-                      <div
-                        class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#F22BB4]/70 shadow-lg flex items-center justify-center"
-                        style="
-                          background: linear-gradient(
-                              180deg,
-                              rgba(255, 255, 255, 0.7) 0%,
-                              rgba(255, 255, 255, 0) 100%
-                            ),
-                            linear-gradient(to bottom right, #f22bb4, #ff78cf);
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="19"
-                          viewBox="0 0 24 19"
-                          fill="none"
-                        >
-                          <path
-                            d="M21.2121 14.5185V7.36296L11.6667 12.4444L0 6.22222L11.6667 0L23.3333 6.22222V14.5185H21.2121ZM11.6667 18.6667L4.24242 14.7259V9.54074L11.6667 13.4815L19.0909 9.54074V14.7259L11.6667 18.6667Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="timeline-event" style="left: 54%; top: 20%">
-                  <div
-                    class="w-14 h-14 bg-white border border-[#F22BB4]/20 rounded-[14px] flex items-center justify-center"
-                    style="
-                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
-                    "
-                  >
-                    <div
-                      class="w-12 h-12 bg-white border border-[#F22BB4]/20 rounded-[11.56px] flex items-center justify-center"
-                    >
-                      <div
-                        class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#F22BB4]/70 shadow-lg flex items-center justify-center"
-                        style="
-                          background: linear-gradient(
-                              180deg,
-                              rgba(255, 255, 255, 0.7) 0%,
-                              rgba(255, 255, 255, 0) 100%
-                            ),
-                            linear-gradient(to bottom right, #f22bb4, #ff78cf);
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="21"
-                          height="18"
-                          viewBox="0 0 21 18"
-                          fill="none"
-                        >
-                          <path
-                            d="M0 17.5V13.8158C0 13.2939 0.186932 12.8564 0.560795 12.5033C0.934659 12.1502 1.38409 11.9737 1.90909 11.9737H5.03523C5.35341 11.9737 5.65568 12.0504 5.94205 12.2039C6.22841 12.3575 6.45909 12.5647 6.63409 12.8257C7.09545 13.4243 7.6642 13.8925 8.34034 14.2303C9.01648 14.568 9.73636 14.7368 10.5 14.7368C11.2795 14.7368 12.0074 14.568 12.6835 14.2303C13.3597 13.8925 13.9205 13.4243 14.3659 12.8257C14.5727 12.5647 14.8153 12.3575 15.0938 12.2039C15.3722 12.0504 15.6625 11.9737 15.9648 11.9737H19.0909C19.6318 11.9737 20.0852 12.1502 20.4511 12.5033C20.817 12.8564 21 13.2939 21 13.8158V17.5H14.3182V15.4046C13.7614 15.7884 13.1608 16.08 12.5165 16.2796C11.8722 16.4792 11.2 16.5789 10.5 16.5789C9.81591 16.5789 9.14773 16.4753 8.49545 16.2681C7.84318 16.0609 7.23864 15.7654 6.68182 15.3816V17.5H0ZM2.86364 11.0526C2.06818 11.0526 1.39205 10.784 0.835227 10.2467C0.278409 9.70943 0 9.05702 0 8.28947C0 7.50658 0.278409 6.85033 0.835227 6.32072C1.39205 5.79112 2.06818 5.52632 2.86364 5.52632C3.675 5.52632 4.35511 5.79112 4.90398 6.32072C5.45284 6.85033 5.72727 7.50658 5.72727 8.28947C5.72727 9.05702 5.45284 9.70943 4.90398 10.2467C4.35511 10.784 3.675 11.0526 2.86364 11.0526ZM18.1364 11.0526C17.3409 11.0526 16.6648 10.784 16.108 10.2467C15.5511 9.70943 15.2727 9.05702 15.2727 8.28947C15.2727 7.50658 15.5511 6.85033 16.108 6.32072C16.6648 5.79112 17.3409 5.52632 18.1364 5.52632C18.9477 5.52632 19.6278 5.79112 20.1767 6.32072C20.7256 6.85033 21 7.50658 21 8.28947C21 9.05702 20.7256 9.70943 20.1767 10.2467C19.6278 10.784 18.9477 11.0526 18.1364 11.0526ZM10.5 9.21053C9.41818 8.25877 8.53523 7.45669 7.85114 6.80428C7.16705 6.15186 6.63409 5.58772 6.25227 5.11184C5.87045 4.63596 5.60795 4.21765 5.46477 3.85691C5.32159 3.49616 5.25 3.13158 5.25 2.76316C5.25 1.99561 5.52841 1.3432 6.08523 0.805921C6.64205 0.26864 7.32614 0 8.1375 0C8.58295 0 9.0125 0.095943 9.42614 0.287829C9.83977 0.479715 10.1977 0.736842 10.5 1.05921C10.8023 0.736842 11.1602 0.479715 11.5739 0.287829C11.9875 0.095943 12.417 0 12.8625 0C13.6739 0 14.358 0.26864 14.9148 0.805921C15.4716 1.3432 15.75 1.99561 15.75 2.76316C15.75 3.13158 15.6784 3.49616 15.5352 3.85691C15.392 4.21765 15.1295 4.63596 14.7477 5.11184C14.3659 5.58772 13.833 6.15186 13.1489 6.80428C12.4648 7.45669 11.5818 8.25877 10.5 9.21053Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="timeline-event" style="left: 54%; top: 60%">
-                  <div
-                    class="w-14 h-14 bg-white border border-[#F22BB4]/20 rounded-[14px] flex items-center justify-center"
-                    style="
-                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
-                    "
-                  >
-                    <div
-                      class="w-12 h-12 bg-white border border-[#F22BB4]/20 rounded-[11.56px] flex items-center justify-center"
-                    >
-                      <div
-                        class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#F22BB4]/70 shadow-lg flex items-center justify-center"
-                        style="
-                          background: linear-gradient(
-                              180deg,
-                              rgba(255, 255, 255, 0.7) 0%,
-                              rgba(255, 255, 255, 0) 100%
-                            ),
-                            linear-gradient(to bottom right, #f22bb4, #ff78cf);
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="23"
-                          height="21"
-                          viewBox="0 0 23 21"
-                          fill="none"
-                        >
-                          <path
-                            d="M10.813 21C9.31721 21 7.91152 20.7244 6.59593 20.1731C5.28035 19.6219 4.13598 18.8737 3.1628 17.9287C2.18963 16.9837 1.41921 15.8725 0.851524 14.595C0.283841 13.3175 0 11.9525 0 10.5C0 9.0475 0.283841 7.6825 0.851524 6.405C1.41921 5.1275 2.18963 4.01625 3.1628 3.07125C4.13598 2.12625 5.28035 1.37812 6.59593 0.826875C7.91152 0.275625 9.31721 0 10.813 0C13.4442 0 15.7464 0.800625 17.7198 2.40188C19.6932 4.00312 20.9232 6.01125 21.4098 8.42625H19.1931C18.8507 7.14875 18.2334 6.00687 17.3414 5.00062C16.4493 3.99437 15.3545 3.2375 14.0569 2.73V3.15C14.0569 3.7275 13.8452 4.22187 13.4216 4.63312C12.9981 5.04437 12.489 5.25 11.8943 5.25H9.73171V7.35C9.73171 7.6475 9.62808 7.89687 9.42083 8.09812C9.21358 8.29937 8.95677 8.4 8.65041 8.4H6.4878V10.5H8.65041V13.65H7.56911L2.37886 8.61C2.3248 8.925 2.27524 9.24 2.23018 9.555C2.18513 9.87 2.1626 10.185 2.1626 10.5C2.1626 12.7925 2.9916 14.7612 4.64959 16.4062C6.30759 18.0512 8.36206 18.8825 10.813 18.9V21ZM20.6528 20.475L17.1927 17.115C16.8142 17.325 16.4087 17.5 15.9762 17.64C15.5437 17.78 15.0841 17.85 14.5976 17.85C13.2459 17.85 12.0971 17.3906 11.1509 16.4719C10.2048 15.5531 9.73171 14.4375 9.73171 13.125C9.73171 11.8125 10.2048 10.6969 11.1509 9.77812C12.0971 8.85938 13.2459 8.4 14.5976 8.4C15.9492 8.4 17.0981 8.85938 18.0442 9.77812C18.9903 10.6969 19.4634 11.8125 19.4634 13.125C19.4634 13.5975 19.3913 14.0437 19.2472 14.4637C19.103 14.8837 18.9228 15.2775 18.7065 15.645L22.1667 19.005L20.6528 20.475ZM14.5976 15.75C15.3545 15.75 15.9942 15.4962 16.5169 14.9887C17.0395 14.4812 17.3008 13.86 17.3008 13.125C17.3008 12.39 17.0395 11.7687 16.5169 11.2612C15.9942 10.7537 15.3545 10.5 14.5976 10.5C13.8406 10.5 13.2009 10.7537 12.6783 11.2612C12.1556 11.7687 11.8943 12.39 11.8943 13.125C11.8943 13.86 12.1556 14.4812 12.6783 14.9887C13.2009 15.4962 13.8406 15.75 14.5976 15.75Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="timeline-event" style="left: 66%; top: 20%">
-                  <div
-                    class="w-14 h-14 bg-white border border-[#F22BB4]/20 rounded-[14px] flex items-center justify-center"
-                    style="
-                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
-                    "
-                  >
-                    <div
-                      class="w-12 h-12 bg-white border border-[#F22BB4]/20 rounded-[11.56px] flex items-center justify-center"
-                    >
-                      <div
-                        class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#F22BB4]/70 shadow-lg flex items-center justify-center"
-                        style="
-                          background: linear-gradient(
-                              180deg,
-                              rgba(255, 255, 255, 0.7) 0%,
-                              rgba(255, 255, 255, 0) 100%
-                            ),
-                            linear-gradient(to bottom right, #f22bb4, #ff78cf);
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="21"
-                          viewBox="0 0 14 21"
-                          fill="none"
-                        >
-                          <path
-                            d="M7 21C5.23333 21 3.79167 20.7069 2.675 20.1206C1.55833 19.5344 1 18.7775 1 17.85C1 17.43 1.12083 17.0406 1.3625 16.6819C1.60417 16.3231 1.94167 16.0125 2.375 15.75L3.95 17.2987C3.8 17.3687 3.6375 17.4475 3.4625 17.535C3.2875 17.6225 3.15 17.7275 3.05 17.85C3.26667 18.13 3.76667 18.375 4.55 18.585C5.33333 18.795 6.15 18.9 7 18.9C7.85 18.9 8.67083 18.795 9.4625 18.585C10.2542 18.375 10.7583 18.13 10.975 17.85C10.8583 17.71 10.7083 17.5962 10.525 17.5087C10.3417 17.4212 10.1667 17.3425 10 17.2725L11.55 15.6975C12.0167 15.9775 12.375 16.2969 12.625 16.6556C12.875 17.0144 13 17.4125 13 17.85C13 18.7775 12.4417 19.5344 11.325 20.1206C10.2083 20.7069 8.76667 21 7 21ZM7 17.85C4.65 16.03 2.89583 14.2625 1.7375 12.5475C0.579167 10.8325 0 9.1525 0 7.5075C0 6.265 0.2125 5.17562 0.6375 4.23937C1.0625 3.30312 1.60833 2.52 2.275 1.89C2.94167 1.26 3.69167 0.7875 4.525 0.4725C5.35833 0.1575 6.18333 0 7 0C7.81667 0 8.64167 0.1575 9.475 0.4725C10.3083 0.7875 11.0583 1.26 11.725 1.89C12.3917 2.52 12.9375 3.30312 13.3625 4.23937C13.7875 5.17562 14 6.265 14 7.5075C14 9.1525 13.4208 10.8325 12.2625 12.5475C11.1042 14.2625 9.35 16.03 7 17.85ZM7 9.45C7.55 9.45 8.02083 9.24437 8.4125 8.83313C8.80417 8.42188 9 7.9275 9 7.35C9 6.7725 8.80417 6.27812 8.4125 5.86687C8.02083 5.45563 7.55 5.25 7 5.25C6.45 5.25 5.97917 5.45563 5.5875 5.86687C5.19583 6.27812 5 6.7725 5 7.35C5 7.9275 5.19583 8.42188 5.5875 8.83313C5.97917 9.24437 6.45 9.45 7 9.45Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="timeline-event" style="left: 79%; top: 20%">
-                  <div
-                    class="w-14 h-14 bg-white border border-[#F22BB4]/20 rounded-[14px] flex items-center justify-center"
-                    style="
-                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
-                    "
-                  >
-                    <div
-                      class="w-12 h-12 bg-white border border-[#F22BB4]/20 rounded-[11.56px] flex items-center justify-center"
-                    >
-                      <div
-                        class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#F22BB4]/70 shadow-lg flex items-center justify-center"
-                        style="
-                          background: linear-gradient(
-                              180deg,
-                              rgba(255, 255, 255, 0.7) 0%,
-                              rgba(255, 255, 255, 0) 100%
-                            ),
-                            linear-gradient(to bottom right, #f22bb4, #ff78cf);
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="20"
-                          height="19"
-                          viewBox="0 0 20 19"
-                          fill="none"
-                        >
-                          <path
-                            d="M2 19C1.45 19 0.979167 18.8042 0.5875 18.4125C0.195833 18.0208 0 17.55 0 17V13H7V15H13V13H20V17C20 17.55 19.8042 18.0208 19.4125 18.4125C19.0208 18.8042 18.55 19 18 19H2ZM9 13V11H11V13H9ZM0 11V6C0 5.45 0.195833 4.97917 0.5875 4.5875C0.979167 4.19583 1.45 4 2 4H6V2C6 1.45 6.19583 0.979167 6.5875 0.5875C6.97917 0.195833 7.45 0 8 0H12C12.55 0 13.0208 0.195833 13.4125 0.5875C13.8042 0.979167 14 1.45 14 2V4H18C18.55 4 19.0208 4.19583 19.4125 4.5875C19.8042 4.97917 20 5.45 20 6V11H13V9H7V11H0ZM8 4H12V2H8V4Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="timeline-event" style="left: 91.5%; top: 20%">
-                  <div
-                    class="w-14 h-14 bg-white border border-[#F22BB4]/20 rounded-[14px] flex items-center justify-center"
-                    style="
-                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
-                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
-                    "
-                  >
-                    <div
-                      class="w-12 h-12 bg-white border border-[#F22BB4]/20 rounded-[11.56px] flex items-center justify-center"
-                    >
-                      <div
-                        class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#F22BB4]/70 shadow-lg flex items-center justify-center"
-                        style="
-                          background: linear-gradient(
-                              180deg,
-                              rgba(255, 255, 255, 0.7) 0%,
-                              rgba(255, 255, 255, 0) 100%
-                            ),
-                            linear-gradient(to bottom right, #f22bb4, #ff78cf);
-                        "
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="18"
-                          height="20"
-                          viewBox="0 0 18 20"
-                          fill="none"
-                        >
-                          <path
-                            d="M0 20V6.66667L8.75 0L17.5 6.66667V20H10.9375V12.2222H6.5625V20H0Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="flex items-center gap-2 cursor-pointer">
+          <img src="./public/user-3.png" alt="Profile" class="w-8 h-8 rounded-full object-cover" />
+          <i class="fa-solid fa-chevron-down text-xs text-gray-600"></i>
         </div>
       </div>
-    </main>
+    </div>
+    <div class="border-t-2 border-dotted border-leaves-border">
+      <div class="max-w-[1494px] mx-auto px-4 sm:px-6 lg:px-8">
+        <nav
+          class="flex items-center gap-8 text-center overflow-x-auto no-scrollbar text-[15px] font-light text-gray-500">
+          <a href="index.html"
+            class="flex items-center gap-2 py-3 text-gray-600 hover:text-gray-900 font-normal transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="17" viewBox="0 0 15 17" fill="none">
+              <path
+                d="M1.83333 14.6667H4.58333V9.16667H10.0833V14.6667H12.8333V6.41667L7.33333 2.29167L1.83333 6.41667V14.6667ZM0 16.5V5.5L7.33333 0L14.6667 5.5V16.5H8.25V11H6.41667V16.5H0Z"
+                fill="#798181" />
+            </svg>
+            Dashboard
+          </a>
+          <a href="times-of-my-life.html"
+            class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path
+                d="M6.87508 20.1666C5.98897 20.1666 5.23272 19.8534 4.60633 19.227C3.97994 18.6006 3.66675 17.8444 3.66675 16.9583V5.04159C3.66675 4.15547 3.97994 3.39922 4.60633 2.77284C5.23272 2.14645 5.98897 1.83325 6.87508 1.83325H18.3334V15.5833C17.9515 15.5833 17.6268 15.7169 17.3595 15.9843C17.0921 16.2517 16.9584 16.5763 16.9584 16.9583C16.9584 17.3402 17.0921 17.6648 17.3595 17.9322C17.6268 18.1996 17.9515 18.3333 18.3334 18.3333V20.1666H6.87508ZM5.50008 14.0478C5.71397 13.9409 5.9355 13.8645 6.16466 13.8187C6.39383 13.7728 6.63064 13.7499 6.87508 13.7499H7.33341V3.66659H6.87508C6.49314 3.66659 6.16848 3.80027 5.90112 4.06763C5.63376 4.33499 5.50008 4.65964 5.50008 5.04159V14.0478ZM9.16675 13.7499H16.5001V3.66659H9.16675V13.7499ZM6.87508 18.3333H15.423C15.3313 18.1194 15.2588 17.9017 15.2053 17.6801C15.1518 17.4586 15.1251 17.218 15.1251 16.9583C15.1251 16.7138 15.148 16.477 15.1938 16.2478C15.2397 16.0187 15.3161 15.7971 15.423 15.5833H6.87508C6.47786 15.5833 6.14939 15.7169 5.88966 15.9843C5.62994 16.2517 5.50008 16.5763 5.50008 16.9583C5.50008 17.3555 5.62994 17.6839 5.88966 17.9437C6.14939 18.2034 6.47786 18.3333 6.87508 18.3333Z"
+                fill="#798181" />
+            </svg>
+            Times of My Life®
+          </a>
+          <a href="personas.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path
+                d="M18.2873 14.6208L16.8665 13.2C17.5387 12.5736 18.0658 11.8326 18.4478 10.9771C18.8297 10.1215 19.0207 9.21248 19.0207 8.24998C19.0207 7.28748 18.8297 6.3861 18.4478 5.54582C18.0658 4.70554 17.5387 3.97221 16.8665 3.34582L18.2873 1.87915C19.1429 2.68887 19.8228 3.64373 20.3269 4.74373C20.8311 5.84373 21.0832 7.01248 21.0832 8.24998C21.0832 9.48748 20.8311 10.6562 20.3269 11.7562C19.8228 12.8562 19.1429 13.8111 18.2873 14.6208ZM15.354 11.6875L13.8873 10.2208C14.1623 9.96109 14.3839 9.667 14.5519 9.33853C14.72 9.01005 14.804 8.64721 14.804 8.24998C14.804 7.85276 14.72 7.48991 14.5519 7.16144C14.3839 6.83297 14.1623 6.53887 13.8873 6.27915L15.354 4.81248C15.8429 5.25554 16.2248 5.77116 16.4998 6.35936C16.7748 6.94755 16.9123 7.57776 16.9123 8.24998C16.9123 8.92221 16.7748 9.55241 16.4998 10.1406C16.2248 10.7288 15.8429 11.2444 15.354 11.6875ZM8.24984 11.9167C7.2415 11.9167 6.37831 11.5576 5.66025 10.8396C4.9422 10.1215 4.58317 9.25832 4.58317 8.24998C4.58317 7.24165 4.9422 6.37846 5.66025 5.6604C6.37831 4.94234 7.2415 4.58332 8.24984 4.58332C9.25817 4.58332 10.1214 4.94234 10.8394 5.6604C11.5575 6.37846 11.9165 7.24165 11.9165 8.24998C11.9165 9.25832 11.5575 10.1215 10.8394 10.8396C10.1214 11.5576 9.25817 11.9167 8.24984 11.9167ZM0.916504 19.25V16.6833C0.916504 16.1792 1.04637 15.7055 1.30609 15.2625C1.56581 14.8194 1.92484 14.4833 2.38317 14.2542C3.16234 13.8569 4.04081 13.5208 5.01859 13.2458C5.99637 12.9708 7.07345 12.8333 8.24984 12.8333C9.42623 12.8333 10.5033 12.9708 11.4811 13.2458C12.4589 13.5208 13.3373 13.8569 14.1165 14.2542C14.5748 14.4833 14.9339 14.8194 15.1936 15.2625C15.4533 15.7055 15.5832 16.1792 15.5832 16.6833V19.25H0.916504ZM2.74984 17.4167H13.7498V16.6833C13.7498 16.5153 13.7078 16.3625 13.6238 16.225C13.5398 16.0875 13.429 15.9805 13.2915 15.9042C12.7415 15.6292 12.0349 15.3542 11.1717 15.0792C10.3085 14.8042 9.33456 14.6667 8.24984 14.6667C7.16512 14.6667 6.19116 14.8042 5.32796 15.0792C4.46477 15.3542 3.75817 15.6292 3.20817 15.9042C3.07067 15.9805 2.95991 16.0875 2.87588 16.225C2.79185 16.3625 2.74984 16.5153 2.74984 16.6833V17.4167ZM8.24984 10.0833C8.754 10.0833 9.1856 9.9038 9.54463 9.54478C9.90366 9.18575 10.0832 8.75415 10.0832 8.24998C10.0832 7.74582 9.90366 7.31422 9.54463 6.95519C9.1856 6.59616 8.754 6.41665 8.24984 6.41665C7.74567 6.41665 7.31407 6.59616 6.95505 6.95519C6.59602 7.31422 6.4165 7.74582 6.4165 8.24998C6.4165 8.75415 6.59602 9.18575 6.95505 9.54478C7.31407 9.9038 7.74567 10.0833 8.24984 10.0833Z"
+                fill="#798181" />
+            </svg>
+            Forever Voice™
+          </a>
+          <a href="life-map.html" class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#798181">
+              <path
+                d="m300-300 280-80 80-280-280 80-80 280Zm180-120q-25 0-42.5-17.5T420-480q0-25 17.5-42.5T480-540q25 0 42.5 17.5T540-480q0 25-17.5 42.5T480-420Zm0 340q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Zm0-320Z" />
+            </svg>
+            Life Map™
+          </a>
+          <a href="life-timeline.html"
+            class="flex items-center gap-2 text-leaves-dark-green border-b-2 border-leaves-green-500 pb-3 px-3 -mb-3 whitespace-nowrap font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+              <path
+                d="M2.75 12.8333H8.25V11H2.75V12.8333ZM5.5 9.16667H11V7.33333H5.5V9.16667ZM8.25 5.5H13.75V3.66667H8.25V5.5ZM1.83333 16.5C1.32917 16.5 0.897569 16.3205 0.538542 15.9615C0.179514 15.6024 0 15.1708 0 14.6667V1.83333C0 1.32917 0.179514 0.897569 0.538542 0.538542C0.897569 0.179514 1.32917 0 1.83333 0H14.6667C15.1708 0 15.6024 0.179514 15.9615 0.538542C16.3205 0.897569 16.5 1.32917 16.5 1.83333V14.6667C16.5 15.1708 16.3205 15.6024 15.9615 15.9615C15.6024 16.3205 15.1708 16.5 14.6667 16.5H1.83333Z"
+                fill="#135529" />
+            </svg>
+            Life Timeline™
+          </a>
+          <a href="document-archive.html"
+            class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="15" viewBox="0 0 19 15" fill="none">
+              <path
+                d="M1.83333 14.6667C1.32917 14.6667 0.897569 14.4872 0.538542 14.1281C0.179514 13.7691 0 13.3375 0 12.8333V1.83333C0 1.32917 0.179514 0.897569 0.538542 0.538542C0.897569 0.179514 1.32917 0 1.83333 0H7.33333L9.16667 1.83333H16.5C17.0042 1.83333 17.4358 2.01285 17.7948 2.37187C18.1538 2.7309 18.3333 3.1625 18.3333 3.66667V12.8333C18.3333 13.3375 18.1538 13.7691 17.7948 14.1281C17.4358 14.4872 17.0042 14.6667 16.5 14.6667H1.83333ZM1.83333 12.8333H16.5V3.66667H8.41042L6.57708 1.83333H1.83333V12.8333Z"
+                fill="#798181" />
+            </svg>
+            Document Archive™
+          </a>
+          <a href="legacy-letters.html"
+            class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="15" viewBox="0 0 19 15" fill="none">
+              <path
+                d="M1.83333 14.6667C1.32917 14.6667 0.897569 14.4872 0.538542 14.1281C0.179514 13.7691 0 13.3375 0 12.8333V1.83333C0 1.32917 0.179514 0.897569 0.538542 0.538542C0.897569 0.179514 1.32917 0 1.83333 0H16.5C17.0042 0 17.4358 0.179514 17.7948 0.538542C18.1538 0.897569 18.3333 1.32917 18.3333 1.83333V12.8333C18.3333 13.3375 18.1538 13.7691 17.7948 14.1281C17.4358 14.4872 17.0042 14.6667 16.5 14.6667H1.83333ZM9.16667 8.25L1.83333 3.66667V12.8333H16.5V3.66667L9.16667 8.25ZM9.16667 6.41667L16.5 1.83333H1.83333L9.16667 6.41667ZM1.83333 3.66667V1.83333V12.8333V3.66667Z"
+                fill="#798181" />
+            </svg>
+            Legacy Letters™
+          </a>
+          <a href="media-library.html"
+            class="flex items-center gap-2 hover:text-gray-800 whitespace-nowrap font-normal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+              <path
+                d="M6.41667 11H15.5833L12.4208 6.875L10.3125 9.625L8.89167 7.79167L6.41667 11ZM5.5 14.6667C4.99583 14.6667 4.56424 14.4872 4.20521 14.1281C3.84618 13.7691 3.66667 13.3375 3.66667 12.8333V1.83333C3.66667 1.32917 3.84618 0.897569 4.20521 0.538542C4.56424 0.179514 4.99583 0 5.5 0H16.5C17.0042 0 17.4358 0.179514 17.7948 0.538542C18.1538 0.897569 18.3333 1.32917 18.3333 1.83333V12.8333C18.3333 13.3375 18.1538 13.7691 17.7948 14.1281C17.4358 14.4872 17.0042 14.6667 16.5 14.6667H5.5ZM5.5 12.8333H16.5V1.83333H5.5V12.8333ZM1.83333 18.3333C1.32917 18.3333 0.897569 18.1538 0.538542 17.7948C0.179514 17.4358 0 17.0042 0 16.5V3.66667H1.83333V16.5H14.6667V18.3333H1.83333Z"
+                fill="#798181" />
+            </svg>
+            Media Library™
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-[1494px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Page Title -->
+    <h1 class="text-2xl font-bold text-gray-900 mb-4">Life Timeline™</h1>
+
+    <!-- Info Banner -->
     <div
-      id="timelineModal"
-      class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 hidden"
-    >
-      <div
-        class="bg-white rounded-2xl shadow-xl max-w-[454px] max-h-[95vh] overflow-y-auto"
-      >
-        <div class="relative">
-          <img
-            src="./public/timeline-details.png"
-            alt="Event"
-            class="w-full h-56 object-cover rounded-t-2xl"
-          />
-          <div class="absolute left-4 top-4">
-            <a
-              href="#"
-              class="px-3 py-1.5 bg-gray-800/85 text-white text-xs rounded-lg flex items-center gap-2 shadow"
-            >
-              <i class="fa-solid fa-map-location-dot"></i>
-              <span>Google Map</span>
-              <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
-            </a>
+      class="bg-[#E8F8FE] border border-[#9BD1F8] shadow-[inset_0px_2px_2px_1px_rgba(155,208,248,0.32)] rounded-lg px-2 py-1 mb-6 flex items-center gap-3">
+      <div class="flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <g filter="url(#filter0_di_1_44397)">
+            <rect x="4.5" y="3.5" width="31" height="31" rx="7.5" stroke="#43B8FB" shape-rendering="crispEdges" />
+            <g filter="url(#filter1_dn_1_44397)">
+              <rect x="7" y="6" width="26" height="26" rx="6" fill="#9CD4FF" />
+              <rect x="7" y="6" width="26" height="26" rx="6" fill="url(#paint0_linear_1_44397)" />
+              <path
+                d="M19.1665 23.1667H20.8332V18.1667H19.1665V23.1667ZM19.9998 16.5001C20.2359 16.5001 20.4339 16.4202 20.5936 16.2605C20.7533 16.1008 20.8332 15.9029 20.8332 15.6667C20.8332 15.4306 20.7533 15.2327 20.5936 15.073C20.4339 14.9133 20.2359 14.8334 19.9998 14.8334C19.7637 14.8334 19.5658 14.9133 19.4061 15.073C19.2464 15.2327 19.1665 15.4306 19.1665 15.6667C19.1665 15.9029 19.2464 16.1008 19.4061 16.2605C19.5658 16.4202 19.7637 16.5001 19.9998 16.5001ZM19.9998 27.3334C18.8471 27.3334 17.7637 27.1147 16.7498 26.6772C15.7359 26.2397 14.854 25.6459 14.104 24.8959C13.354 24.1459 12.7603 23.264 12.3228 22.2501C11.8853 21.2362 11.6665 20.1529 11.6665 19.0001C11.6665 17.8473 11.8853 16.764 12.3228 15.7501C12.7603 14.7362 13.354 13.8542 14.104 13.1042C14.854 12.3542 15.7359 11.7605 16.7498 11.323C17.7637 10.8855 18.8471 10.6667 19.9998 10.6667C21.1526 10.6667 22.2359 10.8855 23.2498 11.323C24.2637 11.7605 25.1457 12.3542 25.8957 13.1042C26.6457 13.8542 27.2394 14.7362 27.6769 15.7501C28.1144 16.764 28.3332 17.8473 28.3332 19.0001C28.3332 20.1529 28.1144 21.2362 27.6769 22.2501C27.2394 23.264 26.6457 24.1459 25.8957 24.8959C25.1457 25.6459 24.2637 26.2397 23.2498 26.6772C22.2359 27.1147 21.1526 27.3334 19.9998 27.3334Z"
+                fill="#00365F" />
+            </g>
+          </g>
+          <defs>
+            <filter id="filter0_di_1_44397" x="0" y="0" width="40" height="40" filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha" />
+              <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_1_44397" />
+              <feOffset dy="1" />
+              <feGaussianBlur stdDeviation="1.5" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0.972549 0 0 0 0 0.835294 0 0 0 0 0.607843 0 0 0 0.32 0" />
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_44397" />
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_44397" result="shape" />
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha" />
+              <feMorphology radius="1" operator="erode" in="SourceAlpha" result="effect2_innerShadow_1_44397" />
+              <feOffset dy="2" />
+              <feGaussianBlur stdDeviation="1" />
+              <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0.810791 0 0 0 0 0.93693 0 0 0 0 1 0 0 0 0.32 0" />
+              <feBlend mode="normal" in2="shape" result="effect2_innerShadow_1_44397" />
+            </filter>
+            <filter id="filter1_dn_1_44397" x="6.5" y="5.5" width="27" height="27" filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha" />
+              <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_1_44397" />
+              <feOffset />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0.572549 0 0 0 0 0.779608 0 0 0 0 0.960784 0 0 0 1 0" />
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_44397" />
+              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+              <feTurbulence type="fractalNoise" baseFrequency="0.10000000149011612 0.10000000149011612"
+                stitchTiles="stitch" numOctaves="3" result="noise" seed="5967" />
+              <feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+              <feComponentTransfer in="alphaNoise" result="coloredNoise1">
+                <feFuncA type="discrete"
+                  tableValues="0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 " />
+              </feComponentTransfer>
+              <feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" />
+              <feFlood flood-color="rgba(255, 255, 255, 0.05)" result="color1Flood" />
+              <feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+              <feMerge result="effect2_noise_1_44397">
+                <feMergeNode in="shape" />
+                <feMergeNode in="color1" />
+              </feMerge>
+              <feBlend mode="normal" in="effect2_noise_1_44397" in2="effect1_dropShadow_1_44397"
+                result="effect2_noise_1_44397" />
+            </filter>
+            <linearGradient id="paint0_linear_1_44397" x1="20" y1="6" x2="20" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="white" stop-opacity="0.12" />
+              <stop offset="1" stop-color="white" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <p class="text-sm text-primary font-medium flex-1">
+        <strong class="font-bold">Purpose:</strong> A chronological visual of
+        one’s entire life.
+      </p>
+      <button class="text-gray-400 mr-2 hover:text-gray-600">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path
+            d="M9.99956 8.93955L13.7121 5.22705L14.7726 6.28755L11.0601 10.0001L14.7726 13.7126L13.7121 14.7731L9.99956 11.0606L6.28706 14.7731L5.22656 13.7126L8.93906 10.0001L5.22656 6.28755L6.28706 5.22705L9.99956 8.93955Z"
+            fill="#00365F" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="flex items-center justify-between bg-white rounded-t-xl p-5">
+      <h1 class="text-2xl font-bold text-gray-900">Life Events</h1>
+      <button
+        class="bg-white border shadow-[0_2px_5px_0_rgba(60,66,87,0.08),0_0_0_1px_rgba(69,167,53,0.16),0_1px_1px_0_rgba(0,0,0,0.12)] border-[#45A735] text-[#45A735] px-5 py-2 rounded-lg font-medium text-sm flex items-center gap-2">
+        <i class="fa-solid fa-plus"></i>
+        Add New Event
+      </button>
+    </div>
+
+    <div class="grid grid-cols-12 gap-6 xl:gap-0 h-full min-h-[1572px] xl:min-h-[1072px]">
+      <div class="col-span-12 lg:col-span-3 space-y-6">
+        <div
+          class="bg-white rounded-none rounded-bl-xl border border-gray-100 p-5 flex flex-col justify-between h-full">
+          <div>
+            <div class="mb-6">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-medium text-[#474D4B] text-base">Labels</h3>
+                <button class="text-[#45A735] text-sm font-medium">
+                  Add New
+                </button>
+              </div>
+
+              <div class="space-y-2.5">
+                <label class="flex items-center justify-between cursor-pointer group">
+                  <div class="flex items-center gap-2.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                      <path d="M0 15V5L6.66667 0L13.3333 5V15H8.33333V9.16667H5V15H0Z" fill="#051910" />
+                    </svg>
+                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Homes</span>
+                  </div>
+                  <input type="checkbox" checked class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]" />
+                </label>
+
+                <label class="flex items-center justify-between cursor-pointer group">
+                  <div class="flex items-center gap-2.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path
+                        d="M3.33337 16.4746V6.1042H6.29634V3.14124H13.7037V9.06716H16.6667V16.4746H10.7408V13.5116H9.2593V16.4746H3.33337ZM4.81486 14.9931H6.29634V13.5116H4.81486V14.9931ZM4.81486 12.0301H6.29634V10.5486H4.81486V12.0301ZM4.81486 9.06716H6.29634V7.58568H4.81486V9.06716ZM7.77782 12.0301H9.2593V10.5486H7.77782V12.0301ZM7.77782 9.06716H9.2593V7.58568H7.77782V9.06716ZM7.77782 6.1042H9.2593V4.62272H7.77782V6.1042ZM10.7408 12.0301H12.2223V10.5486H10.7408V12.0301ZM10.7408 9.06716H12.2223V7.58568H10.7408V9.06716ZM10.7408 6.1042H12.2223V4.62272H10.7408V6.1042ZM13.7037 14.9931H15.1852V13.5116H13.7037V14.9931ZM13.7037 12.0301H15.1852V10.5486H13.7037V12.0301Z"
+                        fill="#051910" />
+                    </svg>
+                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Schools</span>
+                  </div>
+                  <input type="checkbox" checked class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]" />
+                </label>
+
+                <label class="flex items-center justify-between cursor-pointer group">
+                  <div class="flex items-center gap-2.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path
+                        d="M4.28701 16.7842C3.89424 16.7842 3.55801 16.6443 3.27831 16.3646C2.99861 16.0849 2.85876 15.7487 2.85876 15.3559V12.4994H7.85763V13.9277H12.1424V12.4994H17.1412V15.3559C17.1412 15.7487 17.0014 16.0849 16.7217 16.3646C16.442 16.6443 16.1058 16.7842 15.713 16.7842H4.28701ZM9.28588 12.4994V11.0712H10.7141V12.4994H9.28588ZM2.85876 11.0712V7.50057C2.85876 7.1078 2.99861 6.77156 3.27831 6.49186C3.55801 6.21217 3.89424 6.07232 4.28701 6.07232H7.14351V4.64407C7.14351 4.2513 7.28336 3.91507 7.56306 3.63537C7.84276 3.35567 8.17899 3.21582 8.57176 3.21582H11.4283C11.821 3.21582 12.1573 3.35567 12.437 3.63537C12.7167 3.91507 12.8565 4.2513 12.8565 4.64407V6.07232H15.713C16.1058 6.07232 16.442 6.21217 16.7217 6.49186C17.0014 6.77156 17.1412 7.1078 17.1412 7.50057V11.0712H12.1424V9.64294H7.85763V11.0712H2.85876ZM8.57176 6.07232H11.4283V4.64407H8.57176V6.07232Z"
+                        fill="#051910" />
+                    </svg>
+                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Work Places</span>
+                  </div>
+                  <input type="checkbox" checked class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]" />
+                </label>
+
+                <label class="flex items-center justify-between cursor-pointer group">
+                  <div class="flex items-center gap-2.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path
+                        d="M2.5 15.6412V13.0097C2.5 12.6368 2.63352 12.3243 2.90057 12.0722C3.16761 11.82 3.48864 11.6939 3.86364 11.6939H6.09659C6.32386 11.6939 6.53977 11.7487 6.74432 11.8583C6.94886 11.968 7.11364 12.116 7.23864 12.3024C7.56818 12.7301 7.97443 13.0645 8.45739 13.3057C8.94034 13.5469 9.45455 13.6676 10 13.6676C10.5568 13.6676 11.0767 13.5469 11.5597 13.3057C12.0426 13.0645 12.4432 12.7301 12.7614 12.3024C12.9091 12.116 13.0824 11.968 13.2812 11.8583C13.4801 11.7487 13.6875 11.6939 13.9034 11.6939H16.1364C16.5227 11.6939 16.8466 11.82 17.108 12.0722C17.3693 12.3243 17.5 12.6368 17.5 13.0097V15.6412H12.7273V14.1445C12.3295 14.4186 11.9006 14.627 11.4403 14.7695C10.9801 14.9121 10.5 14.9833 10 14.9833C9.51136 14.9833 9.03409 14.9093 8.56818 14.7613C8.10227 14.6133 7.67045 14.4022 7.27273 14.1281V15.6412H2.5ZM4.54545 11.036C3.97727 11.036 3.49432 10.8441 3.09659 10.4603C2.69886 10.0765 2.5 9.61053 2.5 9.06229C2.5 8.50308 2.69886 8.03433 3.09659 7.65604C3.49432 7.27775 3.97727 7.0886 4.54545 7.0886C5.125 7.0886 5.6108 7.27775 6.00284 7.65604C6.39489 8.03433 6.59091 8.50308 6.59091 9.06229C6.59091 9.61053 6.39489 10.0765 6.00284 10.4603C5.6108 10.8441 5.125 11.036 4.54545 11.036ZM15.4545 11.036C14.8864 11.036 14.4034 10.8441 14.0057 10.4603C13.608 10.0765 13.4091 9.61053 13.4091 9.06229C13.4091 8.50308 13.608 8.03433 14.0057 7.65604C14.4034 7.27775 14.8864 7.0886 15.4545 7.0886C16.0341 7.0886 16.5199 7.27775 16.9119 7.65604C17.304 8.03433 17.5 8.50308 17.5 9.06229C17.5 9.61053 17.304 10.0765 16.9119 10.4603C16.5199 10.8441 16.0341 11.036 15.4545 11.036ZM10 9.72018C9.22727 9.04036 8.59659 8.46744 8.10795 8.00143C7.61932 7.53542 7.23864 7.13246 6.96591 6.79255C6.69318 6.45264 6.50568 6.15385 6.40341 5.89617C6.30114 5.63849 6.25 5.37808 6.25 5.11492C6.25 4.56667 6.44886 4.10067 6.84659 3.71689C7.24432 3.33312 7.73295 3.14124 8.3125 3.14124C8.63068 3.14124 8.9375 3.20977 9.23295 3.34683C9.52841 3.48389 9.78409 3.66755 10 3.89781C10.2159 3.66755 10.4716 3.48389 10.767 3.34683C11.0625 3.20977 11.3693 3.14124 11.6875 3.14124C12.267 3.14124 12.7557 3.33312 13.1534 3.71689C13.5511 4.10067 13.75 4.56667 13.75 5.11492C13.75 5.37808 13.6989 5.63849 13.5966 5.89617C13.4943 6.15385 13.3068 6.45264 13.0341 6.79255C12.7614 7.13246 12.3807 7.53542 11.892 8.00143C11.4034 8.46744 10.7727 9.04036 10 9.72018Z"
+                        fill="#051910" />
+                    </svg>
+                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Special Events</span>
+                  </div>
+                  <input type="checkbox" checked class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]" />
+                </label>
+
+                <label class="flex items-center justify-between cursor-pointer group">
+                  <div class="flex items-center gap-2.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path
+                        d="M10.2236 17.308C9.15515 17.308 8.15108 17.1111 7.21138 16.7174C6.27168 16.3236 5.45427 15.7892 4.75915 15.1142C4.06402 14.4392 3.51372 13.6455 3.10823 12.733C2.70274 11.8205 2.5 10.8455 2.5 9.80798C2.5 8.77048 2.70274 7.79548 3.10823 6.88298C3.51372 5.97048 4.06402 5.17673 4.75915 4.50173C5.45427 3.82673 6.27168 3.29236 7.21138 2.89861C8.15108 2.50486 9.15515 2.30798 10.2236 2.30798C12.103 2.30798 13.7475 2.87986 15.157 4.02361C16.5666 5.16736 17.4451 6.60173 17.7927 8.32673H16.2093C15.9648 7.41423 15.5239 6.59861 14.8867 5.87986C14.2495 5.16111 13.4675 4.62048 12.5407 4.25798V4.55798C12.5407 4.97048 12.3894 5.32361 12.0869 5.61736C11.7844 5.91111 11.4207 6.05798 10.9959 6.05798H9.45122V7.55798C9.45122 7.77048 9.3772 7.94861 9.22917 8.09236C9.08113 8.23611 8.8977 8.30798 8.67886 8.30798H7.13415V9.80798H8.67886V12.058H7.9065L4.19919 8.45798C4.16057 8.68298 4.12517 8.90798 4.09299 9.13298C4.06081 9.35798 4.04472 9.58298 4.04472 9.80798C4.04472 11.4455 4.63686 12.8517 5.82114 14.0267C7.00542 15.2017 8.4729 15.7955 10.2236 15.808V17.308ZM17.252 16.933L14.7805 14.533C14.5102 14.683 14.2205 14.808 13.9116 14.908C13.6026 15.008 13.2744 15.058 12.9268 15.058C11.9614 15.058 11.1408 14.7299 10.4649 14.0736C9.78913 13.4174 9.45122 12.6205 9.45122 11.683C9.45122 10.7455 9.78913 9.94861 10.4649 9.29236C11.1408 8.63611 11.9614 8.30798 12.9268 8.30798C13.8923 8.30798 14.7129 8.63611 15.3887 9.29236C16.0645 9.94861 16.4024 10.7455 16.4024 11.683C16.4024 12.0205 16.3509 12.3392 16.248 12.6392C16.145 12.9392 16.0163 13.2205 15.8618 13.483L18.3333 15.883L17.252 16.933ZM12.9268 13.558C13.4675 13.558 13.9245 13.3767 14.2978 13.0142C14.6711 12.6517 14.8577 12.208 14.8577 11.683C14.8577 11.158 14.6711 10.7142 14.2978 10.3517C13.9245 9.98923 13.4675 9.80798 12.9268 9.80798C12.3862 9.80798 11.9292 9.98923 11.5559 10.3517C11.1826 10.7142 10.9959 11.158 10.9959 11.683C10.9959 12.208 11.1826 12.6517 11.5559 13.0142C11.9292 13.3767 12.3862 13.558 12.9268 13.558Z"
+                        fill="#051910" />
+                    </svg>
+                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Travels</span>
+                  </div>
+                  <input type="checkbox" checked class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]" />
+                </label>
+
+                <label class="flex items-center justify-between cursor-pointer group">
+                  <div class="flex items-center gap-2.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path
+                        d="M10.0833 17.5C9.84718 17.5 9.64926 17.4201 9.48954 17.2604C9.32982 17.1007 9.24996 16.9028 9.24996 16.6667C9.24996 16.5694 9.27079 16.4688 9.31246 16.3646C9.35413 16.2604 9.41663 16.1667 9.49996 16.0833L13.3541 12.2292L12.75 11.625L8.91663 15.4792C8.83329 15.5625 8.74301 15.625 8.64579 15.6667C8.54857 15.7083 8.4444 15.7292 8.33329 15.7292C8.09718 15.7292 7.89926 15.6493 7.73954 15.4896C7.57982 15.3299 7.49996 15.1319 7.49996 14.8958C7.49996 14.7569 7.52079 14.6424 7.56246 14.5521C7.60413 14.4618 7.65968 14.3819 7.72913 14.3125L11.5833 10.4583L11 9.875L7.14579 13.7083C7.06246 13.7917 6.97218 13.8542 6.87496 13.8958C6.77774 13.9375 6.66663 13.9583 6.54163 13.9583C6.3194 13.9583 6.12496 13.875 5.95829 13.7083C5.79163 13.5417 5.70829 13.3472 5.70829 13.125C5.70829 13.0139 5.72913 12.9097 5.77079 12.8125C5.81246 12.7153 5.87496 12.625 5.95829 12.5417L9.81246 8.6875L9.20829 8.10417L5.37496 11.9583C5.30551 12.0278 5.22218 12.0833 5.12496 12.125C5.02774 12.1667 4.90968 12.1875 4.77079 12.1875C4.53468 12.1875 4.33676 12.1076 4.17704 11.9479C4.01732 11.7882 3.93746 11.5903 3.93746 11.3542C3.93746 11.2431 3.95829 11.1389 3.99996 11.0417C4.04163 10.9444 4.10413 10.8542 4.18746 10.7708L8.83329 6.125L11.9583 9.27083C12.1111 9.42361 12.2916 9.54514 12.5 9.63542C12.7083 9.72569 12.9166 9.77083 13.125 9.77083C13.5694 9.77083 13.9583 9.61458 14.2916 9.30208C14.625 8.98958 14.7916 8.59028 14.7916 8.10417C14.7916 7.90972 14.7569 7.70833 14.6875 7.5C14.618 7.29167 14.493 7.09722 14.3125 6.91667L10.5833 3.1875C10.8194 2.96528 11.0833 2.79514 11.375 2.67708C11.6666 2.55903 11.9583 2.5 12.25 2.5C12.6111 2.5 12.9444 2.55903 13.25 2.67708C13.5555 2.79514 13.8333 2.97917 14.0833 3.22917L17.6041 6.77083C17.8541 7.02083 18.0382 7.29861 18.1562 7.60417C18.2743 7.90972 18.3333 8.26389 18.3333 8.66667C18.3333 8.94444 18.2708 9.22569 18.1458 9.51042C18.0208 9.79514 17.8402 10.0556 17.6041 10.2917L10.6666 17.25C10.5555 17.3611 10.4583 17.4306 10.375 17.4583C10.2916 17.4861 10.1944 17.5 10.0833 17.5ZM2.93746 10.8333L2.39579 10.2917C2.15968 10.0694 1.97913 9.80556 1.85413 9.5C1.72913 9.19444 1.66663 8.875 1.66663 8.54167C1.66663 8.18056 1.73607 7.84722 1.87496 7.54167C2.01385 7.23611 2.18746 6.97917 2.39579 6.77083L5.91663 3.22917C6.13885 3.00694 6.40274 2.82986 6.70829 2.69792C7.01385 2.56597 7.31246 2.5 7.60413 2.5C7.97913 2.5 8.31246 2.55208 8.60413 2.65625C8.89579 2.76042 9.18051 2.95139 9.45829 3.22917L13.7291 7.5C13.8125 7.58333 13.875 7.67361 13.9166 7.77083C13.9583 7.86806 13.9791 7.97222 13.9791 8.08333C13.9791 8.30556 13.8958 8.5 13.7291 8.66667C13.5625 8.83333 13.368 8.91667 13.1458 8.91667C13.0208 8.91667 12.9166 8.89931 12.8333 8.86458C12.75 8.82986 12.6597 8.76389 12.5625 8.66667L8.81246 4.95833L2.93746 10.8333Z"
+                        fill="#051910" />
+                    </svg>
+                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Hangouts</span>
+                  </div>
+                  <input type="checkbox" class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]" />
+                </label>
+
+                <label class="flex items-center justify-between cursor-pointer group">
+                  <div class="flex items-center gap-2.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path
+                        d="M9.8075 17.5C8.54559 17.5 7.51583 17.2906 6.71821 16.8719C5.92059 16.4531 5.52178 15.9125 5.52178 15.25C5.52178 14.95 5.60809 14.6719 5.78071 14.4156C5.95333 14.1594 6.1944 13.9375 6.50392 13.75L7.62892 14.8563C7.52178 14.9063 7.40571 14.9625 7.28071 15.025C7.15571 15.0875 7.0575 15.1625 6.98607 15.25C7.14083 15.45 7.49797 15.625 8.0575 15.775C8.61702 15.925 9.20035 16 9.8075 16C10.4146 16 11.0009 15.925 11.5664 15.775C12.1319 15.625 12.492 15.45 12.6468 15.25C12.5634 15.15 12.4563 15.0688 12.3254 15.0063C12.1944 14.9438 12.0694 14.8875 11.9504 14.8375L13.0575 13.7125C13.3908 13.9125 13.6468 14.1406 13.8254 14.3969C14.0039 14.6531 14.0932 14.9375 14.0932 15.25C14.0932 15.9125 13.6944 16.4531 12.8968 16.8719C12.0992 17.2906 11.0694 17.5 9.8075 17.5ZM9.8075 15.25C8.12892 13.95 6.87595 12.6875 6.04857 11.4625C5.22119 10.2375 4.8075 9.0375 4.8075 7.8625C4.8075 6.975 4.95928 6.19688 5.26285 5.52813C5.56642 4.85938 5.9563 4.3 6.4325 3.85C6.90869 3.4 7.4444 3.0625 8.03964 2.8375C8.63488 2.6125 9.22416 2.5 9.8075 2.5C10.3908 2.5 10.9801 2.6125 11.5754 2.8375C12.1706 3.0625 12.7063 3.4 13.1825 3.85C13.6587 4.3 14.0486 4.85938 14.3521 5.52813C14.6557 6.19688 14.8075 6.975 14.8075 7.8625C14.8075 9.0375 14.3938 10.2375 13.5664 11.4625C12.739 12.6875 11.4861 13.95 9.8075 15.25ZM9.8075 9.25C10.2004 9.25 10.5367 9.10313 10.8164 8.80938C11.0962 8.51562 11.2361 8.1625 11.2361 7.75C11.2361 7.3375 11.0962 6.98438 10.8164 6.69063C10.5367 6.39688 10.2004 6.25 9.8075 6.25C9.41464 6.25 9.07833 6.39688 8.79857 6.69063C8.5188 6.98438 8.37892 7.3375 8.37892 7.75C8.37892 8.1625 8.5188 8.51562 8.79857 8.80938C9.07833 9.10313 9.41464 9.25 9.8075 9.25Z"
+                        fill="#051910" />
+                    </svg>
+                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Births</span>
+                  </div>
+                  <input type="checkbox" checked class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]" />
+                </label>
+
+                <label class="flex items-center justify-between cursor-pointer group">
+                  <div class="flex items-center gap-2.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path
+                        d="M16.6258 13.5116V8.40049L9.80758 12.0301L1.47424 7.58568L9.80758 3.14124L18.1409 7.58568V13.5116H16.6258ZM9.80758 16.4746L4.50455 13.6598V9.95605L9.80758 12.7709L15.1106 9.95605V13.6598L9.80758 16.4746Z"
+                        fill="#051910" />
+                    </svg>
+                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Graduation</span>
+                  </div>
+                  <input type="checkbox" checked class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]" />
+                </label>
+
+                <label class="flex items-center justify-between cursor-pointer group">
+                  <div class="flex items-center gap-2.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path
+                        d="M4.28701 16.7842C3.89424 16.7842 3.55801 16.6443 3.27831 16.3646C2.99861 16.0849 2.85876 15.7487 2.85876 15.3559V12.4994H7.85763V13.9277H12.1424V12.4994H17.1412V15.3559C17.1412 15.7487 17.0014 16.0849 16.7217 16.3646C16.442 16.6443 16.1058 16.7842 15.713 16.7842H4.28701ZM9.28588 12.4994V11.0712H10.7141V12.4994H9.28588ZM2.85876 11.0712V7.50057C2.85876 7.1078 2.99861 6.77156 3.27831 6.49186C3.55801 6.21217 3.89424 6.07232 4.28701 6.07232H7.14351V4.64407C7.14351 4.2513 7.28336 3.91507 7.56306 3.63537C7.84276 3.35567 8.17899 3.21582 8.57176 3.21582H11.4283C11.821 3.21582 12.1573 3.35567 12.437 3.63537C12.7167 3.91507 12.8565 4.2513 12.8565 4.64407V6.07232H15.713C16.1058 6.07232 16.442 6.21217 16.7217 6.49186C17.0014 6.77156 17.1412 7.1078 17.1412 7.50057V11.0712H12.1424V9.64294H7.85763V11.0712H2.85876ZM8.57176 6.07232H11.4283V4.64407H8.57176V6.07232Z"
+                        fill="#051910" />
+                    </svg>
+                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">First Job</span>
+                  </div>
+                  <input type="checkbox" checked class="w-4 h-4 rounded border-[#C4C4C7] accent-[#45A735]" />
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-[13px] font-semibold text-gray-900 mb-3">
+                Family
+              </h3>
+              <div class="space-y-2.5">
+                <label class="flex items-center justify-between cursor-pointer group">
+                  <div class="flex items-center gap-2.5">
+                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Parents</span>
+                  </div>
+                  <input type="checkbox" checked class="w-4 h-4 rounded border-[#C4C4C7] accent-[#009794]" />
+                </label>
+                <label class="flex items-center justify-between cursor-pointer group">
+                  <div class="flex items-center gap-2.5">
+                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Kids</span>
+                  </div>
+                  <input type="checkbox" class="w-4 h-4 rounded border-[#C4C4C7] accent-[#009794]" />
+                </label>
+                <label class="flex items-center justify-between cursor-pointer group">
+                  <div class="flex items-center gap-2.5">
+                    <span class="text-[13px] text-gray-700 group-hover:text-gray-900">Grandparents</span>
+                  </div>
+                  <input type="checkbox" checked class="w-4 h-4 rounded border-[#dddddd] accent-[#F22BB4]" />
+                </label>
+              </div>
+            </div>
           </div>
+
           <button
-            id="closeTimelineModal"
-            class="absolute right-4 top-4 w-8 h-8 rounded-full bg-white/95 text-gray-700 flex items-center justify-center shadow"
-          >
-            <i class="fa-solid fa-xmark"></i>
+            class="w-full mt-6 bg-[#318F21] hover:bg-leaves-green/90 text-white py-2.5 rounded-lg font-medium text-sm">
+            Apply Filter
           </button>
         </div>
-        <div class="p-5">
-          <h3 class="text-[18px] font-semibold text-gray-900 mb-2">
-            Patricia’s Wedding Ceremony
-          </h3>
-          <p class="text-sm text-gray-600">
-            Patricia’s wedding was held at Eden Royal Convention Hall with close
-            family and friends.
-          </p>
-          <div class="mt-5 space-y-3">
-            <div class="flex items-center gap-3">
-              <i class="fa-solid fa-bullseye text-[#009794]"></i>
-              <span class="text-sm text-gray-700">Purpose</span>
-              <span
-                class="ml-auto px-3 py-1 rounded-lg bg-white border border-[#DDDDDD] text-[#670949] text-xs font-medium"
-                >Wedding Celebration</span
-              >
-            </div>
-            <div class="flex items-center gap-3">
-              <i class="fa-regular fa-calendar text-gray-500"></i>
-              <span class="text-sm text-gray-700">Date</span>
-              <span class="ml-auto text-sm text-gray-700"
-                >Saturday, August 14, 1988</span
-              >
-            </div>
-            <div class="flex items-center gap-3">
-              <i class="fa-solid fa-building text-gray-500"></i>
-              <span class="text-sm text-gray-700">Place Name</span>
-              <span class="ml-auto text-sm text-gray-700"
-                >Eden Royal Convention Hall, Florida</span
-              >
-            </div>
-            <div class="flex items-center gap-3">
-              <i class="fa-solid fa-location-dot text-gray-500"></i>
-              <span class="text-sm text-gray-700">Address</span>
-              <span class="ml-auto text-sm text-gray-700"
-                >Homestead, FL 33031, United States</span
-              >
-            </div>
+      </div>
+
+      <div class="col-span-12 lg:col-span-9">
+        <div class="lg:bg-white rounded-none rounded-br-xl rounded-bl-0 border border-gray-100 lg:p-6 relative h-full ">
+          <div
+            class="h-9 border bg-white border-[#dddddd] rounded-md rounded-b-none flex items-center justify-between px-4 text-xs text-[#ADADAD] font-medium">
+            <span>1980</span>
+            <span>1988</span>
+            <span>1995</span>
+            <span>2000</span>
+            <span>2006</span>
+            <span>2010</span>
+            <span>2015</span>
+            <span>2020</span>
           </div>
-          <div class="mt-6 flex items-center gap-3">
-            <button
-              class="flex-1 bg-white border shadow-[0_2px_5px_0_rgba(60,66,87,0.08),0_0_0_1px_rgba(69,167,53,0.16),0_1px_1px_0_rgba(0,0,0,0.12)] border-[#dddddd] text-[#051910] px-4 py-2 rounded-lg text-sm font-medium"
-            >
-              View Stories
-              <i class="fa-solid fa-chevron-right text-[11px]"></i>
-            </button>
 
-            <button
-              class="flex-1 bg-white border shadow-[0_2px_5px_0_rgba(60,66,87,0.08),0_0_0_1px_rgba(69,167,53,0.16),0_1px_1px_0_rgba(0,0,0,0.12)] border-[#dddddd] text-[#051910] px-4 py-2 rounded-lg text-sm font-medium"
-            >
-              View in Timeline
+          <div class="timeline-board h-[calc(100%-32px)] max-lg:overflow-x-auto">
+            <div class="timeline-grid max-lg:min-w-[800px]"></div>
 
-              <!-- chevron right icon -->
-              <i class="fa-solid fa-chevron-right text-[11px]"></i>
-            </button>
+            <div
+              class="absolute bg-[#F2FCFC99] border border-t-0 border-[#DDDDDD] top-0 left-0 w-full text-center max-lg:min-w-[800px]">
+              <div class="relative z-10 backdrop-blur-sm inline-block">
+                <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs">
+                  <div class="w-2 h-2 rounded-full bg-teal-600" style="background-color: #009794"></div>
+                  <span class="text-sm font-medium text-[#014F4D]">Parents Life Events</span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="timeline-divider bg-pink-50 border border-[#DDDDDD] w-full text-center absolute top-1/2 left-0 -translate-y-1/2 max-lg:min-w-[800px]">
+              <div class="relative z-10 backdrop-blur-sm inline-block">
+                <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs">
+                  <div class="w-2 h-2 rounded-full" style="background-color: #f22bb4"></div>
+                  <span class="text-sm font-medium text-[#670949]">Grandparents Life Events</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="absolute left-0 right-0 top-24 bottom-[52%] max-lg:min-w-[800px]">
+              <div class="timeline-event" style="left: 3.5%; top: 12%">
+                <div
+                  class="w-14 h-14 bg-white border border-[#00AAA7]/20 rounded-[14px] flex items-center justify-center"
+                  style="
+                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
+                    ">
+                  <div
+                    class="w-12 h-12 bg-white border border-[#00AAA7]/20 rounded-[11.56px] flex items-center justify-center">
+                    <div
+                      class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#00AAA7]/70 shadow-lg flex items-center justify-center bg-[#009794]"
+                      style="
+                          background: linear-gradient(
+                              180deg,
+                              rgba(255, 255, 255, 0.7) 0%,
+                              rgba(255, 255, 255, 0) 100%
+                            ),
+                            #009794;
+                        ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none">
+                        <path d="M0 20V6.66667L8.75 0L17.5 6.66667V20H10.9375V12.2222H6.5625V20H0Z" fill="white" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-event" style="left: 3.5%; top: 50%">
+                <div
+                  class="w-14 h-14 bg-white border border-[#00AAA7]/20 rounded-[14px] flex items-center justify-center"
+                  style="
+                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
+                    ">
+                  <div
+                    class="w-12 h-12 bg-white border border-[#00AAA7]/20 rounded-[11.56px] flex items-center justify-center">
+                    <div
+                      class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#00AAA7]/70 shadow-lg flex items-center justify-center bg-[#009794]"
+                      style="
+                          background: linear-gradient(
+                              180deg,
+                              rgba(255, 255, 255, 0.7) 0%,
+                              rgba(255, 255, 255, 0) 100%
+                            ),
+                            #009794;
+                        ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+                        <path
+                          d="M2 19C1.45 19 0.979167 18.8042 0.5875 18.4125C0.195833 18.0208 0 17.55 0 17V13H7V15H13V13H20V17C20 17.55 19.8042 18.0208 19.4125 18.4125C19.0208 18.8042 18.55 19 18 19H2ZM9 13V11H11V13H9ZM0 11V6C0 5.45 0.195833 4.97917 0.5875 4.5875C0.979167 4.19583 1.45 4 2 4H6V2C6 1.45 6.19583 0.979167 6.5875 0.5875C6.97917 0.195833 7.45 0 8 0H12C12.55 0 13.0208 0.195833 13.4125 0.5875C13.8042 0.979167 14 1.45 14 2V4H18C18.55 4 19.0208 4.19583 19.4125 4.5875C19.8042 4.97917 20 5.45 20 6V11H13V9H7V11H0ZM8 4H12V2H8V4Z"
+                          fill="white" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-event" style="left: 16%; top: 12%">
+                <div
+                  class="w-14 h-14 bg-white border border-[#00AAA7]/20 rounded-[14px] flex items-center justify-center"
+                  style="
+                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
+                    ">
+                  <div
+                    class="w-12 h-12 bg-white border border-[#00AAA7]/20 rounded-[11.56px] flex items-center justify-center">
+                    <div
+                      class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#00AAA7]/70 shadow-lg flex items-center justify-center bg-[#009794]"
+                      style="
+                          background: linear-gradient(
+                              180deg,
+                              rgba(255, 255, 255, 0.7) 0%,
+                              rgba(255, 255, 255, 0) 100%
+                            ),
+                            #009794;
+                        ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="21" height="18" viewBox="0 0 21 18" fill="none">
+                        <path
+                          d="M0 17.5V13.8158C0 13.2939 0.186932 12.8564 0.560795 12.5033C0.934659 12.1502 1.38409 11.9737 1.90909 11.9737H5.03523C5.35341 11.9737 5.65568 12.0504 5.94205 12.2039C6.22841 12.3575 6.45909 12.5647 6.63409 12.8257C7.09545 13.4243 7.6642 13.8925 8.34034 14.2303C9.01648 14.568 9.73636 14.7368 10.5 14.7368C11.2795 14.7368 12.0074 14.568 12.6835 14.2303C13.3597 13.8925 13.9205 13.4243 14.3659 12.8257C14.5727 12.5647 14.8153 12.3575 15.0938 12.2039C15.3722 12.0504 15.6625 11.9737 15.9648 11.9737H19.0909C19.6318 11.9737 20.0852 12.1502 20.4511 12.5033C20.817 12.8564 21 13.2939 21 13.8158V17.5H14.3182V15.4046C13.7614 15.7884 13.1608 16.08 12.5165 16.2796C11.8722 16.4792 11.2 16.5789 10.5 16.5789C9.81591 16.5789 9.14773 16.4753 8.49545 16.2681C7.84318 16.0609 7.23864 15.7654 6.68182 15.3816V17.5H0ZM2.86364 11.0526C2.06818 11.0526 1.39205 10.784 0.835227 10.2467C0.278409 9.70943 0 9.05702 0 8.28947C0 7.50658 0.278409 6.85033 0.835227 6.32072C1.39205 5.79112 2.06818 5.52632 2.86364 5.52632C3.675 5.52632 4.35511 5.79112 4.90398 6.32072C5.45284 6.85033 5.72727 7.50658 5.72727 8.28947C5.72727 9.05702 5.45284 9.70943 4.90398 10.2467C4.35511 10.784 3.675 11.0526 2.86364 11.0526ZM18.1364 11.0526C17.3409 11.0526 16.6648 10.784 16.108 10.2467C15.5511 9.70943 15.2727 9.05702 15.2727 8.28947C15.2727 7.50658 15.5511 6.85033 16.108 6.32072C16.6648 5.79112 17.3409 5.52632 18.1364 5.52632C18.9477 5.52632 19.6278 5.79112 20.1767 6.32072C20.7256 6.85033 21 7.50658 21 8.28947C21 9.05702 20.7256 9.70943 20.1767 10.2467C19.6278 10.784 18.9477 11.0526 18.1364 11.0526ZM10.5 9.21053C9.41818 8.25877 8.53523 7.45669 7.85114 6.80428C7.16705 6.15186 6.63409 5.58772 6.25227 5.11184C5.87045 4.63596 5.60795 4.21765 5.46477 3.85691C5.32159 3.49616 5.25 3.13158 5.25 2.76316C5.25 1.99561 5.52841 1.3432 6.08523 0.805921C6.64205 0.26864 7.32614 0 8.1375 0C8.58295 0 9.0125 0.095943 9.42614 0.287829C9.83977 0.479715 10.1977 0.736842 10.5 1.05921C10.8023 0.736842 11.1602 0.479715 11.5739 0.287829C11.9875 0.095943 12.417 0 12.8625 0C13.6739 0 14.358 0.26864 14.9148 0.805921C15.4716 1.3432 15.75 1.99561 15.75 2.76316C15.75 3.13158 15.6784 3.49616 15.5352 3.85691C15.392 4.21765 15.1295 4.63596 14.7477 5.11184C14.3659 5.58772 13.833 6.15186 13.1489 6.80428C12.4648 7.45669 11.5818 8.25877 10.5 9.21053Z"
+                          fill="white" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-event" style="left: 41%; top: 12%">
+                <div
+                  class="w-14 h-14 bg-white border border-[#00AAA7]/20 rounded-[14px] flex items-center justify-center"
+                  style="
+                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
+                    ">
+                  <div
+                    class="w-12 h-12 bg-white border border-[#00AAA7]/20 rounded-[11.56px] flex items-center justify-center">
+                    <div
+                      class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#00AAA7]/70 shadow-lg flex items-center justify-center bg-[#009794]"
+                      style="
+                          background: linear-gradient(
+                              180deg,
+                              rgba(255, 255, 255, 0.7) 0%,
+                              rgba(255, 255, 255, 0) 100%
+                            ),
+                            #009794;
+                        ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="21" viewBox="0 0 14 21" fill="none">
+                        <path
+                          d="M7 21C5.23333 21 3.79167 20.7069 2.675 20.1206C1.55833 19.5344 1 18.7775 1 17.85C1 17.43 1.12083 17.0406 1.3625 16.6819C1.60417 16.3231 1.94167 16.0125 2.375 15.75L3.95 17.2987C3.8 17.3687 3.6375 17.4475 3.4625 17.535C3.2875 17.6225 3.15 17.7275 3.05 17.85C3.26667 18.13 3.76667 18.375 4.55 18.585C5.33333 18.795 6.15 18.9 7 18.9C7.85 18.9 8.67083 18.795 9.4625 18.585C10.2542 18.375 10.7583 18.13 10.975 17.85C10.8583 17.71 10.7083 17.5962 10.525 17.5087C10.3417 17.4212 10.1667 17.3425 10 17.2725L11.55 15.6975C12.0167 15.9775 12.375 16.2969 12.625 16.6556C12.875 17.0144 13 17.4125 13 17.85C13 18.7775 12.4417 19.5344 11.325 20.1206C10.2083 20.7069 8.76667 21 7 21ZM7 17.85C4.65 16.03 2.89583 14.2625 1.7375 12.5475C0.579167 10.8325 0 9.1525 0 7.5075C0 6.265 0.2125 5.17562 0.6375 4.23937C1.0625 3.30312 1.60833 2.52 2.275 1.89C2.94167 1.26 3.69167 0.7875 4.525 0.4725C5.35833 0.1575 6.18333 0 7 0C7.81667 0 8.64167 0.1575 9.475 0.4725C10.3083 0.7875 11.0583 1.26 11.725 1.89C12.3917 2.52 12.9375 3.30312 13.3625 4.23937C13.7875 5.17562 14 6.265 14 7.5075C14 9.1525 13.4208 10.8325 12.2625 12.5475C11.1042 14.2625 9.35 16.03 7 17.85ZM7 9.45C7.55 9.45 8.02083 9.24437 8.4125 8.83313C8.80417 8.42188 9 7.9275 9 7.35C9 6.7725 8.80417 6.27812 8.4125 5.86687C8.02083 5.45563 7.55 5.25 7 5.25C6.45 5.25 5.97917 5.45563 5.5875 5.86687C5.19583 6.27812 5 6.7725 5 7.35C5 7.9275 5.19583 8.42188 5.5875 8.83313C5.97917 9.24437 6.45 9.45 7 9.45Z"
+                          fill="white" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-event" style="left: 41%; top: 50%">
+                <div
+                  class="w-14 h-14 bg-white border border-[#00AAA7]/20 rounded-[14px] flex items-center justify-center"
+                  style="
+                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
+                    ">
+                  <div
+                    class="w-12 h-12 bg-white border border-[#00AAA7]/20 rounded-[11.56px] flex items-center justify-center">
+                    <div
+                      class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#00AAA7]/70 shadow-lg flex items-center justify-center bg-[#009794]"
+                      style="
+                          background: linear-gradient(
+                              180deg,
+                              rgba(255, 255, 255, 0.7) 0%,
+                              rgba(255, 255, 255, 0) 100%
+                            ),
+                            #009794;
+                        ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                        <path
+                          d="M0 18.6667V4.14815H4.14815V0H14.5185V8.2963H18.6667V18.6667H10.3704V14.5185H8.2963V18.6667H0ZM2.07407 16.5926H4.14815V14.5185H2.07407V16.5926ZM2.07407 12.4444H4.14815V10.3704H2.07407V12.4444ZM2.07407 8.2963H4.14815V6.22222H2.07407V8.2963ZM6.22222 12.4444H8.2963V10.3704H6.22222V12.4444ZM6.22222 8.2963H8.2963V6.22222H6.22222V8.2963ZM6.22222 4.14815H8.2963V2.07407H6.22222V4.14815ZM10.3704 12.4444H12.4444V10.3704H10.3704V12.4444ZM10.3704 8.2963H12.4444V6.22222H10.3704V8.2963ZM10.3704 4.14815H12.4444V2.07407H10.3704V4.14815ZM14.5185 16.5926H16.5926V14.5185H14.5185V16.5926ZM14.5185 12.4444H16.5926V10.3704H14.5185V12.4444Z"
+                          fill="white" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-event" style="left: 79%; top: 13%">
+                <div
+                  class="w-14 h-14 bg-white border border-[#00AAA7]/20 rounded-[14px] flex items-center justify-center"
+                  style="
+                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
+                    ">
+                  <div
+                    class="w-12 h-12 bg-white border border-[#00AAA7]/20 rounded-[11.56px] flex items-center justify-center">
+                    <div
+                      class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#00AAA7]/70 shadow-lg flex items-center justify-center bg-[#009794]"
+                      style="
+                          background: linear-gradient(
+                              180deg,
+                              rgba(255, 255, 255, 0.7) 0%,
+                              rgba(255, 255, 255, 0) 100%
+                            ),
+                            #009794;
+                        ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21" fill="none">
+                        <path
+                          d="M10.813 21C9.31721 21 7.91152 20.7244 6.59593 20.1731C5.28035 19.6219 4.13598 18.8737 3.1628 17.9287C2.18963 16.9837 1.41921 15.8725 0.851524 14.595C0.283841 13.3175 0 11.9525 0 10.5C0 9.0475 0.283841 7.6825 0.851524 6.405C1.41921 5.1275 2.18963 4.01625 3.1628 3.07125C4.13598 2.12625 5.28035 1.37812 6.59593 0.826875C7.91152 0.275625 9.31721 0 10.813 0C13.4442 0 15.7464 0.800625 17.7198 2.40188C19.6932 4.00312 20.9232 6.01125 21.4098 8.42625H19.1931C18.8507 7.14875 18.2334 6.00687 17.3414 5.00062C16.4493 3.99437 15.3545 3.2375 14.0569 2.73V3.15C14.0569 3.7275 13.8452 4.22187 13.4216 4.63312C12.9981 5.04437 12.489 5.25 11.8943 5.25H9.73171V7.35C9.73171 7.6475 9.62808 7.89687 9.42083 8.09812C9.21358 8.29937 8.95677 8.4 8.65041 8.4H6.4878V10.5H8.65041V13.65H7.56911L2.37886 8.61C2.3248 8.925 2.27524 9.24 2.23018 9.555C2.18513 9.87 2.1626 10.185 2.1626 10.5C2.1626 12.7925 2.9916 14.7612 4.64959 16.4062C6.30759 18.0512 8.36206 18.8825 10.813 18.9V21ZM20.6528 20.475L17.1927 17.115C16.8142 17.325 16.4087 17.5 15.9762 17.64C15.5437 17.78 15.0841 17.85 14.5976 17.85C13.2459 17.85 12.0971 17.3906 11.1509 16.4719C10.2048 15.5531 9.73171 14.4375 9.73171 13.125C9.73171 11.8125 10.2048 10.6969 11.1509 9.77812C12.0971 8.85938 13.2459 8.4 14.5976 8.4C15.9492 8.4 17.0981 8.85938 18.0442 9.77812C18.9903 10.6969 19.4634 11.8125 19.4634 13.125C19.4634 13.5975 19.3913 14.0437 19.2472 14.4637C19.103 14.8837 18.9228 15.2775 18.7065 15.645L22.1667 19.005L20.6528 20.475ZM14.5976 15.75C15.3545 15.75 15.9942 15.4962 16.5169 14.9887C17.0395 14.4812 17.3008 13.86 17.3008 13.125C17.3008 12.39 17.0395 11.7687 16.5169 11.2612C15.9942 10.7537 15.3545 10.5 14.5976 10.5C13.8406 10.5 13.2009 10.7537 12.6783 11.2612C12.1556 11.7687 11.8943 12.39 11.8943 13.125C11.8943 13.86 12.1556 14.4812 12.6783 14.9887C13.2009 15.4962 13.8406 15.75 14.5976 15.75Z"
+                          fill="white" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-event" style="left: 91.5%; top: 20%">
+                <div
+                  class="w-14 h-14 bg-white border border-[#00AAA7]/20 rounded-[14px] flex items-center justify-center"
+                  style="
+                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
+                    ">
+                  <div
+                    class="w-12 h-12 bg-white border border-[#00AAA7]/20 rounded-[11.56px] flex items-center justify-center">
+                    <div
+                      class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#00AAA7]/70 shadow-lg flex items-center justify-center bg-[#009794]"
+                      style="
+                          background: linear-gradient(
+                              180deg,
+                              rgba(255, 255, 255, 0.7) 0%,
+                              rgba(255, 255, 255, 0) 100%
+                            ),
+                            #009794;
+                        ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="19" viewBox="0 0 24 19" fill="none">
+                        <path
+                          d="M21.2121 14.5185V7.36296L11.6667 12.4444L0 6.22222L11.6667 0L23.3333 6.22222V14.5185H21.2121ZM11.6667 18.6667L4.24242 14.7259V9.54074L11.6667 13.4815L19.0909 9.54074V14.7259L11.6667 18.6667Z"
+                          fill="white" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="absolute left-0 right-0 top-[53%] bottom-6 max-lg:min-w-[800px]">
+              <div class="timeline-event" style="left: 3.5%; top: 20%">
+                <div
+                  class="w-14 h-14 bg-white border border-[#F22BB4]/20 rounded-[14px] flex items-center justify-center"
+                  style="
+                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
+                    ">
+                  <div
+                    class="w-12 h-12 bg-white border border-[#F22BB4]/20 rounded-[11.56px] flex items-center justify-center">
+                    <div
+                      class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#F22BB4]/70 shadow-lg flex items-center justify-center"
+                      style="
+                          background: linear-gradient(
+                              180deg,
+                              rgba(255, 255, 255, 0.7) 0%,
+                              rgba(255, 255, 255, 0) 100%
+                            ),
+                            linear-gradient(to bottom right, #f22bb4, #ff78cf);
+                        ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                        <path
+                          d="M0 18.6667V4.14815H4.14815V0H14.5185V8.2963H18.6667V18.6667H10.3704V14.5185H8.2963V18.6667H0ZM2.07407 16.5926H4.14815V14.5185H2.07407V16.5926ZM2.07407 12.4444H4.14815V10.3704H2.07407V12.4444ZM2.07407 8.2963H4.14815V6.22222H2.07407V8.2963ZM6.22222 12.4444H8.2963V10.3704H6.22222V12.4444ZM6.22222 8.2963H8.2963V6.22222H6.22222V8.2963ZM6.22222 4.14815H8.2963V2.07407H6.22222V4.14815ZM10.3704 12.4444H12.4444V10.3704H10.3704V12.4444ZM10.3704 8.2963H12.4444V6.22222H10.3704V8.2963ZM10.3704 4.14815H12.4444V2.07407H10.3704V4.14815ZM14.5185 16.5926H16.5926V14.5185H14.5185V16.5926ZM14.5185 12.4444H16.5926V10.3704H14.5185V12.4444Z"
+                          fill="white" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-event" style="left: 28.5%; top: 20%">
+                <div
+                  class="w-14 h-14 bg-white border border-[#F22BB4]/20 rounded-[14px] flex items-center justify-center"
+                  style="
+                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
+                    ">
+                  <div
+                    class="w-12 h-12 bg-white border border-[#F22BB4]/20 rounded-[11.56px] flex items-center justify-center">
+                    <div
+                      class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#F22BB4]/70 shadow-lg flex items-center justify-center"
+                      style="
+                          background: linear-gradient(
+                              180deg,
+                              rgba(255, 255, 255, 0.7) 0%,
+                              rgba(255, 255, 255, 0) 100%
+                            ),
+                            linear-gradient(to bottom right, #f22bb4, #ff78cf);
+                        ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="19" viewBox="0 0 24 19" fill="none">
+                        <path
+                          d="M21.2121 14.5185V7.36296L11.6667 12.4444L0 6.22222L11.6667 0L23.3333 6.22222V14.5185H21.2121ZM11.6667 18.6667L4.24242 14.7259V9.54074L11.6667 13.4815L19.0909 9.54074V14.7259L11.6667 18.6667Z"
+                          fill="white" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-event" style="left: 54%; top: 20%">
+                <div
+                  class="w-14 h-14 bg-white border border-[#F22BB4]/20 rounded-[14px] flex items-center justify-center"
+                  style="
+                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
+                    ">
+                  <div
+                    class="w-12 h-12 bg-white border border-[#F22BB4]/20 rounded-[11.56px] flex items-center justify-center">
+                    <div
+                      class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#F22BB4]/70 shadow-lg flex items-center justify-center"
+                      style="
+                          background: linear-gradient(
+                              180deg,
+                              rgba(255, 255, 255, 0.7) 0%,
+                              rgba(255, 255, 255, 0) 100%
+                            ),
+                            linear-gradient(to bottom right, #f22bb4, #ff78cf);
+                        ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="21" height="18" viewBox="0 0 21 18" fill="none">
+                        <path
+                          d="M0 17.5V13.8158C0 13.2939 0.186932 12.8564 0.560795 12.5033C0.934659 12.1502 1.38409 11.9737 1.90909 11.9737H5.03523C5.35341 11.9737 5.65568 12.0504 5.94205 12.2039C6.22841 12.3575 6.45909 12.5647 6.63409 12.8257C7.09545 13.4243 7.6642 13.8925 8.34034 14.2303C9.01648 14.568 9.73636 14.7368 10.5 14.7368C11.2795 14.7368 12.0074 14.568 12.6835 14.2303C13.3597 13.8925 13.9205 13.4243 14.3659 12.8257C14.5727 12.5647 14.8153 12.3575 15.0938 12.2039C15.3722 12.0504 15.6625 11.9737 15.9648 11.9737H19.0909C19.6318 11.9737 20.0852 12.1502 20.4511 12.5033C20.817 12.8564 21 13.2939 21 13.8158V17.5H14.3182V15.4046C13.7614 15.7884 13.1608 16.08 12.5165 16.2796C11.8722 16.4792 11.2 16.5789 10.5 16.5789C9.81591 16.5789 9.14773 16.4753 8.49545 16.2681C7.84318 16.0609 7.23864 15.7654 6.68182 15.3816V17.5H0ZM2.86364 11.0526C2.06818 11.0526 1.39205 10.784 0.835227 10.2467C0.278409 9.70943 0 9.05702 0 8.28947C0 7.50658 0.278409 6.85033 0.835227 6.32072C1.39205 5.79112 2.06818 5.52632 2.86364 5.52632C3.675 5.52632 4.35511 5.79112 4.90398 6.32072C5.45284 6.85033 5.72727 7.50658 5.72727 8.28947C5.72727 9.05702 5.45284 9.70943 4.90398 10.2467C4.35511 10.784 3.675 11.0526 2.86364 11.0526ZM18.1364 11.0526C17.3409 11.0526 16.6648 10.784 16.108 10.2467C15.5511 9.70943 15.2727 9.05702 15.2727 8.28947C15.2727 7.50658 15.5511 6.85033 16.108 6.32072C16.6648 5.79112 17.3409 5.52632 18.1364 5.52632C18.9477 5.52632 19.6278 5.79112 20.1767 6.32072C20.7256 6.85033 21 7.50658 21 8.28947C21 9.05702 20.7256 9.70943 20.1767 10.2467C19.6278 10.784 18.9477 11.0526 18.1364 11.0526ZM10.5 9.21053C9.41818 8.25877 8.53523 7.45669 7.85114 6.80428C7.16705 6.15186 6.63409 5.58772 6.25227 5.11184C5.87045 4.63596 5.60795 4.21765 5.46477 3.85691C5.32159 3.49616 5.25 3.13158 5.25 2.76316C5.25 1.99561 5.52841 1.3432 6.08523 0.805921C6.64205 0.26864 7.32614 0 8.1375 0C8.58295 0 9.0125 0.095943 9.42614 0.287829C9.83977 0.479715 10.1977 0.736842 10.5 1.05921C10.8023 0.736842 11.1602 0.479715 11.5739 0.287829C11.9875 0.095943 12.417 0 12.8625 0C13.6739 0 14.358 0.26864 14.9148 0.805921C15.4716 1.3432 15.75 1.99561 15.75 2.76316C15.75 3.13158 15.6784 3.49616 15.5352 3.85691C15.392 4.21765 15.1295 4.63596 14.7477 5.11184C14.3659 5.58772 13.833 6.15186 13.1489 6.80428C12.4648 7.45669 11.5818 8.25877 10.5 9.21053Z"
+                          fill="white" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-event" style="left: 54%; top: 60%">
+                <div
+                  class="w-14 h-14 bg-white border border-[#F22BB4]/20 rounded-[14px] flex items-center justify-center"
+                  style="
+                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
+                    ">
+                  <div
+                    class="w-12 h-12 bg-white border border-[#F22BB4]/20 rounded-[11.56px] flex items-center justify-center">
+                    <div
+                      class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#F22BB4]/70 shadow-lg flex items-center justify-center"
+                      style="
+                          background: linear-gradient(
+                              180deg,
+                              rgba(255, 255, 255, 0.7) 0%,
+                              rgba(255, 255, 255, 0) 100%
+                            ),
+                            linear-gradient(to bottom right, #f22bb4, #ff78cf);
+                        ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21" fill="none">
+                        <path
+                          d="M10.813 21C9.31721 21 7.91152 20.7244 6.59593 20.1731C5.28035 19.6219 4.13598 18.8737 3.1628 17.9287C2.18963 16.9837 1.41921 15.8725 0.851524 14.595C0.283841 13.3175 0 11.9525 0 10.5C0 9.0475 0.283841 7.6825 0.851524 6.405C1.41921 5.1275 2.18963 4.01625 3.1628 3.07125C4.13598 2.12625 5.28035 1.37812 6.59593 0.826875C7.91152 0.275625 9.31721 0 10.813 0C13.4442 0 15.7464 0.800625 17.7198 2.40188C19.6932 4.00312 20.9232 6.01125 21.4098 8.42625H19.1931C18.8507 7.14875 18.2334 6.00687 17.3414 5.00062C16.4493 3.99437 15.3545 3.2375 14.0569 2.73V3.15C14.0569 3.7275 13.8452 4.22187 13.4216 4.63312C12.9981 5.04437 12.489 5.25 11.8943 5.25H9.73171V7.35C9.73171 7.6475 9.62808 7.89687 9.42083 8.09812C9.21358 8.29937 8.95677 8.4 8.65041 8.4H6.4878V10.5H8.65041V13.65H7.56911L2.37886 8.61C2.3248 8.925 2.27524 9.24 2.23018 9.555C2.18513 9.87 2.1626 10.185 2.1626 10.5C2.1626 12.7925 2.9916 14.7612 4.64959 16.4062C6.30759 18.0512 8.36206 18.8825 10.813 18.9V21ZM20.6528 20.475L17.1927 17.115C16.8142 17.325 16.4087 17.5 15.9762 17.64C15.5437 17.78 15.0841 17.85 14.5976 17.85C13.2459 17.85 12.0971 17.3906 11.1509 16.4719C10.2048 15.5531 9.73171 14.4375 9.73171 13.125C9.73171 11.8125 10.2048 10.6969 11.1509 9.77812C12.0971 8.85938 13.2459 8.4 14.5976 8.4C15.9492 8.4 17.0981 8.85938 18.0442 9.77812C18.9903 10.6969 19.4634 11.8125 19.4634 13.125C19.4634 13.5975 19.3913 14.0437 19.2472 14.4637C19.103 14.8837 18.9228 15.2775 18.7065 15.645L22.1667 19.005L20.6528 20.475ZM14.5976 15.75C15.3545 15.75 15.9942 15.4962 16.5169 14.9887C17.0395 14.4812 17.3008 13.86 17.3008 13.125C17.3008 12.39 17.0395 11.7687 16.5169 11.2612C15.9942 10.7537 15.3545 10.5 14.5976 10.5C13.8406 10.5 13.2009 10.7537 12.6783 11.2612C12.1556 11.7687 11.8943 12.39 11.8943 13.125C11.8943 13.86 12.1556 14.4812 12.6783 14.9887C13.2009 15.4962 13.8406 15.75 14.5976 15.75Z"
+                          fill="white" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-event" style="left: 66%; top: 20%">
+                <div
+                  class="w-14 h-14 bg-white border border-[#F22BB4]/20 rounded-[14px] flex items-center justify-center"
+                  style="
+                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
+                    ">
+                  <div
+                    class="w-12 h-12 bg-white border border-[#F22BB4]/20 rounded-[11.56px] flex items-center justify-center">
+                    <div
+                      class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#F22BB4]/70 shadow-lg flex items-center justify-center"
+                      style="
+                          background: linear-gradient(
+                              180deg,
+                              rgba(255, 255, 255, 0.7) 0%,
+                              rgba(255, 255, 255, 0) 100%
+                            ),
+                            linear-gradient(to bottom right, #f22bb4, #ff78cf);
+                        ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="21" viewBox="0 0 14 21" fill="none">
+                        <path
+                          d="M7 21C5.23333 21 3.79167 20.7069 2.675 20.1206C1.55833 19.5344 1 18.7775 1 17.85C1 17.43 1.12083 17.0406 1.3625 16.6819C1.60417 16.3231 1.94167 16.0125 2.375 15.75L3.95 17.2987C3.8 17.3687 3.6375 17.4475 3.4625 17.535C3.2875 17.6225 3.15 17.7275 3.05 17.85C3.26667 18.13 3.76667 18.375 4.55 18.585C5.33333 18.795 6.15 18.9 7 18.9C7.85 18.9 8.67083 18.795 9.4625 18.585C10.2542 18.375 10.7583 18.13 10.975 17.85C10.8583 17.71 10.7083 17.5962 10.525 17.5087C10.3417 17.4212 10.1667 17.3425 10 17.2725L11.55 15.6975C12.0167 15.9775 12.375 16.2969 12.625 16.6556C12.875 17.0144 13 17.4125 13 17.85C13 18.7775 12.4417 19.5344 11.325 20.1206C10.2083 20.7069 8.76667 21 7 21ZM7 17.85C4.65 16.03 2.89583 14.2625 1.7375 12.5475C0.579167 10.8325 0 9.1525 0 7.5075C0 6.265 0.2125 5.17562 0.6375 4.23937C1.0625 3.30312 1.60833 2.52 2.275 1.89C2.94167 1.26 3.69167 0.7875 4.525 0.4725C5.35833 0.1575 6.18333 0 7 0C7.81667 0 8.64167 0.1575 9.475 0.4725C10.3083 0.7875 11.0583 1.26 11.725 1.89C12.3917 2.52 12.9375 3.30312 13.3625 4.23937C13.7875 5.17562 14 6.265 14 7.5075C14 9.1525 13.4208 10.8325 12.2625 12.5475C11.1042 14.2625 9.35 16.03 7 17.85ZM7 9.45C7.55 9.45 8.02083 9.24437 8.4125 8.83313C8.80417 8.42188 9 7.9275 9 7.35C9 6.7725 8.80417 6.27812 8.4125 5.86687C8.02083 5.45563 7.55 5.25 7 5.25C6.45 5.25 5.97917 5.45563 5.5875 5.86687C5.19583 6.27812 5 6.7725 5 7.35C5 7.9275 5.19583 8.42188 5.5875 8.83313C5.97917 9.24437 6.45 9.45 7 9.45Z"
+                          fill="white" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-event" style="left: 79%; top: 20%">
+                <div
+                  class="w-14 h-14 bg-white border border-[#F22BB4]/20 rounded-[14px] flex items-center justify-center"
+                  style="
+                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
+                    ">
+                  <div
+                    class="w-12 h-12 bg-white border border-[#F22BB4]/20 rounded-[11.56px] flex items-center justify-center">
+                    <div
+                      class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#F22BB4]/70 shadow-lg flex items-center justify-center"
+                      style="
+                          background: linear-gradient(
+                              180deg,
+                              rgba(255, 255, 255, 0.7) 0%,
+                              rgba(255, 255, 255, 0) 100%
+                            ),
+                            linear-gradient(to bottom right, #f22bb4, #ff78cf);
+                        ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+                        <path
+                          d="M2 19C1.45 19 0.979167 18.8042 0.5875 18.4125C0.195833 18.0208 0 17.55 0 17V13H7V15H13V13H20V17C20 17.55 19.8042 18.0208 19.4125 18.4125C19.0208 18.8042 18.55 19 18 19H2ZM9 13V11H11V13H9ZM0 11V6C0 5.45 0.195833 4.97917 0.5875 4.5875C0.979167 4.19583 1.45 4 2 4H6V2C6 1.45 6.19583 0.979167 6.5875 0.5875C6.97917 0.195833 7.45 0 8 0H12C12.55 0 13.0208 0.195833 13.4125 0.5875C13.8042 0.979167 14 1.45 14 2V4H18C18.55 4 19.0208 4.19583 19.4125 4.5875C19.8042 4.97917 20 5.45 20 6V11H13V9H7V11H0ZM8 4H12V2H8V4Z"
+                          fill="white" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-event" style="left: 91.5%; top: 20%">
+                <div
+                  class="w-14 h-14 bg-white border border-[#F22BB4]/20 rounded-[14px] flex items-center justify-center"
+                  style="
+                      box-shadow: 0 1.156px 0 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 4.622px 0 rgba(0, 0, 0, 0.05),
+                        0 4.622px 11.556px 0 rgba(0, 0, 0, 0.1);
+                    ">
+                  <div
+                    class="w-12 h-12 bg-white border border-[#F22BB4]/20 rounded-[11.56px] flex items-center justify-center">
+                    <div
+                      class="w-9 h-9 border-[0.867px] rounded-[8.711px] border-[#F22BB4]/70 shadow-lg flex items-center justify-center"
+                      style="
+                          background: linear-gradient(
+                              180deg,
+                              rgba(255, 255, 255, 0.7) 0%,
+                              rgba(255, 255, 255, 0) 100%
+                            ),
+                            linear-gradient(to bottom right, #f22bb4, #ff78cf);
+                        ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none">
+                        <path d="M0 20V6.66667L8.75 0L17.5 6.66667V20H10.9375V12.2222H6.5625V20H0Z" fill="white" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <script>
-      const timelineModal = document.getElementById("timelineModal");
-      const closeTimelineModal = document.getElementById("closeTimelineModal");
-      document.querySelectorAll(".timeline-event").forEach(function (el) {
-        el.addEventListener("click", function () {
-          timelineModal.classList.remove("hidden");
-        });
+  </main>
+  <div id="timelineModal"
+    class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-2xl shadow-xl max-w-[454px] max-h-[95vh] overflow-y-auto">
+      <div class="relative">
+        <img src="./public/timeline-details.png" alt="Event" class="w-full h-56 object-cover rounded-t-2xl" />
+        <div class="absolute left-4 top-4">
+          <a href="#" class="px-3 py-1.5 bg-gray-800/85 text-white text-xs rounded-lg flex items-center gap-2 shadow">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Google Map</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
+          </a>
+        </div>
+        <button id="closeTimelineModal"
+          class="absolute right-4 top-4 w-8 h-8 rounded-full bg-white/95 text-gray-700 flex items-center justify-center shadow">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="p-5">
+        <h3 class="text-[18px] font-semibold text-gray-900 mb-2">
+          Patricia’s Wedding Ceremony
+        </h3>
+        <p class="text-sm text-gray-600">
+          Patricia’s wedding was held at Eden Royal Convention Hall with close
+          family and friends.
+        </p>
+        <div class="mt-5 space-y-3">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-bullseye text-[#009794]"></i>
+            <span class="text-sm text-gray-700">Purpose</span>
+            <span
+              class="ml-auto px-3 py-1 rounded-lg bg-white border border-[#DDDDDD] text-[#670949] text-xs font-medium">Wedding
+              Celebration</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="fa-regular fa-calendar text-gray-500"></i>
+            <span class="text-sm text-gray-700">Date</span>
+            <span class="ml-auto text-sm text-gray-700">Saturday, August 14, 1988</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-building text-gray-500"></i>
+            <span class="text-sm text-gray-700">Place Name</span>
+            <span class="ml-auto text-sm text-gray-700">Eden Royal Convention Hall, Florida</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-location-dot text-gray-500"></i>
+            <span class="text-sm text-gray-700">Address</span>
+            <span class="ml-auto text-sm text-gray-700">Homestead, FL 33031, United States</span>
+          </div>
+        </div>
+        <div class="mt-6 flex items-center gap-3">
+          <button
+            class="flex-1 bg-white border shadow-[0_2px_5px_0_rgba(60,66,87,0.08),0_0_0_1px_rgba(69,167,53,0.16),0_1px_1px_0_rgba(0,0,0,0.12)] border-[#dddddd] text-[#051910] px-4 py-2 rounded-lg text-sm font-medium">
+            View Stories
+            <i class="fa-solid fa-chevron-right text-[11px]"></i>
+          </button>
+
+          <button
+            class="flex-1 bg-white border shadow-[0_2px_5px_0_rgba(60,66,87,0.08),0_0_0_1px_rgba(69,167,53,0.16),0_1px_1px_0_rgba(0,0,0,0.12)] border-[#dddddd] text-[#051910] px-4 py-2 rounded-lg text-sm font-medium">
+            View in Timeline
+
+            <!-- chevron right icon -->
+            <i class="fa-solid fa-chevron-right text-[11px]"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const timelineModal = document.getElementById("timelineModal");
+    const closeTimelineModal = document.getElementById("closeTimelineModal");
+    document.querySelectorAll(".timeline-event").forEach(function (el) {
+      el.addEventListener("click", function () {
+        timelineModal.classList.remove("hidden");
       });
-      closeTimelineModal.addEventListener("click", function () {
-        timelineModal.classList.add("hidden");
-      });
-      timelineModal.addEventListener("click", function (e) {
-        if (e.target === timelineModal) timelineModal.classList.add("hidden");
-      });
-    </script>
-  </body>
+    });
+    closeTimelineModal.addEventListener("click", function () {
+      timelineModal.classList.add("hidden");
+    });
+    timelineModal.addEventListener("click", function (e) {
+      if (e.target === timelineModal) timelineModal.classList.add("hidden");
+    });
+  </script>
+</body>
+
 </html>
