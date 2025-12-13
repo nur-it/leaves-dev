@@ -106,14 +106,14 @@
 </head>
 
 <body class="text-gray-700 font-sans antialiased bg-white relative">
-
     <!-- background dots -->
     <div class="absolute top-0 left-0 right-0 -z-10 overflow-hidden flex justify-center">
-        <img src="./public/hero-background.svg" alt="" class="w-full max-w-[1440px] 2xl:px-8">
+        <img src="./public/hero-background.svg" alt="" class="w-full max-w-[1440px] 2xl:px-8" />
     </div>
 
     <!-- Header -->
-    <header class="sticky top-0 z-50">
+    <!-- class="sticky top-0 z-50" -->
+    <header>
         <div class="max-w-[1000px] mx-auto px-[25px] py-[20px]">
             <div
                 class="backdrop-blur-sm backdrop-filter bg-[#fafffc] border border-[rgba(200,208,204,0.54)] rounded-[15px] h-[83.02px] flex items-center justify-between px-[25px]">
@@ -142,8 +142,7 @@
                 <!-- Title -->
                 <h2
                     class="font-medium leading-[normal] not-italic relative text-5xl md:text-[64px] text-black text-center tracking-[-2.56px] w-full">
-                    Family Heritage Hub™
-                </h2>
+                    Family Heritage Hub™</h2>
 
                 <!-- Subtitle Badge -->
                 <div
@@ -160,11 +159,11 @@
 
             <!-- CTA Button -->
             <div class="border border-[rgba(255,255,255,0.3)] border-solid flex gap-1 h-[36px] items-center justify-center overflow-clip px-[24px] py-[6px] rounded-[6px] shadow-[0px_0px_0px_1px_rgba(19,85,41,0.9)] relative"
-                style="background: linear-gradient(180deg, #318f21 0%, #318f21 100%);" data-name="Button"
+                style="background: linear-gradient(180deg, #318f21 0%, #318f21 100%)" data-name="Button"
                 data-node-id="1:1250">
                 <!-- Inner Glow Effect -->
                 <div aria-hidden="true" class="absolute inset-0 pointer-events-none rounded-[6px]"
-                    style="background: linear-gradient(180deg, #318f21 0%, #318f21 100%);"></div>
+                    style="background: linear-gradient(180deg, #318f21 0%, #318f21 100%)"></div>
 
                 <!-- play Icon -->
                 <div class="relative z-10">
@@ -188,8 +187,7 @@
     <section class="max-w-[1160px] mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-20">
         <div
             class="bg-white/50 backdrop-blur-sm border border-[rgba(200,208,204,0.54)] rounded-2xl p-12 text-center space-y-4">
-            <h2 class="font-medium text-4xl text-gray-900 tracking-[-0.37px]">
-                What is the Leaves Family Heritage Hub™?
+            <h2 class="font-medium text-4xl text-gray-900 tracking-[-0.37px]">What is the Leaves Family Heritage Hub™?
             </h2>
             <p class="text-gray-500 text-xl max-w-2xl mx-auto">
                 "A private, secure digital ecosystem where families connect, capture life stories, preserve voices, and
@@ -199,97 +197,289 @@
     </section>
 
     <!-- Core feature -->
-    <section class="max-w-[1160px] mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-20">
-        <!-- Section Header -->
+    <section class="max-w-[1160px] mx-auto px-4 sm:px-6 lg:px-8 pt-5">
         <h2 class="font-medium text-4xl text-gray-900 tracking-[-0.37px] text-center mb-10">
             Core Apps: An integrated suite of life story applications
         </h2>
+        <div id="core-features" class="space-y-4">
+            <div class="feature-item bg-white rounded-2xl p-4 border border-[rgba(52,151,35,0.3)]">
+                <div class="feature-header flex items-center justify-between gap-4 cursor-pointer" role="button"
+                    tabindex="0">
+                    <div class="space-y-1">
+                        <p class="font-medium text-lg text-gray-900">Times of My Life™</p>
+                        <p class="text-sm text-gray-600">Capture, narrate, and share your life stories with photos,
+                            videos, and music, using AI-guided interviews.</p>
+                    </div>
+                    <button class="feature-toggle flex-shrink-0 text-gray-400" aria-expanded="true">
+                        <svg data-icon="plus" class="w-5 h-5 hidden" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        <svg data-icon="minus" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="feature-content overflow-hidden transition-all duration-300">
+                    <div class="space-y-4 mt-4">
+                        <p class="text-gray-700">Times of My Life is Leaves’ flagship application. Family members can
+                            capture their life stories from birth to present day, or just focus on special events,
+                            milestones, and defining moments. A Virtual Biographer interviews members and writes the
+                            story in the desired tone and style. The app includes a multimedia production studio for
+                            publishing stories in print, audiocast, and video formats.</p>
+                        <div class="flex items-center justify-between">
+                            <p class="text-gray-800 font-medium">The app is currently available</p>
+                            <div class="flex gap-2">
+                                <a href="#"
+                                    class="inline-flex items-center justify-center px-3 py-2 rounded-full text-sm font-medium text-white shadow-[0px_0px_0px_1px_rgba(19,85,41,0.9)]"
+                                    style="background: linear-gradient(180deg, #318f21 0%, #318f21 100%);">App Store and
+                                    on the Web</a>
+                                <a href="#"
+                                    class="inline-flex items-center justify-center px-3 py-2 rounded-full text-sm font-medium border border-[rgba(200,208,204,0.54)] text-gray-800 bg-white">Promotional
+                                    Video</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-item bg-white rounded-2xl p-4 border border-[rgba(200,208,204,0.54)]">
+                <div class="feature-header flex items-center justify-between gap-4 cursor-pointer" role="button"
+                    tabindex="0">
+                    <div class="space-y-1">
+                        <p class="font-medium text-lg text-gray-900">Forever Voice™</p>
+                        <p class="text-sm text-gray-600">Create and interact with virtual family member personas for
+                            advice, comfort, and ongoing connection.</p>
+                    </div>
+                    <button class="feature-toggle flex-shrink-0 text-gray-400" aria-expanded="false">
+                        <svg data-icon="plus" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        <svg data-icon="minus" class="w-5 h-5 hidden" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="feature-content overflow-hidden transition-all duration-300">
+                    <div class="space-y-4 mt-4">
+                        <p class="text-gray-700">Biology ends, yet biography continues. Forever Voice lets you preserve
+                            the guidance, style, and personality of loved ones for future conversations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-item bg-white rounded-2xl p-4 border border-[rgba(200,208,204,0.54)]">
+                <div class="feature-header flex items-center justify-between gap-4 cursor-pointer" role="button"
+                    tabindex="0">
+                    <div class="space-y-1">
+                        <p class="font-medium text-lg text-gray-900">Life Timeline™</p>
+                        <p class="text-sm text-gray-600">A chronological visual of one’s entire life and major
+                            milestones.</p>
+                    </div>
+                    <button class="feature-toggle flex-shrink-0 text-gray-400" aria-expanded="false">
+                        <svg data-icon="plus" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        <svg data-icon="minus" class="w-5 h-5 hidden" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="feature-content overflow-hidden transition-all duration-300">
+                    <div class="space-y-4 mt-4">
+                        <p class="text-gray-700">Build an interactive timeline that anchors stories, photos, and videos
+                            to the key moments that define a life.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-item bg-white rounded-2xl p-4 border border-[rgba(200,208,204,0.54)]">
+                <div class="feature-header flex items-center justify-between gap-4 cursor-pointer" role="button"
+                    tabindex="0">
+                    <div class="space-y-1">
+                        <p class="font-medium text-lg text-gray-900">Document Archive™</p>
+                        <p class="text-sm text-gray-600">Secure, centralized archive of a family’s essential papers.</p>
+                    </div>
+                    <button class="feature-toggle flex-shrink-0 text-gray-400" aria-expanded="false">
+                        <svg data-icon="plus" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        <svg data-icon="minus" class="w-5 h-5 hidden" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="feature-content overflow-hidden transition-all duration-300">
+                    <div class="space-y-4 mt-4">
+                        <p class="text-gray-700">Keep vital records organized, searchable, and available to authorized
+                            family members.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-item bg-white rounded-2xl p-4 border border-[rgba(200,208,204,0.54)]">
+                <div class="feature-header flex items-center justify-between gap-4 cursor-pointer" role="button"
+                    tabindex="0">
+                    <div class="space-y-1">
+                        <p class="font-medium text-lg text-gray-900">Legacy Letters™</p>
+                        <p class="text-sm text-gray-600">Heartfelt letters for loved ones to be opened at a chosen date
+                            or event in the future.</p>
+                    </div>
+                    <button class="feature-toggle flex-shrink-0 text-gray-400" aria-expanded="false">
+                        <svg data-icon="plus" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        <svg data-icon="minus" class="w-5 h-5 hidden" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="feature-content overflow-hidden transition-all duration-300">
+                    <div class="space-y-4 mt-4">
+                        <p class="text-gray-700">Create meaningful messages that arrive exactly when they matter most.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-item bg-white rounded-2xl p-4 border border-[rgba(200,208,204,0.54)]">
+                <div class="feature-header flex items-center justify-between gap-4 cursor-pointer" role="button"
+                    tabindex="0">
+                    <div class="space-y-1">
+                        <p class="font-medium text-lg text-gray-900">Media Library™</p>
+                        <p class="text-sm text-gray-600">Curate, store and preserve photos and videos of all family
+                            members in one place.</p>
+                    </div>
+                    <button class="feature-toggle flex-shrink-0 text-gray-400" aria-expanded="false">
+                        <svg data-icon="plus" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        <svg data-icon="minus" class="w-5 h-5 hidden" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="feature-content overflow-hidden transition-all duration-300">
+                    <div class="space-y-4 mt-4">
+                        <p class="text-gray-700">Everything in one organized hub, with smart search and collaborative
+                            sharing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-item bg-white rounded-2xl p-4 border border-[rgba(200,208,204,0.54)]">
+                <div class="feature-header flex items-center justify-between gap-4 cursor-pointer" role="button"
+                    tabindex="0">
+                    <div class="space-y-1">
+                        <p class="font-medium text-lg text-gray-900">Family hub Dashboard</p>
+                        <p class="text-sm text-gray-600">Family Feed, Real-Time Chat, Events, Occasions, and Integration
+                            with third party apps.</p>
+                    </div>
+                    <button class="feature-toggle flex-shrink-0 text-gray-400" aria-expanded="false">
+                        <svg data-icon="plus" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        <svg data-icon="minus" class="w-5 h-5 hidden" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="feature-content overflow-hidden transition-all duration-300">
+                    <div class="space-y-4 mt-4">
+                        <p class="text-gray-700">As a family hub, there is no limit to features and capabilities that
+                            might be added. Standard features like activity/status feed, chat, and events are available.
+                            We plan to offer an SDK so third-party developers can create all-new apps for families. Each
+                            member decides which apps to opt into and what data to share.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Features Section -->
-    <section class="max-w-[1160px] mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <section class="max-w-[1160px] mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-8">
         <div class="space-y-10">
             <!-- Section Header -->
-            <h2 class="font-medium text-4xl text-gray-900 tracking-[-0.37px] text-center">
-                Other Features
-            </h2>
+            <h2 class="font-medium text-4xl text-gray-900 tracking-[-0.37px] text-center">Other Features</h2>
 
             <!-- Features List -->
             <div class="bg-white border border-[rgba(200,208,204,0.54)] rounded-2xl overflow-hidden">
                 <!-- Feature 1 -->
-                <div class="border-b border-[rgba(200,208,204,0.54)] p-6">
-                    <div class="flex gap-4">
+                <div class="border-b border-dashed border-[rgba(200,208,204,0.54)] p-6">
+                    <div class="flex gap-4 items-center">
                         <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-7 w-7 rounded-md bg-green-100">
-                                <svg class="h-4 w-4 text-leaves-green-500" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"
+                                fill="none">
+                                <rect width="28" height="28" rx="14" fill="#0FBB9F" />
+                                <path d="M6.99198 13.7497L11.8999 18.2003L20.2999 9.80029" stroke="white"
+                                    stroke-width="3.2" />
+                            </svg>
                         </div>
                         <div class="flex-1">
                             <h3 class="font-medium text-xl text-gray-900 mb-1">Family Feed</h3>
-                            <p class="text-gray-500">A live stream on the home page, featuring family member's status
+                            <p class="text-[#9A9B9A]">A live stream on the home page, featuring family member's status
                                 updates, stories, photos, and videos.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Feature 2 -->
-                <div class="border-b border-[rgba(200,208,204,0.54)] p-6">
-                    <div class="flex gap-4">
+                <div class="border-b border-dashed border-[rgba(200,208,204,0.54)] p-6">
+                    <div class="flex gap-4 items-center">
                         <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-7 w-7 rounded-md bg-green-100">
-                                <svg class="h-4 w-4 text-leaves-green-500" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"
+                                fill="none">
+                                <rect width="28" height="28" rx="14" fill="#0FBB9F" />
+                                <path d="M6.99198 13.7497L11.8999 18.2003L20.2999 9.80029" stroke="white"
+                                    stroke-width="3.2" />
+                            </svg>
                         </div>
                         <div class="flex-1">
                             <h3 class="font-medium text-xl text-gray-900 mb-1">Real-Time Chat</h3>
-                            <p class="text-gray-500">Live text and video communication with other family members.</p>
+                            <p class="text-[#9A9B9A]">Live text and video communication with other family members.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Feature 3 -->
-                <div class="border-b border-[rgba(200,208,204,0.54)] p-6">
-                    <div class="flex gap-4">
+                <div class="border-b border-dashed border-[rgba(200,208,204,0.54)] p-6">
+                    <div class="flex gap-4 items-center">
                         <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-7 w-7 rounded-md bg-green-100">
-                                <svg class="h-4 w-4 text-leaves-green-500" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"
+                                fill="none">
+                                <rect width="28" height="28" rx="14" fill="#0FBB9F" />
+                                <path d="M6.99198 13.7497L11.8999 18.2003L20.2999 9.80029" stroke="white"
+                                    stroke-width="3.2" />
+                            </svg>
                         </div>
                         <div class="flex-1">
                             <h3 class="font-medium text-xl text-gray-900 mb-1">Events</h3>
-                            <p class="text-gray-500">Invitations, details, and notifications about family events like
+                            <p class="text-[#9A9B9A]">Invitations, details, and notifications about family events like
                                 holidays, weddings, graduations, etc.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Feature 4 -->
-                <div class="border-b border-[rgba(200,208,204,0.54)] p-6">
-                    <div class="flex gap-4">
+                <div class="border-b border-dashed border-[rgba(200,208,204,0.54)] p-6">
+                    <div class="flex gap-4 items-center">
                         <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-7 w-7 rounded-md bg-green-100">
-                                <svg class="h-4 w-4 text-leaves-green-500" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"
+                                fill="none">
+                                <rect width="28" height="28" rx="14" fill="#0FBB9F" />
+                                <path d="M6.99198 13.7497L11.8999 18.2003L20.2999 9.80029" stroke="white"
+                                    stroke-width="3.2" />
+                            </svg>
                         </div>
                         <div class="flex-1">
                             <h3 class="font-medium text-xl text-gray-900 mb-1">Occasions</h3>
-                            <p class="text-gray-500">Send personalized, animated gift cards, to family members on
+                            <p class="text-[#9A9B9A]">Send personalized, animated gift cards, to family members on
                                 holidays and special occasions.</p>
                         </div>
                     </div>
@@ -297,19 +487,18 @@
 
                 <!-- Feature 5 -->
                 <div class="p-6">
-                    <div class="flex gap-4">
+                    <div class="flex gap-4 items-center">
                         <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-7 w-7 rounded-md bg-green-100">
-                                <svg class="h-4 w-4 text-leaves-green-500" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"
+                                fill="none">
+                                <rect width="28" height="28" rx="14" fill="#0FBB9F" />
+                                <path d="M6.99198 13.7497L11.8999 18.2003L20.2999 9.80029" stroke="white"
+                                    stroke-width="3.2" />
+                            </svg>
                         </div>
                         <div class="flex-1">
                             <h3 class="font-medium text-xl text-gray-900 mb-1">Integration with Third Party Apps</h3>
-                            <p class="text-gray-500">Seamless access to other family heritage apps.</p>
+                            <p class="text-[#9A9B9A]">Seamless access to other family heritage apps.</p>
                         </div>
                     </div>
                 </div>
@@ -317,108 +506,257 @@
         </div>
     </section>
 
+    <!-- How can you help? -->
+    <section class="max-w-[1096px] mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20" id="help">
+        <div class="space-y-8">
+            <h2 class="font-medium text-4xl xl:text-5xl text-gray-900 tracking-[-0.37px]">How Can You Help?</h2>
+            <ol class="list-decimal pl-6 space-y-4 text-gray-700">
+                <li>
+                    Review the prototype screens.
+                    <a href="https://platform.leaves.us/familyhub/" target="_blank"
+                        class="text-[#339E22] underline">https://platform.leaves.us/familyhub/</a>
+                    <div class="text-gray-500 text-sm mt-2">
+                        (Note: these are high level screen shots that go one level deep. They are not fully functional.)
+                    </div>
+                </li>
+                <li>
+                    Provide your ideas and feedback using the form below, or request to
+                    <a href="#" class="text-[#339E22] underline">join our Slack Channel</a>
+                    to join the conversation.
+                </li>
+                <li>
+                    Ask to join the testing group using the form below.
+                </li>
+            </ol>
+            <form action="#" method="post" class=" px-6 space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <label class="text-sm text-gray-700">First name</label>
+                        <input type="text" name="first_name"
+                            class="w-full border border-[rgba(200,208,204,0.54)] rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-leaves-green" />
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm text-gray-700">Last name</label>
+                        <input type="text" name="last_name"
+                            class="w-full border border-[rgba(200,208,204,0.54)] rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-leaves-green" />
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-sm text-gray-700">Email</label>
+                    <input type="email" name="email"
+                        class="w-full border border-[rgba(200,208,204,0.54)] rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-leaves-green" />
+                </div>
+                <div class="space-y-2">
+                    <label class="text-sm text-gray-700">Feedback</label>
+                    <textarea rows="6" name="feedback"
+                        class="w-full border border-[rgba(200,208,204,0.54)] rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-leaves-green resize-none"></textarea>
+                </div>
+                <button type="submit"
+                    class="border w-full border-[rgba(255,255,255,0.3)] border-solid flex gap-1 h-12 items-center justify-center overflow-clip px-[24px] py-[6px] rounded-[6px] shadow-[0px_0px_0px_1px_rgba(19,85,41,0.9)] relative"
+                    style="background: linear-gradient(180deg, #318f21 0%, #318f21 100%)" data-name="Button"
+                    data-node-id="1:1250">
+                    <!-- Inner Glow Effect -->
+                    <div aria-hidden="true" class="absolute inset-0 pointer-events-none rounded-[6px]"
+                        style="background: linear-gradient(180deg, #318f21 0%, #318f21 100%)"></div>
+
+
+                    <!-- Button Text -->
+                    <p
+                        class="block font-medium cursor-pointer leading-[0] not-italic relative shrink-0 text-lg text-white whitespace-nowrap z-10">
+                        <span class="cursor-pointer leading-[20px]">Submit</span>
+                    </p>
+                </button>
+            </form>
+        </div>
+    </section>
+
     <!-- FAQ Section -->
     <section class="bg-[#f7fcfa] border-t border-b border-black/[0.08] py-24">
-        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="max-w-[1160px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-12">
                 <!-- FAQ Header -->
-                <div class="space-y-6">
+                <div class="space-y-6 xl:col-span-2">
                     <div
                         class="inline-block bg-white border border-[rgba(43,102,62,0.3)] rounded-full px-3 py-2 backdrop-blur-2xl">
                         <p class="text-leaves-green text-base font-medium">FAQs</p>
                     </div>
-                    <h2 class="font-medium text-5xl text-gray-900 tracking-[-0.48px] leading-tight">
-                        Frequently Asked Questions.
-                    </h2>
+                    <h2 class="font-medium text-5xl text-gray-900 tracking-[-0.48px] leading-tight">Frequently Asked
+                        Questions.</h2>
                 </div>
 
                 <!-- FAQ Items -->
-                <div class="space-y-4">
+                <div class="space-y-4 xl:col-span-3" id="faq">
                     <!-- FAQ Item 1 -->
-                    <div class="bg-white border border-[rgba(52,151,35,0.3)] rounded-2xl p-6 space-y-4">
-                        <div class="flex items-start justify-between">
+                    <div class="faq-item bg-white border border-[rgba(52,151,35,0.3)] rounded-2xl p-6">
+                        <div class="faq-header flex items-start justify-between gap-4 cursor-pointer" role="button"
+                            tabindex="0">
                             <h3 class="font-medium text-lg text-gray-900">Who is the family hub for?</h3>
-                            <button class="flex-shrink-0 text-gray-400">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <button class="faq-toggle flex-shrink-0 text-gray-400" aria-expanded="true">
+                                <svg data-icon="plus" class="w-5 h-5 hidden" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 4v16m8-8H4" />
+                                </svg>
+                                <svg data-icon="minus" class="w-5 h-5" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M20 12H4" />
                                 </svg>
                             </button>
                         </div>
-                        <p class="text-gray-600 text-sm">Families that want to stay connected across time and
-                            geographies, capture and share life's special moments with each other, and preserve their
-                            family's collective legacies.</p>
+                        <div class="faq-content overflow-hidden transition-all duration-300">
+                            <p class="text-gray-600 text-sm mt-4">
+                                Families that want to stay connected across time and geographies, capture and share
+                                life's special moments with each other, and preserve their family's collective legacies.
+                            </p>
+                        </div>
                     </div>
 
                     <!-- FAQ Item 2 -->
-                    <div class="bg-white rounded-2xl p-6 space-y-0 shadow-[0px_0px_1px_0px_rgba(0,0,0,0.4)]">
-                        <div class="flex items-center justify-between">
+                    <div class="faq-item bg-white rounded-2xl p-6 border border-[rgba(200,208,204,0.54)]">
+                        <div class="faq-header flex items-center justify-between gap-4 cursor-pointer" role="button"
+                            tabindex="0">
                             <h3 class="font-medium text-lg text-gray-900">Why do they need it?</h3>
-                            <button class="flex-shrink-0 text-gray-400">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <button class="faq-toggle flex-shrink-0 text-gray-400" aria-expanded="false">
+                                <svg data-icon="plus" class="w-5 h-5" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M12 4v16m8-8H4" />
                                 </svg>
+                                <svg data-icon="minus" class="w-5 h-5 hidden" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M20 12H4" />
+                                </svg>
                             </button>
+                        </div>
+                        <div class="faq-content overflow-hidden transition-all duration-300">
+                            <p class="text-gray-600 text-sm mt-4">Families benefit from a private, ad-free space to
+                                share memories, preserve stories, and keep generations connected in one trusted hub.</p>
                         </div>
                     </div>
 
                     <!-- FAQ Item 3 -->
-                    <div class="bg-white rounded-2xl p-6 space-y-0 shadow-[0px_0px_1px_0px_rgba(0,0,0,0.4)]">
-                        <div class="flex items-center justify-between">
+                    <div class="faq-item bg-white rounded-2xl p-6 border border-[rgba(200,208,204,0.54)]">
+                        <div class="faq-header flex items-center justify-between gap-4 cursor-pointer" role="button"
+                            tabindex="0">
                             <h3 class="font-medium text-lg text-gray-900">What will it cost?</h3>
-                            <button class="flex-shrink-0 text-gray-400">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <button class="faq-toggle flex-shrink-0 text-gray-400" aria-expanded="false">
+                                <svg data-icon="plus" class="w-5 h-5" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M12 4v16m8-8H4" />
                                 </svg>
+                                <svg data-icon="minus" class="w-5 h-5 hidden" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M20 12H4" />
+                                </svg>
                             </button>
+                        </div>
+                        <div class="faq-content overflow-hidden transition-all duration-300">
+                            <p class="text-gray-600 text-sm mt-4">Pricing will be simple and transparent with a free
+                                tier for getting started and optional plans for advanced features and storage.</p>
                         </div>
                     </div>
 
                     <!-- FAQ Item 4 -->
-                    <div class="bg-white rounded-2xl p-6 space-y-0 shadow-[0px_0px_1px_0px_rgba(0,0,0,0.4)]">
-                        <div class="flex items-center justify-between">
+                    <div class="faq-item bg-white rounded-2xl p-6 border border-[rgba(200,208,204,0.54)]">
+                        <div class="faq-header flex items-center justify-between gap-4 cursor-pointer" role="button"
+                            tabindex="0">
                             <h3 class="font-medium text-lg text-gray-900">Is the family hub private and secure? Will
                                 there be ads? Who owns the data?</h3>
-                            <button class="flex-shrink-0 text-gray-400">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <button class="faq-toggle flex-shrink-0 text-gray-400" aria-expanded="false">
+                                <svg data-icon="plus" class="w-5 h-5" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M12 4v16m8-8H4" />
                                 </svg>
+                                <svg data-icon="minus" class="w-5 h-5 hidden" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M20 12H4" />
+                                </svg>
                             </button>
+                        </div>
+                        <div class="faq-content overflow-hidden transition-all duration-300">
+                            <p class="text-gray-600 text-sm mt-4">
+                                Your family’s data belongs to your family. The hub is private, secure, and ad-free. We
+                                prioritize encryption, user control, and transparent data policies.
+                            </p>
                         </div>
                     </div>
 
                     <!-- FAQ Item 5 -->
-                    <div class="bg-white rounded-2xl p-6 space-y-0 shadow-[0px_0px_1px_0px_rgba(0,0,0,0.4)]">
-                        <div class="flex items-center justify-between">
+                    <div class="faq-item bg-white rounded-2xl p-6 border border-[rgba(200,208,204,0.54)]">
+                        <div class="faq-header flex items-center justify-between gap-4 cursor-pointer" role="button"
+                            tabindex="0">
                             <h3 class="font-medium text-lg text-gray-900">Which family members can join? Who administers
                                 the family hub?</h3>
-                            <button class="flex-shrink-0 text-gray-400">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <button class="faq-toggle flex-shrink-0 text-gray-400" aria-expanded="false">
+                                <svg data-icon="plus" class="w-5 h-5" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M12 4v16m8-8H4" />
                                 </svg>
+                                <svg data-icon="minus" class="w-5 h-5 hidden" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M20 12H4" />
+                                </svg>
                             </button>
+                        </div>
+                        <div class="faq-content overflow-hidden transition-all duration-300">
+                            <p class="text-gray-600 text-sm mt-4">Any family member can be invited. Admins manage
+                                membership, permissions, and settings to keep the hub organized and safe.</p>
                         </div>
                     </div>
 
                     <!-- FAQ Item 6 -->
-                    <div class="bg-white rounded-2xl p-6 space-y-0 shadow-[0px_0px_1px_0px_rgba(0,0,0,0.4)]">
-                        <div class="flex items-center justify-between">
+                    <div class="faq-item bg-white rounded-2xl p-6 border border-[rgba(200,208,204,0.54)]">
+                        <div class="faq-header flex items-center justify-between gap-4 cursor-pointer" role="button"
+                            tabindex="0">
                             <h3 class="font-medium text-lg text-gray-900">What the definition of a "Family Member?" Can
                                 non-family members join? Can one join multiple hubs?</h3>
-                            <button class="flex-shrink-0 text-gray-400">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <button class="faq-toggle flex-shrink-0 text-gray-400" aria-expanded="false">
+                                <svg data-icon="plus" class="w-5 h-5" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M12 4v16m8-8H4" />
                                 </svg>
+                                <svg data-icon="minus" class="w-5 h-5 hidden" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M20 12H4" />
+                                </svg>
                             </button>
+                        </div>
+                        <div class="faq-content overflow-hidden transition-all duration-300">
+                            <p class="text-gray-600 text-sm mt-4">
+                                Family members are those who have been invited to join your family hub. Non-family
+                                members can join, but they won’t have access to your family’s data. One person can join
+                                multiple
+                                hubs, but each hub is private to its members.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="max-w-[1160px] mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div>
+            <iframe src="https://www.youtube.com/embed/ectUHmob55A?si=bP2WU5_yYof60irY" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                class="w-full h-full aspect-video" referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+        </div>
+        <div class="text-center mt-6">
+            Learn more about <a href="https://leaves.us/" target="_blank"
+                class="text-[#339E22] text-lg font-normal inline-block underline leading-8">The Leaves Legacy
+                Project</a>
         </div>
     </section>
 
@@ -432,13 +770,118 @@
                 </a>
 
                 <!-- Copyright -->
-                <p class="text-gray-600 text-base">
-                    (c) 2025, The Leaves Legacy Project. All rights reserved.
-                </p>
+                <p class="text-gray-600 text-base">(c) 2025, The Leaves Legacy Project. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var items = document.querySelectorAll("#faq .faq-item");
+            var OPEN_BORDER = "border-[rgba(52,151,35,0.3)]";
+            var CLOSED_BORDER = "border-[rgba(200,208,204,0.54)]";
+
+            function setItemState(item, open) {
+                var content = item.querySelector(".faq-content");
+                var btn = item.querySelector(".faq-toggle");
+                var header = item.querySelector(".faq-header");
+                var plus = btn.querySelector('[data-icon="plus"]');
+                var minus = btn.querySelector('[data-icon="minus"]');
+                if (open) {
+                    btn.setAttribute("aria-expanded", "true");
+                    header.setAttribute("aria-expanded", "true");
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    item.classList.add("border");
+                    item.classList.add(OPEN_BORDER);
+                    item.classList.remove(CLOSED_BORDER);
+                    plus.classList.add("hidden");
+                    minus.classList.remove("hidden");
+                } else {
+                    btn.setAttribute("aria-expanded", "false");
+                    header.setAttribute("aria-expanded", "false");
+                    content.style.maxHeight = 0;
+                    item.classList.add("border");
+                    item.classList.add(CLOSED_BORDER);
+                    item.classList.remove(OPEN_BORDER);
+                    plus.classList.remove("hidden");
+                    minus.classList.add("hidden");
+                }
+            }
+
+            items.forEach(function (item, idx) {
+                var content = item.querySelector(".faq-content");
+                var btn = item.querySelector(".faq-toggle");
+                var header = item.querySelector(".faq-header");
+                var plus = btn.querySelector('[data-icon="plus"]');
+                var minus = btn.querySelector('[data-icon="minus"]');
+                setItemState(item, idx === 0);
+                function handleToggle() {
+                    var expanded = btn.getAttribute("aria-expanded") === "true";
+                    if (expanded) {
+                        setItemState(item, false);
+                    } else {
+                        items.forEach(function (other) {
+                            if (other !== item) {
+                                setItemState(other, false);
+                            }
+                        });
+                        setItemState(item, true);
+                    }
+                }
+                header.addEventListener("click", handleToggle);
+                header.addEventListener("keydown", function (e) {
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        handleToggle();
+                    }
+                });
+            });
+
+            var featureItems = document.querySelectorAll("#core-features .feature-item");
+            function setFeatureState(item, open) {
+                var content = item.querySelector(".feature-content");
+                var btn = item.querySelector(".feature-toggle");
+                var header = item.querySelector(".feature-header");
+                var plus = btn.querySelector('[data-icon="plus"]');
+                var minus = btn.querySelector('[data-icon="minus"]');
+                if (open) {
+                    btn.setAttribute("aria-expanded", "true");
+                    header.setAttribute("aria-expanded", "true");
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    item.classList.add("border");
+                    item.classList.add(OPEN_BORDER);
+                    item.classList.remove(CLOSED_BORDER);
+                    plus.classList.add("hidden");
+                    minus.classList.remove("hidden");
+                } else {
+                    btn.setAttribute("aria-expanded", "false");
+                    header.setAttribute("aria-expanded", "false");
+                    content.style.maxHeight = 0;
+                    item.classList.add("border");
+                    item.classList.add(CLOSED_BORDER);
+                    item.classList.remove(OPEN_BORDER);
+                    plus.classList.remove("hidden");
+                    minus.classList.add("hidden");
+                }
+            }
+            featureItems.forEach(function (item, idx) {
+                var btn = item.querySelector(".feature-toggle");
+                var header = item.querySelector(".feature-header");
+                setFeatureState(item, idx === 0);
+                function toggleFeature() {
+                    var expanded = btn.getAttribute("aria-expanded") === "true";
+                    setFeatureState(item, !expanded);
+                }
+                header.addEventListener("click", toggleFeature);
+                header.addEventListener("keydown", function (e) {
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        toggleFeature();
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
