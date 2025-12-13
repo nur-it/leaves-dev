@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leaves Family Heritage Hub™ &#8211; Share Memories · Preserve Stories · Connect Generations</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config for Custom Colors/Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ["Aeonik", "sans-serif"],
+                    },
+                    colors: {
+                        "leaves-green": "#4A7A45",
+                        "leaves-green-500": "#45A735",
+                        "leaves-dark-green": "#072F14",
+                        "leaves-light-green": "#E8F5E9",
+                        "leaves-light-surface": "#EEF0F2",
+                        "gray-50": "#F9FAFB",
+                        "gray-100": "#F3F4F6",
+                        "gray-200": "#E5E7EB",
+                        "gray-500": "#6B7280",
+                        "gray-700": "#374151",
+                        "gray-900": "#111827",
+                        primary: "#051910",
+                    },
+                },
+            },
+        };
+    </script>
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        @font-face {
+            font-family: "Aeonik";
+            src: url("./public/fonts/aeonik/Aeonik-Thin.otf") format("opentype");
+            font-weight: 200;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Aeonik";
+            src: url("./public/fonts/aeonik/Aeonik-Light.otf") format("opentype");
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Aeonik";
+            src: url("./public/fonts/aeonik/Aeonik-Regular.otf") format("opentype");
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Aeonik";
+            src: url("./public/fonts/aeonik/Aeonik-Medium.otf") format("opentype");
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Aeonik";
+            src: url("./public/fonts/aeonik/Aeonik-Bold.otf") format("opentype");
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            font-family: "Aeonik", sans-serif;
+        }
+
+        /* Custom Scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+    </style>
+</head>
+
+<body class="text-gray-700 font-sans antialiased bg-white relative">
+
+    <!-- background dots -->
+    <div class="absolute top-0 left-0 right-0 -z-10 overflow-hidden flex justify-center">
+        <img src="./public/hero-background.svg" alt="" class="w-full max-w-[1440px] 2xl:px-8">
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50">
+        <div class="max-w-[1000px] mx-auto px-[25px] py-[20px]">
+            <div
+                class="backdrop-blur-sm backdrop-filter bg-[#fafffc] border border-[rgba(200,208,204,0.54)] rounded-[15px] h-[83.02px] flex items-center justify-between px-[25px]">
+                <!-- Logo -->
+                <a href="/marketing.html" className="w-40 h-9 relative">
+                    <img className="w-28 h-8" src="./public/logo.svg" />
+                </a>
+
+                <!-- Right Button -->
+                <a href="#"
+                    class="bg-white flex items-center justify-center gap-1 h-[37px] px-[12px] py-[6px] rounded-[6px] shadow-[0px_2px_5px_0px_rgba(60,66,87,0.08),0px_0px_0px_1px_rgba(60,66,87,0.16),0px_1px_1px_0px_rgba(0,0,0,0.12)] w-[199px]">
+                    <span
+                        class="font-medium text-[14px] text-[#051910] tracking-[0.0644px] whitespace-nowrap leading-[16px]">Family
+                        Heritage Hub™</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="flex flex-col gap-[36px] items-center max-w-[754px] mx-auto text-center">
+            <!-- Hero Text Container -->
+            <div class="flex flex-col gap-[16px] items-center w-full" data-name="Hero Text Container"
+                data-node-id="1:1166">
+                <!-- Title -->
+                <h2
+                    class="font-medium leading-[normal] not-italic relative text-5xl md:text-[64px] text-black text-center tracking-[-2.56px] w-full">
+                    Family Heritage Hub™
+                </h2>
+
+                <!-- Subtitle Badge -->
+                <div
+                    class="bg-[rgba(249,255,252,0.8)] border border-[rgba(43,102,62,0.2)] border-solid flex h-[34px] items-center justify-center px-2 md:px-[12px] py-[8px] rounded-full">
+                    <p class="font-medium leading-[19px] not-italic relative text-[#2b663e] text-xs md:text-[16px]">
+                        <span>Share Memories </span>
+                        <span class="text-[rgba(43,102,62,0.4)]">•</span>
+                        <span> Preserve Stories </span>
+                        <span class="text-[rgba(43,102,62,0.4)]">•</span>
+                        <span> Connect Generations</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="border border-[rgba(255,255,255,0.3)] border-solid flex gap-1 h-[36px] items-center justify-center overflow-clip px-[24px] py-[6px] rounded-[6px] shadow-[0px_0px_0px_1px_rgba(19,85,41,0.9)] relative"
+                style="background: linear-gradient(180deg, #318f21 0%, #318f21 100%);" data-name="Button"
+                data-node-id="1:1250">
+                <!-- Inner Glow Effect -->
+                <div aria-hidden="true" class="absolute inset-0 pointer-events-none rounded-[6px]"
+                    style="background: linear-gradient(180deg, #318f21 0%, #318f21 100%);"></div>
+
+                <!-- play Icon -->
+                <div class="relative z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" viewBox="0 0 10 12" fill="none">
+                        <path
+                            d="M0 11.6667V0L9.16667 5.83333L0 11.6667ZM1.66667 8.625L6.04167 5.83333L1.66667 3.04167V8.625Z"
+                            fill="white" />
+                    </svg>
+                </div>
+
+                <!-- Button Text -->
+                <a href="https://platform.leaves.us/familyhub/" target="_blank"
+                    class="block font-medium leading-[0] not-italic relative shrink-0 text-[14px] text-white whitespace-nowrap z-10">
+                    <p class="cursor-pointer leading-[20px]">View the prototype</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Leaves Section -->
+    <section class="max-w-[1160px] mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-20">
+        <div
+            class="bg-white/50 backdrop-blur-sm border border-[rgba(200,208,204,0.54)] rounded-2xl p-12 text-center space-y-4">
+            <h2 class="font-medium text-4xl text-gray-900 tracking-[-0.37px]">
+                What is the Leaves Family Heritage Hub™?
+            </h2>
+            <p class="text-gray-500 text-xl max-w-2xl mx-auto">
+                "A private, secure digital ecosystem where families connect, capture life stories, preserve voices, and
+                build a living multigenerational legacy."
+            </p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="space-y-12">
+            <!-- Section Header -->
+            <h2 class="font-medium text-4xl text-gray-900 tracking-[-0.37px] text-center">
+                Other Features
+            </h2>
+
+            <!-- Features List -->
+            <div class="bg-white border border-[rgba(200,208,204,0.54)] rounded-2xl overflow-hidden">
+                <!-- Feature 1 -->
+                <div class="border-b border-[rgba(200,208,204,0.54)] p-6">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-7 w-7 rounded-md bg-green-100">
+                                <svg class="h-4 w-4 text-leaves-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-medium text-xl text-gray-900 mb-1">Family Feed</h3>
+                            <p class="text-gray-500">A live stream on the home page, featuring family member's status
+                                updates, stories, photos, and videos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="border-b border-[rgba(200,208,204,0.54)] p-6">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-7 w-7 rounded-md bg-green-100">
+                                <svg class="h-4 w-4 text-leaves-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-medium text-xl text-gray-900 mb-1">Real-Time Chat</h3>
+                            <p class="text-gray-500">Live text and video communication with other family members.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="border-b border-[rgba(200,208,204,0.54)] p-6">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-7 w-7 rounded-md bg-green-100">
+                                <svg class="h-4 w-4 text-leaves-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-medium text-xl text-gray-900 mb-1">Events</h3>
+                            <p class="text-gray-500">Invitations, details, and notifications about family events like
+                                holidays, weddings, graduations, etc.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="border-b border-[rgba(200,208,204,0.54)] p-6">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-7 w-7 rounded-md bg-green-100">
+                                <svg class="h-4 w-4 text-leaves-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-medium text-xl text-gray-900 mb-1">Occasions</h3>
+                            <p class="text-gray-500">Send personalized, animated gift cards, to family members on
+                                holidays and special occasions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="p-6">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-7 w-7 rounded-md bg-green-100">
+                                <svg class="h-4 w-4 text-leaves-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-medium text-xl text-gray-900 mb-1">Integration with Third Party Apps</h3>
+                            <p class="text-gray-500">Seamless access to other family heritage apps.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-[#f7fcfa] border-t border-b border-black/[0.08] py-24">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- FAQ Header -->
+                <div class="space-y-6">
+                    <div
+                        class="inline-block bg-white border border-[rgba(43,102,62,0.3)] rounded-full px-3 py-2 backdrop-blur-2xl">
+                        <p class="text-leaves-green text-base font-medium">FAQs</p>
+                    </div>
+                    <h2 class="font-medium text-5xl text-gray-900 tracking-[-0.48px] leading-tight">
+                        Frequently Asked Questions.
+                    </h2>
+                </div>
+
+                <!-- FAQ Items -->
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-white border border-[rgba(52,151,35,0.3)] rounded-2xl p-6 space-y-4">
+                        <div class="flex items-start justify-between">
+                            <h3 class="font-medium text-lg text-gray-900">Who is the family hub for?</h3>
+                            <button class="flex-shrink-0 text-gray-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M20 12H4" />
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="text-gray-600 text-sm">Families that want to stay connected across time and
+                            geographies, capture and share life's special moments with each other, and preserve their
+                            family's collective legacies.</p>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-white rounded-2xl p-6 space-y-0 shadow-[0px_0px_1px_0px_rgba(0,0,0,0.4)]">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-medium text-lg text-gray-900">Why do they need it?</h3>
+                            <button class="flex-shrink-0 text-gray-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-white rounded-2xl p-6 space-y-0 shadow-[0px_0px_1px_0px_rgba(0,0,0,0.4)]">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-medium text-lg text-gray-900">What will it cost?</h3>
+                            <button class="flex-shrink-0 text-gray-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-white rounded-2xl p-6 space-y-0 shadow-[0px_0px_1px_0px_rgba(0,0,0,0.4)]">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-medium text-lg text-gray-900">Is the family hub private and secure? Will
+                                there be ads? Who owns the data?</h3>
+                            <button class="flex-shrink-0 text-gray-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="bg-white rounded-2xl p-6 space-y-0 shadow-[0px_0px_1px_0px_rgba(0,0,0,0.4)]">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-medium text-lg text-gray-900">Which family members can join? Who administers
+                                the family hub?</h3>
+                            <button class="flex-shrink-0 text-gray-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 6 -->
+                    <div class="bg-white rounded-2xl p-6 space-y-0 shadow-[0px_0px_1px_0px_rgba(0,0,0,0.4)]">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-medium text-lg text-gray-900">What the definition of a "Family Member?" Can
+                                non-family members join? Can one join multiple hubs?</h3>
+                            <button class="flex-shrink-0 text-gray-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 4v16m8-8H4" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-white border-t border-[#d9dedc]">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2">
+                    <img src="./public/logo.svg" alt="LEAVES" class="h-9 w-auto" />
+                </a>
+
+                <!-- Copyright -->
+                <p class="text-gray-600 text-base">
+                    (c) 2025, The Leaves Legacy Project. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
