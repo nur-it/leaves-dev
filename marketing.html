@@ -114,17 +114,17 @@
     <!-- Header -->
     <!-- class="sticky top-0 z-50" -->
     <header>
-        <div class="max-w-[1000px] mx-auto px-[25px] py-[20px]">
+        <div class="max-w-[1000px] mx-auto px-5 lg:px-[25px] py-[20px]">
             <div
-                class="backdrop-blur-sm backdrop-filter bg-[#fafffc] border border-[rgba(200,208,204,0.54)] rounded-[15px] h-[83.02px] flex items-center justify-between px-[25px]">
+                class="backdrop-blur-sm backdrop-filter bg-[#fafffc] border border-[rgba(200,208,204,0.54)] rounded-[15px] h-[83.02px] flex items-center justify-between px-4 lg:px-[25px] gap-4">
                 <!-- Logo -->
-                <a href="/marketing.html" className="w-40 h-9 relative">
-                    <img className="w-28 h-8" src="./public/logo.svg" />
+                <a href="/marketing.html" className="lg:w-40 h-9 relative">
+                    <img className="w-20 lg:w-28 h-8" src="./public/logo.svg" />
                 </a>
 
                 <!-- Right Button -->
                 <a href="https://platform.leaves.us/" target="_blank"
-                    class="bg-white flex items-center justify-center gap-1 h-[37px] px-[12px] py-[6px] rounded-[6px] shadow-[0px_2px_5px_0px_rgba(60,66,87,0.08),0px_0px_0px_1px_rgba(60,66,87,0.16),0px_1px_1px_0px_rgba(0,0,0,0.12)] w-[199px]">
+                    class="bg-white flex items-center justify-center gap-1 h-[37px] px-[12px] py-[6px] rounded-[6px] shadow-[0px_2px_5px_0px_rgba(60,66,87,0.08),0px_0px_0px_1px_rgba(60,66,87,0.16),0px_1px_1px_0px_rgba(0,0,0,0.12)] w-[162px] lg:w-[199px]">
                     <span
                         class="font-medium text-[14px] text-[#051910] tracking-[0.0644px] whitespace-nowrap leading-[16px]">Family
                         Heritage Hub™</span>
@@ -141,7 +141,7 @@
                 data-node-id="1:1166">
                 <!-- Title -->
                 <h2
-                    class="font-medium leading-[normal] not-italic relative text-5xl md:text-[64px] text-black text-center tracking-[-2.56px] w-full">
+                    class="font-medium leading-normal relative text-4xl sm:text-5xl md:text-[64px] text-black text-center md:tracking-[-2.56px] w-full">
                     Family Heritage Hub™</h2>
 
                 <!-- Subtitle Badge -->
@@ -186,19 +186,20 @@
     <!-- What is Leaves Section -->
     <section class="max-w-[1160px] mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-20">
         <div
-            class="bg-white/50 backdrop-blur-sm border border-[rgba(200,208,204,0.54)] rounded-2xl p-12 text-center space-y-4">
-            <h2 class="font-medium text-4xl text-gray-900 tracking-[-0.37px]">What is the Leaves Family Heritage Hub™?
+            class="bg-white/50 backdrop-blur-sm border border-[rgba(200,208,204,0.54)] rounded-2xl py-8 px-4 md:p-12 text-center space-y-4">
+            <h2 class="font-medium text-2xl  md:text-4xl text-gray-900 md:tracking-[-0.37px]">What is the Leaves Family
+                Heritage Hub™?
             </h2>
-            <p class="text-gray-500 text-xl max-w-2xl mx-auto">
+            <p class="text-gray-500 text-base  md:text-xl max-w-2xl mx-auto">
                 "A private, secure digital ecosystem where families connect, capture life stories, preserve voices, and
-                build a living multigenerational legacy."
+                build a living multi-generational legacy."
             </p>
         </div>
     </section>
 
     <!-- Core feature -->
     <section class="max-w-[1160px] mx-auto px-4 sm:px-6 lg:px-8 pt-5">
-        <h2 class="font-medium text-4xl text-gray-900 tracking-[-0.37px] text-center mb-10">
+        <h2 class="font-medium text-2xl md:text-4xl text-gray-900 md:tracking-[-0.37px] text-center mb-10">
             Core Apps: An integrated suite of life story applications
         </h2>
         <div id="core-features" class="space-y-4">
@@ -206,7 +207,7 @@
                 <div class="feature-header flex items-center justify-between p-4 gap-4 cursor-pointer" role="button"
                     tabindex="0">
                     <div class="space-y-1">
-                        <p class="font-medium text-lg text-gray-900">Times of My Life™</p>
+                        <p class="font-medium text-base md:text-lg text-gray-900">Times of My Life™</p>
                         <p class="text-sm text-gray-600">Capture, narrate, and share your life stories with photos,
                             videos, and music, using AI-guided interviews.</p>
                     </div>
@@ -223,21 +224,23 @@
                 </div>
                 <div class="feature-content overflow-hidden transition-all duration-300 bg-white">
                     <div class="space-y-4 mt-4">
-                        <p class="text-[#6E7481] p-4">Times of My Life is Leaves’ flagship application. Family members
+                        <p class="text-[#6E7481] p-4 text-sm md:text-base">Times of My Life is Leaves’ flagship
+                            application. Family members
                             can capture their life stories from birth to present day, or just focus on the special
                             events, milestones, and defining moments in their lives. The app features a Virtual
                             Biographer® that both interviews the members and writes the story in whatever tone and style
                             are desired. The app includes a multimedia production studio for publishing the stories in
                             print, audiocast, and video formats.</p>
-                        <div class="flex items-center justify-between py-5 border-t border-dashed border-black/10 px-4">
-                            <p class="text-gray-800 font-medium">The app is currently available</p>
-                            <div class="flex gap-2 flex-wrap">
+                        <div
+                            class=" md:flex items-center justify-between py-5 border-t border-dashed border-black/10 px-4 text-center md:text-left">
+                            <p class="text-gray-800 font-medium mb-2.5 md:mb-0">The app is currently available</p>
+                            <div class="flex gap-2 flex-wrap justify-center w-full md:w-auto md:justity-start">
                                 <a href="https://www.youtube.com/shorts/xt7cS3vQdX4" target="_blank"
-                                    class="inline-flex items-center justify-center px-3 py-2 rounded-md text-sm font-medium text-white shadow-[0px_0px_0px_1px_rgba(19,85,41,0.9)]"
+                                    class="inline-flex w-full md:w-auto items-center justify-center px-3 py-2 rounded-md text-sm font-medium text-white shadow-[0px_0px_0px_1px_rgba(19,85,41,0.9)]"
                                     style="background: linear-gradient(180deg, #318f21 0%, #318f21 100%);">App Store and
                                     on the Web</a>
                                 <a href="https://timesofmy.life/" target="_blank"
-                                    class="inline-flex items-center justify-center px-3 py-2 rounded-md text-sm font-medium border border-[rgba(200,208,204,0.54)] text-gray-800 bg-white">Promotional
+                                    class="inline-flex w-full md:w-auto items-center justify-center px-3 py-2 rounded-md text-sm font-medium border border-[rgba(200,208,204,0.54)] text-gray-800 bg-white">Promotional
                                     Video</a>
                             </div>
                         </div>
@@ -253,7 +256,7 @@
                 <div class="feature-header p-4 flex items-center justify-between gap-4 cursor-pointer" role="button"
                     tabindex="0">
                     <div class="space-y-1">
-                        <p class="font-medium text-lg text-gray-900">Forever Voice™</p>
+                        <p class="font-medium text-base md:text-lg text-gray-900">Forever Voice™</p>
                         <p class="text-sm text-gray-600">Create and interact with virtual family member personas, for
                             advice, comfort, and ongoing connection. Biology ends, yet biography continues.</p>
                     </div>
@@ -270,13 +273,15 @@
                 </div>
                 <div class="feature-content overflow-hidden transition-all duration-300 bg-white">
                     <div class="space-y-4 mt-4">
-                        <p class="text-[#6E7481] p-4">Forever Voice™ is an application for creating a virtual persona
+                        <p class="text-[#6E7481] p-4 text-sm md:text-base">Forever Voice™ is an application for creating
+                            a virtual persona
                             that family members can talk to anytime. A virtual persona embodies one’s personality,
                             values, philosophies, and life lessons. Future generations can ask the persona about their
                             lives and experiences. They can also ask for advice and suggestions. It’s a way of keeping
                             our ancestors always present in our lives and better understanding who we are and where we
                             came from.</p>
-                        <p class="text-[#6E7481] p-4">Forever Voice is currently a functional prototype being tested by
+                        <p class="text-[#6E7481] p-4 text-sm md:text-base">Forever Voice is currently a functional
+                            prototype being tested by
                             families under NDA. Ask for access if interested. The app will launch publicly in January
                             2026.</p>
 
@@ -292,7 +297,7 @@
                 <div class="feature-header p-4 flex items-center justify-between gap-4 cursor-pointer" role="button"
                     tabindex="0">
                     <div class="space-y-1">
-                        <p class="font-medium text-lg text-gray-900">Life Map™</p>
+                        <p class="font-medium text-base md:text-lg text-gray-900">Life Map™</p>
                         <p class="text-sm text-gray-600">Visualize your life’s journey across time and the places you
                             have been.</p>
                     </div>
@@ -309,13 +314,15 @@
                 </div>
                 <div class="feature-content overflow-hidden transition-all duration-300 bg-white">
                     <div class="space-y-4 mt-4">
-                        <p class="text-[#6E7481] p-4">Life Map™ is an application that visually displays where family
+                        <p class="text-[#6E7481] p-4 text-sm md:text-base">Life Map™ is an application that visually
+                            displays where family
                             members have lived, attended school, worked, traveled, and experienced the big events in
                             their lives. For example, if you ever want to know where your father grew up, you can tap
                             the pin on his Life Map and zoom in on the house. Same for your schools, offices, and places
                             traveled. Each place on the map displays a card describing the place and why you (or a
                             family member) were there. You can then tap to read the full story.</p>
-                        <p class="text-[#6E7481] p-4">Life Map is currently a functional prototype being tested by
+                        <p class="text-[#6E7481] p-4 text-sm md:text-base">Life Map is currently a functional prototype
+                            being tested by
                             families under NDA. Ask for access if interested. The app will launch publicly in February
                             2026.</p>
 
@@ -330,7 +337,7 @@
                 <div class="feature-header p-4 flex items-center justify-between gap-4 cursor-pointer" role="button"
                     tabindex="0">
                     <div class="space-y-1">
-                        <p class="font-medium text-lg text-gray-900">Life Timeline™</p>
+                        <p class="font-medium text-base md:text-lg text-gray-900">Life Timeline™</p>
                         <p class="text-sm text-gray-600">A chronological visual of one’s entire life and major
                             milestones.</p>
                     </div>
@@ -347,12 +354,14 @@
                 </div>
                 <div class="feature-content overflow-hidden transition-all duration-300 bg-white">
                     <div class="space-y-4 mt-4">
-                        <p class="text-[#6E7481] p-4">Life Timeline™ is an application that visually displays every
+                        <p class="text-[#6E7481] p-4 text-sm md:text-base">Life Timeline™ is an application that
+                            visually displays every
                             family member’s journey, from birth to death. Tapping on a year displays what happened that
                             year, e.g., born, entered high school, attended college, started first job, got married, had
                             their first child, etc. Each pin on the timeline displays a card describing the place and
                             what you (or a family member) were doing. You can then tap to read the full story.</p>
-                        <p class="text-[#6E7481] p-4">Life Timeline is currently a functional prototype being tested by
+                        <p class="text-[#6E7481] p-4 text-sm md:text-base">Life Timeline is currently a functional
+                            prototype being tested by
                             families under NDA. Ask for access if interested. The app will launch publicly in February
                             2026.</p>
 
@@ -368,7 +377,7 @@
                 <div class="feature-header p-4 flex items-center justify-between gap-4 cursor-pointer" role="button"
                     tabindex="0">
                     <div class="space-y-1">
-                        <p class="font-medium text-lg text-gray-900">Document Archive™</p>
+                        <p class="font-medium text-base md:text-lg text-gray-900">Document Archive™</p>
                         <p class="text-sm text-gray-600">Secure, centralized archive of a family’s essential papers.</p>
                     </div>
                     <button class="feature-toggle flex-shrink-0" aria-expanded="false" style="color:#505050">
@@ -384,12 +393,14 @@
                 </div>
                 <div class="feature-content overflow-hidden transition-all duration-300 bg-white">
                     <div class="space-y-4 mt-4">
-                        <p class="text-[#6E7481] p-4">Document Archive™ is an application to securely store, share, and
+                        <p class="text-[#6E7481] p-4 text-sm md:text-base">Document Archive™ is an application to
+                            securely store, share, and
                             retrieve important family documents, including birth certificates, diplomas, marriage
                             licenses, military papers, death certificates, cards, letters, and so forth. Each document
                             is tagged with the date and place so that family members can tap to see where, when, and how
                             this record was created, by connecting it to the user’s map, timeline, and story.</p>
-                        <p class="text-[#6E7481] p-4">Document Archive is currently a functional prototype being tested
+                        <p class="text-[#6E7481] p-4 text-sm md:text-base">Document Archive is currently a functional
+                            prototype being tested
                             by families under NDA. Ask for access if interested. The app will launch publicly in April
                             2026.</p>
 
@@ -405,7 +416,7 @@
                 <div class="feature-header p-4 flex items-center justify-between gap-4 cursor-pointer" role="button"
                     tabindex="0">
                     <div class="space-y-1">
-                        <p class="font-medium text-lg text-gray-900">Legacy Letters™</p>
+                        <p class="font-medium text-base md:text-lg text-gray-900">Legacy Letters™</p>
                         <p class="text-sm text-gray-600">Heartfelt letters for loved ones to be opened at a chosen date
                             or event in the future.</p>
                     </div>
@@ -422,13 +433,15 @@
                 </div>
                 <div class="feature-content overflow-hidden transition-all duration-300 bg-white">
                     <div class="space-y-4 mt-4">
-                        <p class="text-[#6E7481] p-4">Legacy Letters™ is an application to write personal messages to
+                        <p class="text-[#6E7481] p-4 text-sm md:text-base">Legacy Letters™ is an application to write
+                            personal messages to
                             family members to be opened on a date or event in the future. The family members who have
                             been sent letters are given an encryption key. The key can only be used to open the letter
                             on the pre-subscribed date. For example, a grandmother can write a letter to her grandson
                             that can only be opened on his 30th birthday. A parent can write a letter to his daughter
                             that can only be opened upon the parent’s death.</p>
-                        <p class="text-[#6E7481] p-4">Legacy Letters is currently a functional prototype being tested by
+                        <p class="text-[#6E7481] p-4 text-sm md:text-base">Legacy Letters is currently a functional
+                            prototype being tested by
                             families under NDA. Ask for access if interested. The app will launch publicly in June 2026.
                         </p>
 
@@ -444,7 +457,7 @@
                 <div class="feature-header p-4 flex items-center justify-between gap-4 cursor-pointer" role="button"
                     tabindex="0">
                     <div class="space-y-1">
-                        <p class="font-medium text-lg text-gray-900">Media Library™</p>
+                        <p class="font-medium text-base md:text-lg text-gray-900">Media Library™</p>
                         <p class="text-sm text-gray-600">Curate, store and preserve photos and videos of all family
                             members in one place, for easy retrieval and use.</p>
                     </div>
@@ -461,7 +474,8 @@
                 </div>
                 <div class="feature-content overflow-hidden transition-all duration-300 bg-white">
                     <div class="space-y-4 mt-4">
-                        <p class="text-[#6E7481] p-4">Media Library™ is a central repository for all of the family’s
+                        <p class="text-[#6E7481] p-4 text-sm md:text-base">Media Library™ is a central repository for
+                            all of the family’s
                             media – photos, videos, audio recordings, and other media. AI filters will make it easy for
                             any family member to find any media related to any other family member and their respective
                             life events. When a family member writes a story with Times of My Life, or adds a record to
@@ -470,7 +484,8 @@
                             blurry photos, animating photos (bringing the characters to life), and tagging the people in
                             the photos.</p>
 
-                        <p class="text-[#6E7481] p-4">Media Library is currently in development. Ask for access to test
+                        <p class="text-[#6E7481] p-4 text-sm md:text-base">Media Library is currently in development.
+                            Ask for access to test
                             the functional prototype when it becomes available. The goal is to publicly launch it in Q4
                             2026.</p>
 
@@ -486,7 +501,7 @@
                 <div class="feature-header p-4 flex items-center justify-between gap-4 cursor-pointer" role="button"
                     tabindex="0">
                     <div class="space-y-1">
-                        <p class="font-medium text-lg text-gray-900">Family hub Dashboard</p>
+                        <p class="font-medium text-base md:text-lg text-gray-900">Family hub Dashboard</p>
                         <p class="text-sm text-gray-600">Family Feed, Real-Time Chat, Events, Occasions, and Integration
                             with third party apps. </p>
                     </div>
@@ -503,7 +518,8 @@
                 </div>
                 <div class="feature-content overflow-hidden transition-all duration-300 bg-white">
                     <div class="space-y-4 mt-4">
-                        <p class="text-[#6E7481] p-4">As a family hub, there is no limit to the feature and capabilities
+                        <p class="text-[#6E7481] p-4 text-sm md:text-base">As a family hub, there is no limit to the
+                            feature and capabilities
                             that might be added. Standard features like those people are accustomed to on their social
                             media platforms will be available, including an activity/status feed, chat, and events. We
                             plan to offer an SDK to third-party developers so they can integrate their apps with the hub
@@ -524,7 +540,8 @@
     <section class="max-w-[1160px] mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-8">
         <div class="space-y-10">
             <!-- Section Header -->
-            <h2 class="font-medium text-4xl text-gray-900 tracking-[-0.37px] text-center">Other Features</h2>
+            <h2 class="font-medium text-2xl md:text-4xl text-gray-900 tracking-[-0.37px] text-center">Other Features
+            </h2>
 
             <!-- Features List -->
             <div class="bg-white border border-[rgba(200,208,204,0.54)] rounded-2xl overflow-hidden">
@@ -540,8 +557,9 @@
                             </svg>
                         </div>
                         <div class="flex-1">
-                            <h3 class="font-medium text-xl text-gray-900 mb-1">Family Feed</h3>
-                            <p class="text-[#9A9B9A]">A live stream on the home page, featuring family member's status
+                            <h3 class="font-medium text-base md:text-xl text-gray-900 mb-1">Family Feed</h3>
+                            <p class="text-[#9A9B9A] text-sm md:text-base">A live stream on the home page, featuring
+                                family member's status
                                 updates, stories, photos, and videos.</p>
                         </div>
                     </div>
@@ -559,8 +577,9 @@
                             </svg>
                         </div>
                         <div class="flex-1">
-                            <h3 class="font-medium text-xl text-gray-900 mb-1">Real-Time Chat</h3>
-                            <p class="text-[#9A9B9A]">Live text and video communication with other family members.</p>
+                            <h3 class="font-medium text-base md:text-xl text-gray-900 mb-1">Real-Time Chat</h3>
+                            <p class="text-[#9A9B9A] text-sm md:text-base">Live text and video communication with other
+                                family members.</p>
                         </div>
                     </div>
                 </div>
@@ -577,8 +596,9 @@
                             </svg>
                         </div>
                         <div class="flex-1">
-                            <h3 class="font-medium text-xl text-gray-900 mb-1">Events</h3>
-                            <p class="text-[#9A9B9A]">Invitations, details, and notifications about family events like
+                            <h3 class="font-medium text-base md:text-xl text-gray-900 mb-1">Events</h3>
+                            <p class="text-[#9A9B9A] text-sm md:text-base">Invitations, details, and notifications about
+                                family events like
                                 holidays, weddings, graduations, etc.</p>
                         </div>
                     </div>
@@ -596,8 +616,9 @@
                             </svg>
                         </div>
                         <div class="flex-1">
-                            <h3 class="font-medium text-xl text-gray-900 mb-1">Occasions</h3>
-                            <p class="text-[#9A9B9A]">Send personalized, animated gift cards, to family members on
+                            <h3 class="font-medium text-base md:text-xl text-gray-900 mb-1">Occasions</h3>
+                            <p class="text-[#9A9B9A] text-sm md:text-base">Send personalized, animated gift cards, to
+                                family members on
                                 holidays and special occasions.</p>
                         </div>
                     </div>
@@ -615,8 +636,10 @@
                             </svg>
                         </div>
                         <div class="flex-1">
-                            <h3 class="font-medium text-xl text-gray-900 mb-1">Integration with Third Party Apps</h3>
-                            <p class="text-[#9A9B9A]">Seamless access to other family heritage apps.</p>
+                            <h3 class="font-medium text-base md:text-xl text-gray-900 mb-1">Integration with Third Party
+                                Apps</h3>
+                            <p class="text-[#9A9B9A] text-sm md:text-base">Seamless access to other family heritage
+                                apps.</p>
                         </div>
                     </div>
                 </div>
@@ -627,7 +650,8 @@
     <!-- How can you help? -->
     <section class="max-w-[1096px] mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20" id="help">
         <div class="space-y-8">
-            <h2 class="font-medium text-4xl xl:text-5xl text-gray-900 tracking-[-0.37px]">How Can You Help?</h2>
+            <h2 class="font-medium text-2xl md:text-4xl xl:text-5xl text-gray-900 tracking-[-0.37px]">How Can You Help?
+            </h2>
             <ol class="list-decimal pl-6 space-y-4 text-gray-700">
                 <li>
                     Review the prototype screens.
@@ -647,7 +671,7 @@
                 </li>
             </ol>
             <form action="#" method="post" class=" px-6 space-y-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-4">
                     <div class="space-y-2">
                         <label class="text-sm text-gray-700">First name</label>
                         <input type="text" name="first_name"
@@ -698,7 +722,9 @@
                         class="inline-block bg-white border border-[rgba(43,102,62,0.3)] rounded-full px-3 py-2 backdrop-blur-2xl">
                         <p class="text-leaves-green text-base font-medium">FAQs</p>
                     </div>
-                    <h2 class="font-medium text-5xl text-gray-900 tracking-[-0.48px] leading-tight">Frequently Asked
+                    <h2
+                        class="font-medium text-2xl md:text-4xl xl:text-5xl text-gray-900 tracking-[-0.48px] leading-tight">
+                        Frequently Asked
                         Questions.</h2>
                 </div>
 
@@ -708,7 +734,7 @@
                     <div class="faq-item bg-white border border-[rgba(52,151,35,0.3)] rounded-2xl p-6">
                         <div class="faq-header flex items-start justify-between gap-4 cursor-pointer" role="button"
                             tabindex="0">
-                            <h3 class="font-medium text-lg text-gray-900">Who is the family hub for?</h3>
+                            <h3 class="font-medium text-base md:text-lg text-gray-900">Who is the family hub for?</h3>
                             <button class="faq-toggle flex-shrink-0 text-gray-400" aria-expanded="true">
                                 <svg data-icon="plus" class="w-5 h-5 hidden" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
@@ -734,7 +760,7 @@
                     <div class="faq-item bg-white rounded-2xl p-6 border border-[rgba(200,208,204,0.54)]">
                         <div class="faq-header flex items-center justify-between gap-4 cursor-pointer" role="button"
                             tabindex="0">
-                            <h3 class="font-medium text-lg text-gray-900">Why do they need it?</h3>
+                            <h3 class="font-medium text-base md:text-lg text-gray-900">Why do they need it?</h3>
                             <button class="faq-toggle flex-shrink-0 text-gray-400" aria-expanded="false">
                                 <svg data-icon="plus" class="w-5 h-5" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
@@ -758,7 +784,7 @@
                     <div class="faq-item bg-white rounded-2xl p-6 border border-[rgba(200,208,204,0.54)]">
                         <div class="faq-header flex items-center justify-between gap-4 cursor-pointer" role="button"
                             tabindex="0">
-                            <h3 class="font-medium text-lg text-gray-900">What will it cost?</h3>
+                            <h3 class="font-medium text-base md:text-lg text-gray-900">What will it cost?</h3>
                             <button class="faq-toggle flex-shrink-0 text-gray-400" aria-expanded="false">
                                 <svg data-icon="plus" class="w-5 h-5" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
@@ -782,7 +808,8 @@
                     <div class="faq-item bg-white rounded-2xl p-6 border border-[rgba(200,208,204,0.54)]">
                         <div class="faq-header flex items-center justify-between gap-4 cursor-pointer" role="button"
                             tabindex="0">
-                            <h3 class="font-medium text-lg text-gray-900">Is the family hub private and secure? Will
+                            <h3 class="font-medium text-base md:text-lg text-gray-900">Is the family hub private and
+                                secure? Will
                                 there be ads? Who owns the data?</h3>
                             <button class="faq-toggle flex-shrink-0 text-gray-400" aria-expanded="false">
                                 <svg data-icon="plus" class="w-5 h-5" fill="none" stroke="currentColor"
@@ -809,7 +836,8 @@
                     <div class="faq-item bg-white rounded-2xl p-6 border border-[rgba(200,208,204,0.54)]">
                         <div class="faq-header flex items-center justify-between gap-4 cursor-pointer" role="button"
                             tabindex="0">
-                            <h3 class="font-medium text-lg text-gray-900">Which family members can join? Who administers
+                            <h3 class="font-medium text-base md:text-lg text-gray-900">Which family members can join?
+                                Who administers
                                 the family hub?</h3>
                             <button class="faq-toggle flex-shrink-0 text-gray-400" aria-expanded="false">
                                 <svg data-icon="plus" class="w-5 h-5" fill="none" stroke="currentColor"
@@ -834,7 +862,8 @@
                     <div class="faq-item bg-white rounded-2xl p-6 border border-[rgba(200,208,204,0.54)]">
                         <div class="faq-header flex items-center justify-between gap-4 cursor-pointer" role="button"
                             tabindex="0">
-                            <h3 class="font-medium text-lg text-gray-900">What the definition of a "Family Member?" Can
+                            <h3 class="font-medium text-base md:text-lg text-gray-900">What the definition of a "Family
+                                Member?" Can
                                 non-family members join? Can one join multiple hubs?</h3>
                             <button class="faq-toggle flex-shrink-0 text-gray-400" aria-expanded="false">
                                 <svg data-icon="plus" class="w-5 h-5" fill="none" stroke="currentColor"
@@ -880,8 +909,8 @@
 
     <!-- Footer Section -->
     <footer class="bg-white border-t border-[#d9dedc]">
-        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="flex items-center justify-between">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-12">
+            <div class="flex items-center justify-center gap-8 flex-wrap md:justify-between">
                 <!-- Logo -->
                 <a href="#" class="flex items-center gap-2">
                     <img src="./public/logo.svg" alt="LEAVES" class="h-9 w-auto" />
